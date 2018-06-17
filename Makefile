@@ -1,4 +1,6 @@
 
+.PHONY : all pdf html ingest
+
 all : pdf html
 
 pdf :
