@@ -1,3 +1,10 @@
+notes.txt
+/site/
+*.rds
+*.xlsx
+*.Rproj
+*.sublime-*
+
 # History files
 .Rhistory
 .Rapp.history

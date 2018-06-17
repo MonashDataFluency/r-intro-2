@@ -1,0 +1,245 @@
+# Starting out in R
+
+R is both a programming language and an interactive environment for statistics. Today we will be concentrating on R as an *interactive environment*.
+
+Working with R is primarily text-based. The basic mode of use for R is that the user types in a command in the R language and presses enter, and then R computes and displays the result.
+
+We will be working in [RStudio](https://www.rstudio.com/products/rstudio/download/). This surrounds the *console*, where one enters commands and views the results, with various conveniences. In addition to the console, RStudio provides panels containing:
+
+* A *text editor*, where R commands can be recorded for future reference.
+* A history of commands that have been typed on the console.
+* An "environment" pane with a list of *variables*, which contain values that R has been told to save from previous commands.
+* A file manager.
+* Help on the functions available in R.
+* A panel to show plots.
+
+```{r echo=F}
+knitr::include_graphics("../figures/rstudio.png")
+```
+
+Open RStudio, click on the "Console" pane, type `1+1` and press enter. R displays the result of the calculation. In this document, we will be showing such an interaction with R as below.
+
+```{r}
+1+1
+```
+
+`+` is called an operator. R has the operators you would expect for for basic mathematics: `+` `-` `*` `/` `^`. It also has operators that do more obscure things.
+
+`*` has higher precedence than `+`.  We can use brackets if necessary `( )`. Try `1+2*3` and `(1+2)*3`.
+
+Spaces can be used to make code easier to read.
+
+We can compare with `== < > <= >=`. This produces a "logical" value, `TRUE` or `FALSE`. Note the double equals, `==`, for equality comparison.
+
+```{r}
+2 * 2 == 4
+```
+
+There are also character strings such as `"string"`.
+
+
+
+## Variables
+
+A variable is a name for a value. We can create a new variable by assigning a value to it using `<-`.
+
+```{r}
+width <- 5
+```
+
+RStudio helpfully shows us the variable in the "Environment" pane. We can also print it by typing the name of the variable and hitting enter. In general, R will print to the console any object returned by a function or operation *unless* we assign it to a variable.
+
+```{r}
+width
+```
+
+Examples of valid variables names: `hello`, `hello_there`, `hello.there`, `value1`. Spaces aren't ok *inside* variable names. Dots (`.`) are ok, unlike in many other languages.
+
+We can do arithmetic with the variable:
+
+```{r}
+# Area of a square
+width * width
+```
+
+and even save the result in another variable:
+
+```{r}
+# Save area in "area" variable
+area <- width * width
+```
+
+We can also change a variable's value by assigning it a new value:
+
+```{r}
+width <- 10
+width
+area
+```
+
+Notice that the value of `area` we calculated earlier hasn't been updated. Assigning a new value to one variable does not change the values of other variables. This is different to a spreadsheet, but usual for programming languages.
+
+
+## Saving code in an R script
+
+Once we've created a few variables, it becomes important to record how they were calculated, so we can reproduce them later.
+
+The usual workflow is to save your code in an R script (".R file"). Go to "File/New File/R Script" to create a new R script. Code in your R script can be sent to the console by selecting it (or just placing the cursor on the correct line), and then pressing **Control-Enter** (or **Command-Enter** on a Mac).
+
+### Tip {- .tip}
+
+Add comments to code using the `#` character. This makes it easier for others to follow what the code is doing (and us the next time we come back to it).
+
+
+
+## Vectors
+
+A "vector" of numbers is a collection of numbers. "Vector" can mean different things in different fields (mathematics, geometry, biology), but in R it is a fancy name for a collection of numbers. We call the individual numbers "elements" of the vector.
+
+We can make vectors with `c( )`, for example `c(1,2,3)`. `c` means "combine". R is obsesssed with vectors. In R, numbers are just vectors of length one. Many things that can be done with a single number can also be done with a vector. For example arithmetic can be done on vectors as it can be on single numbers.
+
+```{r}
+myvec <- c(10,20,30,40,50)
+myvec
+myvec + 1
+myvec + myvec
+length(myvec)
+c(60, myvec)
+c(myvec, myvec)
+```
+
+When we talk about the length of a vector, we are talking about the number of numbers in the vector.
+
+### Types of vector
+
+We will also encounter vectors of character strings, for example `"hello"` or `c("hello","world")`. Also we will encounter "logical" vectors, which contain `TRUE` and `FALSE` values. R also has "factors", which are categorical vectors, and behave much like character vectors (think the factors in an experiment).
+
+
+### Challenge {- .challenge}
+
+Sometimes the best way to understand R is to try some examples and see what it does.
+
+What happens when you try to make a vector containing different types, using `c( )`? Make a vector with some numbers, and some words (eg. character strings like `"test"`, or `"hello"`).
+
+Why does the output show the numbers surrounded by quotes `" "` like character strings are?
+
+### {-}
+
+Because vectors can only contain one type of thing, R chooses a lowest common denominator type of vector, a type that can contain everything we are trying to put in it. A different language might stop with an error, but R tries to soldier on as best it can. A number can be represented as a character string, but a character string can not be represented as a number, so when we try to put both in the same vector R converts everything to a character string.
+
+
+## Indexing vectors
+
+Access elements of a vector with `[ ]`, for example `myvec[1]` to get the first element. You can also assign to a specific element of a vector.
+
+```{r}
+myvec[1]
+myvec[2]
+myvec[2] <- 5
+myvec
+```
+
+Can we use a vector to index another vector? Yes!
+
+```{r}
+myind <- c(4,3,2)
+myvec[myind]
+```
+
+We could equivalently have written:
+
+```{r}
+myvec[c(4,3,2)]
+```
+
+### Challenge {- .challenge}
+
+We can create and index character vectors as well. A cafe is using R to create their menu.
+
+```{r}
+items <- c("spam", "eggs", "beans", "bacon", "sausage")
+```
+
+1. What does `items[-3]` produce? Based on what you find, use indexing to create a version of `items` without `"spam"`.
+
+Urgghh. Who doesn't like spam?
+
+2. Use indexing to create a vector containing spam, eggs, sausage, spam, and spam.
+
+3. Add a new item, "lobster", to `items`.
+
+
+## Sequences
+
+Another way to create a vector is with `:`:
+
+```{r}
+1:10
+```
+
+This can be useful when combined with indexing:
+
+```{r}
+items[1:4]
+```
+
+Sequences are useful for many other things, such as a starting point for calculations:
+
+```{r}
+x <- 1:10
+x*x
+plot(x, x*x)
+```
+
+
+## Functions
+
+R has various *functions*. We've already seen `c( )`, `length( )`, and `plot( )`. Let's have a look at `sum( )`. We can get help on `sum` with `?sum`.
+
+```
+?sum
+```
+
+```{r}
+sum(myvec)
+```
+
+We "called" the function `sum` with the "argument" `myvec`.
+
+Because R is a language for statistics, it has many built in statistics-related functions. We will also be loading more specialized functions from "packages".
+
+Some functions take more than one argument. Let's look at the function `rep`, which means "repeat", and which can take a variety of different arguments. In the simplest case, it takes a value and the number of times to repeat that value.
+
+```{r}
+rep(42, 10)
+```
+
+As with many functions in R---which is obsessed with vectors---the thing to be repeated can be a vector with multiple elements.
+
+```{r}
+rep(c(1,2,3), 10)
+```
+
+So far we have used *positional* arguments, where R determines which argument is which by the order in which they are given. We can also give arguments by *name*. For example, the above is equivalent to
+
+```{r}
+rep(c(1,2,3), times=10)
+rep(x=c(1,2,3), 10)
+rep(x=c(1,2,3), times=10)
+```
+
+Arguments can have default values, and a function may have many different possible arguments that make it do obscure things. For example, `rep` can also take an argument `each=`. It's typical for a function to be invoked with some number of positional arguments, which are always given, plus some less commonly used arguments, typically given by name.
+
+```{r}
+rep(c(1,2,3), each=3)
+rep(c(1,2,3), each=3, times=5)
+```
+
+### Challenge - Using functions {- .challenge}
+
+1. Use `sum` to sum from 1 to 10,000.
+
+2. You are reading some R code and see that it uses a function called `seq`. What does `seq` do? What is something `seq` can do that `:` can't?
+
+
+
