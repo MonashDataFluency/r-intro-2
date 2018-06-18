@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to R</title>
+  <meta name="description" content="Introduction to R">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to R" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="data-frames.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#copyright-and-acknowledgements"><i class="fa fa-check"></i><b>1.1</b> Copyright and acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html"><i class="fa fa-check"></i><b>2</b> Starting out in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#variables"><i class="fa fa-check"></i><b>2.1</b> Variables</a></li>
+<li class="chapter" data-level="2.2" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#saving-code-in-an-r-script"><i class="fa fa-check"></i><b>2.2</b> Saving code in an R script</a></li>
+<li class="chapter" data-level="2.3" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vectors</a></li>
+<li class="chapter" data-level="2.4" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#types-of-vector"><i class="fa fa-check"></i><b>2.4</b> Types of vector</a></li>
+<li class="chapter" data-level="2.5" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#indexing-vectors"><i class="fa fa-check"></i><b>2.5</b> Indexing vectors</a></li>
+<li class="chapter" data-level="2.6" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#sequences"><i class="fa fa-check"></i><b>2.6</b> Sequences</a></li>
+<li class="chapter" data-level="2.7" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#functions"><i class="fa fa-check"></i><b>2.7</b> Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-frames.html"><a href="data-frames.html#loading-data"><i class="fa fa-check"></i><b>3.1</b> Loading data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-frames.html"><a href="data-frames.html#exploring"><i class="fa fa-check"></i><b>3.2</b> Exploring</a></li>
+<li class="chapter" data-level="3.3" data-path="data-frames.html"><a href="data-frames.html#indexing-data-frames"><i class="fa fa-check"></i><b>3.3</b> Indexing data frames</a></li>
+<li class="chapter" data-level="3.4" data-path="data-frames.html"><a href="data-frames.html#columns-are-vectors"><i class="fa fa-check"></i><b>3.4</b> Columns are vectors</a></li>
+<li class="chapter" data-level="3.5" data-path="data-frames.html"><a href="data-frames.html#logical-indexing"><i class="fa fa-check"></i><b>3.5</b> Logical indexing</a></li>
+<li class="chapter" data-level="3.6" data-path="data-frames.html"><a href="data-frames.html#factors"><i class="fa fa-check"></i><b>3.6</b> Factors</a></li>
+<li class="chapter" data-level="3.7" data-path="data-frames.html"><a href="data-frames.html#readability-vs-tidyness"><i class="fa fa-check"></i><b>3.7</b> Readability vs tidyness</a></li>
+<li class="chapter" data-level="3.8" data-path="data-frames.html"><a href="data-frames.html#sorting"><i class="fa fa-check"></i><b>3.8</b> Sorting</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Plotting with ggplot2</a><ul>
+<li class="chapter" data-level="4.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#a-larger-data-set"><i class="fa fa-check"></i><b>4.1</b> A larger data set</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="summarizing-data.html"><a href="summarizing-data.html"><i class="fa fa-check"></i><b>5</b> Summarizing data</a></li>
+<li class="chapter" data-level="6" data-path="thinking-in-r.html"><a href="thinking-in-r.html"><i class="fa fa-check"></i><b>6</b> Thinking in R</a><ul>
+<li class="chapter" data-level="6.1" data-path="thinking-in-r.html"><a href="thinking-in-r.html#lists"><i class="fa fa-check"></i><b>6.1</b> Lists</a></li>
+<li class="chapter" data-level="6.2" data-path="thinking-in-r.html"><a href="thinking-in-r.html#matrices-optional-section"><i class="fa fa-check"></i><b>6.2</b> Matrices (optional section)</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="starting-out-in-r" class="section level1">
+<h1><span class="header-section-number">2</span> Starting out in R</h1>
+<p>R is both a programming language and an interactive environment for statistics. Today we will be concentrating on R as an <em>interactive environment</em>.</p>
+<p>Working with R is primarily text-based. The basic mode of use for R is that the user types in a command in the R language and presses enter, and then R computes and displays the result.</p>
+<p>We will be working in <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a>. This surrounds the <em>console</em>, where one enters commands and views the results, with various conveniences. In addition to the console, RStudio provides panels containing:</p>
+<ul>
+<li>A <em>text editor</em>, where R commands can be recorded for future reference.</li>
+<li>A history of commands that have been typed on the console.</li>
+<li>An “environment” pane with a list of <em>variables</em>, which contain values that R has been told to save from previous commands.</li>
+<li>A file manager.</li>
+<li>Help on the functions available in R.</li>
+<li>A panel to show plots.</li>
+</ul>
+<p><img src="../figures/rstudio.png" /><!-- --></p>
+<p>Open RStudio, click on the “Console” pane, type <code>1+1</code> and press enter. R displays the result of the calculation. In this document, we will be showing such an interaction with R as below.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span></a></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p><code>+</code> is called an operator. R has the operators you would expect for for basic mathematics: <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>^</code>. It also has operators that do more obscure things.</p>
+<p><code>*</code> has higher precedence than <code>+</code>. We can use brackets if necessary <code>( )</code>. Try <code>1+2*3</code> and <code>(1+2)*3</code>.</p>
+<p>Spaces can be used to make code easier to read.</p>
+<p>We can compare with <code>== &lt; &gt; &lt;= &gt;=</code>. This produces a <em>logical</em> value, <code>TRUE</code> or <code>FALSE</code>. Note the double equals, <code>==</code>, for equality comparison.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<p>There are also character strings such as <code>&quot;string&quot;</code>.</p>
+<div id="variables" class="section level2">
+<h2><span class="header-section-number">2.1</span> Variables</h2>
+<p>A variable is a name for a value. We can create a new variable by assigning a value to it using <code>&lt;-</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">width &lt;-<span class="st"> </span><span class="dv">5</span></a></code></pre></div>
+<p>RStudio helpfully shows us the variable in the “Environment” pane. We can also print it by typing the name of the variable and hitting enter. In general, R will print to the console any object returned by a function or operation <em>unless</em> we assign it to a variable.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">width</a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<p>Examples of valid variables names: <code>hello</code>, <code>subject_id</code>, <code>subject.ID</code>, <code>x42</code>. Spaces aren’t ok <em>inside</em> variable names. Dots (<code>.</code>) are ok in R, unlike in many other languages. Numbers are ok, except as the first character. Punctuation isn’t ok, with two: <code>_</code> and <code>.</code>.</p>
+<p>We can do arithmetic with the variable:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Area of a square</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">width <span class="op">*</span><span class="st"> </span>width</a></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<p>and even save the result in another variable:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Save area in &quot;area&quot; variable</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">area &lt;-<span class="st"> </span>width <span class="op">*</span><span class="st"> </span>width</a></code></pre></div>
+<p>We can also change a variable’s value by assigning it a new value:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">width &lt;-<span class="st"> </span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">width</a></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">area</a></code></pre></div>
+<pre><code>## [1] 25</code></pre>
+<p>Notice that the value of <code>area</code> we calculated earlier hasn’t been updated. Assigning a new value to one variable does not change the values of other variables. This is different to a spreadsheet, but usual for programming languages.</p>
+</div>
+<div id="saving-code-in-an-r-script" class="section level2">
+<h2><span class="header-section-number">2.2</span> Saving code in an R script</h2>
+<p>Once we’ve created a few variables, it becomes important to record how they were calculated, so we can reproduce them later.</p>
+<p>The usual workflow is to save your code in an R script (“.R file”). Go to “File/New File/R Script” to create a new R script. Code in your R script can be sent to the console by selecting it (or just placing the cursor on the correct line), and then pressing <strong>Control-Enter</strong> (or <strong>Command-Enter</strong> on a Mac).</p>
+<div id="tip" class="section level3 unnumbered tip">
+<h3>Tip</h3>
+<p>Add comments to code, using lines starting with the <code>#</code> character. This makes it easier for others to follow what the code is doing (and also for us the next time we come back to it).</p>
+</div>
+</div>
+<div id="vectors" class="section level2">
+<h2><span class="header-section-number">2.3</span> Vectors</h2>
+<p>A <em>vector</em> of numbers is a collection of numbers. “Vector” can mean different things in different fields (mathematics, geometry, biology), but in R it is a fancy name for a collection of numbers. We call the individual numbers <em>elements</em> of the vector.</p>
+<p>We can make vectors with <code>c( )</code>, for example <code>c(1,2,3)</code>. <code>c</code> means “combine”. R is obsesssed with vectors. In R, numbers are just vectors of length one. Many things that can be done with a single number can also be done with a vector. For example arithmetic can be done on vectors as it can be on single numbers.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">myvec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">myvec</a></code></pre></div>
+<pre><code>## [1] 10 20 30 40 50</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">myvec <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<pre><code>## [1] 11 21 31 41 51</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">myvec <span class="op">+</span><span class="st"> </span>myvec</a></code></pre></div>
+<pre><code>## [1]  20  40  60  80 100</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">length</span>(myvec)</a></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">60</span>, myvec)</a></code></pre></div>
+<pre><code>## [1] 60 10 20 30 40 50</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">c</span>(myvec, myvec)</a></code></pre></div>
+<pre><code>##  [1] 10 20 30 40 50 10 20 30 40 50</code></pre>
+<p>When we talk about the length of a vector, we are talking about the number of numbers in the vector.</p>
+</div>
+<div id="types-of-vector" class="section level2">
+<h2><span class="header-section-number">2.4</span> Types of vector</h2>
+<p>We will also encounter vectors of character strings, for example <code>&quot;hello&quot;</code> or <code>c(&quot;hello&quot;,&quot;world&quot;)</code>. Also we will encounter “logical” vectors, which contain <code>TRUE</code> and <code>FALSE</code> values. R also has “factors”, which are categorical vectors, and behave much like character vectors (think the factors in an experiment).</p>
+<div id="challenge-mixing-types" class="section level3 unnumbered challenge">
+<h3>Challenge: mixing types</h3>
+<p>Sometimes the best way to understand R is to try some examples and see what it does.</p>
+<p>What happens when you try to make a vector containing different types, using <code>c( )</code>? Make a vector with some numbers, and some words (eg. character strings like <code>&quot;test&quot;</code>, or <code>&quot;hello&quot;</code>).</p>
+<p>Why does the output show the numbers surrounded by quotes <code>&quot; &quot;</code> like character strings are?</p>
+</div>
+<div id="section" class="section level3 unnumbered">
+<h3></h3>
+<p>Because vectors can only contain one type of thing, R chooses a lowest common denominator type of vector, a type that can contain everything we are trying to put in it. A different language might stop with an error, but R tries to soldier on as best it can. A number can be represented as a character string, but a character string can not be represented as a number, so when we try to put both in the same vector R converts everything to a character string.</p>
+</div>
+</div>
+<div id="indexing-vectors" class="section level2">
+<h2><span class="header-section-number">2.5</span> Indexing vectors</h2>
+<p>Access elements of a vector with <code>[ ]</code>, for example <code>myvec[1]</code> to get the first element. You can also assign to a specific element of a vector.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">myvec[<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">myvec[<span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">myvec[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">5</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">myvec</a></code></pre></div>
+<pre><code>## [1] 10  5 30 40 50</code></pre>
+<p>Can we use a vector to index another vector? Yes!</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">myind &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2">myvec[myind]</a></code></pre></div>
+<pre><code>## [1] 40 30  5</code></pre>
+<p>We could equivalently have written:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">myvec[<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>)]</a></code></pre></div>
+<pre><code>## [1] 40 30  5</code></pre>
+<div id="challenge-indexing" class="section level3 unnumbered challenge">
+<h3>Challenge: indexing</h3>
+<p>We can create and index character vectors as well. A cafe is using R to create their menu.</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">items &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;spam&quot;</span>, <span class="st">&quot;eggs&quot;</span>, <span class="st">&quot;beans&quot;</span>, <span class="st">&quot;bacon&quot;</span>, <span class="st">&quot;sausage&quot;</span>)</a></code></pre></div>
+<ol style="list-style-type: decimal">
+<li><p>What does <code>items[-3]</code> produce? Based on what you find, use indexing to create a version of <code>items</code> without <code>&quot;spam&quot;</code>.</p></li>
+<li><p>Use indexing to create a vector containing spam, eggs, sausage, spam, and spam.</p></li>
+<li><p>Add a new item, “lobster”, to <code>items</code>.</p></li>
+</ol>
+</div>
+</div>
+<div id="sequences" class="section level2">
+<h2><span class="header-section-number">2.6</span> Sequences</h2>
+<p>Another way to create a vector is with <code>:</code>:</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" data-line-number="1"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a></code></pre></div>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<p>This can be useful when combined with indexing:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1">items[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</a></code></pre></div>
+<pre><code>## [1] &quot;spam&quot;  &quot;eggs&quot;  &quot;beans&quot; &quot;bacon&quot;</code></pre>
+<p>Sequences are useful for many other things, such as a starting point for calculations:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb42-2" data-line-number="2">x<span class="op">*</span>x</a></code></pre></div>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1"><span class="kw">plot</span>(x, x<span class="op">*</span>x)</a></code></pre></div>
+<p><img src="starting_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="functions" class="section level2">
+<h2><span class="header-section-number">2.7</span> Functions</h2>
+<p>Functions are the things that do all the work for us in R: calculate, manipulate data, read and write to files, produce plots. Because R is a language for statistics, it has many built in statistics-related functions. We will also be loading more specialized functions from “packages”.</p>
+<p>We’ve already seen several functions: <code>c( )</code>, <code>length( )</code>, and <code>plot( )</code>. Let’s now have a look at <code>sum( )</code>.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1"><span class="kw">sum</span>(myvec)</a></code></pre></div>
+<pre><code>## [1] 135</code></pre>
+<p>We <em>called</em> the function <code>sum</code> with the <em>argument</em> <code>myvec</code>, and it <em>returned</em> the value 135. We can get help on how to use <code>sum</code> with:</p>
+<pre><code>?sum</code></pre>
+<p>Some functions take more than one argument. Let’s look at the function <code>rep</code>, which means “repeat”, and which can take a variety of different arguments. In the simplest case, it takes a value and the number of times to repeat that value.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" data-line-number="1"><span class="kw">rep</span>(<span class="dv">42</span>, <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##  [1] 42 42 42 42 42 42 42 42 42 42</code></pre>
+<p>As with many functions in R—which is obsessed with vectors—the thing to be repeated can be a vector with multiple elements.</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<p>So far we have used <em>positional</em> arguments, where R determines which argument is which by the order in which they are given. We can also give arguments by <em>name</em>. For example, the above is equivalent to</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">times=</span><span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">rep</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">rep</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">times=</span><span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<p>Arguments can have default values, and a function may have many different possible arguments that make it do obscure things. For example, <code>rep</code> can also take an argument <code>each=</code>. It’s typical for a function to be invoked with some number of positional arguments, which are always given, plus some less commonly used arguments, typically given by name.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">each=</span><span class="dv">3</span>)</a></code></pre></div>
+<pre><code>## [1] 1 1 1 2 2 2 3 3 3</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">each=</span><span class="dv">3</span>, <span class="dt">times=</span><span class="dv">5</span>)</a></code></pre></div>
+<pre><code>##  [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3
+## [36] 3 1 1 1 2 2 2 3 3 3</code></pre>
+<div id="challenge-using-functions" class="section level3 unnumbered challenge">
+<h3>Challenge: using functions</h3>
+<ol style="list-style-type: decimal">
+<li><p>Use <code>sum</code> to sum from 1 to 10,000.</p></li>
+<li><p>Look at the documentation for the <code>seq</code> function. What does <code>seq</code> do? Give an example of using <code>seq</code> with either the <code>by</code> or <code>length.out</code> argument.</p></li>
+</ol>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-frames.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r-intro-2.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

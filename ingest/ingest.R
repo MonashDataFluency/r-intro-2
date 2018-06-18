@@ -7,8 +7,8 @@ library(readxl)
 # Holy See lacks information, not really a country for sensible purposes
 
 income_remap <- c(
-    "Low income"="low", "Lower middle income"="lower-mid", 
-    "Upper middle income"="upper-mid", "High income"="high")
+    "Low income"="low", "Lower middle income"="lower_mid", 
+    "Upper middle income"="upper_mid", "High income"="high")
 
 
 geo <- read_xlsx("geography.xlsx", "List of countries") %>%

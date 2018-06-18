@@ -1,3 +1,5 @@
 bookdown::gitbook:
   css: style.css
   toc_depth: 2
+  download: ["r-intro-2.pdf"]
+  sharing: no

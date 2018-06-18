@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Introduction to R</title>
+  <meta name="description" content="Introduction to R">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to R" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="starting-out-in-r.html">
+<link rel="next" href="plotting-with-ggplot2.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; position: absolute; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource a.sourceLine:empty
+  { position: absolute; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#copyright-and-acknowledgements"><i class="fa fa-check"></i><b>1.1</b> Copyright and acknowledgements</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html"><i class="fa fa-check"></i><b>2</b> Starting out in R</a><ul>
+<li class="chapter" data-level="2.1" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#variables"><i class="fa fa-check"></i><b>2.1</b> Variables</a></li>
+<li class="chapter" data-level="2.2" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#saving-code-in-an-r-script"><i class="fa fa-check"></i><b>2.2</b> Saving code in an R script</a></li>
+<li class="chapter" data-level="2.3" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#vectors"><i class="fa fa-check"></i><b>2.3</b> Vectors</a></li>
+<li class="chapter" data-level="2.4" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#types-of-vector"><i class="fa fa-check"></i><b>2.4</b> Types of vector</a></li>
+<li class="chapter" data-level="2.5" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#indexing-vectors"><i class="fa fa-check"></i><b>2.5</b> Indexing vectors</a></li>
+<li class="chapter" data-level="2.6" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#sequences"><i class="fa fa-check"></i><b>2.6</b> Sequences</a></li>
+<li class="chapter" data-level="2.7" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#functions"><i class="fa fa-check"></i><b>2.7</b> Functions</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>3</b> Data frames</a><ul>
+<li class="chapter" data-level="3.1" data-path="data-frames.html"><a href="data-frames.html#loading-data"><i class="fa fa-check"></i><b>3.1</b> Loading data</a></li>
+<li class="chapter" data-level="3.2" data-path="data-frames.html"><a href="data-frames.html#exploring"><i class="fa fa-check"></i><b>3.2</b> Exploring</a></li>
+<li class="chapter" data-level="3.3" data-path="data-frames.html"><a href="data-frames.html#indexing-data-frames"><i class="fa fa-check"></i><b>3.3</b> Indexing data frames</a></li>
+<li class="chapter" data-level="3.4" data-path="data-frames.html"><a href="data-frames.html#columns-are-vectors"><i class="fa fa-check"></i><b>3.4</b> Columns are vectors</a></li>
+<li class="chapter" data-level="3.5" data-path="data-frames.html"><a href="data-frames.html#logical-indexing"><i class="fa fa-check"></i><b>3.5</b> Logical indexing</a></li>
+<li class="chapter" data-level="3.6" data-path="data-frames.html"><a href="data-frames.html#factors"><i class="fa fa-check"></i><b>3.6</b> Factors</a></li>
+<li class="chapter" data-level="3.7" data-path="data-frames.html"><a href="data-frames.html#readability-vs-tidyness"><i class="fa fa-check"></i><b>3.7</b> Readability vs tidyness</a></li>
+<li class="chapter" data-level="3.8" data-path="data-frames.html"><a href="data-frames.html#sorting"><i class="fa fa-check"></i><b>3.8</b> Sorting</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>4</b> Plotting with ggplot2</a><ul>
+<li class="chapter" data-level="4.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#a-larger-data-set"><i class="fa fa-check"></i><b>4.1</b> A larger data set</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="summarizing-data.html"><a href="summarizing-data.html"><i class="fa fa-check"></i><b>5</b> Summarizing data</a></li>
+<li class="chapter" data-level="6" data-path="thinking-in-r.html"><a href="thinking-in-r.html"><i class="fa fa-check"></i><b>6</b> Thinking in R</a><ul>
+<li class="chapter" data-level="6.1" data-path="thinking-in-r.html"><a href="thinking-in-r.html#lists"><i class="fa fa-check"></i><b>6.1</b> Lists</a></li>
+<li class="chapter" data-level="6.2" data-path="thinking-in-r.html"><a href="thinking-in-r.html#matrices-optional-section"><i class="fa fa-check"></i><b>6.2</b> Matrices (optional section)</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-frames" class="section level1">
+<h1><span class="header-section-number">3</span> Data frames</h1>
+<p><em>Data frame</em> is R’s name for tabular data. We generally want each row in a data frame to represent a unit of observation, and each column to contain a different type of information about the units of observation. Tabular data in this form is called <a href="http://vita.had.co.nz/papers/tidy-data.html">“tidy data”</a>.</p>
+<p>Today we will be using a collection of modern packages collectively known as the <a href="https://www.tidyverse.org/">Tidyverse</a>. R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into “base R”, including having its own slightly improved form of data frame. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.</p>
+<p>If the Tidyverse is not already installed, you will need to install it. However on the server we are using today it is already installed.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
+<p>People sometimes have problems installing all the packages in Tidyverse on Windows machines. If you run into problems you may have more success installing individual packages.</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;dplyr&quot;</span>,<span class="st">&quot;readr&quot;</span>,<span class="st">&quot;tidyr&quot;</span>,<span class="st">&quot;ggplot2&quot;</span>))</a></code></pre></div>
+<p>We need to load the <code>tidyverse</code> package in order to use it.</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb64-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb64-3" data-line-number="3"><span class="co"># OR</span></a>
+<a class="sourceLine" id="cb64-4" data-line-number="4"><span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb64-5" data-line-number="5"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb64-6" data-line-number="6"><span class="kw">library</span>(tidyr)</a>
+<a class="sourceLine" id="cb64-7" data-line-number="7"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+<p>The <code>tidyverse</code> package loads various other packages, setting up a modern R environment. In this section we will be using functions from the <code>dplyr</code>, <code>readr</code> and <code>tidyr</code> packages.</p>
+<p>R is a language with mini-languages within it that solve specific problem domains. <code>dplyr</code> is such a mini-language, a set of “verbs” (functions) that work well together. <code>dplyr</code>, with the help of <code>tidyr</code> for some more complex operations, provides a way to perform most manipulations on a data frame that you might need.</p>
+<div id="loading-data" class="section level2">
+<h2><span class="header-section-number">3.1</span> Loading data</h2>
+<p>We will use the <code>read_csv</code> function from <code>readr</code> to load a data set. (See also <code>read.csv</code> in base R.)</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" data-line-number="1">geo &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;r-intro-2-files/geo.csv&quot;</span>)</a></code></pre></div>
+<pre><code>## Parsed with column specification:
+## cols(
+##   name = col_character(),
+##   region = col_character(),
+##   oecd = col_logical(),
+##   g77 = col_logical(),
+##   lat = col_double(),
+##   long = col_double(),
+##   income2017 = col_character()
+## )</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" data-line-number="1">geo</a></code></pre></div>
+<pre><code>## # A tibble: 196 x 7
+##    name                region   oecd  g77     lat    long income2017
+##    &lt;chr&gt;               &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;     
+##  1 Afghanistan         asia     FALSE TRUE   33     66    low       
+##  2 Albania             europe   FALSE FALSE  41     20    upper_mid 
+##  3 Algeria             africa   FALSE TRUE   28      3    upper_mid 
+##  4 Andorra             europe   FALSE FALSE  42.5    1.52 high      
+##  5 Angola              africa   FALSE TRUE  -12.5   18.5  lower_mid 
+##  6 Antigua and Barbuda americas FALSE TRUE   17.0  -61.8  high      
+##  7 Argentina           americas FALSE TRUE  -34    -64    upper_mid 
+##  8 Armenia             europe   FALSE FALSE  40.2   45    lower_mid 
+##  9 Australia           asia     TRUE  FALSE -25    135    high      
+## 10 Austria             europe   TRUE  FALSE  47.3   13.3  high      
+## # ... with 186 more rows</code></pre>
+<p><code>read_csv</code> has guessed the type of data each column holds:</p>
+<ul>
+<li><code>&lt;chr&gt;</code> - character strings</li>
+<li><code>&lt;dbl&gt;</code> - numerical values. Technically these are “doubles”, which is a way of storing numbers with 15 digits precision.</li>
+<li><code>&lt;lgl&gt;</code> - logical values, <code>TRUE</code> or <code>FALSE</code>.</li>
+</ul>
+<p>We will also encounter:</p>
+<ul>
+<li><code>&lt;int&gt;</code> - integers, a fancy name for whole numbers.</li>
+<li><code>&lt;fct&gt;</code> - factors, categorical data. We will get to this shortly.</li>
+</ul>
+<p>You can also see this data frame referring to itself as “a tibble”. This is the Tidyverse’s improved form of data frame. Tibbles present themselves more conveniently than base R data frames. Base R data frames don’t show the type of each column, and output every row when you try to view them.</p>
+<div id="tip-1" class="section level3 unnumbered tip">
+<h3>Tip</h3>
+<p>A data frame can also be created from vectors, with the <code>data_frame</code> function. (See also <code>data.frame</code> in base R.) For example:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">data_frame</span>(<span class="dt">foo=</span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>), <span class="dt">bar=</span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>))</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 2
+##     foo bar  
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1    10 a    
+## 2    20 b    
+## 3    30 c</code></pre>
+<p>The argument names become column names in the data frame.</p>
+</div>
+</div>
+<div id="exploring" class="section level2">
+<h2><span class="header-section-number">3.2</span> Exploring</h2>
+<p>The <code>View</code> function gives us a spreadsheet-like view of the data frame.</p>
+<pre><code>View(geo)</code></pre>
+<p>However understanding this data frame in R should be less a matter of using a graphical interface, and more about using a variety of R functions to interrogate it.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" data-line-number="1"><span class="kw">nrow</span>(geo)</a></code></pre></div>
+<pre><code>## [1] 196</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" data-line-number="1"><span class="kw">ncol</span>(geo)</a></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb76-1" data-line-number="1"><span class="kw">colnames</span>(geo)</a></code></pre></div>
+<pre><code>## [1] &quot;name&quot;       &quot;region&quot;     &quot;oecd&quot;       &quot;g77&quot;        &quot;lat&quot;       
+## [6] &quot;long&quot;       &quot;income2017&quot;</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb78-1" data-line-number="1"><span class="kw">summary</span>(geo)</a></code></pre></div>
+<pre><code>##      name              region             oecd            g77         
+##  Length:196         Length:196         Mode :logical   Mode :logical  
+##  Class :character   Class :character   FALSE:165       FALSE:65       
+##  Mode  :character   Mode  :character   TRUE :31        TRUE :131      
+##                                                                       
+##                                                                       
+##                                                                       
+##       lat              long           income2017       
+##  Min.   :-42.00   Min.   :-175.000   Length:196        
+##  1st Qu.:  4.00   1st Qu.:  -5.625   Class :character  
+##  Median : 17.42   Median :  21.875   Mode  :character  
+##  Mean   : 19.03   Mean   :  23.004                     
+##  3rd Qu.: 39.82   3rd Qu.:  51.892                     
+##  Max.   : 65.00   Max.   : 179.145</code></pre>
+</div>
+<div id="indexing-data-frames" class="section level2">
+<h2><span class="header-section-number">3.3</span> Indexing data frames</h2>
+<p>Data frames can be subset using <code>[row,column]</code> syntax.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" data-line-number="1">geo[<span class="dv">4</span>,<span class="dv">2</span>]</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   region
+##   &lt;chr&gt; 
+## 1 europe</code></pre>
+<p>Note that while this is a single value, it is still wrapped in a data frame. (This is a behaviour specific to Tidyverse data frames.) More on this in a moment.</p>
+<p>Columns can be given by name.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" data-line-number="1">geo[<span class="dv">4</span>,<span class="st">&quot;region&quot;</span>]</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 1
+##   region
+##   &lt;chr&gt; 
+## 1 europe</code></pre>
+<p>The column or row may be omitted, thereby retrieving the entire row or column.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1">geo[<span class="dv">4</span>,]</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 7
+##   name    region oecd  g77     lat  long income2017
+##   &lt;chr&gt;   &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
+## 1 Andorra europe FALSE FALSE  42.5  1.52 high</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1">geo[,<span class="st">&quot;region&quot;</span>]</a></code></pre></div>
+<pre><code>## # A tibble: 196 x 1
+##    region  
+##    &lt;chr&gt;   
+##  1 asia    
+##  2 europe  
+##  3 africa  
+##  4 europe  
+##  5 africa  
+##  6 americas
+##  7 americas
+##  8 europe  
+##  9 asia    
+## 10 europe  
+## # ... with 186 more rows</code></pre>
+<p>Multiple rows or columns may be retrieved using a vector.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb88-1" data-line-number="1">rows_wanted &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb88-2" data-line-number="2">geo[rows_wanted,]</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 7
+##   name        region oecd  g77     lat  long income2017
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
+## 1 Afghanistan asia   FALSE TRUE   33    66   low       
+## 2 Algeria     africa FALSE TRUE   28     3   upper_mid 
+## 3 Angola      africa FALSE TRUE  -12.5  18.5 lower_mid</code></pre>
+<p>Vector indexing can also be written on a single line.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1">geo[<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">5</span>),]</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 7
+##   name        region oecd  g77     lat  long income2017
+##   &lt;chr&gt;       &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     
+## 1 Afghanistan asia   FALSE TRUE   33    66   low       
+## 2 Algeria     africa FALSE TRUE   28     3   upper_mid 
+## 3 Angola      africa FALSE TRUE  -12.5  18.5 lower_mid</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1">geo[<span class="dv">1</span><span class="op">:</span><span class="dv">7</span>,]</a></code></pre></div>
+<pre><code>## # A tibble: 7 x 7
+##   name                region   oecd  g77     lat   long income2017
+##   &lt;chr&gt;               &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     
+## 1 Afghanistan         asia     FALSE TRUE   33    66    low       
+## 2 Albania             europe   FALSE FALSE  41    20    upper_mid 
+## 3 Algeria             africa   FALSE TRUE   28     3    upper_mid 
+## 4 Andorra             europe   FALSE FALSE  42.5   1.52 high      
+## 5 Angola              africa   FALSE TRUE  -12.5  18.5  lower_mid 
+## 6 Antigua and Barbuda americas FALSE TRUE   17.0 -61.8  high      
+## 7 Argentina           americas FALSE TRUE  -34   -64    upper_mid</code></pre>
+</div>
+<div id="columns-are-vectors" class="section level2">
+<h2><span class="header-section-number">3.4</span> Columns are vectors</h2>
+<p>Ok, so how do we actually get data out of a data frame?</p>
+<p>Under the hood, a data frame is a list of column vectors. We can use <code>$</code> to retrieve columns. Occasionally it is also useful to use <code>[[ ]]</code> to retrieve columns, for example if the column name we want is stored in a variable.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1"><span class="kw">head</span>( geo<span class="op">$</span>region )</a></code></pre></div>
+<pre><code>## [1] &quot;asia&quot;     &quot;europe&quot;   &quot;africa&quot;   &quot;europe&quot;   &quot;africa&quot;   &quot;americas&quot;</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw">head</span>( geo[[<span class="st">&quot;region&quot;</span>]] )</a></code></pre></div>
+<pre><code>## [1] &quot;asia&quot;     &quot;europe&quot;   &quot;africa&quot;   &quot;europe&quot;   &quot;africa&quot;   &quot;americas&quot;</code></pre>
+<p>To get the “region” value of the 4th row as above, but unwrapped, we can use:</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">geo<span class="op">$</span>region[<span class="dv">4</span>]</a></code></pre></div>
+<pre><code>## [1] &quot;europe&quot;</code></pre>
+<p>For example, to plot the longitudes and lattitudes we could use:</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1"><span class="kw">plot</span>(geo<span class="op">$</span>long, geo<span class="op">$</span>lat)</a></code></pre></div>
+<p><img src="data_frames_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+</div>
+<div id="logical-indexing" class="section level2">
+<h2><span class="header-section-number">3.5</span> Logical indexing</h2>
+<p>A method of indexing that we haven’t discussed yet is logical indexing. Instead of specifying the row number or numbers that we want, we can give a logical vector which is <code>TRUE</code> for the rows we want and <code>FALSE</code> otherwise. This can also be used with vectors.</p>
+<p>We will first do this in a slightly verbose way in order to understand it, then learn a more concise way to do this using the <code>dplyr</code> package.</p>
+<p>Southern countries have lattidued less than zero.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">is_southern &lt;-<span class="st"> </span>geo<span class="op">$</span>lat <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb101-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb101-3" data-line-number="3"><span class="kw">head</span>(is_southern)</a></code></pre></div>
+<pre><code>## [1] FALSE FALSE FALSE FALSE  TRUE FALSE</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="kw">sum</span>(is_southern)</a></code></pre></div>
+<pre><code>## [1] 40</code></pre>
+<p><code>sum</code> treats TRUE as 1 and FALSE as 0, so it tells us the number of TRUE elements in the vector.</p>
+<p>We can use this logical vector to get the southern countries from <code>geo</code>:</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" data-line-number="1">geo[is_southern,]</a></code></pre></div>
+<pre><code>## # A tibble: 40 x 7
+##    name             region   oecd  g77     lat   long income2017
+##    &lt;chr&gt;            &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     
+##  1 Angola           africa   FALSE TRUE  -12.5   18.5 lower_mid 
+##  2 Argentina        americas FALSE TRUE  -34    -64   upper_mid 
+##  3 Australia        asia     TRUE  FALSE -25    135   high      
+##  4 Bolivia          americas FALSE TRUE  -17    -65   lower_mid 
+##  5 Botswana         africa   FALSE TRUE  -22     24   upper_mid 
+##  6 Brazil           americas FALSE TRUE  -10    -55   upper_mid 
+##  7 Burundi          africa   FALSE TRUE   -3.5   30   low       
+##  8 Chile            americas TRUE  TRUE  -33.5  -70.6 high      
+##  9 Comoros          africa   FALSE TRUE  -12.2   44.4 low       
+## 10 Congo, Dem. Rep. africa   FALSE TRUE   -2.5   23.5 low       
+## # ... with 30 more rows</code></pre>
+<p>Comparison operators available are:</p>
+<ul>
+<li><code>x == y</code> – “equal to”</li>
+<li><code>x != y</code> – “not equal to”</li>
+<li><code>x &lt; y</code> – “less than”</li>
+<li><code>x &gt; y</code> – “greater than”</li>
+<li><code>x &lt;= y</code> – “less than or equal to”</li>
+<li><code>x &gt;= y</code> – “greater than or equal to”</li>
+</ul>
+<p>More complicated conditions can be constructed using logical operators:</p>
+<ul>
+<li><code>a &amp; b</code> – “and”, TRUE only if both <code>a</code> and <code>b</code> are TRUE.</li>
+<li><code>a | b</code> – “or”, TRUE if either <code>a</code> or <code>b</code> or both are TRUE.</li>
+<li><code>! a</code> – “not” , TRUE if <code>a</code> is FALSE, and FALSE if <code>a</code> is TRUE.</li>
+</ul>
+<p>The <code>oecd</code> column of <code>geo</code> tells which countries are in the Organisation for Economic Co-operation and Development, and thhe <code>g77</code> column tells which countries are in the Group of 77 (an alliance of developing nations). We could see which OECD countries are in the southern hemisphere with:</p>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" data-line-number="1">southern_oecd &lt;-<span class="st"> </span>is_southern <span class="op">&amp;</span><span class="st"> </span>geo<span class="op">$</span>oecd</a>
+<a class="sourceLine" id="cb107-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb107-3" data-line-number="3">geo[southern_oecd,]</a></code></pre></div>
+<pre><code>## # A tibble: 3 x 7
+##   name        region   oecd  g77     lat   long income2017
+##   &lt;chr&gt;       &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;     
+## 1 Australia   asia     TRUE  FALSE -25    135   high      
+## 2 Chile       americas TRUE  TRUE  -33.5  -70.6 high      
+## 3 New Zealand asia     TRUE  FALSE -42    174   high</code></pre>
+<p><code>is_southern</code> seems like it should be kept within our <code>geo</code> data frame for future use. We can add it as a new column of the data frame with:</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1">geo<span class="op">$</span>southern &lt;-<span class="st"> </span>is_southern</a>
+<a class="sourceLine" id="cb109-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb109-3" data-line-number="3">geo</a></code></pre></div>
+<pre><code>## # A tibble: 196 x 8
+##    name              region  oecd  g77     lat    long income2017 southern
+##    &lt;chr&gt;             &lt;chr&gt;   &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;   
+##  1 Afghanistan       asia    FALSE TRUE   33     66    low        FALSE   
+##  2 Albania           europe  FALSE FALSE  41     20    upper_mid  FALSE   
+##  3 Algeria           africa  FALSE TRUE   28      3    upper_mid  FALSE   
+##  4 Andorra           europe  FALSE FALSE  42.5    1.52 high       FALSE   
+##  5 Angola            africa  FALSE TRUE  -12.5   18.5  lower_mid  TRUE    
+##  6 Antigua and Barb… americ… FALSE TRUE   17.0  -61.8  high       FALSE   
+##  7 Argentina         americ… FALSE TRUE  -34    -64    upper_mid  TRUE    
+##  8 Armenia           europe  FALSE FALSE  40.2   45    lower_mid  FALSE   
+##  9 Australia         asia    TRUE  FALSE -25    135    high       TRUE    
+## 10 Austria           europe  TRUE  FALSE  47.3   13.3  high       FALSE   
+## # ... with 186 more rows</code></pre>
+<div id="challenge" class="section level3 unnumbered challenge">
+<h3>Challenge</h3>
+<ol style="list-style-type: decimal">
+<li><p>Which country is in both the OECD and the G77?</p></li>
+<li><p>Which countries are in neither the OECD nor the G77?</p></li>
+<li><p>Which countries are in the Americas? These have longitudes between -150 and -40.</p></li>
+</ol>
+</div>
+<div id="a-dplyr-shorthand" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> A <code>dplyr</code> shorthand</h3>
+<p>The above method is a little laborious. We have to keep mentioning the name of the data frame, and there is a lot of punctuation to keep track of. <code>dplyr</code> provides a slightly magical function called <code>filter</code> which lets us write more concisely. For example:</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1"><span class="kw">filter</span>(geo, lat <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span> <span class="op">&amp;</span><span class="st"> </span>oecd)</a></code></pre></div>
+<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.4.4</code></pre>
+<pre><code>## # A tibble: 3 x 8
+##   name        region   oecd  g77     lat   long income2017 southern
+##   &lt;chr&gt;       &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;   
+## 1 Australia   asia     TRUE  FALSE -25    135   high       TRUE    
+## 2 Chile       americas TRUE  TRUE  -33.5  -70.6 high       TRUE    
+## 3 New Zealand asia     TRUE  FALSE -42    174   high       TRUE</code></pre>
+<p>In the second argument, we are able to refer to columns of the data frame as though they were variables. The code is beautiful, but also opaque. It’s important to understand that under the hood we are creating and combining logical vectors.</p>
+</div>
+</div>
+<div id="factors" class="section level2">
+<h2><span class="header-section-number">3.6</span> Factors</h2>
+<p>The <code>count</code> function from <code>dplyr</code> can help us understand the contents of some of the columns in <code>geo</code>. <code>count</code> is also <em>magical</em>, we can refer to columns of the data frame directly in the arguments to <code>count</code>.</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">count</span>(geo, region)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   region       n
+##   &lt;chr&gt;    &lt;int&gt;
+## 1 africa      54
+## 2 americas    35
+## 3 asia        59
+## 4 europe      48</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">count</span>(geo, income2017)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   income2017     n
+##   &lt;chr&gt;      &lt;int&gt;
+## 1 high          58
+## 2 low           31
+## 3 lower_mid     52
+## 4 upper_mid     55</code></pre>
+<p>One annoyance here is that the different categories in <code>income2017</code> aren’t in a sensible order. This comes up quite often, for example when sorting or plotting categorical data. R’s solution is a further type of vector called a <em>factor</em> (think a factor of an experimental design). A factor holds categorical data, and has an associated ordered set of <em>levels</em>. It is otherwise quite similar to a character vector.</p>
+<p>Any sort of vector can be converted to a factor using the <code>factor</code> function. This function defaults to placing the levels in alphabetical order, but takes a <code>levels</code> argument that can override this.</p>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw">head</span>( <span class="kw">factor</span>(geo<span class="op">$</span>income2017, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;low&quot;</span>,<span class="st">&quot;lower_mid&quot;</span>,<span class="st">&quot;upper_mid&quot;</span>,<span class="st">&quot;high&quot;</span>)) )</a></code></pre></div>
+<pre><code>## [1] low       upper_mid upper_mid high      lower_mid high     
+## Levels: low lower_mid upper_mid high</code></pre>
+<p>We should to modify the <code>income2017</code> column of the <code>geo</code> table in order to use this:</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1">geo<span class="op">$</span>income2017 &lt;-<span class="st"> </span><span class="kw">factor</span>(geo<span class="op">$</span>income2017, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;low&quot;</span>,<span class="st">&quot;lower_mid&quot;</span>,<span class="st">&quot;upper_mid&quot;</span>,<span class="st">&quot;high&quot;</span>))</a></code></pre></div>
+<p><code>count</code> now produces the desired order of output:</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="kw">count</span>(geo, income2017)</a></code></pre></div>
+<pre><code>## # A tibble: 4 x 2
+##   income2017     n
+##   &lt;fct&gt;      &lt;int&gt;
+## 1 low           31
+## 2 lower_mid     52
+## 3 upper_mid     55
+## 4 high          58</code></pre>
+<p>When <code>plot</code> is given a factor, it shows a bar plot:</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">plot</span>(geo<span class="op">$</span>income2017)</a></code></pre></div>
+<p><img src="data_frames_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p>When given two factors, it shows a mosaic plot:</p>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">plot</span>(geo<span class="op">$</span>income2017, <span class="kw">factor</span>(geo<span class="op">$</span>oecd))</a></code></pre></div>
+<p><img src="data_frames_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Similarly we can count two categorical columns at once.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="kw">count</span>(geo, income2017, oecd)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   income2017 oecd      n
+##   &lt;fct&gt;      &lt;lgl&gt; &lt;int&gt;
+## 1 low        FALSE    31
+## 2 lower_mid  FALSE    52
+## 3 upper_mid  FALSE    53
+## 4 upper_mid  TRUE      2
+## 5 high       FALSE    29
+## 6 high       TRUE     29</code></pre>
+</div>
+<div id="readability-vs-tidyness" class="section level2">
+<h2><span class="header-section-number">3.7</span> Readability vs tidyness</h2>
+<p>The counts we obtained counting <code>income2017</code> vs <code>oecd</code> were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as rows and OECD membership as columns. We can use the <code>spread</code> function from <code>tidyr</code> to achieve this.</p>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">counts &lt;-<span class="st"> </span><span class="kw">count</span>(geo, income2017, oecd)</a>
+<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="kw">spread</span>(counts, <span class="dt">key=</span>income2017, <span class="dt">value=</span>n, <span class="dt">fill=</span><span class="dv">0</span>)</a></code></pre></div>
+<pre><code>## # A tibble: 2 x 5
+##   oecd    low lower_mid upper_mid  high
+##   &lt;lgl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+## 1 FALSE    31        52        53    29
+## 2 TRUE      0         0         2    29</code></pre>
+<p>Here:</p>
+<ul>
+<li>The <code>key</code> column became column names.</li>
+<li>The <code>value</code> column became the values in the new columns.</li>
+<li>The <code>fill</code> value is used to fill in any missing values.</li>
+</ul>
+<div id="tip-2" class="section level3 unnumbered tip">
+<h3>Tip</h3>
+<p>Tidying is often the first step when exploring a data-set. The <a href="http://tidyr.tidyverse.org/">tidyr</a> package contains a number of useful functions that help tidy (or untidy) data. We’ve just seen <code>spread</code> which spreads two columns into multiple columns. The inverse of <code>spread</code> is <code>gather</code>, which gathers multiple columns into two columns: a column of column names, and a column of values.</p>
+</div>
+<div id="challenge-1" class="section level3 unnumbered challenge">
+<h3>Challenge</h3>
+<p>Investigate which regions of the world OECD members come from by:</p>
+<ol style="list-style-type: decimal">
+<li><p>Counting.</p></li>
+<li><p>Using a mosaic plot.</p></li>
+</ol>
+<p>Remember you may need to convert columns to factors for <code>plot</code> to work.</p>
+</div>
+</div>
+<div id="sorting" class="section level2">
+<h2><span class="header-section-number">3.8</span> Sorting</h2>
+<p>Data frames can be sorted using the <code>arrange</code> function in <code>dplyr</code>.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">arrange</span>(geo, lat)</a></code></pre></div>
+<pre><code>## # A tibble: 196 x 8
+##    name         region   oecd  g77     lat   long income2017 southern
+##    &lt;chr&gt;        &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;   
+##  1 New Zealand  asia     TRUE  FALSE -42    174   high       TRUE    
+##  2 Argentina    americas FALSE TRUE  -34    -64   upper_mid  TRUE    
+##  3 Chile        americas TRUE  TRUE  -33.5  -70.6 high       TRUE    
+##  4 Uruguay      americas FALSE TRUE  -33    -56   high       TRUE    
+##  5 Lesotho      africa   FALSE TRUE  -29.5   28.2 lower_mid  TRUE    
+##  6 South Africa africa   FALSE TRUE  -29     24   upper_mid  TRUE    
+##  7 Swaziland    africa   FALSE TRUE  -26.5   31.5 lower_mid  TRUE    
+##  8 Australia    asia     TRUE  FALSE -25    135   high       TRUE    
+##  9 Paraguay     americas FALSE TRUE  -23.3  -58   upper_mid  TRUE    
+## 10 Botswana     africa   FALSE TRUE  -22     24   upper_mid  TRUE    
+## # ... with 186 more rows</code></pre>
+<p>Numeric columns are sorted in numeric order. Character columns will be sorted in alphabetical order. Factor columns are sorted in order of their levels. The <code>desc</code> helper function can be used to sort in descending order.</p>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="kw">arrange</span>(geo, <span class="kw">desc</span>(name))</a></code></pre></div>
+<pre><code>## # A tibble: 196 x 8
+##    name           region   oecd  g77     lat    long income2017 southern
+##    &lt;chr&gt;          &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;   &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;   
+##  1 Zimbabwe       africa   FALSE TRUE  -19     29.8  low        TRUE    
+##  2 Zambia         africa   FALSE TRUE  -14.3   28.5  lower_mid  TRUE    
+##  3 Yemen          asia     FALSE TRUE   15.5   47.5  lower_mid  FALSE   
+##  4 Vietnam        asia     FALSE TRUE   16.2  108.   lower_mid  FALSE   
+##  5 Venezuela      americas FALSE TRUE    8    -66    upper_mid  FALSE   
+##  6 Vanuatu        asia     FALSE TRUE  -16    167    lower_mid  TRUE    
+##  7 Uzbekistan     asia     FALSE FALSE  41.7   63.8  lower_mid  FALSE   
+##  8 Uruguay        americas FALSE TRUE  -33    -56    high       TRUE    
+##  9 United States  americas TRUE  FALSE  39.8  -98.5  high       FALSE   
+## 10 United Kingdom europe   TRUE  FALSE  54.8   -2.70 high       FALSE   
+## # ... with 186 more rows</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="starting-out-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="plotting-with-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["r-intro-2.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

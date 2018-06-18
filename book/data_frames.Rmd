@@ -1,8 +1,8 @@
 # Data frames
 
-"Data frame" is R's name for tabular data. We generally want each row in a data frame to represent a unit of observation, and each column to contain a different type of information about the units of observation. Tabular data in this form is called ["tidy data"](http://vita.had.co.nz/papers/tidy-data.html).
+*Data frame* is R's name for tabular data. We generally want each row in a data frame to represent a unit of observation, and each column to contain a different type of information about the units of observation. Tabular data in this form is called ["tidy data"](http://vita.had.co.nz/papers/tidy-data.html).
 
-This section uses a collection of modern packages collectively known as the [Tidyverse](https://www.tidyverse.org/). R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into "base R", including having its own slightly improved form of data frame. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.
+Today we will be using a collection of modern packages collectively known as the [Tidyverse](https://www.tidyverse.org/). R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into "base R", including having its own slightly improved form of data frame. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.
 
 If the Tidyverse is not already installed, you will need to install it. However on the server we are using today it is already installed.
 
@@ -59,6 +59,17 @@ We will also encounter:
 You can also see this data frame referring to itself as "a tibble". This is the Tidyverse's improved form of data frame. Tibbles present themselves more conveniently than base R data frames. Base R data frames don't show the type of each column, and output every row when you try to view them.
 
 
+### Tip {- .tip}
+
+A data frame can also be created from vectors, with the `data_frame` function. (See also `data.frame` in base R.) For example:
+
+```{r}
+data_frame(foo=c(10,20,30), bar=c("a","b","c"))
+```
+
+The argument names become column names in the data frame.
+
+
 ## Exploring
 
 The `View` function gives us a spreadsheet-like view of the data frame.
@@ -75,19 +86,6 @@ ncol(geo)
 colnames(geo)
 summary(geo)
 ```
-
-
-
-### Tip {- .tip}
-
-A data frame can also be created from vectors, with the `data_frame` function. (See also `data.frame` in base R.) For example:
-
-```{r}
-data_frame(foo=c(10,20,30), bar=c("a","b","c"))
-```
-
-The argument names become column names in the data frame.
-
 
 ## Indexing data frames
 
@@ -174,11 +172,22 @@ We can use this logical vector to get the southern countries from `geo`:
 geo[is_southern,]
 ```
 
+Comparison operators available are:
 
+* `x == y ` -- "equal to"
+* `x != y ` -- "not equal to"
+* `x < y  ` -- "less than"
+* `x > y  ` -- "greater than"
+* `x <= y ` -- "less than or equal to"
+* `x >= y ` -- "greater than or equal to"
 
-...
+More complicated conditions can be constructed using logical operators:
 
+* `a & b ` -- "and", TRUE only if both `a` and `b` are TRUE.
+* `a | b ` -- "or", TRUE if either `a` or `b` or both are TRUE.
+* `! a   ` -- "not" , TRUE if `a` is FALSE, and FALSE if `a` is TRUE.
 
+The `oecd` column of `geo` tells which countries are in the Organisation for Economic Co-operation and Development, and thhe `g77` column tells which countries are in the Group of 77 (an alliance of developing nations). We could see which OECD countries are in the southern hemisphere with:
 
 ```{r}
 southern_oecd <- is_southern & geo$oecd
@@ -197,7 +206,6 @@ geo
 
 ### Challenge {- .challenge}
 
-The `oecd` column tells which countries are in the Organisation for Economic Co-operation and Development, and thhe `g77` column tells which countries are in the Group of 77 (an alliance of developing nations).
 
 1. Which country is in both the OECD and the G77?
 
@@ -206,5 +214,107 @@ The `oecd` column tells which countries are in the Organisation for Economic Co-
 2. Which countries are in the Americas? These have longitudes between -150 and -40. 
 
 
+### A `dplyr` shorthand
 
+The above method is a little laborious. We have to keep mentioning the name of the data frame, and there is a lot of punctuation to keep track of. `dplyr` provides a slightly magical function called `filter` which lets us write more concisely. For example:
+
+```{r}
+filter(geo, lat < 0 & oecd)
+```
+
+In the second argument, we are able to refer to columns of the data frame as though they were variables. The code is beautiful, but also opaque. It's important to understand that under the hood we are creating and combining logical vectors.
+
+
+
+## Factors
+
+The `count` function from `dplyr` can help us understand the contents of some of the columns in `geo`. `count` is also *magical*, we can refer to columns of the data frame directly in the arguments to `count`.
+
+```{r}
+count(geo, region)
+count(geo, income2017)
+```
+
+One annoyance here is that the different categories in `income2017` aren't in a sensible order. This comes up quite often, for example when sorting or plotting categorical data. R's solution is a further type of vector called a *factor* (think a factor of an experimental design). A factor holds categorical data, and has an associated ordered set of *levels*. It is otherwise quite similar to a character vector.
+
+Any sort of vector can be converted to a factor using the `factor` function. This function defaults to placing the levels in alphabetical order, but takes a `levels` argument that can override this.
+
+```{r}
+head( factor(geo$income2017, levels=c("low","lower_mid","upper_mid","high")) )
+```
+
+We should to modify the `income2017` column of the `geo` table in order to use this:
+
+```{r}
+geo$income2017 <- factor(geo$income2017, levels=c("low","lower_mid","upper_mid","high"))
+```
+
+`count` now produces the desired order of output:
+
+```{r}
+count(geo, income2017)
+```
+
+When `plot` is given a factor, it shows a bar plot:
+
+```{r}
+plot(geo$income2017)
+```
+
+When given two factors, it shows a mosaic plot:
+
+```{r}
+plot(geo$income2017, factor(geo$oecd))
+```
+
+Similarly we can count two categorical columns at once.
+
+```{r}
+count(geo, income2017, oecd)
+```
+
+## Readability vs tidyness
+
+The counts we obtained counting `income2017` vs `oecd` were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as rows and OECD membership as columns. We can use the `spread` function from `tidyr` to achieve this.
+
+```{r}
+counts <- count(geo, income2017, oecd)
+spread(counts, key=income2017, value=n, fill=0)
+```
+
+Here:
+
+* The `key` column became column names.
+* The `value` column became the values in the new columns.
+* The `fill` value is used to fill in any missing values.
+
+### Tip {- .tip}
+
+Tidying is often the first step when exploring a data-set. The [tidyr](http://tidyr.tidyverse.org/) package contains a number of useful functions that help tidy (or untidy) data. We've just seen `spread` which spreads two columns into multiple columns. The inverse of `spread` is `gather`, which gathers multiple columns into two columns: a column of column names, and a column of values.
+
+
+### Challenge {- .challenge}
+
+Investigate which regions of the world OECD members come from by:
+
+1. Counting.
+
+2. Using a mosaic plot.
+
+Remember you may need to convert columns to factors for `plot` to work.
+
+
+## Sorting
+
+Data frames can be sorted using the `arrange` function in `dplyr`.
+
+```{r}
+arrange(geo, lat)
+```
+
+Numeric columns are sorted in numeric order. Character columns will be sorted in alphabetical order. Factor columns are sorted in order of their levels. The `desc` helper function can be used to sort in descending order.
+
+```{r}
+arrange(geo, desc(name))
+```
 

@@ -3,8 +3,10 @@ rmd_files:
   - introduction.Rmd
   - starting.Rmd
   - data_frames.Rmd
+  - plotting.Rmd
+  - summarizing.Rmd
   - thinking.Rmd
 
 new_session: yes
-output_dir: "../site"
+output_dir: "../docs"
 book_filename: "r-intro-2"

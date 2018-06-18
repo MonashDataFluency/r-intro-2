@@ -1,0 +1,21 @@
+# Plotting with ggplot2
+
+```{r message=F}
+library(tidyverse)
+geo <- read_csv("r-intro-2-files/geo.csv")
+geo$income2017 <- factor(geo$income2017, levels=c("low","lower_mid","upper_mid","high"))
+```
+
+
+
+## A larger data set
+
+Let's move on to a larger data set.
+
+```{r}
+gap <- read_csv("r-intro-2-files/gapminder.csv")
+```
+
+```{r}
+gap_geo <- left_join(gap, geo, by="name")
+```

@@ -1,0 +1,25 @@
+
+.challenge {
+    margin: 2em;
+    padding: 0em 2em 2em 2em;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: #ddf;
+}
+
+.tip {
+    margin: 2em;
+    padding: 0em 2em 2em 2em;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: #ffd;
+}
+
+
+.objectives {
+    margin: 2em;
+    padding: 0em 2em 2em 2em;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: #fed;
+}

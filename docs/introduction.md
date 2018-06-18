@@ -13,9 +13,7 @@ These are course notes for the "Introduction to R" course given by the Monash Bi
 
 This course is developed for the Monash Bioinformatics Platform by Paul Harrison.
 
-```{r echo=F}
-knitr::include_graphics("../figures/CC-BY.png")
-```
+![](../figures/CC-BY.png)<!-- -->
 
 This work is licensed under a [CC BY-4: Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
