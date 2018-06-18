@@ -29,7 +29,7 @@ Open RStudio, click on the "Console" pane, type `1+1` and press enter. R display
 
 Spaces can be used to make code easier to read.
 
-We can compare with `== < > <= >=`. This produces a "logical" value, `TRUE` or `FALSE`. Note the double equals, `==`, for equality comparison.
+We can compare with `== < > <= >=`. This produces a *logical* value, `TRUE` or `FALSE`. Note the double equals, `==`, for equality comparison.
 
 ```{r}
 2 * 2 == 4
@@ -53,7 +53,7 @@ RStudio helpfully shows us the variable in the "Environment" pane. We can also p
 width
 ```
 
-Examples of valid variables names: `hello`, `hello_there`, `hello.there`, `value1`. Spaces aren't ok *inside* variable names. Dots (`.`) are ok, unlike in many other languages.
+Examples of valid variables names: `hello`, `subject_id`, `subject.ID`, `x42`. Spaces aren't ok *inside* variable names. Dots (`.`) are ok in R, unlike in many other languages. Numbers are ok, except as the first character. Punctuation isn't ok, with two: `_` and `.`.
 
 We can do arithmetic with the variable:
 
@@ -88,13 +88,13 @@ The usual workflow is to save your code in an R script (".R file"). Go to "File/
 
 ### Tip {- .tip}
 
-Add comments to code using the `#` character. This makes it easier for others to follow what the code is doing (and us the next time we come back to it).
+Add comments to code, using lines starting with the `#` character. This makes it easier for others to follow what the code is doing (and also for us the next time we come back to it).
 
 
 
 ## Vectors
 
-A "vector" of numbers is a collection of numbers. "Vector" can mean different things in different fields (mathematics, geometry, biology), but in R it is a fancy name for a collection of numbers. We call the individual numbers "elements" of the vector.
+A *vector* of numbers is a collection of numbers. "Vector" can mean different things in different fields (mathematics, geometry, biology), but in R it is a fancy name for a collection of numbers. We call the individual numbers *elements* of the vector.
 
 We can make vectors with `c( )`, for example `c(1,2,3)`. `c` means "combine". R is obsesssed with vectors. In R, numbers are just vectors of length one. Many things that can be done with a single number can also be done with a vector. For example arithmetic can be done on vectors as it can be on single numbers.
 
@@ -110,12 +110,12 @@ c(myvec, myvec)
 
 When we talk about the length of a vector, we are talking about the number of numbers in the vector.
 
-### Types of vector
+## Types of vector
 
 We will also encounter vectors of character strings, for example `"hello"` or `c("hello","world")`. Also we will encounter "logical" vectors, which contain `TRUE` and `FALSE` values. R also has "factors", which are categorical vectors, and behave much like character vectors (think the factors in an experiment).
 
 
-### Challenge {- .challenge}
+### Challenge: mixing types {- .challenge}
 
 Sometimes the best way to understand R is to try some examples and see what it does.
 
@@ -152,7 +152,7 @@ We could equivalently have written:
 myvec[c(4,3,2)]
 ```
 
-### Challenge {- .challenge}
+### Challenge: indexing {- .challenge}
 
 We can create and index character vectors as well. A cafe is using R to create their menu.
 
@@ -161,8 +161,6 @@ items <- c("spam", "eggs", "beans", "bacon", "sausage")
 ```
 
 1. What does `items[-3]` produce? Based on what you find, use indexing to create a version of `items` without `"spam"`.
-
-Urgghh. Who doesn't like spam?
 
 2. Use indexing to create a vector containing spam, eggs, sausage, spam, and spam.
 
@@ -194,19 +192,19 @@ plot(x, x*x)
 
 ## Functions
 
-R has various *functions*. We've already seen `c( )`, `length( )`, and `plot( )`. Let's have a look at `sum( )`. We can get help on `sum` with `?sum`.
+Functions are the things that do all the work for us in R: calculate, manipulate data, read and write to files, produce plots. Because R is a language for statistics, it has many built in statistics-related functions. We will also be loading more specialized functions from "packages".
 
-```
-?sum
-```
+We've already seen several functions: `c( )`, `length( )`, and `plot( )`. Let's now have a look at `sum( )`. 
 
 ```{r}
 sum(myvec)
 ```
 
-We "called" the function `sum` with the "argument" `myvec`.
+We *called* the function `sum` with the *argument* `myvec`, and it *returned* the value 135. We can get help on how to use `sum` with:
 
-Because R is a language for statistics, it has many built in statistics-related functions. We will also be loading more specialized functions from "packages".
+```
+?sum
+```
 
 Some functions take more than one argument. Let's look at the function `rep`, which means "repeat", and which can take a variety of different arguments. In the simplest case, it takes a value and the number of times to repeat that value.
 
@@ -235,11 +233,11 @@ rep(c(1,2,3), each=3)
 rep(c(1,2,3), each=3, times=5)
 ```
 
-### Challenge - Using functions {- .challenge}
+### Challenge: using functions {- .challenge}
 
 1. Use `sum` to sum from 1 to 10,000.
 
-2. You are reading some R code and see that it uses a function called `seq`. What does `seq` do? What is something `seq` can do that `:` can't?
+2. Look at the documentation for the `seq` function. What does `seq` do? Give an example of using `seq` with either the `by` or `length.out` argument.
 
 
 

@@ -4,6 +4,7 @@ notes.txt
 *.xlsx
 *.Rproj
 *.sublime-*
+_bookdown_files
 
 # History files
 .Rhistory

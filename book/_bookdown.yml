@@ -2,9 +2,9 @@
 rmd_files: 
   - introduction.Rmd
   - starting.Rmd
+  - data_frames.Rmd
+  - thinking.Rmd
 
 new_session: yes
 output_dir: "../site"
 book_filename: "r-intro-2"
-
-

@@ -1,0 +1,210 @@
+# Data frames
+
+"Data frame" is R's name for tabular data. We generally want each row in a data frame to represent a unit of observation, and each column to contain a different type of information about the units of observation. Tabular data in this form is called ["tidy data"](http://vita.had.co.nz/papers/tidy-data.html).
+
+This section uses a collection of modern packages collectively known as the [Tidyverse](https://www.tidyverse.org/). R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into "base R", including having its own slightly improved form of data frame. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.
+
+If the Tidyverse is not already installed, you will need to install it. However on the server we are using today it is already installed.
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+```
+
+People sometimes have problems installing all the packages in Tidyverse on Windows machines. If you run into problems you may have more success installing individual packages.
+
+```{r, eval=FALSE}
+install.packages(c("dplyr","readr","tidyr","ggplot2"))
+```
+
+We need to load the `tidyverse` package in order to use it.
+
+```{r, warning=F, message=F}
+library(tidyverse)
+
+# OR
+library(dplyr)
+library(readr)
+library(tidyr)
+library(ggplot2)
+```
+
+The `tidyverse` package loads various other packages, setting up a modern R environment. In this section we will be using functions from the `dplyr`, `readr` and `tidyr` packages.
+
+
+R is a language with mini-languages within it that solve specific problem domains. `dplyr` is such a mini-language, a set of "verbs" (functions) that work well together. `dplyr`, with the help of `tidyr` for some more complex operations, provides a way to perform most manipulations on a data frame that you might need.
+
+
+## Loading data
+
+We will use the `read_csv` function from `readr` to load a data set. (See also `read.csv` in base R.)
+
+```{r}
+geo <- read_csv("r-intro-2-files/geo.csv")
+
+geo
+```
+
+`read_csv` has guessed the type of data each column holds:
+
+* `<chr>` - character strings
+* `<dbl>` - numerical values. Technically these are "doubles", which is a way of storing numbers with 15 digits precision.
+* `<lgl>` - logical values, `TRUE` or `FALSE`.
+
+We will also encounter:
+
+* `<int>` - integers, a fancy name for whole numbers.
+* `<fct>` - factors, categorical data. We will get to this shortly.
+
+
+You can also see this data frame referring to itself as "a tibble". This is the Tidyverse's improved form of data frame. Tibbles present themselves more conveniently than base R data frames. Base R data frames don't show the type of each column, and output every row when you try to view them.
+
+
+## Exploring
+
+The `View` function gives us a spreadsheet-like view of the data frame.
+
+```
+View(geo)
+```
+
+However understanding this data frame in R should be less a matter of using a graphical interface, and more about using a variety of R functions to interrogate it.
+
+```{r}
+nrow(geo)
+ncol(geo)
+colnames(geo)
+summary(geo)
+```
+
+
+
+### Tip {- .tip}
+
+A data frame can also be created from vectors, with the `data_frame` function. (See also `data.frame` in base R.) For example:
+
+```{r}
+data_frame(foo=c(10,20,30), bar=c("a","b","c"))
+```
+
+The argument names become column names in the data frame.
+
+
+## Indexing data frames
+
+Data frames can be subset using `[row,column]` syntax.
+
+```{r}
+geo[4,2]
+```
+
+Note that while this is a single value, it is still wrapped in a data frame. (This is a behaviour specific to Tidyverse data frames.) More on this in a moment.
+
+Columns can be given by name.
+
+```{r}
+geo[4,"region"]
+```
+
+The column or row may be omitted, thereby retrieving the entire row or column.
+
+```{r}
+geo[4,]
+geo[,"region"]
+```
+
+Multiple rows or columns may be retrieved using a vector.
+
+```{r}
+rows_wanted <- c(1,3,5)
+geo[rows_wanted,]
+```
+
+Vector indexing can also be written on a single line.
+
+```{r}
+geo[c(1,3,5),]
+geo[1:7,]
+```
+
+
+## Columns are vectors
+
+Ok, so how do we actually get data out of a data frame?
+
+Under the hood, a data frame is a list of column vectors. We can use `$` to retrieve columns. Occasionally it is also useful to use `[[ ]]` to retrieve columns, for example if the column name we want is stored in a variable.
+
+```{r}
+head( geo$region )
+head( geo[["region"]] )
+```
+
+To get the "region" value of the 4th row as above, but unwrapped, we can use:
+
+```{r}
+geo$region[4]
+```
+
+For example, to plot the longitudes and lattitudes we could use:
+
+```{r}
+plot(geo$long, geo$lat)
+```
+
+
+## Logical indexing
+
+A method of indexing that we haven't discussed yet is logical indexing. Instead of specifying the row number or numbers that we want, we can give a logical vector which is `TRUE` for the rows we want and `FALSE` otherwise. This can also be used with vectors.
+
+We will first do this in a slightly verbose way in order to understand it, then learn a more concise way to do this using the `dplyr` package.
+
+Southern countries have lattidued less than zero.
+
+```{r}
+is_southern <- geo$lat < 0
+
+head(is_southern)
+sum(is_southern)
+```
+
+`sum` treats TRUE as 1 and FALSE as 0, so it tells us the number of TRUE elements in the vector.
+
+We can use this logical vector to get the southern countries from `geo`:
+
+```{r}
+geo[is_southern,]
+```
+
+
+
+...
+
+
+
+```{r}
+southern_oecd <- is_southern & geo$oecd
+
+geo[southern_oecd,]
+```
+
+`is_southern` seems like it should be kept within our `geo` data frame for future use. We can add it as a new column of the data frame with:
+
+```{r}
+geo$southern <- is_southern
+
+geo
+```
+
+
+### Challenge {- .challenge}
+
+The `oecd` column tells which countries are in the Organisation for Economic Co-operation and Development, and thhe `g77` column tells which countries are in the Group of 77 (an alliance of developing nations).
+
+1. Which country is in both the OECD and the G77?
+
+2. Which countries are in neither the OECD nor the G77?
+
+2. Which countries are in the Americas? These have longitudes between -150 and -40. 
+
+
+
+
