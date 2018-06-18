@@ -11,9 +11,9 @@ These are course notes for the "Introduction to R" course given by the Monash Bi
 
 These workshop notes are online at https://monashdatafluency.github.io/r-intro-2/index.html
 
-* [PDF version for printing](https://github.com/MonashDataFluency/r-intro-2/r-intro-2.pdf)
+* [PDF version for printing](https://monashdatafluency.github.io/r-intro-2/-intro-2.pdf)
 
-* [ZIP of files used in this workshop](https://github.com/MonashDataFluency/r-intro-2/r-intro-2.zip)
+* [ZIP of files used in this workshop](https://monashdatafluency.github.io/r-intro-2/r-intro-2.zip)
 
 
 ## Source code
