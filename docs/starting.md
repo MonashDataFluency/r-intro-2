@@ -13,7 +13,7 @@ We will be working in [RStudio](https://www.rstudio.com/products/rstudio/downloa
 * Help on the functions available in R.
 * A panel to show plots.
 
-![](../figures/rstudio.png)<!-- -->
+![](figures/rstudio.png)<!-- -->
 
 Open RStudio, click on the "Console" pane, type `1+1` and press enter. R displays the result of the calculation. In this document, we will be showing such an interaction with R as below.
 
