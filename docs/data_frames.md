@@ -448,7 +448,7 @@ geo
 ```
 
 
-### Challenge {- .challenge}
+### Challenge: logical indexing {- .challenge}
 
 
 1. Which country is in both the OECD and the G77?
@@ -465,10 +465,6 @@ The above method is a little laborious. We have to keep mentioning the name of t
 
 ```r
 filter(geo, lat < 0 & oecd)
-```
-
-```
-## Warning: package 'bindrcpp' was built under R version 3.4.4
 ```
 
 ```
@@ -594,7 +590,7 @@ count(geo, income2017, oecd)
 
 ## Readability vs tidyness
 
-The counts we obtained counting `income2017` vs `oecd` were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as rows and OECD membership as columns. We can use the `spread` function from `tidyr` to achieve this.
+The counts we obtained counting `income2017` vs `oecd` were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as columns and OECD membership as rows. We can use the `spread` function from `tidyr` to achieve this.
 
 
 ```r
@@ -618,10 +614,10 @@ Here:
 
 ### Tip {- .tip}
 
-Tidying is often the first step when exploring a data-set. The [tidyr](http://tidyr.tidyverse.org/) package contains a number of useful functions that help tidy (or untidy) data. We've just seen `spread` which spreads two columns into multiple columns. The inverse of `spread` is `gather`, which gathers multiple columns into two columns: a column of column names, and a column of values.
+Tidying is often the first step when exploring a data-set. The [tidyr](http://tidyr.tidyverse.org/) package contains a number of useful functions that help tidy (or un-tidy!) data. We've just seen `spread` which spreads two columns into multiple columns. The inverse of `spread` is `gather`, which gathers multiple columns into two columns: a column of column names, and a column of values.
 
 
-### Challenge {- .challenge}
+### Challenge: counting {- .challenge}
 
 Investigate which regions of the world OECD members come from by:
 
@@ -681,4 +677,70 @@ arrange(geo, desc(name))
 ## 10 United Kingdom europe   TRUE  FALSE  54.8   -2.70 high       FALSE   
 ## # ... with 186 more rows
 ```
+
+
+## Joining data frames
+
+Let's move on to a larger data set. This is from the [Gapminder](https://www.gapminder.org) project and contains information about countries over time.
+
+
+```r
+gap <- read_csv("r-intro-2-files/gap-minder.csv")
+gap
+```
+
+```
+## # A tibble: 4,312 x 5
+##    name                 year population gdp_percap life_exp
+##    <chr>               <int>      <dbl>      <dbl>    <dbl>
+##  1 Afghanistan          1800    3280000        603     28.2
+##  2 Albania              1800     410445        667     35.4
+##  3 Algeria              1800    2503218        715     28.8
+##  4 Andorra              1800       2654       1197     NA  
+##  5 Angola               1800    1567028        618     27.0
+##  6 Antigua and Barbuda  1800      37000        757     33.5
+##  7 Argentina            1800     534000       1507     33.2
+##  8 Armenia              1800     413326        514     34  
+##  9 Australia            1800     351014        814     34.0
+## 10 Austria              1800    3205587       1847     34.4
+## # ... with 4,302 more rows
+```
+
+### Quiz {.challenge -}
+
+What is the unit of observation in this new data frame?
+
+### {-}
+
+It would be useful to have general information about countries from `geo` available as columns when we use this data frame. `gap` and `geo` share a column called `name` which can be used to match rows from one to the other. 
+
+
+```r
+gap_geo <- left_join(gap, geo, by="name")
+gap_geo
+```
+
+```
+## # A tibble: 4,312 x 12
+##    name       year population gdp_percap life_exp region oecd  g77     lat
+##    <chr>     <int>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>
+##  1 Afghanis…  1800    3280000        603     28.2 asia   FALSE TRUE   33  
+##  2 Albania    1800     410445        667     35.4 europe FALSE FALSE  41  
+##  3 Algeria    1800    2503218        715     28.8 africa FALSE TRUE   28  
+##  4 Andorra    1800       2654       1197     NA   europe FALSE FALSE  42.5
+##  5 Angola     1800    1567028        618     27.0 africa FALSE TRUE  -12.5
+##  6 Antigua …  1800      37000        757     33.5 ameri… FALSE TRUE   17.0
+##  7 Argentina  1800     534000       1507     33.2 ameri… FALSE TRUE  -34  
+##  8 Armenia    1800     413326        514     34   europe FALSE FALSE  40.2
+##  9 Australia  1800     351014        814     34.0 asia   TRUE  FALSE -25  
+## 10 Austria    1800    3205587       1847     34.4 europe TRUE  FALSE  47.3
+## # ... with 4,302 more rows, and 3 more variables: long <dbl>,
+## #   income2017 <fct>, southern <lgl>
+```
+
+The output contains all ways of pairing up rows by `name`. In this case each row of `geo` pairs up with multiple rows of `gap`.
+
+Various forms of join exist, which control how rows that can't be paired up are handled. `left_join` keeps all rows from the first data frame but not the second. `left_join` is a good default when the intent is to attaching some extra information to a data frame. `inner_join` discard all rows that can't be matched. `full_join` keeps all rows from both data frames that can't be matched. 
+
+
 

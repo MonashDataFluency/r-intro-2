@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="summarizing-data.html">
-<link rel="next" href="next-steps.html">
+<link rel="prev" href="thinking-in-r.html">
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -185,58 +185,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="thinking-in-r" class="section level1">
-<h1><span class="header-section-number">6</span> Thinking in R</h1>
-<p>The result of a t-test is actually a value we can manipulate further. Two functions help us here. <code>class</code> gives the “public face” of a value, and <code>typeof</code> gives its underlying type, the way R thinks of it internally.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">class</span>(<span class="dv">42</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">typeof</span>(<span class="dv">42</span>)</a></code></pre></div>
-<pre><code>## [1] &quot;double&quot;</code></pre>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp, <span class="dt">paired=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb176-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb176-3" data-line-number="3"><span class="kw">class</span>(result)</a></code></pre></div>
-<pre><code>## [1] &quot;htest&quot;</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="kw">typeof</span>(result)</a></code></pre></div>
-<pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">names</span>(result)</a></code></pre></div>
-<pre><code>## [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
-## [6] &quot;null.value&quot;  &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1">result<span class="op">$</span>p.value</a></code></pre></div>
-<pre><code>## [1] 4.301261e-29</code></pre>
-<p>In R, a t-test is just another function returning just another type of data, so it can also be a building block. The value it returns is a special type of vector called a “list”, but with a public face that presents itself nicely. This is a common pattern in R. Besides printing to the console nicely, this public face may alter the behaviour of generic functions such as <code>plot</code> and <code>summary</code>.</p>
-<p>Similarly a data frame is a list of vectors that is able to present itself nicely.</p>
-<div id="lists" class="section level2">
-<h2><span class="header-section-number">6.1</span> Lists</h2>
-<p>Lists are vectors that can hold anything as elements (even other lists!). It’s possible to create lists with the <code>list</code> function. This becomes especially useful once you get into the programming side of R. For example writing your own function that need to return multiple values, it might do so in the form of a list.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1">mylist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">hello=</span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>,<span class="st">&quot;world&quot;</span>), <span class="dt">numbers=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</a>
-<a class="sourceLine" id="cb184-2" data-line-number="2">mylist</a></code></pre></div>
-<pre><code>## $hello
-## [1] &quot;Hello&quot; &quot;world&quot;
-## 
-## $numbers
-## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="kw">class</span>(mylist)</a></code></pre></div>
-<pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1"><span class="kw">typeof</span>(mylist)</a></code></pre></div>
-<pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1"><span class="kw">names</span>(mylist)</a></code></pre></div>
-<pre><code>## [1] &quot;hello&quot;   &quot;numbers&quot;</code></pre>
-<p>Accessing lists can be done by name with <code>$</code> or by position with <code>[[ ]]</code>.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">mylist<span class="op">$</span>hello</a></code></pre></div>
-<pre><code>## [1] &quot;Hello&quot; &quot;world&quot;</code></pre>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1">mylist[[<span class="dv">2</span>]]</a></code></pre></div>
-<pre><code>## [1] 1 2 3 4</code></pre>
+<div id="next-steps" class="section level1">
+<h1><span class="header-section-number">7</span> Next steps</h1>
+<div id="deepen-your-understanding" class="section level2">
+<h2><span class="header-section-number">7.1</span> Deepen your understanding</h2>
+<p><strong>Our number one recommendation is to read the book <a href="http://r4ds.had.co.nz/">“R for Data Science”</a> by Garrett Grolemund and Hadley Wickham.</strong></p>
+<p>Also, statistical tasks such as model fitting, hypothesis testing, confidence interval calculation, and prediction are a large part of R, and one we haven’t demonstrated fully today. “Modern Applied Statistics with S” by W.N. Venable and B.D. Ripley is a well respected reference covering R and its predecessor S. “Linear Models with R” and “Extending the Linear Model with R” by Julian J. Faraway cover linear models, with many practical examples. Linear models, and the linear model formula syntax <code>~</code>, are core to much of what R has to offer statistically. Many statistical techniques take linear models as their starting point, including <code>limma</code> for differential gene expression, <code>glm</code> for logistic regression (etc), survival analysis with <code>coxph</code>, and mixed models to characterize variation within populations.</p>
 </div>
-<div id="other-types-not-covered-here" class="section level2">
-<h2><span class="header-section-number">6.2</span> Other types not covered here</h2>
-<p>Matrices are another tabular data type. These come up when doing more mathematical tasks in R. They are also commonly used in bioinformatics, for example to represent RNA-Seq count data. A matrix, as compared to a data frame:</p>
+<div id="expand-your-vocabulary" class="section level2">
+<h2><span class="header-section-number">7.2</span> Expand your vocabulary</h2>
+<p>Have a look at these cheat sheets to see what is possible with R.</p>
 <ul>
-<li>contains only one type of data, usually numeric (rather than different types in different columns).</li>
-<li>commonly has <code>rownames</code> as well as <code>colnames</code>. (Base R data frames can have <code>rownames</code> too, but it is easier to have any sort of ID as a normal column instead.)</li>
-<li>has individual cells as the unit of observation (rather than rows).</li>
+<li><a href="https://www.rstudio.com/resources/cheatsheets/">RStudio’s collection of cheat sheets</a> cover newer packages in R.</li>
+<li><a href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf">An old-school cheat sheet</a> for dinosaurs and people wishing to go deeper.</li>
+<li><a href="https://github.com/mikelove/bioc-refcard/blob/master/README.Rmd">Bioconductor cheat sheet</a> for biological data.</li>
 </ul>
-<p>Matrices can be created using <code>as.matrix</code> from a data frame, <code>matrix</code> from a single vector, or using <code>rbind</code> or <code>cbind</code> with several vectors.</p>
-<p>You may also encounter “S4 objects”, especially if you use <a href="http://bioconductor.org/">Bioconductor</a> packages. The syntax for using these is different again, and uses <code>@</code> to access elements.</p>
+</div>
+<div id="join-the-community" class="section level2">
+<h2><span class="header-section-number">7.3</span> Join the community</h2>
+<p>Join the <a href="https://monashdatafluency.github.io/">Data Fluency community at Monash</a>.</p>
+<ul>
+<li>Mailing list for workshop and event announcements.</li>
+<li>Slack for discussion.</li>
+<li>Drop-in sessions on Friday afternoon.</li>
+</ul>
+<p>Meetups in Melbourne:</p>
+<ul>
+<li><a href="https://www.meetup.com/en-AU/MelbURN-Melbourne-Users-of-R-Network/">MelbURN</a></li>
+<li><a href="https://www.meetup.com/en-AU/R-Ladies-Melbourne/">R-Ladies</a></li>
+</ul>
+<p>For bioinformatics, <a href="https://combine.org.au/">COMBINE</a> is a student and early career researcher organization, and runs Software Carpentry workshops.</p>
 
 </div>
 </div>
@@ -245,8 +223,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="summarizing-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="next-steps.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="thinking-in-r.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

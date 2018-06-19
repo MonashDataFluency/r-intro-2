@@ -123,6 +123,24 @@ The usual workflow is to save your code in an R script (".R file"). Go to "File/
 Add comments to code, using lines starting with the `#` character. This makes it easier for others to follow what the code is doing (and also for us the next time we come back to it).
 
 
+### Challenge: using variables {- .challenge}
+
+Re-write this calculation as a single line of R:
+
+
+```r
+a <- 4*20
+b <- 7
+a+b
+```
+
+Re-write this calcuation over multiple lines, using a variable:
+
+
+```r
+2*2+2*2+2*2
+```
+
 
 ## Vectors
 
@@ -309,7 +327,7 @@ x*x
 plot(x, x*x)
 ```
 
-<img src="starting_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="starting_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 
 ## Functions

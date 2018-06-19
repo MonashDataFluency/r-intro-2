@@ -60,17 +60,26 @@ lex <- read_xlsx("lex.xlsx", "countries_and_territories") %>%
         name %in% geo$name)
 
 
+# Yearly produced ugly ggplot, filter down to per-decade
 combined <- pop %>%
     full_join(gdp, by=c("name","year")) %>%
-    full_join(lex, by=c("name","year"))
+    full_join(lex, by=c("name","year")) %>%
+    #mutate(year=as.integer(year), population=as.integer(population)) %>%
+    filter(year %% 10 == 0) %>%
+    arrange(year)
 
-write_csv(combined, "../r-intro-2-files/gapminder.csv", na="")
+combined %>%
+mutate(
+    year=sprintf("%d",year),
+    population=sprintf("%.1f",population),
+    gdp_percap=sprintf("%.1f",gdp_percap)) %>%
+write_csv("../r-intro-2-files/gap-minder.csv")
 
 
 co2 <- read_xlsx("co2_percap.xlsx", "Data")
 colnames(co2) <- c("name", colnames(co2)[-1] %>% as.integer %>% as.character)
 
-write_csv(co2, "../r-intro-2-files/co2_percap.csv", na="")
+write_csv(co2, "../r-intro-2-files/co2_percap.csv")
 
 
 
