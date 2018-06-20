@@ -79,7 +79,7 @@ write_csv("../r-intro-2-files/gap-minder.csv")
 co2 <- read_xlsx("co2_percap.xlsx", "Data")
 colnames(co2) <- c("name", colnames(co2)[-1] %>% as.integer %>% as.character)
 
-write_csv(co2, "../r-intro-2-files/co2_percap.csv")
+write_csv(co2, "../r-intro-2-files/co2-percap.csv")
 
 
 

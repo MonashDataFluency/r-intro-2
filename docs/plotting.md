@@ -2,7 +2,7 @@
 
 
 
-We already saw some of R's built in plotting facilities with the function `plot`. A more recent and much more powerful plotting library is `ggplot2`. `ggplot2` is another mini-language within R, a language for creating plots. It implements ideas from a book called ["The Grammar of Graphics" [url https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448]]. The syntax can be a little strange, but there are plenty of examples in the [online documentation](http://ggplot2.tidyverse.org/reference/).
+We already saw some of R's built in plotting facilities with the function `plot`. A more recent and much more powerful plotting library is `ggplot2`. `ggplot2` is another mini-language within R, a language for creating plots. It implements ideas from a book called ["The Grammar of Graphics"](url https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448). The syntax can be a little strange, but there are plenty of examples in the [online documentation](http://ggplot2.tidyverse.org/reference/).
 
 `ggplot2` is part of the Tidyverse, so loadinging the `tidyverse` package will load `ggplot2`.
 
@@ -16,8 +16,6 @@ We continue with the Gapminder dataset, which we loaded with:
 
 ```r
 geo <- read_csv("r-intro-2-files/geo.csv")
-geo$income2017 <- factor(geo$income2017, levels=c("low","lower_mid","upper_mid","high"))
-
 gap <- read_csv("r-intro-2-files/gap-minder.csv")
 gap_geo <- left_join(gap, geo, by="name")
 ```
@@ -39,12 +37,10 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
     geom_point()
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-4-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" />
 
 
-The call to `ggplot` and `aes` sets up the basics of how we are going to represent the various columns of the data frame. `aes` defines the "aesthetics", which is how columns of the data frame map to graphical attributes such as x and y position, color, size, etc. We then literally add layers of graphics to this.
-
-`aes` is another example of magic "non-standard evaluation", arguments to `aes` may refer to columns of the data frame directly.
+The call to `ggplot` and `aes` sets up the basics of how we are going to represent the various columns of the data frame. `aes` defines the "aesthetics", which is how columns of the data frame map to graphical attributes such as x and y position, color, size, etc. `aes` is another example of magic "non-standard evaluation", arguments to `aes` may refer to columns of the data frame directly. We then literally add layers of graphics ("geoms") to this.
 
 Further aesthetics can be used. Any aesthetic can be either numeric or categorical, an appropriate scale will be used.
 
@@ -54,7 +50,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp, color=region, size=population)) +
     geom_point()
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-5-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;" />
 
 ### Challenge: make a ggplot {.challenge}
 
@@ -83,7 +79,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name, color=region)) +
     geom_line()
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-7-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" />
 
 A wide variety of geoms are available. Here we show Tukey box-plots. Note again the use of the "group" aesthetic, without this ggplot will just show one big box-plot.
 
@@ -93,7 +89,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=year)) +
     geom_boxplot()
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-8-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" />
 
 `geom_smooth` can be used to show trends.
 
@@ -105,10 +101,10 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
 ```
 
 ```
-## `geom_smooth()` using method = 'gam'
+     `geom_smooth()` using method = 'gam'
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-9-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" />
 
 Aesthetics can be specified globally in `ggplot`, or as the first argument to individual geoms. Here, the "group" is applied only to draw the lines, and "color" is used to produce multiple trend lines:
 
@@ -116,14 +112,14 @@ Aesthetics can be specified globally in `ggplot`, or as the first argument to in
 ```r
 ggplot(gap_geo, aes(x=year, y=life_exp)) +
     geom_line(aes(group=name)) +
-    geom_smooth(aes(color=region))
+    geom_smooth(aes(color=oecd))
 ```
 
 ```
-## `geom_smooth()` using method = 'gam'
+     `geom_smooth()` using method = 'gam'
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-10-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" />
 
 ## Highlighting subsets
 
@@ -138,7 +134,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name)) +
     geom_line(data=gap_australia, color="red", size=2)
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-11-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" />
 
 Notice also that the second `geom_line` has some further arguments controlling its appearance. These are **not** aesthetics, they are not a mapping of data to appearance, but rather a direct specification of the appearance. There isn't an associated scale as when color was an aesthetic.
 
@@ -155,7 +151,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
     labs(x="Year", y="Life expectancy", title="Gapminder")
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-12-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
 
 `coord_cartesian` can be used to set the limits of the x and y axes. Suppose we want our y-axis to start at zero.
 
@@ -166,7 +162,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
     coord_cartesian(ylim=c(0,90))
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-13-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
 
 Type `scale_` and press the tab key. You will see functions giving fine-grained controls over various scales (x, y, color, etc). These allow transformations (eg log10), and manually specified breaks (labelled values). Very fine grained control is possible over the appearance of ggplots, see the ggplot2 documentation for details and further examples.
 
@@ -189,7 +185,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name)) +
     facet_wrap(~ region)
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-14-1.png" width="768" />
+<img src="plotting_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" />
 
 Note the use of `~`, which we've not seen before. `~` syntax is used in R to specify dependence on some set of variables, for example when specifying a linear model. Here the information in each plot is dependent on the continent.
 
@@ -205,7 +201,7 @@ Advanced: Highlight Australia in your plot.
 
 ## Saving ggplots
 
-The act of plotting a ggplot is actually triggered when it is printed. In an interactive session we are automatically printing each value we calculate, but if you are using a for loop, or other R programming constructs, you might need to explcitly `print( )` the plot.
+The act of plotting a ggplot is actually triggered when it is printed. In an interactive session we are automatically printing each value we calculate, but if you are using it with a programming construct such as a for loop or function you might need to explcitly `print( )` the plot.
 
 Ggplots can be saved using `ggsave`.
 
@@ -224,7 +220,7 @@ print(p)
 ggsave("test.png", p)
 
 
-# This is an alternative methhod that works with "base R" plots as well:
+# This is an alternative method that works with "base R" plots as well:
 png("test.png")
 print(p)
 dev.off()

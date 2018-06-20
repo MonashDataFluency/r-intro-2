@@ -1,19 +1,21 @@
 # Starting out in R
 
-R is both a programming language and an interactive environment for statistics. Today we will be concentrating on R as an *interactive environment*.
+
+
+R is both a programming language and an interactive environment for data exploration and statistics. Today we will be concentrating on R as an *interactive environment*.
 
 Working with R is primarily text-based. The basic mode of use for R is that the user types in a command in the R language and presses enter, and then R computes and displays the result.
 
 We will be working in [RStudio](https://www.rstudio.com/products/rstudio/download/). This surrounds the *console*, where one enters commands and views the results, with various conveniences. In addition to the console, RStudio provides panels containing:
 
-* A *text editor*, where R commands can be recorded for future reference.
+* A text editor, where R commands can be recorded for future reference.
 * A history of commands that have been typed on the console.
 * An "environment" pane with a list of *variables*, which contain values that R has been told to save from previous commands.
 * A file manager.
 * Help on the functions available in R.
 * A panel to show plots.
 
-![](figures/rstudio.png)<!-- -->
+<img src="figures/rstudio.png" style="display: block; margin: auto;" />
 
 Open RStudio, click on the "Console" pane, type `1+1` and press enter. R displays the result of the calculation. In this document, we will be showing such an interaction with R as below.
 
@@ -23,7 +25,7 @@ Open RStudio, click on the "Console" pane, type `1+1` and press enter. R display
 ```
 
 ```
-## [1] 2
+     [1] 2
 ```
 
 `+` is called an operator. R has the operators you would expect for for basic mathematics: `+` `-` `*` `/` `^`. It also has operators that do more obscure things.
@@ -40,10 +42,10 @@ We can compare with `== < > <= >=`. This produces a *logical* value, `TRUE` or `
 ```
 
 ```
-## [1] TRUE
+     [1] TRUE
 ```
 
-There are also character strings such as `"string"`.
+There are also character strings such as `"string"`. A character string must be surrounded by either single or double quotes.
 
 
 
@@ -64,10 +66,10 @@ width
 ```
 
 ```
-## [1] 5
+     [1] 5
 ```
 
-Examples of valid variables names: `hello`, `subject_id`, `subject.ID`, `x42`. Spaces aren't ok *inside* variable names. Dots (`.`) are ok in R, unlike in many other languages. Numbers are ok, except as the first character. Punctuation isn't ok, with two: `_` and `.`.
+Examples of valid variables names: `hello`, `subject_id`, `subject.ID`, `x42`. Spaces aren't ok *inside* variable names. Dots (`.`) are ok in R, unlike in many other languages. Numbers are ok, except as the first character. Punctuation is not allowed, with two exceptions: `_` and `.`.
 
 We can do arithmetic with the variable:
 
@@ -78,7 +80,7 @@ width * width
 ```
 
 ```
-## [1] 25
+     [1] 25
 ```
 
 and even save the result in another variable:
@@ -98,7 +100,7 @@ width
 ```
 
 ```
-## [1] 10
+     [1] 10
 ```
 
 ```r
@@ -106,7 +108,7 @@ area
 ```
 
 ```
-## [1] 25
+     [1] 25
 ```
 
 Notice that the value of `area` we calculated earlier hasn't been updated. Assigning a new value to one variable does not change the values of other variables. This is different to a spreadsheet, but usual for programming languages.
@@ -114,9 +116,9 @@ Notice that the value of `area` we calculated earlier hasn't been updated. Assig
 
 ## Saving code in an R script
 
-Once we've created a few variables, it becomes important to record how they were calculated, so we can reproduce them later.
+Once we've created a few variables, it becomes important to record how they were calculated so we can reproduce them later.
 
-The usual workflow is to save your code in an R script (".R file"). Go to "File/New File/R Script" to create a new R script. Code in your R script can be sent to the console by selecting it (or just placing the cursor on the correct line), and then pressing **Control-Enter** (or **Command-Enter** on a Mac).
+The usual workflow is to save your code in an R script (".R file"). Go to "File/New File/R Script" to create a new R script. Code in your R script can be sent to the console by selecting it or placing the cursor on the correct line, and then pressing **Control-Enter** (**Command-Enter** on a Mac).
 
 ### Tip {- .tip}
 
@@ -125,7 +127,7 @@ Add comments to code, using lines starting with the `#` character. This makes it
 
 ### Challenge: using variables {- .challenge}
 
-Re-write this calculation as a single line of R:
+1. Re-write this calculation as a single line of R:
 
 
 ```r
@@ -134,7 +136,7 @@ b <- 7
 a+b
 ```
 
-Re-write this calcuation over multiple lines, using a variable:
+2. Re-write this calcuation over multiple lines, using a variable:
 
 
 ```r
@@ -144,9 +146,9 @@ Re-write this calcuation over multiple lines, using a variable:
 
 ## Vectors
 
-A *vector* of numbers is a collection of numbers. "Vector" can mean different things in different fields (mathematics, geometry, biology), but in R it is a fancy name for a collection of numbers. We call the individual numbers *elements* of the vector.
+A *vector* of numbers is a collection of numbers. "Vector" means different things in different fields (mathematics, geometry, biology), but in R it is a fancy name for a collection of numbers. We call the individual numbers *elements* of the vector.
 
-We can make vectors with `c( )`, for example `c(1,2,3)`. `c` means "combine". R is obsesssed with vectors. In R, numbers are just vectors of length one. Many things that can be done with a single number can also be done with a vector. For example arithmetic can be done on vectors as it can be on single numbers.
+We can make vectors with `c( )`, for example `c(1,2,3)`. `c` means "combine". R is obsesssed with vectors, in R even single numbers are vectors of length one. Many things that can be done with a single number can also be done with a vector. For example arithmetic can be done on vectors as it can be on single numbers.
 
 
 ```r
@@ -155,7 +157,7 @@ myvec
 ```
 
 ```
-## [1] 10 20 30 40 50
+     [1] 10 20 30 40 50
 ```
 
 ```r
@@ -163,7 +165,7 @@ myvec + 1
 ```
 
 ```
-## [1] 11 21 31 41 51
+     [1] 11 21 31 41 51
 ```
 
 ```r
@@ -171,7 +173,7 @@ myvec + myvec
 ```
 
 ```
-## [1]  20  40  60  80 100
+     [1]  20  40  60  80 100
 ```
 
 ```r
@@ -179,7 +181,7 @@ length(myvec)
 ```
 
 ```
-## [1] 5
+     [1] 5
 ```
 
 ```r
@@ -187,7 +189,7 @@ c(60, myvec)
 ```
 
 ```
-## [1] 60 10 20 30 40 50
+     [1] 60 10 20 30 40 50
 ```
 
 ```r
@@ -195,7 +197,7 @@ c(myvec, myvec)
 ```
 
 ```
-##  [1] 10 20 30 40 50 10 20 30 40 50
+      [1] 10 20 30 40 50 10 20 30 40 50
 ```
 
 When we talk about the length of a vector, we are talking about the number of numbers in the vector.
@@ -228,7 +230,7 @@ myvec[1]
 ```
 
 ```
-## [1] 10
+     [1] 10
 ```
 
 ```r
@@ -236,7 +238,7 @@ myvec[2]
 ```
 
 ```
-## [1] 20
+     [1] 20
 ```
 
 ```r
@@ -245,7 +247,7 @@ myvec
 ```
 
 ```
-## [1] 10  5 30 40 50
+     [1] 10  5 30 40 50
 ```
 
 Can we use a vector to index another vector? Yes!
@@ -257,7 +259,7 @@ myvec[myind]
 ```
 
 ```
-## [1] 40 30  5
+     [1] 40 30  5
 ```
 
 We could equivalently have written:
@@ -268,7 +270,7 @@ myvec[c(4,3,2)]
 ```
 
 ```
-## [1] 40 30  5
+     [1] 40 30  5
 ```
 
 ### Challenge: indexing {- .challenge}
@@ -297,7 +299,7 @@ Another way to create a vector is with `:`:
 ```
 
 ```
-##  [1]  1  2  3  4  5  6  7  8  9 10
+      [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
 This can be useful when combined with indexing:
@@ -308,10 +310,10 @@ items[1:4]
 ```
 
 ```
-## [1] "spam"  "eggs"  "beans" "bacon"
+     [1] "spam"  "eggs"  "beans" "bacon"
 ```
 
-Sequences are useful for many other things, such as a starting point for calculations:
+Sequences are useful for other things, such as a starting point for calculations:
 
 
 ```r
@@ -320,19 +322,19 @@ x*x
 ```
 
 ```
-##  [1]   1   4   9  16  25  36  49  64  81 100
+      [1]   1   4   9  16  25  36  49  64  81 100
 ```
 
 ```r
 plot(x, x*x)
 ```
 
-<img src="starting_files/figure-html/unnamed-chunk-18-1.png" width="672" />
+<img src="starting_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" />
 
 
 ## Functions
 
-Functions are the things that do all the work for us in R: calculate, manipulate data, read and write to files, produce plots. Because R is a language for statistics, it has many built in statistics-related functions. We will also be loading more specialized functions from "packages".
+Functions are the things that do all the work for us in R: calculate, manipulate data, read and write to files, produce plots. R has many built in functions and will also be loading more specialized functions from "packages".
 
 We've already seen several functions: `c( )`, `length( )`, and `plot( )`. Let's now have a look at `sum( )`. 
 
@@ -342,7 +344,7 @@ sum(myvec)
 ```
 
 ```
-## [1] 135
+     [1] 135
 ```
 
 We *called* the function `sum` with the *argument* `myvec`, and it *returned* the value 135. We can get help on how to use `sum` with:
@@ -359,7 +361,7 @@ rep(42, 10)
 ```
 
 ```
-##  [1] 42 42 42 42 42 42 42 42 42 42
+      [1] 42 42 42 42 42 42 42 42 42 42
 ```
 
 As with many functions in R---which is obsessed with vectors---the thing to be repeated can be a vector with multiple elements.
@@ -370,7 +372,7 @@ rep(c(1,2,3), 10)
 ```
 
 ```
-##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
 ```
 
 So far we have used *positional* arguments, where R determines which argument is which by the order in which they are given. We can also give arguments by *name*. For example, the above is equivalent to
@@ -381,7 +383,7 @@ rep(c(1,2,3), times=10)
 ```
 
 ```
-##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
 ```
 
 ```r
@@ -389,15 +391,15 @@ rep(x=c(1,2,3), 10)
 ```
 
 ```
-##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
 ```
 
 ```r
-rep(x=c(1,2,3), times=10)
+rep(times=10, x=c(1,2,3))
 ```
 
 ```
-##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
 ```
 
 Arguments can have default values, and a function may have many different possible arguments that make it do obscure things. For example, `rep` can also take an argument `each=`. It's typical for a function to be invoked with some number of positional arguments, which are always given, plus some less commonly used arguments, typically given by name.
@@ -408,7 +410,7 @@ rep(c(1,2,3), each=3)
 ```
 
 ```
-## [1] 1 1 1 2 2 2 3 3 3
+     [1] 1 1 1 2 2 2 3 3 3
 ```
 
 ```r
@@ -416,8 +418,8 @@ rep(c(1,2,3), each=3, times=5)
 ```
 
 ```
-##  [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3
-## [36] 3 1 1 1 2 2 2 3 3 3
+      [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3
+     [36] 3 1 1 1 2 2 2 3 3 3
 ```
 
 ### Challenge: using functions {- .challenge}
