@@ -429,6 +429,19 @@ Matrices can be created using `as.matrix` from a data frame, `matrix` from a sin
 You may also encounter "S4 objects", especially if you use [Bioconductor](http://bioconductor.org/) packages. The syntax for using these is different again, and uses `@` to access elements.
 
 
+## Programming
+
+Once you have a useful data analysis, you may want to do it again with different data. You may have some task that needs to be done many times over. This is where programming comes in:
+
+* Writing your own [functions](http://r4ds.had.co.nz/functions.html).
+* [For-loops](http://r4ds.had.co.nz/iteration.html) to do things multiple times.
+* [If-statements](http://r4ds.had.co.nz/functions.html#conditional-execution) to make decisions.
+
+The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. The Monash Bioinformatics Platform ["R more" course](https://monashbioinformaticsplatform.github.io/r-more/) also covers this.
+
+
+
+
 
 
 

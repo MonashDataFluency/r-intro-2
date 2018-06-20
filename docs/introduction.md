@@ -1,6 +1,6 @@
 ---
 title: Introduction to R 
-subtitle: "Version 2 (2018)"
+subtitle: "Version 2"
 documentclass: report
 links-as-notes: yes
 header-includes:
