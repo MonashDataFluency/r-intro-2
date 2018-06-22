@@ -2,6 +2,7 @@
 title: Introduction to R 
 subtitle: "Version 2"
 documentclass: report
+classoption: a4paper
 links-as-notes: yes
 header-includes:
   - \usepackage{fancyhdr}

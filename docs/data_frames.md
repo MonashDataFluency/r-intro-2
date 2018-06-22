@@ -342,7 +342,9 @@ For example, to plot the longitudes and latitudes we could use:
 plot(geo$long, geo$lat)
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{data_frames_files/figure-latex/unnamed-chunk-16-1} \end{center}
 
 
 ## Logical indexing
@@ -449,8 +451,8 @@ geo
       3 Algeria           africa  FALSE TRUE   28      3    upper_mid  FALSE   
       4 Andorra           europe  FALSE FALSE  42.5    1.52 high       FALSE   
       5 Angola            africa  FALSE TRUE  -12.5   18.5  lower_mid  TRUE    
-      6 Antigua and Barb… americ… FALSE TRUE   17.0  -61.8  high       FALSE   
-      7 Argentina         americ… FALSE TRUE  -34    -64    upper_mid  TRUE    
+      6 Antigua and Barb~ americ~ FALSE TRUE   17.0  -61.8  high       FALSE   
+      7 Argentina         americ~ FALSE TRUE  -34    -64    upper_mid  TRUE    
       8 Armenia           europe  FALSE FALSE  40.2   45    lower_mid  FALSE   
       9 Australia         asia    TRUE  FALSE -25    135    high       TRUE    
      10 Austria           europe  TRUE  FALSE  47.3   13.3  high       FALSE   
@@ -568,7 +570,9 @@ When `plot` is given a factor, it shows a bar plot:
 plot(geo$income2017)
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{data_frames_files/figure-latex/unnamed-chunk-26-1} \end{center}
 
 When given two factors, it shows a mosaic plot:
 
@@ -577,7 +581,9 @@ When given two factors, it shows a mosaic plot:
 plot(geo$income2017, factor(geo$oecd))
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{data_frames_files/figure-latex/unnamed-chunk-27-1} \end{center}
 
 Similarly we can count two categorical columns at once.
 
@@ -738,13 +744,13 @@ gap_geo
      # A tibble: 4,312 x 12
         name       year population gdp_percap life_exp region oecd  g77     lat
         <chr>     <int>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>
-      1 Afghanis…  1800    3280000        603     28.2 asia   FALSE TRUE   33  
+      1 Afghanis~  1800    3280000        603     28.2 asia   FALSE TRUE   33  
       2 Albania    1800     410445        667     35.4 europe FALSE FALSE  41  
       3 Algeria    1800    2503218        715     28.8 africa FALSE TRUE   28  
       4 Andorra    1800       2654       1197     NA   europe FALSE FALSE  42.5
       5 Angola     1800    1567028        618     27.0 africa FALSE TRUE  -12.5
-      6 Antigua …  1800      37000        757     33.5 ameri… FALSE TRUE   17.0
-      7 Argentina  1800     534000       1507     33.2 ameri… FALSE TRUE  -34  
+      6 Antigua ~  1800      37000        757     33.5 ameri~ FALSE TRUE   17.0
+      7 Argentina  1800     534000       1507     33.2 ameri~ FALSE TRUE  -34  
       8 Armenia    1800     413326        514     34   europe FALSE FALSE  40.2
       9 Australia  1800     351014        814     34.0 asia   TRUE  FALSE -25  
      10 Austria    1800    3205587       1847     34.4 europe TRUE  FALSE  47.3

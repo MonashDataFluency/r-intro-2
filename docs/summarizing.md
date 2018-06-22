@@ -219,7 +219,9 @@ result
 ggplot(result, aes(x=year,y=mean_life_exp,color=oecd)) + geom_line()
 ```
 
-<img src="summarizing_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{summarizing_files/figure-latex/unnamed-chunk-12-1} \end{center}
 
 
 
@@ -288,7 +290,9 @@ plot(gap2000$life_exp, gap2010$life_exp, xlim=c(0,90),ylim=c(0,90))
 abline(0,1)
 ```
 
-<img src="summarizing_files/figure-html/unnamed-chunk-15-1.png" width="384" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{summarizing_files/figure-latex/unnamed-chunk-15-1} \end{center}
 
 
 # Thinking in R

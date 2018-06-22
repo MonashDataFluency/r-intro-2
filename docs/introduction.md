@@ -2,6 +2,7 @@
 title: Introduction to R 
 subtitle: "Version 2"
 documentclass: report
+classoption: a4paper
 links-as-notes: yes
 header-includes:
   - \usepackage{fancyhdr}
@@ -13,7 +14,8 @@ header-includes:
 
 
 
-<img src="figures/R.jpg" width="25%" style="display: block; margin: auto auto auto 0;" />
+
+\begin{flushleft}\includegraphics[width=0.25\linewidth]{figures/R} \end{flushleft}
 
 These are course notes for the "Introduction to R" course given by the [Monash Bioinformatics Platform](https://www.monash.edu/researchinfrastructure/bioinformatics) for the [Monash Data Fluency](https://monashdatafluency.github.io/) initiative. This is a new version of the course focussing on the modern [Tidyverse](https://www.tidyverse.org/) set of packages. We believe this is currently the quickest route to being productive in R.
 
@@ -36,7 +38,8 @@ During the workshop we will be using R on a server we run. However R is free, an
 
 This course is developed for the Monash Bioinformatics Platform by Paul Harrison.
 
-<img src="figures/CC-BY.png" style="display: block; margin: auto;" />
+
+\begin{center}\includegraphics{figures/CC-BY} \end{center}
 
 This work is licensed under a [CC BY-4: Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). The attribution is "Monash Bioinformatics Platform" if copying or modifying these notes.
 

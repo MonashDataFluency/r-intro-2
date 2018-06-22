@@ -37,7 +37,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
     geom_point()
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
 
 The call to `ggplot` and `aes` sets up the basics of how we are going to represent the various columns of the data frame. `aes` defines the "aesthetics", which is how columns of the data frame map to graphical attributes such as x and y position, color, size, etc. `aes` is another example of magic "non-standard evaluation", arguments to `aes` may refer to columns of the data frame directly. We then literally add layers of graphics ("geoms") to this.
@@ -50,7 +52,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp, color=region, size=population)) +
     geom_point()
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-5-1} \end{center}
 
 ### Challenge: make a ggplot {.challenge}
 
@@ -79,7 +83,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name, color=region)) +
     geom_line()
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-7-1} \end{center}
 
 A wide variety of geoms are available. Here we show Tukey box-plots. Note again the use of the "group" aesthetic, without this ggplot will just show one big box-plot.
 
@@ -89,7 +95,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=year)) +
     geom_boxplot()
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-8-1} \end{center}
 
 `geom_smooth` can be used to show trends.
 
@@ -104,7 +112,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
      `geom_smooth()` using method = 'gam'
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-9-1} \end{center}
 
 Aesthetics can be specified globally in `ggplot`, or as the first argument to individual geoms. Here, the "group" is applied only to draw the lines, and "color" is used to produce multiple trend lines:
 
@@ -119,7 +129,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
      `geom_smooth()` using method = 'gam'
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-10-1} \end{center}
 
 ## Highlighting subsets
 
@@ -134,7 +146,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name)) +
     geom_line(data=gap_australia, color="red", size=2)
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-11-1} \end{center}
 
 Notice also that the second `geom_line` has some further arguments controlling its appearance. These are **not** aesthetics, they are not a mapping of data to appearance, but rather a direct specification of the appearance. There isn't an associated scale as when color was an aesthetic.
 
@@ -151,7 +165,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
     labs(x="Year", y="Life expectancy", title="Gapminder")
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-12-1} \end{center}
 
 `coord_cartesian` can be used to set the limits of the x and y axes. Suppose we want our y-axis to start at zero.
 
@@ -162,7 +178,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
     coord_cartesian(ylim=c(0,90))
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-13-1} \end{center}
 
 Type `scale_` and press the tab key. You will see functions giving fine-grained controls over various scales (x, y, color, etc). These allow transformations (eg log10), and manually specified breaks (labelled values). Very fine grained control is possible over the appearance of ggplots, see the ggplot2 documentation for details and further examples.
 
@@ -185,7 +203,9 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name)) +
     facet_wrap(~ region)
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics{plotting_files/figure-latex/unnamed-chunk-14-1} \end{center}
 
 Note the use of `~`, which we've not seen before. `~` syntax is used in R to specify dependence on some set of variables, for example when specifying a linear model. Here the information in each plot is dependent on the continent.
 
