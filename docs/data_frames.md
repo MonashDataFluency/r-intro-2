@@ -117,6 +117,14 @@ data_frame(foo=c(10,20,30), bar=c("a","b","c"))
 
 The argument names become column names in the data frame.
 
+### Tip {- .tip}
+
+The *path* to the file on our server is `"r-intro-2-files/geo.csv"`. This says, starting from your working directory, look in the directory `r-intro-2-files` for the file `geo.csv`. The steps in the path are separated by `/`. Your working directory is shown at the top of the console pane. The path needed might be different on your own computer, depending where you downloaded the file.
+
+One way to work out the correct path is to find the file in the file browser pane, click on it and select "Import Dataset...".
+
+<img src="figures/import.png" width="50%" style="display: block; margin: auto auto auto 0;" />
+
 
 ## Exploring
 
@@ -342,7 +350,7 @@ For example, to plot the longitudes and latitudes we could use:
 plot(geo$long, geo$lat)
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;" />
+<img src="data_frames_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" />
 
 
 ## Logical indexing
@@ -568,7 +576,7 @@ When `plot` is given a factor, it shows a bar plot:
 plot(geo$income2017)
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" />
+<img src="data_frames_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
 
 When given two factors, it shows a mosaic plot:
 
@@ -577,7 +585,7 @@ When given two factors, it shows a mosaic plot:
 plot(geo$income2017, factor(geo$oecd))
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
+<img src="data_frames_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" />
 
 Similarly we can count two categorical columns at once.
 

@@ -73,6 +73,16 @@ data_frame(foo=c(10,20,30), bar=c("a","b","c"))
 
 The argument names become column names in the data frame.
 
+### Tip {- .tip}
+
+The *path* to the file on our server is `"r-intro-2-files/geo.csv"`. This says, starting from your working directory, look in the directory `r-intro-2-files` for the file `geo.csv`. The steps in the path are separated by `/`. Your working directory is shown at the top of the console pane. The path needed might be different on your own computer, depending where you downloaded the file.
+
+One way to work out the correct path is to find the file in the file browser pane, click on it and select "Import Dataset...".
+
+```{r echo=F,out.width="50%",fig.align="left"}
+knitr::include_graphics("figures/import.png")
+```
+
 
 ## Exploring
 

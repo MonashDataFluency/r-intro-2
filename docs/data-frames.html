@@ -260,6 +260,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      3    30 c</code></pre>
 <p>The argument names become column names in the data frame.</p>
 </div>
+<div id="tip-2" class="section level3 unnumbered tip">
+<h3>Tip</h3>
+<p>The <em>path</em> to the file on our server is <code>&quot;r-intro-2-files/geo.csv&quot;</code>. This says, starting from your working directory, look in the directory <code>r-intro-2-files</code> for the file <code>geo.csv</code>. The steps in the path are separated by <code>/</code>. Your working directory is shown at the top of the console pane. The path needed might be different on your own computer, depending where you downloaded the file.</p>
+<p>One way to work out the correct path is to find the file in the file browser pane, click on it and select “Import Dataset…”.</p>
+<p><img src="figures/import.png" width="50%" style="display: block; margin: auto auto auto 0;" /></p>
+</div>
 </div>
 <div id="exploring" class="section level2">
 <h2><span class="header-section-number">2.2</span> Exploring</h2>
@@ -369,7 +375,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>     [1] &quot;europe&quot;</code></pre>
 <p>For example, to plot the longitudes and latitudes we could use:</p>
 <div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1"><span class="kw">plot</span>(geo<span class="op">$</span>long, geo<span class="op">$</span>lat)</a></code></pre></div>
-<p><img src="data_frames_files/figure-html/unnamed-chunk-16-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="data_frames_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="logical-indexing" class="section level2">
 <h2><span class="header-section-number">2.5</span> Logical indexing</h2>
@@ -500,10 +506,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
      4 high          58</code></pre>
 <p>When <code>plot</code> is given a factor, it shows a bar plot:</p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1"><span class="kw">plot</span>(geo<span class="op">$</span>income2017)</a></code></pre></div>
-<p><img src="data_frames_files/figure-html/unnamed-chunk-26-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="data_frames_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>When given two factors, it shows a mosaic plot:</p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="kw">plot</span>(geo<span class="op">$</span>income2017, <span class="kw">factor</span>(geo<span class="op">$</span>oecd))</a></code></pre></div>
-<p><img src="data_frames_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="data_frames_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Similarly we can count two categorical columns at once.</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1"><span class="kw">count</span>(geo, income2017, oecd)</a></code></pre></div>
 <pre><code>     # A tibble: 6 x 3
@@ -532,7 +538,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The <code>value</code> column became the values in the new columns.</li>
 <li>The <code>fill</code> value is used to fill in any missing values.</li>
 </ul>
-<div id="tip-2" class="section level3 unnumbered tip">
+<div id="tip-3" class="section level3 unnumbered tip">
 <h3>Tip</h3>
 <p>Tidying is often the first step when exploring a data-set. The <a href="http://tidyr.tidyverse.org/">tidyr</a> package contains a number of useful functions that help tidy (or un-tidy!) data. We’ve just seen <code>spread</code> which spreads two columns into multiple columns. The inverse of <code>spread</code> is <code>gather</code>, which gathers multiple columns into two columns: a column of column names, and a column of values.</p>
 </div>
