@@ -15,8 +15,7 @@ We will be working in [RStudio](https://www.rstudio.com/products/rstudio/downloa
 * Help on the functions available in R.
 * A panel to show plots.
 
-
-\begin{center}\includegraphics{figures/rstudio} \end{center}
+<img src="figures/rstudio.png" style="display: block; margin: auto;" />
 
 Open RStudio, click on the "Console" pane, type `1+1` and press enter. R displays the result of the calculation. In this document, we will be showing such an interaction with R as below.
 
@@ -330,9 +329,7 @@ x*x
 plot(x, x*x)
 ```
 
-
-
-\begin{center}\includegraphics{starting_files/figure-latex/unnamed-chunk-19-1} \end{center}
+<img src="starting_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" />
 
 
 ## Functions

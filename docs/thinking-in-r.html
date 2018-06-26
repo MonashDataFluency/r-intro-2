@@ -237,7 +237,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Matrices are another tabular data type. These come up when doing more mathematical tasks in R. They are also commonly used in bioinformatics, for example to represent RNA-Seq count data. A matrix, as compared to a data frame:</p>
 <ul>
 <li>contains only one type of data, usually numeric (rather than different types in different columns).</li>
-<li>commonly has <code>rownames</code> as well as <code>colnames</code>. (Base R data frames can have <code>rownames</code> too, but it is easier to have any sort of ID as a normal column instead.)</li>
+<li>commonly has <code>rownames</code> as well as <code>colnames</code>. (Base R data frames can have <code>rownames</code> too, but it is easier to have any unique identifier as a normal column instead.)</li>
 <li>has individual cells as the unit of observation (rather than rows).</li>
 </ul>
 <p>Matrices can be created using <code>as.matrix</code> from a data frame, <code>matrix</code> from a single vector, or using <code>rbind</code> or <code>cbind</code> with several vectors.</p>

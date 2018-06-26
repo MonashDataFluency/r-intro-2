@@ -11,8 +11,6 @@ Loading the data as before, if you have not already done so:
 library(tidyverse)
 
 geo <- read_csv("r-intro-2-files/geo.csv")
-geo$income2017 <- factor(geo$income2017, levels=c("low","lower_mid","upper_mid","high"))
-
 gap <- read_csv("r-intro-2-files/gap-minder.csv")
 gap_geo <- left_join(gap, geo, by="name")
 ```
@@ -219,15 +217,14 @@ result
 ggplot(result, aes(x=year,y=mean_life_exp,color=oecd)) + geom_line()
 ```
 
+<img src="summarizing_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
 
-
-\begin{center}\includegraphics{summarizing_files/figure-latex/unnamed-chunk-12-1} \end{center}
-
+A similar plot could be produced using `geom_smooth`. Differences here are that we have full control over the summarization process so we were able to use the exact summarization method we want (`weighted.mean` for each year), and we have access to the resulting numeric data as well as the plot. We have reduced a large data set down to a smaller one that distills out one of the stories present in this data. However the earlier visualization and exploration activity using `ggplot2` was essential. It gave us an idea of what sort of variability was present in the data, and any unexpected issues the data might have.
 
 
 ## t-test
 
-We will finish this section by demonstrating a t-test as an example of statistical tests available in R.
+We will finish this section by demonstrating a t-test. The main point of this section is to give a flavour of how statistical tests work in R, rather than the details of what a t-test does.
 
 Has life expectancy increased from 2000 to 2010?
 
@@ -253,7 +250,9 @@ t.test(gap2010$life_exp, gap2000$life_exp)
       70.34005  67.43185
 ```
 
-This can actually be considered a paired sample t-test. We can specify `paired=TRUE` to `t.test` to perform a paired sample t-test (check this by looking at the help page with `?t.test`). It's important to first check that both data frames are in the same order.
+Statistical routines often have many ways to tweak the details of their operation. These are specified by further arguments to the function call, to override the default behaviour. By default, `t.test` performs an unpaired t-test, but these are repeated observations of the same countries. We can specify `paired=TRUE` to `t.test` to perform a paired sample t-test and gain some statistical power. Check this by looking at the help page with `?t.test`.
+
+It's important to first check that both data frames are in the same order.
 
 
 ```r
@@ -286,13 +285,13 @@ When performing a statistical test, it's good practice to visualize the data to 
 
 
 ```r
-plot(gap2000$life_exp, gap2010$life_exp, xlim=c(0,90),ylim=c(0,90))
+plot(gap2000$life_exp, gap2010$life_exp)
 abline(0,1)
 ```
 
+<img src="summarizing_files/figure-html/unnamed-chunk-15-1.png" width="336" style="display: block; margin: auto;" />
 
-
-\begin{center}\includegraphics{summarizing_files/figure-latex/unnamed-chunk-15-1} \end{center}
+This is a visual confirmation of the t-test result. If there were no difference between the years then points would lie approximately evenly above and below the diagonal line, which is clearly not the case. However the outlier may warrant investigation.
 
 
 # Thinking in R
@@ -425,7 +424,7 @@ mylist[[2]]
 Matrices are another tabular data type. These come up when doing more mathematical tasks in R. They are also commonly used in bioinformatics, for example to represent RNA-Seq count data. A matrix, as compared to a data frame:
 
 * contains only one type of data, usually numeric (rather than different types in different columns).
-* commonly has `rownames` as well as `colnames`. (Base R data frames can have `rownames` too, but it is easier to have any sort of ID as a normal column instead.)
+* commonly has `rownames` as well as `colnames`. (Base R data frames can have `rownames` too, but it is easier to have any unique identifier as a normal column instead.)
 * has individual cells as the unit of observation (rather than rows).
 
 Matrices can be created using `as.matrix` from a data frame, `matrix` from a single vector, or using `rbind` or `cbind` with several vectors.
