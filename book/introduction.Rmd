@@ -13,7 +13,7 @@ header-includes:
 # Introduction {#index -}
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center", comment="    ")
+knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
 ```
 
 ```{r echo=F,out.width="25%",fig.align="left"}

@@ -242,13 +242,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1"><span class="kw">ggplot</span>(gap_geo, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>life_exp)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb147-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb147-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
-<pre><code>     `geom_smooth()` using method = &#39;gam&#39;</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <p><img src="plotting_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Aesthetics can be specified globally in <code>ggplot</code>, or as the first argument to individual geoms. Here, the “group” is applied only to draw the lines, and “color” is used to produce multiple trend lines:</p>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1"><span class="kw">ggplot</span>(gap_geo, <span class="kw">aes</span>(<span class="dt">x=</span>year, <span class="dt">y=</span>life_exp)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb149-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_line</span>(<span class="kw">aes</span>(<span class="dt">group=</span>name)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb149-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color=</span>oecd))</a></code></pre></div>
-<pre><code>     `geom_smooth()` using method = &#39;gam&#39;</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <p><img src="plotting_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
 <div id="highlighting-subsets" class="section level2">

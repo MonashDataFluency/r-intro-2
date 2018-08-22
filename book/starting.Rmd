@@ -1,7 +1,7 @@
 # Starting out in R
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center", comment="    ")
+knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
 ```
 
 R is both a programming language and an interactive environment for data exploration and statistics. Today we will be concentrating on R as an *interactive environment*.
@@ -17,7 +17,7 @@ We will be working in [RStudio](https://www.rstudio.com/products/rstudio/downloa
 * Help on the functions available in R.
 * A panel to show plots.
 
-```{r echo=F}
+```{r echo=F,out.width="100%"}
 knitr::include_graphics("figures/rstudio.png")
 ```
 

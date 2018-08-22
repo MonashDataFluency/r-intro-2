@@ -26,7 +26,7 @@ mean( c(1,2,3,4) )
 ```
 
 ```
-     [1] 2.5
+## [1] 2.5
 ```
 
 We can use these on the Gapminder data.
@@ -38,7 +38,7 @@ sum(gap2010$population)
 ```
 
 ```
-     [1] 6949495061
+## [1] 6949495061
 ```
 
 ```r
@@ -46,7 +46,7 @@ mean(gap2010$life_exp)
 ```
 
 ```
-     [1] NA
+## [1] NA
 ```
 
 
@@ -60,24 +60,24 @@ gap2010$life_exp
 ```
 
 ```
-       [1] 56.20 76.31 76.55 82.66 60.08 76.85 75.82 73.34 81.98 80.50 69.13
-      [12] 73.79 76.03 70.39 76.68 70.43 79.98 71.38 61.82 72.13 71.64 76.75
-      [23] 57.06 74.19 77.08 73.86 57.89 57.73 66.12 57.25 81.29 72.45 47.48
-      [34] 56.49 79.12 74.59 76.44 65.93 57.53 60.43 80.40 56.34 76.33 78.39
-      [45] 79.88 77.47 79.49 63.69 73.04 74.60 76.72 70.52 74.11 60.93 61.66
-      [56] 76.00 61.30 65.28 80.00 81.42 62.86 65.55 72.82 80.09 62.16 80.41
-      [67] 71.34 71.25 57.99 55.65 65.49 32.11 71.58 82.61 74.52 82.03 66.20
-      [78] 69.90 74.45 67.24 80.38 81.42 81.69 74.66 82.85 75.78 68.37 62.76
-      [89] 60.73 70.10 80.13 78.20 68.45 63.80 73.06 79.85 46.50 60.77 76.10
-     [100]    NA 73.17 81.35 74.01 60.84 53.07 74.46 77.91 59.46 80.28 63.72
-     [111] 68.23 73.42 75.47 65.38 69.74    NA 66.18 76.36 73.55 54.48 66.84
-     [122] 58.60    NA 68.26 80.73 80.90 77.36 58.78 60.53 81.04 76.09 65.33
-     [133]    NA 77.85 58.70 74.07 77.92 69.03 76.30 79.84 79.52 73.66 69.24
-     [144] 64.59    NA 75.48 71.64 71.46    NA 68.91 75.13 64.01 74.65 73.38
-     [155] 55.05 82.69 75.52 79.45 61.71 53.13 54.27 81.94 74.42 66.29 70.32
-     [166] 46.98 81.52 82.21 76.15 79.19 69.61 59.30 76.57 71.10 58.74 69.86
-     [177] 72.56 76.89 78.21 67.94    NA 56.81 70.41 76.51 80.34 78.74 76.36
-     [188] 68.77 63.02 75.41 72.27 73.07 67.51 52.02 49.57 58.13
+##   [1] 56.20 76.31 76.55 82.66 60.08 76.85 75.82 73.34 81.98 80.50 69.13
+##  [12] 73.79 76.03 70.39 76.68 70.43 79.98 71.38 61.82 72.13 71.64 76.75
+##  [23] 57.06 74.19 77.08 73.86 57.89 57.73 66.12 57.25 81.29 72.45 47.48
+##  [34] 56.49 79.12 74.59 76.44 65.93 57.53 60.43 80.40 56.34 76.33 78.39
+##  [45] 79.88 77.47 79.49 63.69 73.04 74.60 76.72 70.52 74.11 60.93 61.66
+##  [56] 76.00 61.30 65.28 80.00 81.42 62.86 65.55 72.82 80.09 62.16 80.41
+##  [67] 71.34 71.25 57.99 55.65 65.49 32.11 71.58 82.61 74.52 82.03 66.20
+##  [78] 69.90 74.45 67.24 80.38 81.42 81.69 74.66 82.85 75.78 68.37 62.76
+##  [89] 60.73 70.10 80.13 78.20 68.45 63.80 73.06 79.85 46.50 60.77 76.10
+## [100]    NA 73.17 81.35 74.01 60.84 53.07 74.46 77.91 59.46 80.28 63.72
+## [111] 68.23 73.42 75.47 65.38 69.74    NA 66.18 76.36 73.55 54.48 66.84
+## [122] 58.60    NA 68.26 80.73 80.90 77.36 58.78 60.53 81.04 76.09 65.33
+## [133]    NA 77.85 58.70 74.07 77.92 69.03 76.30 79.84 79.52 73.66 69.24
+## [144] 64.59    NA 75.48 71.64 71.46    NA 68.91 75.13 64.01 74.65 73.38
+## [155] 55.05 82.69 75.52 79.45 61.71 53.13 54.27 81.94 74.42 66.29 70.32
+## [166] 46.98 81.52 82.21 76.15 79.19 69.61 59.30 76.57 71.10 58.74 69.86
+## [177] 72.56 76.89 78.21 67.94    NA 56.81 70.41 76.51 80.34 78.74 76.36
+## [188] 68.77 63.02 75.41 72.27 73.07 67.51 52.02 49.57 58.13
 ```
 
 R will not ignore these unless we explicitly tell it to with `na.rm=TRUE`.
@@ -88,7 +88,7 @@ mean(gap2010$life_exp, na.rm=TRUE)
 ```
 
 ```
-     [1] 70.34005
+## [1] 70.34005
 ```
 
 Ideally we should also use `weighted.mean` here, to take population into account.
@@ -99,7 +99,7 @@ weighted.mean(gap2010$life_exp, gap2010$population, na.rm=TRUE)
 ```
 
 ```
-     [1] 70.96192
+## [1] 70.96192
 ```
 
 `NA` is a special value. If we try to calculate with `NA`, the result is `NA`
@@ -110,7 +110,7 @@ NA + 1
 ```
 
 ```
-     [1] NA
+## [1] NA
 ```
 
 `is.na` can be used to detect `NA` values, or `na.omit` can be used to directly remove rows of a data frame containing them.
@@ -121,7 +121,7 @@ is.na( c(1,2,NA,3) )
 ```
 
 ```
-     [1] FALSE FALSE  TRUE FALSE
+## [1] FALSE FALSE  TRUE FALSE
 ```
 
 ```r
@@ -130,7 +130,7 @@ weighted.mean(cleaned$life_exp, cleaned$population)
 ```
 
 ```
-     [1] 70.96192
+## [1] 70.96192
 ```
 
 ## Grouped summaries
@@ -143,10 +143,10 @@ summarize(gap2010, mean_life_exp=weighted.mean(life_exp, population, na.rm=TRUE)
 ```
 
 ```
-     # A tibble: 1 x 1
-       mean_life_exp
-               <dbl>
-     1          71.0
+## # A tibble: 1 x 1
+##   mean_life_exp
+##           <dbl>
+## 1          71.0
 ```
 
 So far unremarkable, but `summarize` comes into its own when the `group_by` "adjective" is used.
@@ -159,20 +159,20 @@ summarize(
 ```
 
 ```
-     # A tibble: 22 x 2
-         year mean_life_exp
-        <int>         <dbl>
-      1  1800          30.9
-      2  1810          31.1
-      3  1820          31.2
-      4  1830          31.4
-      5  1840          31.4
-      6  1850          31.6
-      7  1860          30.3
-      8  1870          31.5
-      9  1880          32.0
-     10  1890          32.5
-     # ... with 12 more rows
+## # A tibble: 22 x 2
+##     year mean_life_exp
+##    <int>         <dbl>
+##  1  1800          30.9
+##  2  1810          31.1
+##  3  1820          31.2
+##  4  1830          31.4
+##  5  1840          31.4
+##  6  1850          31.6
+##  7  1860          30.3
+##  8  1870          31.5
+##  9  1880          32.0
+## 10  1890          32.5
+## # ... with 12 more rows
 ```
 
 
@@ -196,21 +196,21 @@ result
 ```
 
 ```
-     # A tibble: 44 x 3
-     # Groups:   year [?]
-         year oecd  mean_life_exp
-        <int> <lgl>         <dbl>
-      1  1800 FALSE          29.9
-      2  1800 TRUE           34.7
-      3  1810 FALSE          29.9
-      4  1810 TRUE           35.2
-      5  1820 FALSE          30.0
-      6  1820 TRUE           35.9
-      7  1830 FALSE          30.0
-      8  1830 TRUE           36.2
-      9  1840 FALSE          30.0
-     10  1840 TRUE           36.2
-     # ... with 34 more rows
+## # A tibble: 44 x 3
+## # Groups:   year [?]
+##     year oecd  mean_life_exp
+##    <int> <lgl>         <dbl>
+##  1  1800 FALSE          29.9
+##  2  1800 TRUE           34.7
+##  3  1810 FALSE          29.9
+##  4  1810 TRUE           35.2
+##  5  1820 FALSE          30.0
+##  6  1820 TRUE           35.9
+##  7  1830 FALSE          30.0
+##  8  1830 TRUE           36.2
+##  9  1840 FALSE          30.0
+## 10  1840 TRUE           36.2
+## # ... with 34 more rows
 ```
 
 ```r
@@ -237,17 +237,17 @@ t.test(gap2010$life_exp, gap2000$life_exp)
 ```
 
 ```
-     
-     	Welch Two Sample t-test
-     
-     data:  gap2010$life_exp and gap2000$life_exp
-     t = 3.0341, df = 374.98, p-value = 0.002581
-     alternative hypothesis: true difference in means is not equal to 0
-     95 percent confidence interval:
-      1.023455 4.792947
-     sample estimates:
-     mean of x mean of y 
-      70.34005  67.43185
+## 
+## 	Welch Two Sample t-test
+## 
+## data:  gap2010$life_exp and gap2000$life_exp
+## t = 3.0341, df = 374.98, p-value = 0.002581
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  1.023455 4.792947
+## sample estimates:
+## mean of x mean of y 
+##  70.34005  67.43185
 ```
 
 Statistical routines often have many ways to tweak the details of their operation. These are specified by further arguments to the function call, to override the default behaviour. By default, `t.test` performs an unpaired t-test, but these are repeated observations of the same countries. We can specify `paired=TRUE` to `t.test` to perform a paired sample t-test and gain some statistical power. Check this by looking at the help page with `?t.test`.
@@ -260,7 +260,7 @@ all(gap2000$name == gap2010$name)
 ```
 
 ```
-     [1] TRUE
+## [1] TRUE
 ```
 
 ```r
@@ -268,17 +268,17 @@ t.test(gap2010$life_exp, gap2000$life_exp, paired=TRUE)
 ```
 
 ```
-     
-     	Paired t-test
-     
-     data:  gap2010$life_exp and gap2000$life_exp
-     t = 13.371, df = 188, p-value < 2.2e-16
-     alternative hypothesis: true difference in means is not equal to 0
-     95 percent confidence interval:
-      2.479153 3.337249
-     sample estimates:
-     mean of the differences 
-                    2.908201
+## 
+## 	Paired t-test
+## 
+## data:  gap2010$life_exp and gap2000$life_exp
+## t = 13.371, df = 188, p-value < 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  2.479153 3.337249
+## sample estimates:
+## mean of the differences 
+##                2.908201
 ```
 
 When performing a statistical test, it's good practice to visualize the data to make sure there is nothing funny going on.
@@ -304,7 +304,7 @@ class(42)
 ```
 
 ```
-     [1] "numeric"
+## [1] "numeric"
 ```
 
 ```r
@@ -312,7 +312,7 @@ typeof(42)
 ```
 
 ```
-     [1] "double"
+## [1] "double"
 ```
 
 Let's look at the result of a t-test:
@@ -325,7 +325,7 @@ class(result)
 ```
 
 ```
-     [1] "htest"
+## [1] "htest"
 ```
 
 ```r
@@ -333,7 +333,7 @@ typeof(result)
 ```
 
 ```
-     [1] "list"
+## [1] "list"
 ```
 
 ```r
@@ -341,8 +341,8 @@ names(result)
 ```
 
 ```
-     [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
-     [6] "null.value"  "alternative" "method"      "data.name"
+## [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
+## [6] "null.value"  "alternative" "method"      "data.name"
 ```
 
 ```r
@@ -350,7 +350,7 @@ result$p.value
 ```
 
 ```
-     [1] 4.301261e-29
+## [1] 4.301261e-29
 ```
 
 In R, a t-test is just another function returning just another type of data, so it can also be a building block. The value it returns is a special type of vector called a "list", but with a public face that presents itself nicely. This is a common pattern in R. Besides printing to the console nicely, this public face may alter the behaviour of generic functions such as `plot` and `summary`.
@@ -368,11 +368,11 @@ mylist
 ```
 
 ```
-     $hello
-     [1] "Hello" "world"
-     
-     $numbers
-     [1] 1 2 3 4
+## $hello
+## [1] "Hello" "world"
+## 
+## $numbers
+## [1] 1 2 3 4
 ```
 
 ```r
@@ -380,7 +380,7 @@ class(mylist)
 ```
 
 ```
-     [1] "list"
+## [1] "list"
 ```
 
 ```r
@@ -388,7 +388,7 @@ typeof(mylist)
 ```
 
 ```
-     [1] "list"
+## [1] "list"
 ```
 
 ```r
@@ -396,7 +396,7 @@ names(mylist)
 ```
 
 ```
-     [1] "hello"   "numbers"
+## [1] "hello"   "numbers"
 ```
 
 Accessing lists can be done by name with `$` or by position with `[[ ]]`. 
@@ -407,7 +407,7 @@ mylist$hello
 ```
 
 ```
-     [1] "Hello" "world"
+## [1] "Hello" "world"
 ```
 
 ```r
@@ -415,7 +415,7 @@ mylist[[2]]
 ```
 
 ```
-     [1] 1 2 3 4
+## [1] 1 2 3 4
 ```
 
 

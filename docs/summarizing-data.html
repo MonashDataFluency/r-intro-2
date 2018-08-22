@@ -202,78 +202,78 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.1</span> Summary functions</h2>
 <p>R has a variety of functions for summarizing a vector, including: <code>sum</code>, <code>mean</code>, <code>min</code>, <code>max</code>, <code>median</code>, <code>sd</code>.</p>
 <div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="kw">mean</span>( <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) )</a></code></pre></div>
-<pre><code>     [1] 2.5</code></pre>
+<pre><code>## [1] 2.5</code></pre>
 <p>We can use these on the Gapminder data.</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1">gap2010 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)</a>
 <a class="sourceLine" id="cb159-2" data-line-number="2"><span class="kw">sum</span>(gap2010<span class="op">$</span>population)</a></code></pre></div>
-<pre><code>     [1] 6949495061</code></pre>
+<pre><code>## [1] 6949495061</code></pre>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="kw">mean</span>(gap2010<span class="op">$</span>life_exp)</a></code></pre></div>
-<pre><code>     [1] NA</code></pre>
+<pre><code>## [1] NA</code></pre>
 </div>
 <div id="missing-values" class="section level2">
 <h2><span class="header-section-number">4.2</span> Missing values</h2>
 <p>Why did <code>mean</code> fail? The reason is that <code>life_exp</code> contains missing values (<code>NA</code>).</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1">gap2010<span class="op">$</span>life_exp</a></code></pre></div>
-<pre><code>       [1] 56.20 76.31 76.55 82.66 60.08 76.85 75.82 73.34 81.98 80.50 69.13
-      [12] 73.79 76.03 70.39 76.68 70.43 79.98 71.38 61.82 72.13 71.64 76.75
-      [23] 57.06 74.19 77.08 73.86 57.89 57.73 66.12 57.25 81.29 72.45 47.48
-      [34] 56.49 79.12 74.59 76.44 65.93 57.53 60.43 80.40 56.34 76.33 78.39
-      [45] 79.88 77.47 79.49 63.69 73.04 74.60 76.72 70.52 74.11 60.93 61.66
-      [56] 76.00 61.30 65.28 80.00 81.42 62.86 65.55 72.82 80.09 62.16 80.41
-      [67] 71.34 71.25 57.99 55.65 65.49 32.11 71.58 82.61 74.52 82.03 66.20
-      [78] 69.90 74.45 67.24 80.38 81.42 81.69 74.66 82.85 75.78 68.37 62.76
-      [89] 60.73 70.10 80.13 78.20 68.45 63.80 73.06 79.85 46.50 60.77 76.10
-     [100]    NA 73.17 81.35 74.01 60.84 53.07 74.46 77.91 59.46 80.28 63.72
-     [111] 68.23 73.42 75.47 65.38 69.74    NA 66.18 76.36 73.55 54.48 66.84
-     [122] 58.60    NA 68.26 80.73 80.90 77.36 58.78 60.53 81.04 76.09 65.33
-     [133]    NA 77.85 58.70 74.07 77.92 69.03 76.30 79.84 79.52 73.66 69.24
-     [144] 64.59    NA 75.48 71.64 71.46    NA 68.91 75.13 64.01 74.65 73.38
-     [155] 55.05 82.69 75.52 79.45 61.71 53.13 54.27 81.94 74.42 66.29 70.32
-     [166] 46.98 81.52 82.21 76.15 79.19 69.61 59.30 76.57 71.10 58.74 69.86
-     [177] 72.56 76.89 78.21 67.94    NA 56.81 70.41 76.51 80.34 78.74 76.36
-     [188] 68.77 63.02 75.41 72.27 73.07 67.51 52.02 49.57 58.13</code></pre>
+<pre><code>##   [1] 56.20 76.31 76.55 82.66 60.08 76.85 75.82 73.34 81.98 80.50 69.13
+##  [12] 73.79 76.03 70.39 76.68 70.43 79.98 71.38 61.82 72.13 71.64 76.75
+##  [23] 57.06 74.19 77.08 73.86 57.89 57.73 66.12 57.25 81.29 72.45 47.48
+##  [34] 56.49 79.12 74.59 76.44 65.93 57.53 60.43 80.40 56.34 76.33 78.39
+##  [45] 79.88 77.47 79.49 63.69 73.04 74.60 76.72 70.52 74.11 60.93 61.66
+##  [56] 76.00 61.30 65.28 80.00 81.42 62.86 65.55 72.82 80.09 62.16 80.41
+##  [67] 71.34 71.25 57.99 55.65 65.49 32.11 71.58 82.61 74.52 82.03 66.20
+##  [78] 69.90 74.45 67.24 80.38 81.42 81.69 74.66 82.85 75.78 68.37 62.76
+##  [89] 60.73 70.10 80.13 78.20 68.45 63.80 73.06 79.85 46.50 60.77 76.10
+## [100]    NA 73.17 81.35 74.01 60.84 53.07 74.46 77.91 59.46 80.28 63.72
+## [111] 68.23 73.42 75.47 65.38 69.74    NA 66.18 76.36 73.55 54.48 66.84
+## [122] 58.60    NA 68.26 80.73 80.90 77.36 58.78 60.53 81.04 76.09 65.33
+## [133]    NA 77.85 58.70 74.07 77.92 69.03 76.30 79.84 79.52 73.66 69.24
+## [144] 64.59    NA 75.48 71.64 71.46    NA 68.91 75.13 64.01 74.65 73.38
+## [155] 55.05 82.69 75.52 79.45 61.71 53.13 54.27 81.94 74.42 66.29 70.32
+## [166] 46.98 81.52 82.21 76.15 79.19 69.61 59.30 76.57 71.10 58.74 69.86
+## [177] 72.56 76.89 78.21 67.94    NA 56.81 70.41 76.51 80.34 78.74 76.36
+## [188] 68.77 63.02 75.41 72.27 73.07 67.51 52.02 49.57 58.13</code></pre>
 <p>R will not ignore these unless we explicitly tell it to with <code>na.rm=TRUE</code>.</p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="kw">mean</span>(gap2010<span class="op">$</span>life_exp, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>     [1] 70.34005</code></pre>
+<pre><code>## [1] 70.34005</code></pre>
 <p>Ideally we should also use <code>weighted.mean</code> here, to take population into account.</p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw">weighted.mean</span>(gap2010<span class="op">$</span>life_exp, gap2010<span class="op">$</span>population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>     [1] 70.96192</code></pre>
+<pre><code>## [1] 70.96192</code></pre>
 <p><code>NA</code> is a special value. If we try to calculate with <code>NA</code>, the result is <code>NA</code></p>
 <div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
-<pre><code>     [1] NA</code></pre>
+<pre><code>## [1] NA</code></pre>
 <p><code>is.na</code> can be used to detect <code>NA</code> values, or <code>na.omit</code> can be used to directly remove rows of a data frame containing them.</p>
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="kw">is.na</span>( <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="ot">NA</span>,<span class="dv">3</span>) )</a></code></pre></div>
-<pre><code>     [1] FALSE FALSE  TRUE FALSE</code></pre>
+<pre><code>## [1] FALSE FALSE  TRUE FALSE</code></pre>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" data-line-number="1">cleaned &lt;-<span class="st"> </span><span class="kw">filter</span>(gap2010, <span class="op">!</span><span class="kw">is.na</span>(life_exp))</a>
 <a class="sourceLine" id="cb173-2" data-line-number="2"><span class="kw">weighted.mean</span>(cleaned<span class="op">$</span>life_exp, cleaned<span class="op">$</span>population)</a></code></pre></div>
-<pre><code>     [1] 70.96192</code></pre>
+<pre><code>## [1] 70.96192</code></pre>
 </div>
 <div id="grouped-summaries" class="section level2">
 <h2><span class="header-section-number">4.3</span> Grouped summaries</h2>
 <p>The <code>summarize</code> function in <code>dplyr</code> allows summary functions to be applied to data frames.</p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" data-line-number="1"><span class="kw">summarize</span>(gap2010, <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a></code></pre></div>
-<pre><code>     # A tibble: 1 x 1
-       mean_life_exp
-               &lt;dbl&gt;
-     1          71.0</code></pre>
+<pre><code>## # A tibble: 1 x 1
+##   mean_life_exp
+##           &lt;dbl&gt;
+## 1          71.0</code></pre>
 <p>So far unremarkable, but <code>summarize</code> comes into its own when the <code>group_by</code> “adjective” is used.</p>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb177-1" data-line-number="1"><span class="kw">summarize</span>(</a>
 <a class="sourceLine" id="cb177-2" data-line-number="2">    <span class="kw">group_by</span>(gap_geo, year), </a>
 <a class="sourceLine" id="cb177-3" data-line-number="3">    <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a></code></pre></div>
-<pre><code>     # A tibble: 22 x 2
-         year mean_life_exp
-        &lt;int&gt;         &lt;dbl&gt;
-      1  1800          30.9
-      2  1810          31.1
-      3  1820          31.2
-      4  1830          31.4
-      5  1840          31.4
-      6  1850          31.6
-      7  1860          30.3
-      8  1870          31.5
-      9  1880          32.0
-     10  1890          32.5
-     # ... with 12 more rows</code></pre>
+<pre><code>## # A tibble: 22 x 2
+##     year mean_life_exp
+##    &lt;int&gt;         &lt;dbl&gt;
+##  1  1800          30.9
+##  2  1810          31.1
+##  3  1820          31.2
+##  4  1830          31.4
+##  5  1840          31.4
+##  6  1850          31.6
+##  7  1860          30.3
+##  8  1870          31.5
+##  9  1880          32.0
+## 10  1890          32.5
+## # ... with 12 more rows</code></pre>
 <div id="challenge-summarizing" class="section level3 unnumbered challenge">
 <h3>Challenge: summarizing</h3>
 <p>What is the total population for each year? Plot the result.</p>
@@ -286,21 +286,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb179-2" data-line-number="2">    <span class="kw">group_by</span>(gap_geo,year,oecd), </a>
 <a class="sourceLine" id="cb179-3" data-line-number="3">    <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a>
 <a class="sourceLine" id="cb179-4" data-line-number="4">result</a></code></pre></div>
-<pre><code>     # A tibble: 44 x 3
-     # Groups:   year [?]
-         year oecd  mean_life_exp
-        &lt;int&gt; &lt;lgl&gt;         &lt;dbl&gt;
-      1  1800 FALSE          29.9
-      2  1800 TRUE           34.7
-      3  1810 FALSE          29.9
-      4  1810 TRUE           35.2
-      5  1820 FALSE          30.0
-      6  1820 TRUE           35.9
-      7  1830 FALSE          30.0
-      8  1830 TRUE           36.2
-      9  1840 FALSE          30.0
-     10  1840 TRUE           36.2
-     # ... with 34 more rows</code></pre>
+<pre><code>## # A tibble: 44 x 3
+## # Groups:   year [?]
+##     year oecd  mean_life_exp
+##    &lt;int&gt; &lt;lgl&gt;         &lt;dbl&gt;
+##  1  1800 FALSE          29.9
+##  2  1800 TRUE           34.7
+##  3  1810 FALSE          29.9
+##  4  1810 TRUE           35.2
+##  5  1820 FALSE          30.0
+##  6  1820 TRUE           35.9
+##  7  1830 FALSE          30.0
+##  8  1830 TRUE           36.2
+##  9  1840 FALSE          30.0
+## 10  1840 TRUE           36.2
+## # ... with 34 more rows</code></pre>
 <div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1"><span class="kw">ggplot</span>(result, <span class="kw">aes</span>(<span class="dt">x=</span>year,<span class="dt">y=</span>mean_life_exp,<span class="dt">color=</span>oecd)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</a></code></pre></div>
 <p><img src="summarizing_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>A similar plot could be produced using <code>geom_smooth</code>. Differences here are that we have full control over the summarization process so we were able to use the exact summarization method we want (<code>weighted.mean</code> for each year), and we have access to the resulting numeric data as well as the plot. We have reduced a large data set down to a smaller one that distills out one of the stories present in this data. However the earlier visualization and exploration activity using <code>ggplot2</code> was essential. It gave us an idea of what sort of variability was present in the data, and any unexpected issues the data might have.</p>
@@ -314,33 +314,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb182-2" data-line-number="2">gap2010 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)</a>
 <a class="sourceLine" id="cb182-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb182-4" data-line-number="4"><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp)</a></code></pre></div>
-<pre><code>     
-        Welch Two Sample t-test
-     
-     data:  gap2010$life_exp and gap2000$life_exp
-     t = 3.0341, df = 374.98, p-value = 0.002581
-     alternative hypothesis: true difference in means is not equal to 0
-     95 percent confidence interval:
-      1.023455 4.792947
-     sample estimates:
-     mean of x mean of y 
-      70.34005  67.43185</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  gap2010$life_exp and gap2000$life_exp
+## t = 3.0341, df = 374.98, p-value = 0.002581
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  1.023455 4.792947
+## sample estimates:
+## mean of x mean of y 
+##  70.34005  67.43185</code></pre>
 <p>Statistical routines often have many ways to tweak the details of their operation. These are specified by further arguments to the function call, to override the default behaviour. By default, <code>t.test</code> performs an unpaired t-test, but these are repeated observations of the same countries. We can specify <code>paired=TRUE</code> to <code>t.test</code> to perform a paired sample t-test and gain some statistical power. Check this by looking at the help page with <code>?t.test</code>.</p>
 <p>It’s important to first check that both data frames are in the same order.</p>
 <div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="kw">all</span>(gap2000<span class="op">$</span>name <span class="op">==</span><span class="st"> </span>gap2010<span class="op">$</span>name)</a></code></pre></div>
-<pre><code>     [1] TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp, <span class="dt">paired=</span><span class="ot">TRUE</span>)</a></code></pre></div>
-<pre><code>     
-        Paired t-test
-     
-     data:  gap2010$life_exp and gap2000$life_exp
-     t = 13.371, df = 188, p-value &lt; 2.2e-16
-     alternative hypothesis: true difference in means is not equal to 0
-     95 percent confidence interval:
-      2.479153 3.337249
-     sample estimates:
-     mean of the differences 
-                    2.908201</code></pre>
+<pre><code>## 
+##  Paired t-test
+## 
+## data:  gap2010$life_exp and gap2000$life_exp
+## t = 13.371, df = 188, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  2.479153 3.337249
+## sample estimates:
+## mean of the differences 
+##                2.908201</code></pre>
 <p>When performing a statistical test, it’s good practice to visualize the data to make sure there is nothing funny going on.</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1"><span class="kw">plot</span>(gap2000<span class="op">$</span>life_exp, gap2010<span class="op">$</span>life_exp)</a>
 <a class="sourceLine" id="cb188-2" data-line-number="2"><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</a></code></pre></div>

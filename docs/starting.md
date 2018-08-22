@@ -15,7 +15,7 @@ We will be working in [RStudio](https://www.rstudio.com/products/rstudio/downloa
 * Help on the functions available in R.
 * A panel to show plots.
 
-<img src="figures/rstudio.png" style="display: block; margin: auto;" />
+<img src="figures/rstudio.png" width="100%" style="display: block; margin: auto;" />
 
 Open RStudio, click on the "Console" pane, type `1+1` and press enter. R displays the result of the calculation. In this document, we will be showing such an interaction with R as below.
 
@@ -25,7 +25,7 @@ Open RStudio, click on the "Console" pane, type `1+1` and press enter. R display
 ```
 
 ```
-     [1] 2
+## [1] 2
 ```
 
 `+` is called an operator. R has the operators you would expect for for basic mathematics: `+` `-` `*` `/` `^`. It also has operators that do more obscure things.
@@ -42,7 +42,7 @@ We can compare with `== < > <= >=`. This produces a *logical* value, `TRUE` or `
 ```
 
 ```
-     [1] TRUE
+## [1] TRUE
 ```
 
 There are also character strings such as `"string"`. A character string must be surrounded by either single or double quotes.
@@ -66,7 +66,7 @@ width
 ```
 
 ```
-     [1] 5
+## [1] 5
 ```
 
 Examples of valid variables names: `hello`, `subject_id`, `subject.ID`, `x42`. Spaces aren't ok *inside* variable names. Dots (`.`) are ok in R, unlike in many other languages. Numbers are ok, except as the first character. Punctuation is not allowed, with two exceptions: `_` and `.`.
@@ -80,7 +80,7 @@ width * width
 ```
 
 ```
-     [1] 25
+## [1] 25
 ```
 
 and even save the result in another variable:
@@ -100,7 +100,7 @@ width
 ```
 
 ```
-     [1] 10
+## [1] 10
 ```
 
 ```r
@@ -108,7 +108,7 @@ area
 ```
 
 ```
-     [1] 25
+## [1] 25
 ```
 
 Notice that the value of `area` we calculated earlier hasn't been updated. Assigning a new value to one variable does not change the values of other variables. This is different to a spreadsheet, but usual for programming languages.
@@ -157,7 +157,7 @@ myvec
 ```
 
 ```
-     [1] 10 20 30 40 50
+## [1] 10 20 30 40 50
 ```
 
 ```r
@@ -165,7 +165,7 @@ myvec + 1
 ```
 
 ```
-     [1] 11 21 31 41 51
+## [1] 11 21 31 41 51
 ```
 
 ```r
@@ -173,7 +173,7 @@ myvec + myvec
 ```
 
 ```
-     [1]  20  40  60  80 100
+## [1]  20  40  60  80 100
 ```
 
 ```r
@@ -181,7 +181,7 @@ length(myvec)
 ```
 
 ```
-     [1] 5
+## [1] 5
 ```
 
 ```r
@@ -189,7 +189,7 @@ c(60, myvec)
 ```
 
 ```
-     [1] 60 10 20 30 40 50
+## [1] 60 10 20 30 40 50
 ```
 
 ```r
@@ -197,7 +197,7 @@ c(myvec, myvec)
 ```
 
 ```
-      [1] 10 20 30 40 50 10 20 30 40 50
+##  [1] 10 20 30 40 50 10 20 30 40 50
 ```
 
 When we talk about the length of a vector, we are talking about the number of numbers in the vector.
@@ -230,7 +230,7 @@ myvec[1]
 ```
 
 ```
-     [1] 10
+## [1] 10
 ```
 
 ```r
@@ -238,7 +238,7 @@ myvec[2]
 ```
 
 ```
-     [1] 20
+## [1] 20
 ```
 
 ```r
@@ -247,7 +247,7 @@ myvec
 ```
 
 ```
-     [1] 10  5 30 40 50
+## [1] 10  5 30 40 50
 ```
 
 Can we use a vector to index another vector? Yes!
@@ -259,7 +259,7 @@ myvec[myind]
 ```
 
 ```
-     [1] 40 30  5
+## [1] 40 30  5
 ```
 
 We could equivalently have written:
@@ -270,7 +270,7 @@ myvec[c(4,3,2)]
 ```
 
 ```
-     [1] 40 30  5
+## [1] 40 30  5
 ```
 
 ### Challenge: indexing {- .challenge}
@@ -299,7 +299,7 @@ Another way to create a vector is with `:`:
 ```
 
 ```
-      [1]  1  2  3  4  5  6  7  8  9 10
+##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
 This can be useful when combined with indexing:
@@ -310,7 +310,7 @@ items[1:4]
 ```
 
 ```
-     [1] "spam"  "eggs"  "beans" "bacon"
+## [1] "spam"  "eggs"  "beans" "bacon"
 ```
 
 Sequences are useful for other things, such as a starting point for calculations:
@@ -322,7 +322,7 @@ x*x
 ```
 
 ```
-      [1]   1   4   9  16  25  36  49  64  81 100
+##  [1]   1   4   9  16  25  36  49  64  81 100
 ```
 
 ```r
@@ -344,7 +344,7 @@ sum(myvec)
 ```
 
 ```
-     [1] 135
+## [1] 135
 ```
 
 We *called* the function `sum` with the *argument* `myvec`, and it *returned* the value 135. We can get help on how to use `sum` with:
@@ -361,7 +361,7 @@ rep(42, 10)
 ```
 
 ```
-      [1] 42 42 42 42 42 42 42 42 42 42
+##  [1] 42 42 42 42 42 42 42 42 42 42
 ```
 
 As with many functions in R---which is obsessed with vectors---the thing to be repeated can be a vector with multiple elements.
@@ -372,7 +372,7 @@ rep(c(1,2,3), 10)
 ```
 
 ```
-      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
 ```
 
 So far we have used *positional* arguments, where R determines which argument is which by the order in which they are given. We can also give arguments by *name*. For example, the above is equivalent to
@@ -383,7 +383,7 @@ rep(c(1,2,3), times=10)
 ```
 
 ```
-      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
 ```
 
 ```r
@@ -391,7 +391,7 @@ rep(x=c(1,2,3), 10)
 ```
 
 ```
-      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
 ```
 
 ```r
@@ -399,7 +399,7 @@ rep(times=10, x=c(1,2,3))
 ```
 
 ```
-      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
+##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3
 ```
 
 Arguments can have default values, and a function may have many different possible arguments that make it do obscure things. For example, `rep` can also take an argument `each=`. It's typical for a function to be invoked with some number of positional arguments, which are always given, plus some less commonly used arguments, typically given by name.
@@ -410,7 +410,7 @@ rep(c(1,2,3), each=3)
 ```
 
 ```
-     [1] 1 1 1 2 2 2 3 3 3
+## [1] 1 1 1 2 2 2 3 3 3
 ```
 
 ```r
@@ -418,8 +418,8 @@ rep(c(1,2,3), each=3, times=5)
 ```
 
 ```
-      [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3
-     [36] 3 1 1 1 2 2 2 3 3 3
+##  [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3
+## [36] 3 1 1 1 2 2 2 3 3 3
 ```
 
 ### Challenge: using functions {- .challenge}

@@ -1,7 +1,7 @@
 # Data frames
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center", comment="    ")
+knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
 ```
 
 *Data frame* is R's name for tabular data. We generally want each row in a data frame to represent a unit of observation, and each column to contain a different type of information about the units of observation. Tabular data in this form is called ["tidy data"](http://vita.had.co.nz/papers/tidy-data.html).

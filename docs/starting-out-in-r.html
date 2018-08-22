@@ -202,16 +202,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Help on the functions available in R.</li>
 <li>A panel to show plots.</li>
 </ul>
-<p><img src="figures/rstudio.png" style="display: block; margin: auto;" /></p>
+<p><img src="figures/rstudio.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>Open RStudio, click on the “Console” pane, type <code>1+1</code> and press enter. R displays the result of the calculation. In this document, we will be showing such an interaction with R as below.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="dv">1</span><span class="op">+</span><span class="dv">1</span></a></code></pre></div>
-<pre><code>     [1] 2</code></pre>
+<pre><code>## [1] 2</code></pre>
 <p><code>+</code> is called an operator. R has the operators you would expect for for basic mathematics: <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>^</code>. It also has operators that do more obscure things.</p>
 <p><code>*</code> has higher precedence than <code>+</code>. We can use brackets if necessary <code>( )</code>. Try <code>1+2*3</code> and <code>(1+2)*3</code>.</p>
 <p>Spaces can be used to make code easier to read.</p>
 <p>We can compare with <code>== &lt; &gt; &lt;= &gt;=</code>. This produces a <em>logical</em> value, <code>TRUE</code> or <code>FALSE</code>. Note the double equals, <code>==</code>, for equality comparison.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="dv">2</span> <span class="op">*</span><span class="st"> </span><span class="dv">2</span> <span class="op">==</span><span class="st"> </span><span class="dv">4</span></a></code></pre></div>
-<pre><code>     [1] TRUE</code></pre>
+<pre><code>## [1] TRUE</code></pre>
 <p>There are also character strings such as <code>&quot;string&quot;</code>. A character string must be surrounded by either single or double quotes.</p>
 <div id="variables" class="section level2">
 <h2><span class="header-section-number">1.1</span> Variables</h2>
@@ -219,21 +219,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">width &lt;-<span class="st"> </span><span class="dv">5</span></a></code></pre></div>
 <p>RStudio helpfully shows us the variable in the “Environment” pane. We can also print it by typing the name of the variable and hitting enter. In general, R will print to the console any object returned by a function or operation <em>unless</em> we assign it to a variable.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">width</a></code></pre></div>
-<pre><code>     [1] 5</code></pre>
+<pre><code>## [1] 5</code></pre>
 <p>Examples of valid variables names: <code>hello</code>, <code>subject_id</code>, <code>subject.ID</code>, <code>x42</code>. Spaces aren’t ok <em>inside</em> variable names. Dots (<code>.</code>) are ok in R, unlike in many other languages. Numbers are ok, except as the first character. Punctuation is not allowed, with two exceptions: <code>_</code> and <code>.</code>.</p>
 <p>We can do arithmetic with the variable:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Area of a square</span></a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">width <span class="op">*</span><span class="st"> </span>width</a></code></pre></div>
-<pre><code>     [1] 25</code></pre>
+<pre><code>## [1] 25</code></pre>
 <p>and even save the result in another variable:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Save area in &quot;area&quot; variable</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">area &lt;-<span class="st"> </span>width <span class="op">*</span><span class="st"> </span>width</a></code></pre></div>
 <p>We can also change a variable’s value by assigning it a new value:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">width &lt;-<span class="st"> </span><span class="dv">10</span></a>
 <a class="sourceLine" id="cb11-2" data-line-number="2">width</a></code></pre></div>
-<pre><code>     [1] 10</code></pre>
+<pre><code>## [1] 10</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">area</a></code></pre></div>
-<pre><code>     [1] 25</code></pre>
+<pre><code>## [1] 25</code></pre>
 <p>Notice that the value of <code>area</code> we calculated earlier hasn’t been updated. Assigning a new value to one variable does not change the values of other variables. This is different to a spreadsheet, but usual for programming languages.</p>
 </div>
 <div id="saving-code-in-an-r-script" class="section level2">
@@ -264,17 +264,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can make vectors with <code>c( )</code>, for example <code>c(1,2,3)</code>. <code>c</code> means “combine”. R is obsesssed with vectors, in R even single numbers are vectors of length one. Many things that can be done with a single number can also be done with a vector. For example arithmetic can be done on vectors as it can be on single numbers.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">myvec &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2">myvec</a></code></pre></div>
-<pre><code>     [1] 10 20 30 40 50</code></pre>
+<pre><code>## [1] 10 20 30 40 50</code></pre>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">myvec <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
-<pre><code>     [1] 11 21 31 41 51</code></pre>
+<pre><code>## [1] 11 21 31 41 51</code></pre>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">myvec <span class="op">+</span><span class="st"> </span>myvec</a></code></pre></div>
-<pre><code>     [1]  20  40  60  80 100</code></pre>
+<pre><code>## [1]  20  40  60  80 100</code></pre>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">length</span>(myvec)</a></code></pre></div>
-<pre><code>     [1] 5</code></pre>
+<pre><code>## [1] 5</code></pre>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">c</span>(<span class="dv">60</span>, myvec)</a></code></pre></div>
-<pre><code>     [1] 60 10 20 30 40 50</code></pre>
+<pre><code>## [1] 60 10 20 30 40 50</code></pre>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">c</span>(myvec, myvec)</a></code></pre></div>
-<pre><code>      [1] 10 20 30 40 50 10 20 30 40 50</code></pre>
+<pre><code>##  [1] 10 20 30 40 50 10 20 30 40 50</code></pre>
 <p>When we talk about the length of a vector, we are talking about the number of numbers in the vector.</p>
 </div>
 <div id="types-of-vector" class="section level2">
@@ -295,19 +295,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.5</span> Indexing vectors</h2>
 <p>Access elements of a vector with <code>[ ]</code>, for example <code>myvec[1]</code> to get the first element. You can also assign to a specific element of a vector.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">myvec[<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>     [1] 10</code></pre>
+<pre><code>## [1] 10</code></pre>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">myvec[<span class="dv">2</span>]</a></code></pre></div>
-<pre><code>     [1] 20</code></pre>
+<pre><code>## [1] 20</code></pre>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">myvec[<span class="dv">2</span>] &lt;-<span class="st"> </span><span class="dv">5</span></a>
 <a class="sourceLine" id="cb33-2" data-line-number="2">myvec</a></code></pre></div>
-<pre><code>     [1] 10  5 30 40 50</code></pre>
+<pre><code>## [1] 10  5 30 40 50</code></pre>
 <p>Can we use a vector to index another vector? Yes!</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">myind &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb35-2" data-line-number="2">myvec[myind]</a></code></pre></div>
-<pre><code>     [1] 40 30  5</code></pre>
+<pre><code>## [1] 40 30  5</code></pre>
 <p>We could equivalently have written:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">myvec[<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>)]</a></code></pre></div>
-<pre><code>     [1] 40 30  5</code></pre>
+<pre><code>## [1] 40 30  5</code></pre>
 <div id="challenge-indexing" class="section level3 unnumbered challenge">
 <h3>Challenge: indexing</h3>
 <p>We can create and index character vectors as well. A cafe is using R to create their menu.</p>
@@ -323,14 +323,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.6</span> Sequences</h2>
 <p>Another way to create a vector is with <code>:</code>:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" data-line-number="1"><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a></code></pre></div>
-<pre><code>      [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <p>This can be useful when combined with indexing:</p>
 <div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" data-line-number="1">items[<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>]</a></code></pre></div>
-<pre><code>     [1] &quot;spam&quot;  &quot;eggs&quot;  &quot;beans&quot; &quot;bacon&quot;</code></pre>
+<pre><code>## [1] &quot;spam&quot;  &quot;eggs&quot;  &quot;beans&quot; &quot;bacon&quot;</code></pre>
 <p>Sequences are useful for other things, such as a starting point for calculations:</p>
 <div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
 <a class="sourceLine" id="cb44-2" data-line-number="2">x<span class="op">*</span>x</a></code></pre></div>
-<pre><code>      [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" data-line-number="1"><span class="kw">plot</span>(x, x<span class="op">*</span>x)</a></code></pre></div>
 <p><img src="starting_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
@@ -339,28 +339,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Functions are the things that do all the work for us in R: calculate, manipulate data, read and write to files, produce plots. R has many built in functions and will also be loading more specialized functions from “packages”.</p>
 <p>We’ve already seen several functions: <code>c( )</code>, <code>length( )</code>, and <code>plot( )</code>. Let’s now have a look at <code>sum( )</code>.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1"><span class="kw">sum</span>(myvec)</a></code></pre></div>
-<pre><code>     [1] 135</code></pre>
+<pre><code>## [1] 135</code></pre>
 <p>We <em>called</em> the function <code>sum</code> with the <em>argument</em> <code>myvec</code>, and it <em>returned</em> the value 135. We can get help on how to use <code>sum</code> with:</p>
 <pre><code>?sum</code></pre>
 <p>Some functions take more than one argument. Let’s look at the function <code>rep</code>, which means “repeat”, and which can take a variety of different arguments. In the simplest case, it takes a value and the number of times to repeat that value.</p>
 <div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">rep</span>(<span class="dv">42</span>, <span class="dv">10</span>)</a></code></pre></div>
-<pre><code>      [1] 42 42 42 42 42 42 42 42 42 42</code></pre>
+<pre><code>##  [1] 42 42 42 42 42 42 42 42 42 42</code></pre>
 <p>As with many functions in R—which is obsessed with vectors—the thing to be repeated can be a vector with multiple elements.</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dv">10</span>)</a></code></pre></div>
-<pre><code>      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
 <p>So far we have used <em>positional</em> arguments, where R determines which argument is which by the order in which they are given. We can also give arguments by <em>name</em>. For example, the above is equivalent to</p>
 <div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">times=</span><span class="dv">10</span>)</a></code></pre></div>
-<pre><code>      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
 <div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">rep</span>(<span class="dt">x=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dv">10</span>)</a></code></pre></div>
-<pre><code>      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
 <div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">rep</span>(<span class="dt">times=</span><span class="dv">10</span>, <span class="dt">x=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>))</a></code></pre></div>
-<pre><code>      [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
 <p>Arguments can have default values, and a function may have many different possible arguments that make it do obscure things. For example, <code>rep</code> can also take an argument <code>each=</code>. It’s typical for a function to be invoked with some number of positional arguments, which are always given, plus some less commonly used arguments, typically given by name.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">each=</span><span class="dv">3</span>)</a></code></pre></div>
-<pre><code>     [1] 1 1 1 2 2 2 3 3 3</code></pre>
+<pre><code>## [1] 1 1 1 2 2 2 3 3 3</code></pre>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="dt">each=</span><span class="dv">3</span>, <span class="dt">times=</span><span class="dv">5</span>)</a></code></pre></div>
-<pre><code>      [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3
-     [36] 3 1 1 1 2 2 2 3 3 3</code></pre>
+<pre><code>##  [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3
+## [36] 3 1 1 1 2 2 2 3 3 3</code></pre>
 <div id="challenge-using-functions" class="section level3 unnumbered challenge">
 <h3>Challenge: using functions</h3>
 <ol style="list-style-type: decimal">

@@ -1,7 +1,7 @@
 # Summarizing data
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center", comment="    ")
+knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
 ```
 
 Having loaded and thoroughly explored a data set, we are ready to distill it down to concise conclusions. At its simplest, this involves calculating summary statistics like counts, means, and standard deviations. Beyond this is the fitting of models, and hypothesis testing and confidence interval calculation. R has a huge number of packages devoted to these tasks and this is a large part of its appeal, but is beyond the scope of today.
