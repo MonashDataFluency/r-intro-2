@@ -40,5 +40,8 @@ Meetups in Melbourne:
 * [MelbURN](https://www.meetup.com/en-AU/MelbURN-Melbourne-Users-of-R-Network/)
 * [R-Ladies](https://www.meetup.com/en-AU/R-Ladies-Melbourne/)
 
-For bioinformatics, [COMBINE](https://combine.org.au/) is a student and early career researcher organization, and runs Software Carpentry workshops.
+[The Carpentries](https://carpentries.org/) run intensive two day workshops on scientific computing and data science topics worldwide. The style of this present workshop is very much based on theirs. For bioinformatics, [COMBINE](https://combine.org.au/) is an Australian student and early career researcher organization, and runs Carpentries workshops and similar.
+
+
+
 
