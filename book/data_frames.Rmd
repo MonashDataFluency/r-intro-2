@@ -40,7 +40,16 @@ R is a language with mini-languages within it that solve specific problem domain
 
 ## Loading data
 
-We will use the `read_csv` function from `readr` to load a data set. (See also `read.csv` in base R.)
+We will use the `read_csv` function from `readr` to load a data set. (See also `read.csv` in base R.) CSV stands for Comma Separated Values, and is a text format used to store tabular data. The first few lines of the file we are loading are shown below. Conventionally the first line contains column headings.
+
+```
+name,region,oecd,g77,lat,long,income2017
+Afghanistan,asia,FALSE,TRUE,33,66,low
+Albania,europe,FALSE,FALSE,41,20,upper_mid
+Algeria,africa,FALSE,TRUE,28,3,upper_mid
+Andorra,europe,FALSE,FALSE,42.50779,1.52109,high
+Angola,africa,FALSE,TRUE,-12.5,18.5,lower_mid
+```
 
 ```{r}
 geo <- read_csv("r-intro-2-files/geo.csv")
