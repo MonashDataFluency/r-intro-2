@@ -4,7 +4,7 @@
 
 *Data frame* is R's name for tabular data. We generally want each row in a data frame to represent a unit of observation, and each column to contain a different type of information about the units of observation. Tabular data in this form is called ["tidy data"](http://vita.had.co.nz/papers/tidy-data.html).
 
-Today we will be using a collection of modern packages collectively known as the [Tidyverse](https://www.tidyverse.org/). R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into "base R", including having its own slightly improved form of data frame. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.
+Today we will be using a collection of modern packages collectively known as the [Tidyverse](https://www.tidyverse.org/). R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into "base R", including having its own slightly improved form of data frame, which is called a *tibble*. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.
 
 If the Tidyverse is not already installed, you will need to install it. However on the server we are using today it is already installed.
 
@@ -88,7 +88,7 @@ geo
 ##  8 Armenia             europe   FALSE FALSE  40.2   45    lower_mid 
 ##  9 Australia           asia     TRUE  FALSE -25    135    high      
 ## 10 Austria             europe   TRUE  FALSE  47.3   13.3  high      
-## # ... with 186 more rows
+## # … with 186 more rows
 ```
 
 `read_csv` has guessed the type of data each column holds:
@@ -108,11 +108,11 @@ You can also see this data frame referring to itself as "a tibble". This is the 
 
 ### Tip {- .tip}
 
-A data frame can also be created from vectors, with the `data_frame` function. (See also `data.frame` in base R.) For example:
+A data frame can also be created from vectors, with the `tibble` function. (See also `data.frame` in base R.) For example:
 
 
 ```r
-data_frame(foo=c(10,20,30), bar=c("a","b","c"))
+tibble(foo=c(10,20,30), bar=c("a","b","c"))
 ```
 
 ```
@@ -264,7 +264,7 @@ geo[,"region"]
 ##  8 europe  
 ##  9 asia    
 ## 10 europe  
-## # ... with 186 more rows
+## # … with 186 more rows
 ```
 
 Multiple rows or columns may be retrieved using a vector.
@@ -412,7 +412,7 @@ geo[is_southern,]
 ##  8 Chile            americas TRUE  TRUE  -33.5  -70.6 high      
 ##  9 Comoros          africa   FALSE TRUE  -12.2   44.4 low       
 ## 10 Congo, Dem. Rep. africa   FALSE TRUE   -2.5   23.5 low       
-## # ... with 30 more rows
+## # … with 30 more rows
 ```
 
 Comparison operators available are:
@@ -459,19 +459,19 @@ geo
 
 ```
 ## # A tibble: 196 x 8
-##    name              region  oecd  g77     lat    long income2017 southern
-##    <chr>             <chr>   <lgl> <lgl> <dbl>   <dbl> <chr>      <lgl>   
-##  1 Afghanistan       asia    FALSE TRUE   33     66    low        FALSE   
-##  2 Albania           europe  FALSE FALSE  41     20    upper_mid  FALSE   
-##  3 Algeria           africa  FALSE TRUE   28      3    upper_mid  FALSE   
-##  4 Andorra           europe  FALSE FALSE  42.5    1.52 high       FALSE   
-##  5 Angola            africa  FALSE TRUE  -12.5   18.5  lower_mid  TRUE    
-##  6 Antigua and Barb… americ… FALSE TRUE   17.0  -61.8  high       FALSE   
-##  7 Argentina         americ… FALSE TRUE  -34    -64    upper_mid  TRUE    
-##  8 Armenia           europe  FALSE FALSE  40.2   45    lower_mid  FALSE   
-##  9 Australia         asia    TRUE  FALSE -25    135    high       TRUE    
-## 10 Austria           europe  TRUE  FALSE  47.3   13.3  high       FALSE   
-## # ... with 186 more rows
+##    name               region  oecd  g77     lat    long income2017 southern
+##    <chr>              <chr>   <lgl> <lgl> <dbl>   <dbl> <chr>      <lgl>   
+##  1 Afghanistan        asia    FALSE TRUE   33     66    low        FALSE   
+##  2 Albania            europe  FALSE FALSE  41     20    upper_mid  FALSE   
+##  3 Algeria            africa  FALSE TRUE   28      3    upper_mid  FALSE   
+##  4 Andorra            europe  FALSE FALSE  42.5    1.52 high       FALSE   
+##  5 Angola             africa  FALSE TRUE  -12.5   18.5  lower_mid  TRUE    
+##  6 Antigua and Barbu… americ… FALSE TRUE   17.0  -61.8  high       FALSE   
+##  7 Argentina          americ… FALSE TRUE  -34    -64    upper_mid  TRUE    
+##  8 Armenia            europe  FALSE FALSE  40.2   45    lower_mid  FALSE   
+##  9 Australia          asia    TRUE  FALSE -25    135    high       TRUE    
+## 10 Austria            europe  TRUE  FALSE  47.3   13.3  high       FALSE   
+## # … with 186 more rows
 ```
 
 
@@ -682,7 +682,7 @@ arrange(geo, lat)
 ##  8 Australia    asia     TRUE  FALSE -25    135   high       TRUE    
 ##  9 Paraguay     americas FALSE TRUE  -23.3  -58   upper_mid  TRUE    
 ## 10 Botswana     africa   FALSE TRUE  -22     24   upper_mid  TRUE    
-## # ... with 186 more rows
+## # … with 186 more rows
 ```
 
 Numeric columns are sorted in numeric order. Character columns will be sorted in alphabetical order. Factor columns are sorted in order of their levels. The `desc` helper function can be used to sort in descending order.
@@ -706,7 +706,7 @@ arrange(geo, desc(name))
 ##  8 Uruguay        americas FALSE TRUE  -33    -56    high       TRUE    
 ##  9 United States  americas TRUE  FALSE  39.8  -98.5  high       FALSE   
 ## 10 United Kingdom europe   TRUE  FALSE  54.8   -2.70 high       FALSE   
-## # ... with 186 more rows
+## # … with 186 more rows
 ```
 
 
@@ -723,7 +723,7 @@ gap
 ```
 ## # A tibble: 4,312 x 5
 ##    name                 year population gdp_percap life_exp
-##    <chr>               <int>      <dbl>      <dbl>    <dbl>
+##    <chr>               <dbl>      <dbl>      <dbl>    <dbl>
 ##  1 Afghanistan          1800    3280000        603     28.2
 ##  2 Albania              1800     410445        667     35.4
 ##  3 Algeria              1800    2503218        715     28.8
@@ -734,7 +734,7 @@ gap
 ##  8 Armenia              1800     413326        514     34  
 ##  9 Australia            1800     351014        814     34.0
 ## 10 Austria              1800    3205587       1847     34.4
-## # ... with 4,302 more rows
+## # … with 4,302 more rows
 ```
 
 ### Quiz {.challenge -}
@@ -754,7 +754,7 @@ gap_geo
 ```
 ## # A tibble: 4,312 x 12
 ##    name   year population gdp_percap life_exp region oecd  g77     lat
-##    <chr> <int>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>
+##    <chr> <dbl>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>
 ##  1 Afgh…  1800    3280000        603     28.2 asia   FALSE TRUE   33  
 ##  2 Alba…  1800     410445        667     35.4 europe FALSE FALSE  41  
 ##  3 Alge…  1800    2503218        715     28.8 africa FALSE TRUE   28  
@@ -765,7 +765,7 @@ gap_geo
 ##  8 Arme…  1800     413326        514     34   europe FALSE FALSE  40.2
 ##  9 Aust…  1800     351014        814     34.0 asia   TRUE  FALSE -25  
 ## 10 Aust…  1800    3205587       1847     34.4 europe TRUE  FALSE  47.3
-## # ... with 4,302 more rows, and 3 more variables: long <dbl>,
+## # … with 4,302 more rows, and 3 more variables: long <dbl>,
 ## #   income2017 <fct>, southern <lgl>
 ```
 

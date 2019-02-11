@@ -127,7 +127,7 @@ Add comments to code, using lines starting with the `#` character. This makes it
 
 ### Challenge: using variables {- .challenge}
 
-1. Re-write this calculation as a single line of R:
+1. Re-write this calculation so that it *doesn't* use variables:
 
 
 ```r

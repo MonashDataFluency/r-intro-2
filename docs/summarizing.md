@@ -161,7 +161,7 @@ summarize(
 ```
 ## # A tibble: 22 x 2
 ##     year mean_life_exp
-##    <int>         <dbl>
+##    <dbl>         <dbl>
 ##  1  1800          30.9
 ##  2  1810          31.1
 ##  3  1820          31.2
@@ -172,7 +172,7 @@ summarize(
 ##  8  1870          31.5
 ##  9  1880          32.0
 ## 10  1890          32.5
-## # ... with 12 more rows
+## # … with 12 more rows
 ```
 
 
@@ -199,7 +199,7 @@ result
 ## # A tibble: 44 x 3
 ## # Groups:   year [?]
 ##     year oecd  mean_life_exp
-##    <int> <lgl>         <dbl>
+##    <dbl> <lgl>         <dbl>
 ##  1  1800 FALSE          29.9
 ##  2  1800 TRUE           34.7
 ##  3  1810 FALSE          29.9
@@ -210,7 +210,7 @@ result
 ##  8  1830 TRUE           36.2
 ##  9  1840 FALSE          30.0
 ## 10  1840 TRUE           36.2
-## # ... with 34 more rows
+## # … with 34 more rows
 ```
 
 ```r

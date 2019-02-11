@@ -6,7 +6,7 @@ knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
 
 *Data frame* is R's name for tabular data. We generally want each row in a data frame to represent a unit of observation, and each column to contain a different type of information about the units of observation. Tabular data in this form is called ["tidy data"](http://vita.had.co.nz/papers/tidy-data.html).
 
-Today we will be using a collection of modern packages collectively known as the [Tidyverse](https://www.tidyverse.org/). R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into "base R", including having its own slightly improved form of data frame. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.
+Today we will be using a collection of modern packages collectively known as the [Tidyverse](https://www.tidyverse.org/). R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into "base R", including having its own slightly improved form of data frame, which is called a *tibble*. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.
 
 If the Tidyverse is not already installed, you will need to install it. However on the server we are using today it is already installed.
 
@@ -74,10 +74,10 @@ You can also see this data frame referring to itself as "a tibble". This is the 
 
 ### Tip {- .tip}
 
-A data frame can also be created from vectors, with the `data_frame` function. (See also `data.frame` in base R.) For example:
+A data frame can also be created from vectors, with the `tibble` function. (See also `data.frame` in base R.) For example:
 
 ```{r}
-data_frame(foo=c(10,20,30), bar=c("a","b","c"))
+tibble(foo=c(10,20,30), bar=c("a","b","c"))
 ```
 
 The argument names become column names in the data frame.

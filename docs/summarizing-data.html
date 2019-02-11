@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Introduction to R</title>
-  <meta name="description" content="Introduction to R">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <title>4 Summarizing data | Introduction to R</title>
+  <meta name="description" content="4 Summarizing data | Introduction to R">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Introduction to R" />
+  <meta property="og:title" content="4 Summarizing data | Introduction to R" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to R" />
+  <meta name="twitter:title" content="4 Summarizing data | Introduction to R" />
   
   
   
@@ -34,6 +34,7 @@
 <link rel="next" href="thinking-in-r.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -50,7 +51,7 @@
 <style type="text/css">
 a.sourceLine { display: inline-block; line-height: 1.25; }
 a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; position: absolute; }
+a.sourceLine:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -63,13 +64,11 @@ code.sourceCode { white-space: pre-wrap; }
 a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
 pre.numberSource a.sourceLine
-  { position: relative; }
-pre.numberSource a.sourceLine:empty
-  { position: absolute; }
+  { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
   { content: attr(data-line-number);
-    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all;
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -193,27 +192,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">4</span> Summarizing data</h1>
 <p>Having loaded and thoroughly explored a data set, we are ready to distill it down to concise conclusions. At its simplest, this involves calculating summary statistics like counts, means, and standard deviations. Beyond this is the fitting of models, and hypothesis testing and confidence interval calculation. R has a huge number of packages devoted to these tasks and this is a large part of its appeal, but is beyond the scope of today.</p>
 <p>Loading the data as before, if you have not already done so:</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb157-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb157-3" data-line-number="3">geo &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;r-intro-2-files/geo.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb157-4" data-line-number="4">gap &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;r-intro-2-files/gap-minder.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb157-5" data-line-number="5">gap_geo &lt;-<span class="st"> </span><span class="kw">left_join</span>(gap, geo, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+
+geo &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;r-intro-2-files/geo.csv&quot;</span>)
+gap &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;r-intro-2-files/gap-minder.csv&quot;</span>)
+gap_geo &lt;-<span class="st"> </span><span class="kw">left_join</span>(gap, geo, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</code></pre>
 <div id="summary-functions" class="section level2">
 <h2><span class="header-section-number">4.1</span> Summary functions</h2>
 <p>R has a variety of functions for summarizing a vector, including: <code>sum</code>, <code>mean</code>, <code>min</code>, <code>max</code>, <code>median</code>, <code>sd</code>.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="kw">mean</span>( <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) )</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>( <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) )</code></pre>
 <pre><code>## [1] 2.5</code></pre>
 <p>We can use these on the Gapminder data.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1">gap2010 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)</a>
-<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="kw">sum</span>(gap2010<span class="op">$</span>population)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">gap2010 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)
+<span class="kw">sum</span>(gap2010<span class="op">$</span>population)</code></pre>
 <pre><code>## [1] 6949495061</code></pre>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1"><span class="kw">mean</span>(gap2010<span class="op">$</span>life_exp)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(gap2010<span class="op">$</span>life_exp)</code></pre>
 <pre><code>## [1] NA</code></pre>
 </div>
 <div id="missing-values" class="section level2">
 <h2><span class="header-section-number">4.2</span> Missing values</h2>
 <p>Why did <code>mean</code> fail? The reason is that <code>life_exp</code> contains missing values (<code>NA</code>).</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1">gap2010<span class="op">$</span>life_exp</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">gap2010<span class="op">$</span>life_exp</code></pre>
 <pre><code>##   [1] 56.20 76.31 76.55 82.66 60.08 76.85 75.82 73.34 81.98 80.50 69.13
 ##  [12] 73.79 76.03 70.39 76.68 70.43 79.98 71.38 61.82 72.13 71.64 76.75
 ##  [23] 57.06 74.19 77.08 73.86 57.89 57.73 66.12 57.25 81.29 72.45 47.48
@@ -233,36 +232,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [177] 72.56 76.89 78.21 67.94    NA 56.81 70.41 76.51 80.34 78.74 76.36
 ## [188] 68.77 63.02 75.41 72.27 73.07 67.51 52.02 49.57 58.13</code></pre>
 <p>R will not ignore these unless we explicitly tell it to with <code>na.rm=TRUE</code>.</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="kw">mean</span>(gap2010<span class="op">$</span>life_exp, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(gap2010<span class="op">$</span>life_exp, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## [1] 70.34005</code></pre>
 <p>Ideally we should also use <code>weighted.mean</code> here, to take population into account.</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="kw">weighted.mean</span>(gap2010<span class="op">$</span>life_exp, gap2010<span class="op">$</span>population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">weighted.mean</span>(gap2010<span class="op">$</span>life_exp, gap2010<span class="op">$</span>population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## [1] 70.96192</code></pre>
 <p><code>NA</code> is a special value. If we try to calculate with <code>NA</code>, the result is <code>NA</code></p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1"><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></code></pre>
 <pre><code>## [1] NA</code></pre>
 <p><code>is.na</code> can be used to detect <code>NA</code> values, or <code>na.omit</code> can be used to directly remove rows of a data frame containing them.</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">is.na</span>( <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="ot">NA</span>,<span class="dv">3</span>) )</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>( <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="ot">NA</span>,<span class="dv">3</span>) )</code></pre>
 <pre><code>## [1] FALSE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1">cleaned &lt;-<span class="st"> </span><span class="kw">filter</span>(gap2010, <span class="op">!</span><span class="kw">is.na</span>(life_exp))</a>
-<a class="sourceLine" id="cb174-2" data-line-number="2"><span class="kw">weighted.mean</span>(cleaned<span class="op">$</span>life_exp, cleaned<span class="op">$</span>population)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">cleaned &lt;-<span class="st"> </span><span class="kw">filter</span>(gap2010, <span class="op">!</span><span class="kw">is.na</span>(life_exp))
+<span class="kw">weighted.mean</span>(cleaned<span class="op">$</span>life_exp, cleaned<span class="op">$</span>population)</code></pre>
 <pre><code>## [1] 70.96192</code></pre>
 </div>
 <div id="grouped-summaries" class="section level2">
 <h2><span class="header-section-number">4.3</span> Grouped summaries</h2>
 <p>The <code>summarize</code> function in <code>dplyr</code> allows summary functions to be applied to data frames.</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="kw">summarize</span>(gap2010, <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarize</span>(gap2010, <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</code></pre>
 <pre><code>## # A tibble: 1 x 1
 ##   mean_life_exp
 ##           &lt;dbl&gt;
 ## 1          71.0</code></pre>
 <p>So far unremarkable, but <code>summarize</code> comes into its own when the <code>group_by</code> “adjective” is used.</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="kw">summarize</span>(</a>
-<a class="sourceLine" id="cb178-2" data-line-number="2">    <span class="kw">group_by</span>(gap_geo, year), </a>
-<a class="sourceLine" id="cb178-3" data-line-number="3">    <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">summarize</span>(
+    <span class="kw">group_by</span>(gap_geo, year), 
+    <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</code></pre>
 <pre><code>## # A tibble: 22 x 2
 ##     year mean_life_exp
-##    &lt;int&gt;         &lt;dbl&gt;
+##    &lt;dbl&gt;         &lt;dbl&gt;
 ##  1  1800          30.9
 ##  2  1810          31.1
 ##  3  1820          31.2
@@ -273,7 +272,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8  1870          31.5
 ##  9  1880          32.0
 ## 10  1890          32.5
-## # ... with 12 more rows</code></pre>
+## # … with 12 more rows</code></pre>
 <div id="challenge-summarizing" class="section level3 unnumbered challenge">
 <h3>Challenge: summarizing</h3>
 <p>What is the total population for each year? Plot the result.</p>
@@ -282,14 +281,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="section-2" class="section level3 unnumbered">
 <h3></h3>
 <p><code>group_by</code> can be used to group by multiple columns, much like <code>count</code>. We can use this to see how the rest of the world is catching up to OECD nations in terms of life expectancy.</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1">result &lt;-<span class="st"> </span><span class="kw">summarize</span>(</a>
-<a class="sourceLine" id="cb180-2" data-line-number="2">    <span class="kw">group_by</span>(gap_geo,year,oecd), </a>
-<a class="sourceLine" id="cb180-3" data-line-number="3">    <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb180-4" data-line-number="4">result</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">summarize</span>(
+    <span class="kw">group_by</span>(gap_geo,year,oecd), 
+    <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))
+result</code></pre>
 <pre><code>## # A tibble: 44 x 3
 ## # Groups:   year [?]
 ##     year oecd  mean_life_exp
-##    &lt;int&gt; &lt;lgl&gt;         &lt;dbl&gt;
+##    &lt;dbl&gt; &lt;lgl&gt;         &lt;dbl&gt;
 ##  1  1800 FALSE          29.9
 ##  2  1800 TRUE           34.7
 ##  3  1810 FALSE          29.9
@@ -300,8 +299,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  8  1830 TRUE           36.2
 ##  9  1840 FALSE          30.0
 ## 10  1840 TRUE           36.2
-## # ... with 34 more rows</code></pre>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="kw">ggplot</span>(result, <span class="kw">aes</span>(<span class="dt">x=</span>year,<span class="dt">y=</span>mean_life_exp,<span class="dt">color=</span>oecd)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</a></code></pre></div>
+## # … with 34 more rows</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(result, <span class="kw">aes</span>(<span class="dt">x=</span>year,<span class="dt">y=</span>mean_life_exp,<span class="dt">color=</span>oecd)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</code></pre>
 <p><img src="summarizing_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>A similar plot could be produced using <code>geom_smooth</code>. Differences here are that we have full control over the summarization process so we were able to use the exact summarization method we want (<code>weighted.mean</code> for each year), and we have access to the resulting numeric data as well as the plot. We have reduced a large data set down to a smaller one that distills out one of the stories present in this data. However the earlier visualization and exploration activity using <code>ggplot2</code> was essential. It gave us an idea of what sort of variability was present in the data, and any unexpected issues the data might have.</p>
 </div>
@@ -310,10 +309,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.4</span> t-test</h2>
 <p>We will finish this section by demonstrating a t-test. The main point of this section is to give a flavour of how statistical tests work in R, rather than the details of what a t-test does.</p>
 <p>Has life expectancy increased from 2000 to 2010?</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1">gap2000 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2000</span>)</a>
-<a class="sourceLine" id="cb183-2" data-line-number="2">gap2010 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)</a>
-<a class="sourceLine" id="cb183-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb183-4" data-line-number="4"><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r">gap2000 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2000</span>)
+gap2010 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)
+
+<span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp)</code></pre>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -327,9 +326,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  70.34005  67.43185</code></pre>
 <p>Statistical routines often have many ways to tweak the details of their operation. These are specified by further arguments to the function call, to override the default behaviour. By default, <code>t.test</code> performs an unpaired t-test, but these are repeated observations of the same countries. We can specify <code>paired=TRUE</code> to <code>t.test</code> to perform a paired sample t-test and gain some statistical power. Check this by looking at the help page with <code>?t.test</code>.</p>
 <p>It’s important to first check that both data frames are in the same order.</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">all</span>(gap2000<span class="op">$</span>name <span class="op">==</span><span class="st"> </span>gap2010<span class="op">$</span>name)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">all</span>(gap2000<span class="op">$</span>name <span class="op">==</span><span class="st"> </span>gap2010<span class="op">$</span>name)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1"><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp, <span class="dt">paired=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp, <span class="dt">paired=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -342,8 +341,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## mean of the differences 
 ##                2.908201</code></pre>
 <p>When performing a statistical test, it’s good practice to visualize the data to make sure there is nothing funny going on.</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1"><span class="kw">plot</span>(gap2000<span class="op">$</span>life_exp, gap2010<span class="op">$</span>life_exp)</a>
-<a class="sourceLine" id="cb189-2" data-line-number="2"><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</a></code></pre></div>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(gap2000<span class="op">$</span>life_exp, gap2010<span class="op">$</span>life_exp)
+<span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</code></pre>
 <p><img src="summarizing_files/figure-html/unnamed-chunk-15-1.png" width="336" style="display: block; margin: auto;" /></p>
 <p>This is a visual confirmation of the t-test result. If there were no difference between the years then points would lie approximately evenly above and below the diagonal line, which is clearly not the case. However the outlier may warrant investigation.</p>
 </div>
@@ -374,7 +373,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -384,6 +383,10 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
 "link": null,
 "text": null
 },
