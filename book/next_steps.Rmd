@@ -26,15 +26,17 @@ Have a look at these cheat sheets to see what is possible with R.
 
 * [RStudio's collection of cheat sheets](https://www.rstudio.com/resources/cheatsheets/) cover newer packages in R.
 * [An old-school cheat sheet](https://cran.r-project.org/doc/contrib/Short-refcard.pdf) for dinosaurs and people wishing to go deeper.
-* [Bioconductor cheat sheet](https://github.com/mikelove/bioc-refcard/blob/master/README.Rmd) for biological data.
+* [A Bioconductor cheat sheet](https://github.com/mikelove/bioc-refcard/blob/master/README.Rmd) for biological data.
 
+[The R Manuals](https://cran.r-project.org/manuals.html) are the place to look if you need a precise definition of how R behaves.
 
 ## Join the community
 
-Join the [Data Fluency community at Monash](https://monashdatafluency.github.io/).
+Join the [Data Fluency community at Monash](https://www.monash.edu/data-fluency).
 
  * Mailing list for workshop and event announcements.
  * Slack for discussion.
+ * Monthly seminars on Data Science topics.
  * Drop-in sessions on Friday afternoon.
 
 Meetups in Melbourne:

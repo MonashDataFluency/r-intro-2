@@ -1,6 +1,5 @@
 ---
-title: Introduction to R 
-subtitle: "Version 2"
+title: Introduction to R, version 2 
 documentclass: report
 classoption: a4paper
 links-as-notes: yes
@@ -25,15 +24,21 @@ These are course notes for the "Introduction to R" course given by the [Monash B
 * [PDF version for printing](https://monashdatafluency.github.io/r-intro-2/r-intro-2.pdf)
 * [ZIP of data files used in this workshop](https://monashdatafluency.github.io/r-intro-2/r-intro-2-files.zip)
 
-During the workshop we will be using R on a server we run. However R is free, and you can install it on your own computer. There are two things to download and install:
+During the workshop we will be using the RStudio Cloud to use R over the web:
+
+* [RStudio Cloud](https://rstudio.cloud/)
+
+You can also install R on your own computer. There are two things to download and install:
 
 * [Download R](https://cran.rstudio.com/)
 * [Download RStudio](https://www.rstudio.com/products/rstudio/download/)
 
-R is the language itself. RStudio provides a convenient environment in which to use R.
+R is the language itself. RStudio provides a convenient environment in which to use R, either on your local computer or on a server.
 
 
 ### Source code {-}
+
+The book was created in R using the `rmarkdown` and `bookdown` packages!
 
 * [GitHub page](https://github.com/MonashDataFluency/r-intro-2)
 

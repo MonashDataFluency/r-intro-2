@@ -8,13 +8,25 @@ knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
 
 Today we will be using a collection of modern packages collectively known as the [Tidyverse](https://www.tidyverse.org/). R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into "base R", including having its own slightly improved form of data frame, which is called a *tibble*. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.
 
-If the Tidyverse is not already installed, you will need to install it. However on the server we are using today it is already installed.
+
+## Setting up
+
+Our first step is to download the files we need and to install the Tidyverse. This is the one step where we ask you to copy and paste some code:
 
 ```{r, eval=FALSE}
+# Download files for this workshop
+download.file(
+  "https://monashdatafluency.github.io/r-intro-2/r-intro-2-files.zip",
+  destfile="r-intro-2-files.zip")
+unzip("r-intro-2-files.zip")
+
+# Install Tidyverse
 install.packages("tidyverse")
 ```
 
-People sometimes have problems installing all the packages in Tidyverse on Windows machines. If you run into problems you may have more success installing individual packages.
+If using RStudio Cloud, you might need to switch to R version 3.5.3 to successfully install Tidyverse. Use the drop-down in the top right corner of the page.
+
+People also sometimes have problems installing all the packages in Tidyverse on Windows machines. If you run into problems you may have more success installing individual packages.
 
 ```{r, eval=FALSE}
 install.packages(c("dplyr","readr","tidyr","ggplot2"))
@@ -33,7 +45,6 @@ library(ggplot2)
 ```
 
 The `tidyverse` package loads various other packages, setting up a modern R environment. In this section we will be using functions from the `dplyr`, `readr` and `tidyr` packages.
-
 
 R is a language with mini-languages within it that solve specific problem domains. `dplyr` is such a mini-language, a set of "verbs" (functions) that work well together. `dplyr`, with the help of `tidyr` for some more complex operations, provides a way to perform most manipulations on a data frame that you might need.
 
@@ -381,7 +392,7 @@ The "left" in "left join" refers to how rows that can't be paired up are handled
 
 ## Further reading
 
-We've covered the fundamentals of dplyr and data frames, but there is much more to learn. Notably, we haven't covered the use of the pipe `%>%` to chain `dplyr` verbs together. The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. The Monash Bioinformatics Platform ["R more" course](https://monashbioinformaticsplatform.github.io/r-more/) also covers this. 
+We've covered the fundamentals of dplyr and data frames, but there is much more to learn. Notably, we haven't covered the use of the pipe `%>%` to chain `dplyr` verbs together. The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. The Monash Data Fluency ["Programming and Tidy data analysis in R" course](https://monashdatafluency.github.io/r-progtidy/) also covers this. 
 
 
 

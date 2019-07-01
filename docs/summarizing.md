@@ -197,7 +197,7 @@ result
 
 ```
 ## # A tibble: 44 x 3
-## # Groups:   year [?]
+## # Groups:   year [22]
 ##     year oecd  mean_life_exp
 ##    <dbl> <lgl>         <dbl>
 ##  1  1800 FALSE          29.9
@@ -341,8 +341,8 @@ names(result)
 ```
 
 ```
-## [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
-## [6] "null.value"  "alternative" "method"      "data.name"
+##  [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
+##  [6] "null.value"  "stderr"      "alternative" "method"      "data.name"
 ```
 
 ```r
@@ -440,7 +440,7 @@ Once you have a useful data analysis, you may want to do it again with different
 * [For-loops](http://r4ds.had.co.nz/iteration.html) to do things multiple times.
 * [If-statements](http://r4ds.had.co.nz/functions.html#conditional-execution) to make decisions.
 
-The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. The Monash Bioinformatics Platform ["R more" course](https://monashbioinformaticsplatform.github.io/r-more/) also covers this.
+The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. Monash Data Fluency ["Programming and Tidy data analysis in R" course](https://monashdatafluency.github.io/r-progtidy/) also covers this.
 
 
 

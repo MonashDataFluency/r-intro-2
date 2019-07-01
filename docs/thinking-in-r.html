@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>5 Thinking in R | Introduction to R</title>
-  <meta name="description" content="5 Thinking in R | Introduction to R">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <title>Introduction to R, version 2</title>
+  <meta name="description" content="Introduction to R, version 2">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
 
-  <meta property="og:title" content="5 Thinking in R | Introduction to R" />
+  <meta property="og:title" content="Introduction to R, version 2" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Thinking in R | Introduction to R" />
+  <meta name="twitter:title" content="Introduction to R, version 2" />
   
   
   
@@ -34,7 +34,6 @@
 <link rel="next" href="next-steps.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
@@ -49,9 +48,9 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
@@ -61,14 +60,16 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -77,9 +78,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -136,16 +137,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#functions"><i class="fa fa-check"></i><b>1.7</b> Functions</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>2</b> Data frames</a><ul>
-<li class="chapter" data-level="2.1" data-path="data-frames.html"><a href="data-frames.html#loading-data"><i class="fa fa-check"></i><b>2.1</b> Loading data</a></li>
-<li class="chapter" data-level="2.2" data-path="data-frames.html"><a href="data-frames.html#exploring"><i class="fa fa-check"></i><b>2.2</b> Exploring</a></li>
-<li class="chapter" data-level="2.3" data-path="data-frames.html"><a href="data-frames.html#indexing-data-frames"><i class="fa fa-check"></i><b>2.3</b> Indexing data frames</a></li>
-<li class="chapter" data-level="2.4" data-path="data-frames.html"><a href="data-frames.html#columns-are-vectors"><i class="fa fa-check"></i><b>2.4</b> Columns are vectors</a></li>
-<li class="chapter" data-level="2.5" data-path="data-frames.html"><a href="data-frames.html#logical-indexing"><i class="fa fa-check"></i><b>2.5</b> Logical indexing</a></li>
-<li class="chapter" data-level="2.6" data-path="data-frames.html"><a href="data-frames.html#factors"><i class="fa fa-check"></i><b>2.6</b> Factors</a></li>
-<li class="chapter" data-level="2.7" data-path="data-frames.html"><a href="data-frames.html#readability-vs-tidyness"><i class="fa fa-check"></i><b>2.7</b> Readability vs tidyness</a></li>
-<li class="chapter" data-level="2.8" data-path="data-frames.html"><a href="data-frames.html#sorting"><i class="fa fa-check"></i><b>2.8</b> Sorting</a></li>
-<li class="chapter" data-level="2.9" data-path="data-frames.html"><a href="data-frames.html#joining-data-frames"><i class="fa fa-check"></i><b>2.9</b> Joining data frames</a></li>
-<li class="chapter" data-level="2.10" data-path="data-frames.html"><a href="data-frames.html#further-reading"><i class="fa fa-check"></i><b>2.10</b> Further reading</a></li>
+<li class="chapter" data-level="2.1" data-path="data-frames.html"><a href="data-frames.html#setting-up"><i class="fa fa-check"></i><b>2.1</b> Setting up</a></li>
+<li class="chapter" data-level="2.2" data-path="data-frames.html"><a href="data-frames.html#loading-data"><i class="fa fa-check"></i><b>2.2</b> Loading data</a></li>
+<li class="chapter" data-level="2.3" data-path="data-frames.html"><a href="data-frames.html#exploring"><i class="fa fa-check"></i><b>2.3</b> Exploring</a></li>
+<li class="chapter" data-level="2.4" data-path="data-frames.html"><a href="data-frames.html#indexing-data-frames"><i class="fa fa-check"></i><b>2.4</b> Indexing data frames</a></li>
+<li class="chapter" data-level="2.5" data-path="data-frames.html"><a href="data-frames.html#columns-are-vectors"><i class="fa fa-check"></i><b>2.5</b> Columns are vectors</a></li>
+<li class="chapter" data-level="2.6" data-path="data-frames.html"><a href="data-frames.html#logical-indexing"><i class="fa fa-check"></i><b>2.6</b> Logical indexing</a></li>
+<li class="chapter" data-level="2.7" data-path="data-frames.html"><a href="data-frames.html#factors"><i class="fa fa-check"></i><b>2.7</b> Factors</a></li>
+<li class="chapter" data-level="2.8" data-path="data-frames.html"><a href="data-frames.html#readability-vs-tidyness"><i class="fa fa-check"></i><b>2.8</b> Readability vs tidyness</a></li>
+<li class="chapter" data-level="2.9" data-path="data-frames.html"><a href="data-frames.html#sorting"><i class="fa fa-check"></i><b>2.9</b> Sorting</a></li>
+<li class="chapter" data-level="2.10" data-path="data-frames.html"><a href="data-frames.html#joining-data-frames"><i class="fa fa-check"></i><b>2.10</b> Joining data frames</a></li>
+<li class="chapter" data-level="2.11" data-path="data-frames.html"><a href="data-frames.html#further-reading"><i class="fa fa-check"></i><b>2.11</b> Further reading</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Plotting with ggplot2</a><ul>
 <li class="chapter" data-level="3.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#elements-of-a-ggplot"><i class="fa fa-check"></i><b>3.1</b> Elements of a ggplot</a></li>
@@ -180,7 +182,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introduction to R, version 2</a>
           </h1>
         </div>
 
@@ -191,44 +193,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="thinking-in-r" class="section level1">
 <h1><span class="header-section-number">5</span> Thinking in R</h1>
 <p>The result of a t-test is actually a value we can manipulate further. Two functions help us here. <code>class</code> gives the “public face” of a value, and <code>typeof</code> gives its underlying type, the way R thinks of it internally. For example numbers are “numeric” and have some representation in computer memory, either “integer” for whole numbers only, or “double” which can hold fractional numbers (stored in memory in a base-2 version of scientific notation).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="dv">42</span>)</code></pre>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="thinking-in-r.html#cb190-1"></a><span class="kw">class</span>(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="dv">42</span>)</code></pre>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="thinking-in-r.html#cb192-1"></a><span class="kw">typeof</span>(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <p>Let’s look at the result of a t-test:</p>
-<pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp, <span class="dt">paired=</span><span class="ot">TRUE</span>)
-
-<span class="kw">class</span>(result)</code></pre>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="thinking-in-r.html#cb194-1"></a>result &lt;-<span class="st"> </span><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp, <span class="dt">paired=</span><span class="ot">TRUE</span>)</span>
+<span id="cb194-2"><a href="thinking-in-r.html#cb194-2"></a></span>
+<span id="cb194-3"><a href="thinking-in-r.html#cb194-3"></a><span class="kw">class</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;htest&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(result)</code></pre>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="thinking-in-r.html#cb196-1"></a><span class="kw">typeof</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(result)</code></pre>
-<pre><code>## [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
-## [6] &quot;null.value&quot;  &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">result<span class="op">$</span>p.value</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="thinking-in-r.html#cb198-1"></a><span class="kw">names</span>(result)</span></code></pre></div>
+<pre><code>##  [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
+##  [6] &quot;null.value&quot;  &quot;stderr&quot;      &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="thinking-in-r.html#cb200-1"></a>result<span class="op">$</span>p.value</span></code></pre></div>
 <pre><code>## [1] 4.301261e-29</code></pre>
 <p>In R, a t-test is just another function returning just another type of data, so it can also be a building block. The value it returns is a special type of vector called a “list”, but with a public face that presents itself nicely. This is a common pattern in R. Besides printing to the console nicely, this public face may alter the behaviour of generic functions such as <code>plot</code> and <code>summary</code>.</p>
 <p>Similarly a data frame is a list of vectors that is able to present itself nicely.</p>
 <div id="lists" class="section level2">
 <h2><span class="header-section-number">5.1</span> Lists</h2>
 <p>Lists are vectors that can hold anything as elements (even other lists!). It’s possible to create lists with the <code>list</code> function. This becomes especially useful once you get into the programming side of R. For example writing your own function that needs to return multiple values, it could do so in the form of a list.</p>
-<pre class="sourceCode r"><code class="sourceCode r">mylist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">hello=</span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>,<span class="st">&quot;world&quot;</span>), <span class="dt">numbers=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))
-mylist</code></pre>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="thinking-in-r.html#cb202-1"></a>mylist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">hello=</span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>,<span class="st">&quot;world&quot;</span>), <span class="dt">numbers=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb202-2"><a href="thinking-in-r.html#cb202-2"></a>mylist</span></code></pre></div>
 <pre><code>## $hello
 ## [1] &quot;Hello&quot; &quot;world&quot;
 ## 
 ## $numbers
 ## [1] 1 2 3 4</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(mylist)</code></pre>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="thinking-in-r.html#cb204-1"></a><span class="kw">class</span>(mylist)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mylist)</code></pre>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="thinking-in-r.html#cb206-1"></a><span class="kw">typeof</span>(mylist)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(mylist)</code></pre>
+<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="thinking-in-r.html#cb208-1"></a><span class="kw">names</span>(mylist)</span></code></pre></div>
 <pre><code>## [1] &quot;hello&quot;   &quot;numbers&quot;</code></pre>
 <p>Accessing lists can be done by name with <code>$</code> or by position with <code>[[ ]]</code>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">mylist<span class="op">$</span>hello</code></pre>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="thinking-in-r.html#cb210-1"></a>mylist<span class="op">$</span>hello</span></code></pre></div>
 <pre><code>## [1] &quot;Hello&quot; &quot;world&quot;</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">mylist[[<span class="dv">2</span>]]</code></pre>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="thinking-in-r.html#cb212-1"></a>mylist[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 </div>
 <div id="other-types-not-covered-here" class="section level2">
@@ -250,7 +252,7 @@ mylist</code></pre>
 <li><a href="http://r4ds.had.co.nz/iteration.html">For-loops</a> to do things multiple times.</li>
 <li><a href="http://r4ds.had.co.nz/functions.html#conditional-execution">If-statements</a> to make decisions.</li>
 </ul>
-<p>The <a href="http://r4ds.had.co.nz/">“R for Data Science” book</a> is an excellent source to learn more. The Monash Bioinformatics Platform <a href="https://monashbioinformaticsplatform.github.io/r-more/">“R more” course</a> also covers this.</p>
+<p>The <a href="http://r4ds.had.co.nz/">“R for Data Science” book</a> is an excellent source to learn more. Monash Data Fluency <a href="https://monashdatafluency.github.io/r-progtidy/">“Programming and Tidy data analysis in R” course</a> also covers this.</p>
 
 </div>
 </div>
@@ -280,7 +282,7 @@ gitbook.start({
 "google": false,
 "linkedin": false,
 "weibo": false,
-"instapaper": false,
+"instapper": false,
 "vk": false,
 "all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
 },
@@ -290,10 +292,6 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": null,
-"text": null
-},
-"history": {
 "link": null,
 "text": null
 },

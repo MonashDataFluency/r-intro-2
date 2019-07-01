@@ -6,14 +6,26 @@
 
 Today we will be using a collection of modern packages collectively known as the [Tidyverse](https://www.tidyverse.org/). R and its predecessor S have a history dating back to 1976. The Tidyverse fixes some dubious design decisions baked into "base R", including having its own slightly improved form of data frame, which is called a *tibble*. Sticking to the Tidyverse where possible is generally safer, Tidyverse packages are more willing to generate errors rather than ignore problems.
 
-If the Tidyverse is not already installed, you will need to install it. However on the server we are using today it is already installed.
+
+## Setting up
+
+Our first step is to download the files we need and to install the Tidyverse. This is the one step where we ask you to copy and paste some code:
 
 
 ```r
+# Download files for this workshop
+download.file(
+  "https://monashdatafluency.github.io/r-intro-2/r-intro-2-files.zip",
+  destfile="r-intro-2-files.zip")
+unzip("r-intro-2-files.zip")
+
+# Install Tidyverse
 install.packages("tidyverse")
 ```
 
-People sometimes have problems installing all the packages in Tidyverse on Windows machines. If you run into problems you may have more success installing individual packages.
+If using RStudio Cloud, you might need to switch to R version 3.5.3 to successfully install Tidyverse. Use the drop-down in the top right corner of the page.
+
+People also sometimes have problems installing all the packages in Tidyverse on Windows machines. If you run into problems you may have more success installing individual packages.
 
 
 ```r
@@ -34,7 +46,6 @@ library(ggplot2)
 ```
 
 The `tidyverse` package loads various other packages, setting up a modern R environment. In this section we will be using functions from the `dplyr`, `readr` and `tidyr` packages.
-
 
 R is a language with mini-languages within it that solve specific problem domains. `dplyr` is such a mini-language, a set of "verbs" (functions) that work well together. `dplyr`, with the help of `tidyr` for some more complex operations, provides a way to perform most manipulations on a data frame that you might need.
 
@@ -76,18 +87,18 @@ geo
 
 ```
 ## # A tibble: 196 x 7
-##    name                region   oecd  g77     lat    long income2017
-##    <chr>               <chr>    <lgl> <lgl> <dbl>   <dbl> <chr>     
-##  1 Afghanistan         asia     FALSE TRUE   33     66    low       
-##  2 Albania             europe   FALSE FALSE  41     20    upper_mid 
-##  3 Algeria             africa   FALSE TRUE   28      3    upper_mid 
-##  4 Andorra             europe   FALSE FALSE  42.5    1.52 high      
-##  5 Angola              africa   FALSE TRUE  -12.5   18.5  lower_mid 
-##  6 Antigua and Barbuda americas FALSE TRUE   17.0  -61.8  high      
-##  7 Argentina           americas FALSE TRUE  -34    -64    upper_mid 
-##  8 Armenia             europe   FALSE FALSE  40.2   45    lower_mid 
-##  9 Australia           asia     TRUE  FALSE -25    135    high      
-## 10 Austria             europe   TRUE  FALSE  47.3   13.3  high      
+##    name                region   oecd  g77     lat   long income2017
+##    <chr>               <chr>    <lgl> <lgl> <dbl>  <dbl> <chr>     
+##  1 Afghanistan         asia     FALSE TRUE   33    66    low       
+##  2 Albania             europe   FALSE FALSE  41    20    upper_mid 
+##  3 Algeria             africa   FALSE TRUE   28     3    upper_mid 
+##  4 Andorra             europe   FALSE FALSE  42.5   1.52 high      
+##  5 Angola              africa   FALSE TRUE  -12.5  18.5  lower_mid 
+##  6 Antigua and Barbuda americas FALSE TRUE   17.0 -61.8  high      
+##  7 Argentina           americas FALSE TRUE  -34   -64    upper_mid 
+##  8 Armenia             europe   FALSE FALSE  40.2  45    lower_mid 
+##  9 Australia           asia     TRUE  FALSE -25   135    high      
+## 10 Austria             europe   TRUE  FALSE  47.3  13.3  high      
 ## # … with 186 more rows
 ```
 
@@ -400,18 +411,18 @@ geo[is_southern,]
 
 ```
 ## # A tibble: 40 x 7
-##    name             region   oecd  g77     lat   long income2017
-##    <chr>            <chr>    <lgl> <lgl> <dbl>  <dbl> <chr>     
-##  1 Angola           africa   FALSE TRUE  -12.5   18.5 lower_mid 
-##  2 Argentina        americas FALSE TRUE  -34    -64   upper_mid 
-##  3 Australia        asia     TRUE  FALSE -25    135   high      
-##  4 Bolivia          americas FALSE TRUE  -17    -65   lower_mid 
-##  5 Botswana         africa   FALSE TRUE  -22     24   upper_mid 
-##  6 Brazil           americas FALSE TRUE  -10    -55   upper_mid 
-##  7 Burundi          africa   FALSE TRUE   -3.5   30   low       
-##  8 Chile            americas TRUE  TRUE  -33.5  -70.6 high      
-##  9 Comoros          africa   FALSE TRUE  -12.2   44.4 low       
-## 10 Congo, Dem. Rep. africa   FALSE TRUE   -2.5   23.5 low       
+##    name             region   oecd  g77     lat  long income2017
+##    <chr>            <chr>    <lgl> <lgl> <dbl> <dbl> <chr>     
+##  1 Angola           africa   FALSE TRUE  -12.5  18.5 lower_mid 
+##  2 Argentina        americas FALSE TRUE  -34   -64   upper_mid 
+##  3 Australia        asia     TRUE  FALSE -25   135   high      
+##  4 Bolivia          americas FALSE TRUE  -17   -65   lower_mid 
+##  5 Botswana         africa   FALSE TRUE  -22    24   upper_mid 
+##  6 Brazil           americas FALSE TRUE  -10   -55   upper_mid 
+##  7 Burundi          africa   FALSE TRUE   -3.5  30   low       
+##  8 Chile            americas TRUE  TRUE  -33.5 -70.6 high      
+##  9 Comoros          africa   FALSE TRUE  -12.2  44.4 low       
+## 10 Congo, Dem. Rep. africa   FALSE TRUE   -2.5  23.5 low       
 ## # … with 30 more rows
 ```
 
@@ -441,11 +452,11 @@ geo[southern_oecd,]
 
 ```
 ## # A tibble: 3 x 7
-##   name        region   oecd  g77     lat   long income2017
-##   <chr>       <chr>    <lgl> <lgl> <dbl>  <dbl> <chr>     
-## 1 Australia   asia     TRUE  FALSE -25    135   high      
-## 2 Chile       americas TRUE  TRUE  -33.5  -70.6 high      
-## 3 New Zealand asia     TRUE  FALSE -42    174   high
+##   name        region   oecd  g77     lat  long income2017
+##   <chr>       <chr>    <lgl> <lgl> <dbl> <dbl> <chr>     
+## 1 Australia   asia     TRUE  FALSE -25   135   high      
+## 2 Chile       americas TRUE  TRUE  -33.5 -70.6 high      
+## 3 New Zealand asia     TRUE  FALSE -42   174   high
 ```
 
 `is_southern` seems like it should be kept within our `geo` data frame for future use. We can add it as a new column of the data frame with:
@@ -459,18 +470,18 @@ geo
 
 ```
 ## # A tibble: 196 x 8
-##    name               region  oecd  g77     lat    long income2017 southern
-##    <chr>              <chr>   <lgl> <lgl> <dbl>   <dbl> <chr>      <lgl>   
-##  1 Afghanistan        asia    FALSE TRUE   33     66    low        FALSE   
-##  2 Albania            europe  FALSE FALSE  41     20    upper_mid  FALSE   
-##  3 Algeria            africa  FALSE TRUE   28      3    upper_mid  FALSE   
-##  4 Andorra            europe  FALSE FALSE  42.5    1.52 high       FALSE   
-##  5 Angola             africa  FALSE TRUE  -12.5   18.5  lower_mid  TRUE    
-##  6 Antigua and Barbu… americ… FALSE TRUE   17.0  -61.8  high       FALSE   
-##  7 Argentina          americ… FALSE TRUE  -34    -64    upper_mid  TRUE    
-##  8 Armenia            europe  FALSE FALSE  40.2   45    lower_mid  FALSE   
-##  9 Australia          asia    TRUE  FALSE -25    135    high       TRUE    
-## 10 Austria            europe  TRUE  FALSE  47.3   13.3  high       FALSE   
+##    name                region  oecd  g77     lat   long income2017 southern
+##    <chr>               <chr>   <lgl> <lgl> <dbl>  <dbl> <chr>      <lgl>   
+##  1 Afghanistan         asia    FALSE TRUE   33    66    low        FALSE   
+##  2 Albania             europe  FALSE FALSE  41    20    upper_mid  FALSE   
+##  3 Algeria             africa  FALSE TRUE   28     3    upper_mid  FALSE   
+##  4 Andorra             europe  FALSE FALSE  42.5   1.52 high       FALSE   
+##  5 Angola              africa  FALSE TRUE  -12.5  18.5  lower_mid  TRUE    
+##  6 Antigua and Barbuda americ… FALSE TRUE   17.0 -61.8  high       FALSE   
+##  7 Argentina           americ… FALSE TRUE  -34   -64    upper_mid  TRUE    
+##  8 Armenia             europe  FALSE FALSE  40.2  45    lower_mid  FALSE   
+##  9 Australia           asia    TRUE  FALSE -25   135    high       TRUE    
+## 10 Austria             europe  TRUE  FALSE  47.3  13.3  high       FALSE   
 ## # … with 186 more rows
 ```
 
@@ -496,11 +507,11 @@ filter(geo, lat < 0 & oecd)
 
 ```
 ## # A tibble: 3 x 8
-##   name        region   oecd  g77     lat   long income2017 southern
-##   <chr>       <chr>    <lgl> <lgl> <dbl>  <dbl> <chr>      <lgl>   
-## 1 Australia   asia     TRUE  FALSE -25    135   high       TRUE    
-## 2 Chile       americas TRUE  TRUE  -33.5  -70.6 high       TRUE    
-## 3 New Zealand asia     TRUE  FALSE -42    174   high       TRUE
+##   name        region   oecd  g77     lat  long income2017 southern
+##   <chr>       <chr>    <lgl> <lgl> <dbl> <dbl> <chr>      <lgl>   
+## 1 Australia   asia     TRUE  FALSE -25   135   high       TRUE    
+## 2 Chile       americas TRUE  TRUE  -33.5 -70.6 high       TRUE    
+## 3 New Zealand asia     TRUE  FALSE -42   174   high       TRUE
 ```
 
 In the second argument, we are able to refer to columns of the data frame as though they were variables. The code is beautiful, but also opaque. It's important to understand that under the hood we are creating and combining logical vectors.
@@ -670,18 +681,18 @@ arrange(geo, lat)
 
 ```
 ## # A tibble: 196 x 8
-##    name         region   oecd  g77     lat   long income2017 southern
-##    <chr>        <chr>    <lgl> <lgl> <dbl>  <dbl> <fct>      <lgl>   
-##  1 New Zealand  asia     TRUE  FALSE -42    174   high       TRUE    
-##  2 Argentina    americas FALSE TRUE  -34    -64   upper_mid  TRUE    
-##  3 Chile        americas TRUE  TRUE  -33.5  -70.6 high       TRUE    
-##  4 Uruguay      americas FALSE TRUE  -33    -56   high       TRUE    
-##  5 Lesotho      africa   FALSE TRUE  -29.5   28.2 lower_mid  TRUE    
-##  6 South Africa africa   FALSE TRUE  -29     24   upper_mid  TRUE    
-##  7 Swaziland    africa   FALSE TRUE  -26.5   31.5 lower_mid  TRUE    
-##  8 Australia    asia     TRUE  FALSE -25    135   high       TRUE    
-##  9 Paraguay     americas FALSE TRUE  -23.3  -58   upper_mid  TRUE    
-## 10 Botswana     africa   FALSE TRUE  -22     24   upper_mid  TRUE    
+##    name         region   oecd  g77     lat  long income2017 southern
+##    <chr>        <chr>    <lgl> <lgl> <dbl> <dbl> <fct>      <lgl>   
+##  1 New Zealand  asia     TRUE  FALSE -42   174   high       TRUE    
+##  2 Argentina    americas FALSE TRUE  -34   -64   upper_mid  TRUE    
+##  3 Chile        americas TRUE  TRUE  -33.5 -70.6 high       TRUE    
+##  4 Uruguay      americas FALSE TRUE  -33   -56   high       TRUE    
+##  5 Lesotho      africa   FALSE TRUE  -29.5  28.2 lower_mid  TRUE    
+##  6 South Africa africa   FALSE TRUE  -29    24   upper_mid  TRUE    
+##  7 Swaziland    africa   FALSE TRUE  -26.5  31.5 lower_mid  TRUE    
+##  8 Australia    asia     TRUE  FALSE -25   135   high       TRUE    
+##  9 Paraguay     americas FALSE TRUE  -23.3 -58   upper_mid  TRUE    
+## 10 Botswana     africa   FALSE TRUE  -22    24   upper_mid  TRUE    
 ## # … with 186 more rows
 ```
 
@@ -694,18 +705,18 @@ arrange(geo, desc(name))
 
 ```
 ## # A tibble: 196 x 8
-##    name           region   oecd  g77     lat    long income2017 southern
-##    <chr>          <chr>    <lgl> <lgl> <dbl>   <dbl> <fct>      <lgl>   
-##  1 Zimbabwe       africa   FALSE TRUE  -19     29.8  low        TRUE    
-##  2 Zambia         africa   FALSE TRUE  -14.3   28.5  lower_mid  TRUE    
-##  3 Yemen          asia     FALSE TRUE   15.5   47.5  lower_mid  FALSE   
-##  4 Vietnam        asia     FALSE TRUE   16.2  108.   lower_mid  FALSE   
-##  5 Venezuela      americas FALSE TRUE    8    -66    upper_mid  FALSE   
-##  6 Vanuatu        asia     FALSE TRUE  -16    167    lower_mid  TRUE    
-##  7 Uzbekistan     asia     FALSE FALSE  41.7   63.8  lower_mid  FALSE   
-##  8 Uruguay        americas FALSE TRUE  -33    -56    high       TRUE    
-##  9 United States  americas TRUE  FALSE  39.8  -98.5  high       FALSE   
-## 10 United Kingdom europe   TRUE  FALSE  54.8   -2.70 high       FALSE   
+##    name           region   oecd  g77     lat   long income2017 southern
+##    <chr>          <chr>    <lgl> <lgl> <dbl>  <dbl> <fct>      <lgl>   
+##  1 Zimbabwe       africa   FALSE TRUE  -19    29.8  low        TRUE    
+##  2 Zambia         africa   FALSE TRUE  -14.3  28.5  lower_mid  TRUE    
+##  3 Yemen          asia     FALSE TRUE   15.5  47.5  lower_mid  FALSE   
+##  4 Vietnam        asia     FALSE TRUE   16.2 108.   lower_mid  FALSE   
+##  5 Venezuela      americas FALSE TRUE    8   -66    upper_mid  FALSE   
+##  6 Vanuatu        asia     FALSE TRUE  -16   167    lower_mid  TRUE    
+##  7 Uzbekistan     asia     FALSE FALSE  41.7  63.8  lower_mid  FALSE   
+##  8 Uruguay        americas FALSE TRUE  -33   -56    high       TRUE    
+##  9 United States  americas TRUE  FALSE  39.8 -98.5  high       FALSE   
+## 10 United Kingdom europe   TRUE  FALSE  54.8  -2.70 high       FALSE   
 ## # … with 186 more rows
 ```
 
@@ -776,7 +787,7 @@ The "left" in "left join" refers to how rows that can't be paired up are handled
 
 ## Further reading
 
-We've covered the fundamentals of dplyr and data frames, but there is much more to learn. Notably, we haven't covered the use of the pipe `%>%` to chain `dplyr` verbs together. The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. The Monash Bioinformatics Platform ["R more" course](https://monashbioinformaticsplatform.github.io/r-more/) also covers this. 
+We've covered the fundamentals of dplyr and data frames, but there is much more to learn. Notably, we haven't covered the use of the pipe `%>%` to chain `dplyr` verbs together. The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. The Monash Data Fluency ["Programming and Tidy data analysis in R" course](https://monashdatafluency.github.io/r-progtidy/) also covers this. 
 
 
 

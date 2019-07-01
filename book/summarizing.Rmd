@@ -207,7 +207,7 @@ Once you have a useful data analysis, you may want to do it again with different
 * [For-loops](http://r4ds.had.co.nz/iteration.html) to do things multiple times.
 * [If-statements](http://r4ds.had.co.nz/functions.html#conditional-execution) to make decisions.
 
-The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. The Monash Bioinformatics Platform ["R more" course](https://monashbioinformaticsplatform.github.io/r-more/) also covers this.
+The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. Monash Data Fluency ["Programming and Tidy data analysis in R" course](https://monashdatafluency.github.io/r-progtidy/) also covers this.
 
 
 
