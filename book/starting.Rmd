@@ -8,9 +8,9 @@ R is both a programming language and an interactive environment for data explora
 
 Working with R is primarily text-based. The basic mode of use for R is that the user types in a command in the R language and presses enter, and then R computes and displays the result.
 
-We will be working in [RStudio](https://www.rstudio.com/products/rstudio/download/). The easiest way to get started is to go to [RStudio Cloud](https://rstudio.cloud/) and create a new project. Monash staff and students can log in using their Monash google account. 
+We will be working in [RStudio](https://www.rstudio.com/products/rstudio/download/). The easiest way to get started is to go to [RStudio Cloud](https://rstudio.cloud/) and create a new project. Monash staff and students can log in using their Monash Google account. 
 
-RStudio surrounds the *console*, where one enters commands and views the results, with various conveniences. In addition to the console, RStudio provides panels containing:
+The main way of working with R is the *console*, where you enter commands and view results. RStudio surrounds this with various conveniences. In addition to the console panel, RStudio provides panels containing:
 
 * A text editor, where R commands can be recorded for future reference.
 * A history of commands that have been typed on the console.
@@ -23,7 +23,7 @@ RStudio surrounds the *console*, where one enters commands and views the results
 knitr::include_graphics("figures/rstudio.png")
 ```
 
-Open RStudio, click on the "Console" pane, type `1+1` and press enter. R displays the result of the calculation. In this document, we will be showing such an interaction with R as below.
+Open RStudio, click on the "Console" pane, type `1+1` and press enter. R displays the result of the calculation. In this document, we will show such an interaction with R as below.
 
 ```{r}
 1+1
