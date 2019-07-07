@@ -186,7 +186,13 @@ print(p)
 dev.off()
 ```
 
+### Tip about sizing {.tip}
 
+Figures in papers tend to be quite small. This means text must be proportionately larger than we usually show on screen. Dots should also be proportionately larger, and lines proportionately thicker. The way to achieve this using `ggsave` is to specify a small width and height, given in inches. To ensure the output also has good resolution, specify a high dots-per-inch, or use a vector-graphics format such as PDF or SVG.
+
+```{r, eval=FALSE}
+ggsave("test2.png", p, width=3, height=3, dpi=600)
+```
 
 
 
