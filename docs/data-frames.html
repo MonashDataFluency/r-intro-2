@@ -511,7 +511,7 @@ Angola,africa,FALSE,TRUE,-12.5,18.5,lower_mid</code></pre>
 <div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="data-frames.html#cb121-1"></a><span class="kw">head</span>( <span class="kw">factor</span>(geo<span class="op">$</span>income2017, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;low&quot;</span>,<span class="st">&quot;lower_mid&quot;</span>,<span class="st">&quot;upper_mid&quot;</span>,<span class="st">&quot;high&quot;</span>)) )</span></code></pre></div>
 <pre><code>## [1] low       upper_mid upper_mid high      lower_mid high     
 ## Levels: low lower_mid upper_mid high</code></pre>
-<p>We should to modify the <code>income2017</code> column of the <code>geo</code> table in order to use this:</p>
+<p>We should modify the <code>income2017</code> column of the <code>geo</code> table in order to use this:</p>
 <div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="data-frames.html#cb123-1"></a>geo<span class="op">$</span>income2017 &lt;-<span class="st"> </span><span class="kw">factor</span>(geo<span class="op">$</span>income2017, <span class="dt">levels=</span><span class="kw">c</span>(<span class="st">&quot;low&quot;</span>,<span class="st">&quot;lower_mid&quot;</span>,<span class="st">&quot;upper_mid&quot;</span>,<span class="st">&quot;high&quot;</span>))</span></code></pre></div>
 <p><code>count</code> now produces the desired order of output:</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="data-frames.html#cb124-1"></a><span class="kw">count</span>(geo, income2017)</span></code></pre></div>

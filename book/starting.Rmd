@@ -214,7 +214,7 @@ plot(x, x*x)
 
 ## Functions
 
-Functions are the things that do all the work for us in R: calculate, manipulate data, read and write to files, produce plots. R has many built in functions and will also be loading more specialized functions from "packages".
+Functions are the things that do all the work for us in R: calculate, manipulate data, read and write to files, produce plots. R has many built in functions and we will also be loading more specialized functions from "packages".
 
 We've already seen several functions: `c( )`, `length( )`, and `plot( )`. Let's now have a look at `sum( )`. 
 

@@ -565,7 +565,7 @@ head( factor(geo$income2017, levels=c("low","lower_mid","upper_mid","high")) )
 ## Levels: low lower_mid upper_mid high
 ```
 
-We should to modify the `income2017` column of the `geo` table in order to use this:
+We should modify the `income2017` column of the `geo` table in order to use this:
 
 
 ```r

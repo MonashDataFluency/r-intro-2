@@ -34,7 +34,7 @@ R is the language itself. RStudio provides a convenient environment in which to 
 
 ### Source code {-}
 
-The book was created in R using the `rmarkdown` and `bookdown` packages!
+This book was created in R using the `rmarkdown` and `bookdown` packages!
 
 * [GitHub page](https://github.com/MonashDataFluency/r-intro-2)
 

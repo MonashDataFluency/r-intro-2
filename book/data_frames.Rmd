@@ -284,7 +284,7 @@ Any sort of vector can be converted to a factor using the `factor` function. Thi
 head( factor(geo$income2017, levels=c("low","lower_mid","upper_mid","high")) )
 ```
 
-We should to modify the `income2017` column of the `geo` table in order to use this:
+We should modify the `income2017` column of the `geo` table in order to use this:
 
 ```{r}
 geo$income2017 <- factor(geo$income2017, levels=c("low","lower_mid","upper_mid","high"))
