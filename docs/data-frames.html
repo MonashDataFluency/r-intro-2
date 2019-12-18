@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Introduction to R, version 2</title>
-  <meta name="description" content="Introduction to R, version 2">
-  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Data frames | Introduction to R, version 2</title>
+  <meta name="description" content="2 Data frames | Introduction to R, version 2" />
+  <meta name="generator" content="bookdown 0.16 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Introduction to R, version 2" />
+  <meta property="og:title" content="2 Data frames | Introduction to R, version 2" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Introduction to R, version 2" />
+  <meta name="twitter:title" content="2 Data frames | Introduction to R, version 2" />
   
   
   
@@ -25,19 +24,23 @@
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="starting-out-in-r.html">
-<link rel="next" href="plotting-with-ggplot2.html">
+<link rel="prev" href="starting-out-in-r.html"/>
+<link rel="next" href="plotting-with-ggplot2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -53,7 +56,6 @@ code.sourceCode > span { color: inherit; text-decoration: inherit; }
 code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode { white-space: pre; position: relative; }
-div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
@@ -453,18 +455,18 @@ Angola,africa,FALSE,TRUE,-12.5,18.5,lower_mid</code></pre>
 <span id="cb113-2"><a href="data-frames.html#cb113-2"></a></span>
 <span id="cb113-3"><a href="data-frames.html#cb113-3"></a>geo</span></code></pre></div>
 <pre><code>## # A tibble: 196 x 8
-##    name                region  oecd  g77     lat   long income2017 southern
-##    &lt;chr&gt;               &lt;chr&gt;   &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;   
-##  1 Afghanistan         asia    FALSE TRUE   33    66    low        FALSE   
-##  2 Albania             europe  FALSE FALSE  41    20    upper_mid  FALSE   
-##  3 Algeria             africa  FALSE TRUE   28     3    upper_mid  FALSE   
-##  4 Andorra             europe  FALSE FALSE  42.5   1.52 high       FALSE   
-##  5 Angola              africa  FALSE TRUE  -12.5  18.5  lower_mid  TRUE    
-##  6 Antigua and Barbuda americ… FALSE TRUE   17.0 -61.8  high       FALSE   
-##  7 Argentina           americ… FALSE TRUE  -34   -64    upper_mid  TRUE    
-##  8 Armenia             europe  FALSE FALSE  40.2  45    lower_mid  FALSE   
-##  9 Australia           asia    TRUE  FALSE -25   135    high       TRUE    
-## 10 Austria             europe  TRUE  FALSE  47.3  13.3  high       FALSE   
+##    name                region   oecd  g77     lat   long income2017 southern
+##    &lt;chr&gt;               &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;   
+##  1 Afghanistan         asia     FALSE TRUE   33    66    low        FALSE   
+##  2 Albania             europe   FALSE FALSE  41    20    upper_mid  FALSE   
+##  3 Algeria             africa   FALSE TRUE   28     3    upper_mid  FALSE   
+##  4 Andorra             europe   FALSE FALSE  42.5   1.52 high       FALSE   
+##  5 Angola              africa   FALSE TRUE  -12.5  18.5  lower_mid  TRUE    
+##  6 Antigua and Barbuda americas FALSE TRUE   17.0 -61.8  high       FALSE   
+##  7 Argentina           americas FALSE TRUE  -34   -64    upper_mid  TRUE    
+##  8 Armenia             europe   FALSE FALSE  40.2  45    lower_mid  FALSE   
+##  9 Australia           asia     TRUE  FALSE -25   135    high       TRUE    
+## 10 Austria             europe   TRUE  FALSE  47.3  13.3  high       FALSE   
 ## # … with 186 more rows</code></pre>
 <div id="challenge-logical-indexing" class="section level3 unnumbered challenge">
 <h3>Challenge: logical indexing</h3>
@@ -542,23 +544,18 @@ Angola,africa,FALSE,TRUE,-12.5,18.5,lower_mid</code></pre>
 </div>
 <div id="readability-vs-tidyness" class="section level2">
 <h2><span class="header-section-number">2.8</span> Readability vs tidyness</h2>
-<p>The counts we obtained counting <code>income2017</code> vs <code>oecd</code> were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as columns and OECD membership as rows. We can use the <code>spread</code> function from <code>tidyr</code> to achieve this.</p>
+<p>The counts we obtained counting <code>income2017</code> vs <code>oecd</code> were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as columns and OECD membership as rows. We can use the <code>pivot_wider</code> function from <code>tidyr</code> to achieve this. (This is also sometimes also called a “cast” or a “spread”.)</p>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="data-frames.html#cb130-1"></a>counts &lt;-<span class="st"> </span><span class="kw">count</span>(geo, income2017, oecd)</span>
-<span id="cb130-2"><a href="data-frames.html#cb130-2"></a><span class="kw">spread</span>(counts, <span class="dt">key=</span>income2017, <span class="dt">value=</span>n, <span class="dt">fill=</span><span class="dv">0</span>)</span></code></pre></div>
+<span id="cb130-2"><a href="data-frames.html#cb130-2"></a><span class="kw">pivot_wider</span>(counts, <span class="dt">names_from=</span>income2017, <span class="dt">values_from=</span>n)</span></code></pre></div>
 <pre><code>## # A tibble: 2 x 5
 ##   oecd    low lower_mid upper_mid  high
-##   &lt;lgl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt;
+##   &lt;lgl&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt; &lt;int&gt;
 ## 1 FALSE    31        52        53    29
-## 2 TRUE      0         0         2    29</code></pre>
-<p>Here:</p>
-<ul>
-<li>The <code>key</code> column became column names.</li>
-<li>The <code>value</code> column became the values in the new columns.</li>
-<li>The <code>fill</code> value is used to fill in any missing values.</li>
-</ul>
+## 2 TRUE     NA        NA         2    29</code></pre>
+<p>We could further specify <code>values_fill=list(n=0)</code> to fill in the <code>NA</code> values with 0.</p>
 <div id="tip-3" class="section level3 unnumbered tip">
 <h3>Tip</h3>
-<p>Tidying is often the first step when exploring a data-set. The <a href="http://tidyr.tidyverse.org/">tidyr</a> package contains a number of useful functions that help tidy (or un-tidy!) data. We’ve just seen <code>spread</code> which spreads two columns into multiple columns. The inverse of <code>spread</code> is <code>gather</code>, which gathers multiple columns into two columns: a column of column names, and a column of values.</p>
+<p>Tidying is often the first step when exploring a data-set. The <a href="http://tidyr.tidyverse.org/">tidyr</a> package contains a number of useful functions that help tidy (or un-tidy!) data. We’ve just seen <code>pivot_wider</code> which spreads two columns into multiple columns. The inverse of <code>pivot_wider</code> is <code>pivot_longer</code>, which gathers multiple columns into two columns: a column of column names, and a column of values. <code>pivot_longer</code> is often the first step when tidying a dataset you have received from the wild. (This is sometimes also called a “melt” or a “gather”.)</p>
 </div>
 <div id="challenge-counting" class="section level3 unnumbered challenge">
 <h3>Challenge: counting</h3>
@@ -635,20 +632,20 @@ Angola,africa,FALSE,TRUE,-12.5,18.5,lower_mid</code></pre>
 <div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="data-frames.html#cb139-1"></a>gap_geo &lt;-<span class="st"> </span><span class="kw">left_join</span>(gap, geo, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</span>
 <span id="cb139-2"><a href="data-frames.html#cb139-2"></a>gap_geo</span></code></pre></div>
 <pre><code>## # A tibble: 4,312 x 12
-##    name   year population gdp_percap life_exp region oecd  g77     lat
-##    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;
-##  1 Afgh…  1800    3280000        603     28.2 asia   FALSE TRUE   33  
-##  2 Alba…  1800     410445        667     35.4 europe FALSE FALSE  41  
-##  3 Alge…  1800    2503218        715     28.8 africa FALSE TRUE   28  
-##  4 Ando…  1800       2654       1197     NA   europe FALSE FALSE  42.5
-##  5 Ango…  1800    1567028        618     27.0 africa FALSE TRUE  -12.5
-##  6 Anti…  1800      37000        757     33.5 ameri… FALSE TRUE   17.0
-##  7 Arge…  1800     534000       1507     33.2 ameri… FALSE TRUE  -34  
-##  8 Arme…  1800     413326        514     34   europe FALSE FALSE  40.2
-##  9 Aust…  1800     351014        814     34.0 asia   TRUE  FALSE -25  
-## 10 Aust…  1800    3205587       1847     34.4 europe TRUE  FALSE  47.3
-## # … with 4,302 more rows, and 3 more variables: long &lt;dbl&gt;,
-## #   income2017 &lt;fct&gt;, southern &lt;lgl&gt;</code></pre>
+##    name   year population gdp_percap life_exp region oecd  g77     lat   long
+##    &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Afgh…  1800    3280000        603     28.2 asia   FALSE TRUE   33    66   
+##  2 Alba…  1800     410445        667     35.4 europe FALSE FALSE  41    20   
+##  3 Alge…  1800    2503218        715     28.8 africa FALSE TRUE   28     3   
+##  4 Ando…  1800       2654       1197     NA   europe FALSE FALSE  42.5   1.52
+##  5 Ango…  1800    1567028        618     27.0 africa FALSE TRUE  -12.5  18.5 
+##  6 Anti…  1800      37000        757     33.5 ameri… FALSE TRUE   17.0 -61.8 
+##  7 Arge…  1800     534000       1507     33.2 ameri… FALSE TRUE  -34   -64   
+##  8 Arme…  1800     413326        514     34   europe FALSE FALSE  40.2  45   
+##  9 Aust…  1800     351014        814     34.0 asia   TRUE  FALSE -25   135   
+## 10 Aust…  1800    3205587       1847     34.4 europe TRUE  FALSE  47.3  13.3 
+## # … with 4,302 more rows, and 2 more variables: income2017 &lt;fct&gt;,
+## #   southern &lt;lgl&gt;</code></pre>
 <p>The output contains all ways of pairing up rows by <code>name</code>. In this case each row of <code>geo</code> pairs up with multiple rows of <code>gap</code>.</p>
 <p>The “left” in “left join” refers to how rows that can’t be paired up are handled. <code>left_join</code> keeps all rows from the first data frame but not the second. This is a good default when the intent is to attaching some extra information to a data frame. <code>inner_join</code> discard all rows that can’t be paired up. <code>full_join</code> keeps all rows from both data frames.</p>
 </div>
@@ -670,11 +667,13 @@ Angola,africa,FALSE,TRUE,-12.5,18.5,lower_mid</code></pre>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -682,12 +681,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
-"instapper": false,
+"instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -695,6 +693,14 @@ gitbook.start({
 "size": 2
 },
 "edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },

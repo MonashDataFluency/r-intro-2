@@ -316,22 +316,18 @@ count(geo, income2017, oecd)
 
 ## Readability vs tidyness
 
-The counts we obtained counting `income2017` vs `oecd` were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as columns and OECD membership as rows. We can use the `spread` function from `tidyr` to achieve this.
+The counts we obtained counting `income2017` vs `oecd` were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as columns and OECD membership as rows. We can use the `pivot_wider` function from `tidyr` to achieve this. (This is also sometimes also called a "cast" or a "spread".)
 
 ```{r}
 counts <- count(geo, income2017, oecd)
-spread(counts, key=income2017, value=n, fill=0)
+pivot_wider(counts, names_from=income2017, values_from=n)
 ```
 
-Here:
-
-* The `key` column became column names.
-* The `value` column became the values in the new columns.
-* The `fill` value is used to fill in any missing values.
+We could further specify `values_fill=list(n=0)` to fill in the `NA` values with 0.
 
 ### Tip {- .tip}
 
-Tidying is often the first step when exploring a data-set. The [tidyr](http://tidyr.tidyverse.org/) package contains a number of useful functions that help tidy (or un-tidy!) data. We've just seen `spread` which spreads two columns into multiple columns. The inverse of `spread` is `gather`, which gathers multiple columns into two columns: a column of column names, and a column of values.
+Tidying is often the first step when exploring a data-set. The [tidyr](http://tidyr.tidyverse.org/) package contains a number of useful functions that help tidy (or un-tidy!) data. We've just seen `pivot_wider` which spreads two columns into multiple columns. The inverse of `pivot_wider` is `pivot_longer`, which gathers multiple columns into two columns: a column of column names, and a column of values. `pivot_longer` is often the first step when tidying a dataset you have received from the wild. (This is sometimes also called a "melt" or a "gather".) 
 
 
 ### Challenge: counting {- .challenge}

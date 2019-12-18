@@ -470,18 +470,18 @@ geo
 
 ```
 ## # A tibble: 196 x 8
-##    name                region  oecd  g77     lat   long income2017 southern
-##    <chr>               <chr>   <lgl> <lgl> <dbl>  <dbl> <chr>      <lgl>   
-##  1 Afghanistan         asia    FALSE TRUE   33    66    low        FALSE   
-##  2 Albania             europe  FALSE FALSE  41    20    upper_mid  FALSE   
-##  3 Algeria             africa  FALSE TRUE   28     3    upper_mid  FALSE   
-##  4 Andorra             europe  FALSE FALSE  42.5   1.52 high       FALSE   
-##  5 Angola              africa  FALSE TRUE  -12.5  18.5  lower_mid  TRUE    
-##  6 Antigua and Barbuda americ… FALSE TRUE   17.0 -61.8  high       FALSE   
-##  7 Argentina           americ… FALSE TRUE  -34   -64    upper_mid  TRUE    
-##  8 Armenia             europe  FALSE FALSE  40.2  45    lower_mid  FALSE   
-##  9 Australia           asia    TRUE  FALSE -25   135    high       TRUE    
-## 10 Austria             europe  TRUE  FALSE  47.3  13.3  high       FALSE   
+##    name                region   oecd  g77     lat   long income2017 southern
+##    <chr>               <chr>    <lgl> <lgl> <dbl>  <dbl> <chr>      <lgl>   
+##  1 Afghanistan         asia     FALSE TRUE   33    66    low        FALSE   
+##  2 Albania             europe   FALSE FALSE  41    20    upper_mid  FALSE   
+##  3 Algeria             africa   FALSE TRUE   28     3    upper_mid  FALSE   
+##  4 Andorra             europe   FALSE FALSE  42.5   1.52 high       FALSE   
+##  5 Angola              africa   FALSE TRUE  -12.5  18.5  lower_mid  TRUE    
+##  6 Antigua and Barbuda americas FALSE TRUE   17.0 -61.8  high       FALSE   
+##  7 Argentina           americas FALSE TRUE  -34   -64    upper_mid  TRUE    
+##  8 Armenia             europe   FALSE FALSE  40.2  45    lower_mid  FALSE   
+##  9 Australia           asia     TRUE  FALSE -25   135    high       TRUE    
+## 10 Austria             europe   TRUE  FALSE  47.3  13.3  high       FALSE   
 ## # … with 186 more rows
 ```
 
@@ -628,31 +628,27 @@ count(geo, income2017, oecd)
 
 ## Readability vs tidyness
 
-The counts we obtained counting `income2017` vs `oecd` were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as columns and OECD membership as rows. We can use the `spread` function from `tidyr` to achieve this.
+The counts we obtained counting `income2017` vs `oecd` were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as columns and OECD membership as rows. We can use the `pivot_wider` function from `tidyr` to achieve this. (This is also sometimes also called a "cast" or a "spread".)
 
 
 ```r
 counts <- count(geo, income2017, oecd)
-spread(counts, key=income2017, value=n, fill=0)
+pivot_wider(counts, names_from=income2017, values_from=n)
 ```
 
 ```
 ## # A tibble: 2 x 5
 ##   oecd    low lower_mid upper_mid  high
-##   <lgl> <dbl>     <dbl>     <dbl> <dbl>
+##   <lgl> <int>     <int>     <int> <int>
 ## 1 FALSE    31        52        53    29
-## 2 TRUE      0         0         2    29
+## 2 TRUE     NA        NA         2    29
 ```
 
-Here:
-
-* The `key` column became column names.
-* The `value` column became the values in the new columns.
-* The `fill` value is used to fill in any missing values.
+We could further specify `values_fill=list(n=0)` to fill in the `NA` values with 0.
 
 ### Tip {- .tip}
 
-Tidying is often the first step when exploring a data-set. The [tidyr](http://tidyr.tidyverse.org/) package contains a number of useful functions that help tidy (or un-tidy!) data. We've just seen `spread` which spreads two columns into multiple columns. The inverse of `spread` is `gather`, which gathers multiple columns into two columns: a column of column names, and a column of values.
+Tidying is often the first step when exploring a data-set. The [tidyr](http://tidyr.tidyverse.org/) package contains a number of useful functions that help tidy (or un-tidy!) data. We've just seen `pivot_wider` which spreads two columns into multiple columns. The inverse of `pivot_wider` is `pivot_longer`, which gathers multiple columns into two columns: a column of column names, and a column of values. `pivot_longer` is often the first step when tidying a dataset you have received from the wild. (This is sometimes also called a "melt" or a "gather".) 
 
 
 ### Challenge: counting {- .challenge}
@@ -764,20 +760,20 @@ gap_geo
 
 ```
 ## # A tibble: 4,312 x 12
-##    name   year population gdp_percap life_exp region oecd  g77     lat
-##    <chr> <dbl>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>
-##  1 Afgh…  1800    3280000        603     28.2 asia   FALSE TRUE   33  
-##  2 Alba…  1800     410445        667     35.4 europe FALSE FALSE  41  
-##  3 Alge…  1800    2503218        715     28.8 africa FALSE TRUE   28  
-##  4 Ando…  1800       2654       1197     NA   europe FALSE FALSE  42.5
-##  5 Ango…  1800    1567028        618     27.0 africa FALSE TRUE  -12.5
-##  6 Anti…  1800      37000        757     33.5 ameri… FALSE TRUE   17.0
-##  7 Arge…  1800     534000       1507     33.2 ameri… FALSE TRUE  -34  
-##  8 Arme…  1800     413326        514     34   europe FALSE FALSE  40.2
-##  9 Aust…  1800     351014        814     34.0 asia   TRUE  FALSE -25  
-## 10 Aust…  1800    3205587       1847     34.4 europe TRUE  FALSE  47.3
-## # … with 4,302 more rows, and 3 more variables: long <dbl>,
-## #   income2017 <fct>, southern <lgl>
+##    name   year population gdp_percap life_exp region oecd  g77     lat   long
+##    <chr> <dbl>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>  <dbl>
+##  1 Afgh…  1800    3280000        603     28.2 asia   FALSE TRUE   33    66   
+##  2 Alba…  1800     410445        667     35.4 europe FALSE FALSE  41    20   
+##  3 Alge…  1800    2503218        715     28.8 africa FALSE TRUE   28     3   
+##  4 Ando…  1800       2654       1197     NA   europe FALSE FALSE  42.5   1.52
+##  5 Ango…  1800    1567028        618     27.0 africa FALSE TRUE  -12.5  18.5 
+##  6 Anti…  1800      37000        757     33.5 ameri… FALSE TRUE   17.0 -61.8 
+##  7 Arge…  1800     534000       1507     33.2 ameri… FALSE TRUE  -34   -64   
+##  8 Arme…  1800     413326        514     34   europe FALSE FALSE  40.2  45   
+##  9 Aust…  1800     351014        814     34.0 asia   TRUE  FALSE -25   135   
+## 10 Aust…  1800    3205587       1847     34.4 europe TRUE  FALSE  47.3  13.3 
+## # … with 4,302 more rows, and 2 more variables: income2017 <fct>,
+## #   southern <lgl>
 ```
 
 The output contains all ways of pairing up rows by `name`. In this case each row of `geo` pairs up with multiple rows of `gap`.
