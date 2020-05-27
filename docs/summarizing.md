@@ -340,8 +340,8 @@ names(result)
 ```
 
 ```
-##  [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
-##  [6] "null.value"  "stderr"      "alternative" "method"      "data.name"
+## [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
+## [6] "null.value"  "alternative" "method"      "data.name"
 ```
 
 ```r

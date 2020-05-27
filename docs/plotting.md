@@ -4,7 +4,7 @@
 
 We already saw some of R's built in plotting facilities with the function `plot`. A more recent and much more powerful plotting library is `ggplot2`. `ggplot2` is another mini-language within R, a language for creating plots. It implements ideas from a book called ["The Grammar of Graphics"](https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448). The syntax can be a little strange, but there are plenty of examples in the [online documentation](http://ggplot2.tidyverse.org/reference/).
 
-`ggplot2` is part of the Tidyverse, so loadinging the `tidyverse` package will load `ggplot2`.
+`ggplot2` is part of the Tidyverse, so loading the `tidyverse` package will load `ggplot2`.
 
 
 ```r
@@ -153,6 +153,23 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
 
 <img src="plotting_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" />
 
+
+Now, the figure has proper labels and titles. However, the title is not at the center of the figure.
+We can further customize it using `theme()` function (for more detail please see the docs `?theme`).
+
+
+```r
+ggplot(gap_geo, aes(x=year, y=life_exp)) +
+    geom_point() +
+    labs(x="Year", y="Life expectancy", title="Gapminder") +
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+<img src="plotting_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
+
+Now figure looks better.
+
+
 `coord_cartesian` can be used to set the limits of the x and y axes. Suppose we want our y-axis to start at zero.
 
 
@@ -162,7 +179,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
     coord_cartesian(ylim=c(0,90))
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" />
+<img src="plotting_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" />
 
 Type `scale_` and press the tab key. You will see functions giving fine-grained controls over various scales (x, y, color, etc). These allow transformations (eg log10), and manually specified breaks (labelled values). Very fine grained control is possible over the appearance of ggplots, see the ggplot2 documentation for details and further examples.
 
@@ -185,7 +202,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name)) +
     facet_wrap(~ region)
 ```
 
-<img src="plotting_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" />
+<img src="plotting_files/figure-html/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" />
 
 Note the use of `~`, which we've not seen before. `~` syntax is used in R to specify dependence on some set of variables, for example when specifying a linear model. Here the information in each plot is dependent on the continent.
 

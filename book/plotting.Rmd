@@ -120,6 +120,20 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
     labs(x="Year", y="Life expectancy", title="Gapminder")
 ```
 
+
+Now, the figure has proper labels and titles. However, the title is not at the center of the figure.
+We can further customize it using `theme()` function (for more detail please see the docs `?theme`).
+
+```{r warning=F}
+ggplot(gap_geo, aes(x=year, y=life_exp)) +
+    geom_point() +
+    labs(x="Year", y="Life expectancy", title="Gapminder") +
+    theme(plot.title = element_text(hjust = 0.5))
+```
+
+Now figure looks better.
+
+
 `coord_cartesian` can be used to set the limits of the x and y axes. Suppose we want our y-axis to start at zero.
 
 ```{r warning=F}
