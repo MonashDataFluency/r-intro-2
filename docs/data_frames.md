@@ -69,7 +69,8 @@ geo <- read_csv("r-intro-2-files/geo.csv")
 ```
 
 ```
-## Parsed with column specification:
+## 
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## cols(
 ##   name = col_character(),
 ##   region = col_character(),
@@ -373,6 +374,26 @@ plot(geo$long, geo$lat)
 <img src="data_frames_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" />
 
 
+### Quiz: reading R code {- .challenge}
+
+You encounter some wild R code. You're not sure exactly what it does but, based on R syntax you've encountered so far, what roles are the different names in the code playing?
+
+
+```r
+highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]
+```
+
+Find all examples of:
+
+A. The name of a variable to store a value to. \
+B. The name of a variable to retrieve the value from. \
+C. The name of a column to get from a data frame. \
+D. The name of a function to call. \
+E. The name of an argument to a function call. \
+
+See [here](https://monashdatafluency.github.io/r-intro-2/answers-reading-r-code.html) for answers.
+
+
 ## Logical indexing
 
 A method of indexing that we haven't discussed yet is logical indexing. Instead of specifying the row number or numbers that we want, we can give a logical vector which is `TRUE` for the rows we want and `FALSE` otherwise. This can also be used with vectors.
@@ -530,7 +551,7 @@ count(geo, region)
 ```
 ## # A tibble: 4 x 2
 ##   region       n
-##   <chr>    <int>
+## * <chr>    <int>
 ## 1 africa      54
 ## 2 americas    35
 ## 3 asia        59
@@ -544,7 +565,7 @@ count(geo, income2017)
 ```
 ## # A tibble: 4 x 2
 ##   income2017     n
-##   <chr>      <int>
+## * <chr>      <int>
 ## 1 high          58
 ## 2 low           31
 ## 3 lower_mid     52
@@ -582,7 +603,7 @@ count(geo, income2017)
 ```
 ## # A tibble: 4 x 2
 ##   income2017     n
-##   <fct>      <int>
+## * <fct>      <int>
 ## 1 low           31
 ## 2 lower_mid     52
 ## 3 upper_mid     55
@@ -596,7 +617,7 @@ When `plot` is given a factor, it shows a bar plot:
 plot(geo$income2017)
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
+<img src="data_frames_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" />
 
 When given two factors, it shows a mosaic plot:
 
@@ -605,7 +626,7 @@ When given two factors, it shows a mosaic plot:
 plot(geo$income2017, factor(geo$oecd))
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" />
+<img src="data_frames_files/figure-html/unnamed-chunk-29-1.png" width="576" style="display: block; margin: auto;" />
 
 Similarly we can count two categorical columns at once.
 
@@ -760,18 +781,18 @@ gap_geo
 
 ```
 ## # A tibble: 4,312 x 12
-##    name   year population gdp_percap life_exp region oecd  g77     lat   long
-##    <chr> <dbl>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>  <dbl>
-##  1 Afgh…  1800    3280000        603     28.2 asia   FALSE TRUE   33    66   
-##  2 Alba…  1800     410445        667     35.4 europe FALSE FALSE  41    20   
-##  3 Alge…  1800    2503218        715     28.8 africa FALSE TRUE   28     3   
-##  4 Ando…  1800       2654       1197     NA   europe FALSE FALSE  42.5   1.52
-##  5 Ango…  1800    1567028        618     27.0 africa FALSE TRUE  -12.5  18.5 
-##  6 Anti…  1800      37000        757     33.5 ameri… FALSE TRUE   17.0 -61.8 
-##  7 Arge…  1800     534000       1507     33.2 ameri… FALSE TRUE  -34   -64   
-##  8 Arme…  1800     413326        514     34   europe FALSE FALSE  40.2  45   
-##  9 Aust…  1800     351014        814     34.0 asia   TRUE  FALSE -25   135   
-## 10 Aust…  1800    3205587       1847     34.4 europe TRUE  FALSE  47.3  13.3 
+##    name      year population gdp_percap life_exp region oecd  g77     lat   long
+##    <chr>    <dbl>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>  <dbl>
+##  1 Afghani…  1800    3280000        603     28.2 asia   FALSE TRUE   33    66   
+##  2 Albania   1800     410445        667     35.4 europe FALSE FALSE  41    20   
+##  3 Algeria   1800    2503218        715     28.8 africa FALSE TRUE   28     3   
+##  4 Andorra   1800       2654       1197     NA   europe FALSE FALSE  42.5   1.52
+##  5 Angola    1800    1567028        618     27.0 africa FALSE TRUE  -12.5  18.5 
+##  6 Antigua…  1800      37000        757     33.5 ameri… FALSE TRUE   17.0 -61.8 
+##  7 Argenti…  1800     534000       1507     33.2 ameri… FALSE TRUE  -34   -64   
+##  8 Armenia   1800     413326        514     34   europe FALSE FALSE  40.2  45   
+##  9 Austral…  1800     351014        814     34.0 asia   TRUE  FALSE -25   135   
+## 10 Austria   1800    3205587       1847     34.4 europe TRUE  FALSE  47.3  13.3 
 ## # … with 4,302 more rows, and 2 more variables: income2017 <fct>,
 ## #   southern <lgl>
 ```

@@ -190,6 +190,25 @@ plot(geo$long, geo$lat)
 ```
 
 
+### Quiz: reading R code {- .challenge}
+
+You encounter some wild R code. You're not sure exactly what it does but, based on R syntax you've encountered so far, what roles are the different names in the code playing?
+
+```{r}
+highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]
+```
+
+Find all examples of:
+
+A. The name of a variable to store a value to. \
+B. The name of a variable to retrieve the value from. \
+C. The name of a column to get from a data frame. \
+D. The name of a function to call. \
+E. The name of an argument to a function call. \
+
+See [here](https://monashdatafluency.github.io/r-intro-2/answers-reading-r-code.html) for answers.
+
+
 ## Logical indexing
 
 A method of indexing that we haven't discussed yet is logical indexing. Instead of specifying the row number or numbers that we want, we can give a logical vector which is `TRUE` for the rows we want and `FALSE` otherwise. This can also be used with vectors.

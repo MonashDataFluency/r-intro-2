@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Thinking in R | Introduction to R, version 2</title>
   <meta name="description" content="5 Thinking in R | Introduction to R, version 2" />
-  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Thinking in R | Introduction to R, version 2" />
   <meta property="og:type" content="book" />
@@ -31,6 +31,7 @@
   
 <link rel="prev" href="summarizing-data.html"/>
 <link rel="next" href="next-steps.html"/>
+<script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -48,44 +49,71 @@
 
 
 
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 
 
 <style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
@@ -102,7 +130,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Introduction</a></li>
-<li class="chapter" data-level="1" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html"><i class="fa fa-check"></i><b>1</b> Starting out in R</a><ul>
+<li class="chapter" data-level="1" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html"><i class="fa fa-check"></i><b>1</b> Starting out in R</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#variables"><i class="fa fa-check"></i><b>1.1</b> Variables</a></li>
 <li class="chapter" data-level="1.2" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#saving-code-in-an-r-script"><i class="fa fa-check"></i><b>1.2</b> Saving code in an R script</a></li>
 <li class="chapter" data-level="1.3" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#vectors"><i class="fa fa-check"></i><b>1.3</b> Vectors</a></li>
@@ -111,7 +140,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.6" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#sequences"><i class="fa fa-check"></i><b>1.6</b> Sequences</a></li>
 <li class="chapter" data-level="1.7" data-path="starting-out-in-r.html"><a href="starting-out-in-r.html#functions"><i class="fa fa-check"></i><b>1.7</b> Functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>2</b> Data frames</a><ul>
+<li class="chapter" data-level="2" data-path="data-frames.html"><a href="data-frames.html"><i class="fa fa-check"></i><b>2</b> Data frames</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="data-frames.html"><a href="data-frames.html#setting-up"><i class="fa fa-check"></i><b>2.1</b> Setting up</a></li>
 <li class="chapter" data-level="2.2" data-path="data-frames.html"><a href="data-frames.html#loading-data"><i class="fa fa-check"></i><b>2.2</b> Loading data</a></li>
 <li class="chapter" data-level="2.3" data-path="data-frames.html"><a href="data-frames.html#exploring"><i class="fa fa-check"></i><b>2.3</b> Exploring</a></li>
@@ -124,7 +154,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.10" data-path="data-frames.html"><a href="data-frames.html#joining-data-frames"><i class="fa fa-check"></i><b>2.10</b> Joining data frames</a></li>
 <li class="chapter" data-level="2.11" data-path="data-frames.html"><a href="data-frames.html#further-reading"><i class="fa fa-check"></i><b>2.11</b> Further reading</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Plotting with ggplot2</a><ul>
+<li class="chapter" data-level="3" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html"><i class="fa fa-check"></i><b>3</b> Plotting with ggplot2</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#elements-of-a-ggplot"><i class="fa fa-check"></i><b>3.1</b> Elements of a ggplot</a></li>
 <li class="chapter" data-level="3.2" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#further-geoms"><i class="fa fa-check"></i><b>3.2</b> Further geoms</a></li>
 <li class="chapter" data-level="3.3" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#highlighting-subsets"><i class="fa fa-check"></i><b>3.3</b> Highlighting subsets</a></li>
@@ -132,18 +163,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#faceting"><i class="fa fa-check"></i><b>3.5</b> Faceting</a></li>
 <li class="chapter" data-level="3.6" data-path="plotting-with-ggplot2.html"><a href="plotting-with-ggplot2.html#saving-ggplots"><i class="fa fa-check"></i><b>3.6</b> Saving ggplots</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="summarizing-data.html"><a href="summarizing-data.html"><i class="fa fa-check"></i><b>4</b> Summarizing data</a><ul>
+<li class="chapter" data-level="4" data-path="summarizing-data.html"><a href="summarizing-data.html"><i class="fa fa-check"></i><b>4</b> Summarizing data</a>
+<ul>
 <li class="chapter" data-level="4.1" data-path="summarizing-data.html"><a href="summarizing-data.html#summary-functions"><i class="fa fa-check"></i><b>4.1</b> Summary functions</a></li>
 <li class="chapter" data-level="4.2" data-path="summarizing-data.html"><a href="summarizing-data.html#missing-values"><i class="fa fa-check"></i><b>4.2</b> Missing values</a></li>
 <li class="chapter" data-level="4.3" data-path="summarizing-data.html"><a href="summarizing-data.html#grouped-summaries"><i class="fa fa-check"></i><b>4.3</b> Grouped summaries</a></li>
 <li class="chapter" data-level="4.4" data-path="summarizing-data.html"><a href="summarizing-data.html#t-test"><i class="fa fa-check"></i><b>4.4</b> t-test</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="thinking-in-r.html"><a href="thinking-in-r.html"><i class="fa fa-check"></i><b>5</b> Thinking in R</a><ul>
+<li class="chapter" data-level="5" data-path="thinking-in-r.html"><a href="thinking-in-r.html"><i class="fa fa-check"></i><b>5</b> Thinking in R</a>
+<ul>
 <li class="chapter" data-level="5.1" data-path="thinking-in-r.html"><a href="thinking-in-r.html#lists"><i class="fa fa-check"></i><b>5.1</b> Lists</a></li>
 <li class="chapter" data-level="5.2" data-path="thinking-in-r.html"><a href="thinking-in-r.html#other-types-not-covered-here"><i class="fa fa-check"></i><b>5.2</b> Other types not covered here</a></li>
 <li class="chapter" data-level="5.3" data-path="thinking-in-r.html"><a href="thinking-in-r.html#programming"><i class="fa fa-check"></i><b>5.3</b> Programming</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="next-steps.html"><a href="next-steps.html"><i class="fa fa-check"></i><b>6</b> Next steps</a><ul>
+<li class="chapter" data-level="6" data-path="next-steps.html"><a href="next-steps.html"><i class="fa fa-check"></i><b>6</b> Next steps</a>
+<ul>
 <li class="chapter" data-level="6.1" data-path="next-steps.html"><a href="next-steps.html#deepen-your-understanding"><i class="fa fa-check"></i><b>6.1</b> Deepen your understanding</a></li>
 <li class="chapter" data-level="6.2" data-path="next-steps.html"><a href="next-steps.html#expand-your-vocabulary"><i class="fa fa-check"></i><b>6.2</b> Expand your vocabulary</a></li>
 <li class="chapter" data-level="6.3" data-path="next-steps.html"><a href="next-steps.html#join-the-community"><i class="fa fa-check"></i><b>6.3</b> Join the community</a></li>
@@ -165,50 +199,50 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="thinking-in-r" class="section level1">
+<div id="thinking-in-r" class="section level1" number="5">
 <h1><span class="header-section-number">5</span> Thinking in R</h1>
 <p>The result of a t-test is actually a value we can manipulate further. Two functions help us here. <code>class</code> gives the “public face” of a value, and <code>typeof</code> gives its underlying type, the way R thinks of it internally. For example numbers are “numeric” and have some representation in computer memory, either “integer” for whole numbers only, or “double” which can hold fractional numbers (stored in memory in a base-2 version of scientific notation).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(<span class="dv">42</span>)</code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="thinking-in-r.html#cb195-1"></a><span class="kw">class</span>(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(<span class="dv">42</span>)</code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="thinking-in-r.html#cb197-1"></a><span class="kw">typeof</span>(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <p>Let’s look at the result of a t-test:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result &lt;-<span class="st"> </span><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp, <span class="dt">paired=</span><span class="ot">TRUE</span>)
-
-<span class="kw">class</span>(result)</code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="thinking-in-r.html#cb199-1"></a>result &lt;-<span class="st"> </span><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp, <span class="dt">paired=</span><span class="ot">TRUE</span>)</span>
+<span id="cb199-2"><a href="thinking-in-r.html#cb199-2"></a></span>
+<span id="cb199-3"><a href="thinking-in-r.html#cb199-3"></a><span class="kw">class</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;htest&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(result)</code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="thinking-in-r.html#cb201-1"></a><span class="kw">typeof</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(result)</code></pre></div>
-<pre><code>## [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
-## [6] &quot;null.value&quot;  &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">result<span class="op">$</span>p.value</code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="thinking-in-r.html#cb203-1"></a><span class="kw">names</span>(result)</span></code></pre></div>
+<pre><code>##  [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
+##  [6] &quot;null.value&quot;  &quot;stderr&quot;      &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;</code></pre>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="thinking-in-r.html#cb205-1"></a>result<span class="op">$</span>p.value</span></code></pre></div>
 <pre><code>## [1] 4.301261e-29</code></pre>
 <p>In R, a t-test is just another function returning just another type of data, so it can also be a building block. The value it returns is a special type of vector called a “list”, but with a public face that presents itself nicely. This is a common pattern in R. Besides printing to the console nicely, this public face may alter the behaviour of generic functions such as <code>plot</code> and <code>summary</code>.</p>
 <p>Similarly a data frame is a list of vectors that is able to present itself nicely.</p>
-<div id="lists" class="section level2">
+<div id="lists" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Lists</h2>
 <p>Lists are vectors that can hold anything as elements (even other lists!). It’s possible to create lists with the <code>list</code> function. This becomes especially useful once you get into the programming side of R. For example writing your own function that needs to return multiple values, it could do so in the form of a list.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mylist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">hello=</span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>,<span class="st">&quot;world&quot;</span>), <span class="dt">numbers=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))
-mylist</code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="thinking-in-r.html#cb207-1"></a>mylist &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">hello=</span><span class="kw">c</span>(<span class="st">&quot;Hello&quot;</span>,<span class="st">&quot;world&quot;</span>), <span class="dt">numbers=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb207-2"><a href="thinking-in-r.html#cb207-2"></a>mylist</span></code></pre></div>
 <pre><code>## $hello
 ## [1] &quot;Hello&quot; &quot;world&quot;
 ## 
 ## $numbers
 ## [1] 1 2 3 4</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">class</span>(mylist)</code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="thinking-in-r.html#cb209-1"></a><span class="kw">class</span>(mylist)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">typeof</span>(mylist)</code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="thinking-in-r.html#cb211-1"></a><span class="kw">typeof</span>(mylist)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">names</span>(mylist)</code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="thinking-in-r.html#cb213-1"></a><span class="kw">names</span>(mylist)</span></code></pre></div>
 <pre><code>## [1] &quot;hello&quot;   &quot;numbers&quot;</code></pre>
 <p>Accessing lists can be done by name with <code>$</code> or by position with <code>[[ ]]</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mylist<span class="op">$</span>hello</code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="thinking-in-r.html#cb215-1"></a>mylist<span class="op">$</span>hello</span></code></pre></div>
 <pre><code>## [1] &quot;Hello&quot; &quot;world&quot;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mylist[[<span class="dv">2</span>]]</code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="thinking-in-r.html#cb217-1"></a>mylist[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 </div>
-<div id="other-types-not-covered-here" class="section level2">
+<div id="other-types-not-covered-here" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Other types not covered here</h2>
 <p>Matrices are another tabular data type. These come up when doing more mathematical tasks in R. They are also commonly used in bioinformatics, for example to represent RNA-Seq count data. A matrix, as compared to a data frame:</p>
 <ul>
@@ -219,7 +253,7 @@ mylist</code></pre></div>
 <p>Matrices can be created using <code>as.matrix</code> from a data frame, <code>matrix</code> from a single vector, or using <code>rbind</code> or <code>cbind</code> with several vectors.</p>
 <p>You may also encounter “S4 objects”, especially if you use <a href="http://bioconductor.org/">Bioconductor</a> packages. The syntax for using these is different again, and uses <code>@</code> to access elements.</p>
 </div>
-<div id="programming" class="section level2">
+<div id="programming" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Programming</h2>
 <p>Once you have a useful data analysis, you may want to do it again with different data. You may have some task that needs to be done many times over. This is where programming comes in:</p>
 <ul>

@@ -160,7 +160,7 @@ summarize(
 ```
 ## # A tibble: 22 x 2
 ##     year mean_life_exp
-##    <dbl>         <dbl>
+##  * <dbl>         <dbl>
 ##  1  1800          30.9
 ##  2  1810          31.1
 ##  3  1820          31.2
@@ -191,6 +191,13 @@ Advanced: What is the total GDP for each year? For this you will first need to c
 result <- summarize(
     group_by(gap_geo,year,oecd), 
     mean_life_exp=weighted.mean(life_exp, population, na.rm=TRUE))
+```
+
+```
+## `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.
+```
+
+```r
 result
 ```
 
@@ -340,8 +347,8 @@ names(result)
 ```
 
 ```
-## [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
-## [6] "null.value"  "alternative" "method"      "data.name"
+##  [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
+##  [6] "null.value"  "stderr"      "alternative" "method"      "data.name"
 ```
 
 ```r

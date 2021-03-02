@@ -42,7 +42,7 @@ This book was created in R using the `rmarkdown` and `bookdown` packages!
 
 This course is developed for the Monash Bioinformatics Platform by Paul Harrison.
 
-<img src="figures/CC-BY.png" style="display: block; margin: auto;" />
+<img src="figures/CC-BY.png" width="44" style="display: block; margin: auto;" />
 
 This work is licensed under a [CC BY-4: Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/). The attribution is "Monash Bioinformatics Platform" if copying or modifying these notes.
 

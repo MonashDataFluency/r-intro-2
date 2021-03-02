@@ -1,0 +1,29 @@
+---
+title: 'Answers to "reading R code"'
+---
+
+```{r eval=FALSE}
+highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]
+```
+
+All examples of:
+
+**A. The name of a variable to store a value to.**
+
+`highest`, because it is to the left of `<-`.
+
+**B. The name of a variable to retrieve the value from.**
+
+`geo`, in two places.
+
+**C. The name of a column to get from a data frame.**
+
+`name` and `lat`, because they are to the right of `$`.
+
+**D. The name of a function to call.**
+
+`head` and `order`, because they are to the left of `(`.
+
+**E. The name of an argument to a function call.**
+
+`decreasing` and `n`, because they are to the left of `=` within the brackets of a function call.
