@@ -192,9 +192,9 @@ plot(geo$long, geo$lat)
 
 ### Quiz: reading R code {- .challenge}
 
-You encounter some wild R code. You're not sure exactly what it does but, based on R syntax you've encountered so far, what roles are the different names in the code playing?
+You encounter some wild R code, and aren't sure what it does. Based on R syntax you've encountered so far, what roles are the different names in this code playing?
 
-```{r}
+```
 highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]
 ```
 

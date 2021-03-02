@@ -376,10 +376,9 @@ plot(geo$long, geo$lat)
 
 ### Quiz: reading R code {- .challenge}
 
-You encounter some wild R code. You're not sure exactly what it does but, based on R syntax you've encountered so far, what roles are the different names in the code playing?
+You encounter some wild R code, and aren't sure what it does. Based on R syntax you've encountered so far, what roles are the different names in this code playing?
 
-
-```r
+```
 highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]
 ```
 
@@ -617,7 +616,7 @@ When `plot` is given a factor, it shows a bar plot:
 plot(geo$income2017)
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" />
+<img src="data_frames_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" />
 
 When given two factors, it shows a mosaic plot:
 
@@ -626,7 +625,7 @@ When given two factors, it shows a mosaic plot:
 plot(geo$income2017, factor(geo$oecd))
 ```
 
-<img src="data_frames_files/figure-html/unnamed-chunk-29-1.png" width="576" style="display: block; margin: auto;" />
+<img src="data_frames_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" />
 
 Similarly we can count two categorical columns at once.
 

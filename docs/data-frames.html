@@ -406,8 +406,8 @@ Angola,africa,FALSE,TRUE,-12.5,18.5,lower_mid</code></pre>
 <p><img src="data_frames_files/figure-html/unnamed-chunk-17-1.png" width="576" style="display: block; margin: auto;" /></p>
 <div id="quiz-reading-r-code" class="section level3 unnumbered challenge" number="">
 <h3>Quiz: reading R code</h3>
-<p>You encounter some wild R code. You’re not sure exactly what it does but, based on R syntax you’ve encountered so far, what roles are the different names in the code playing?</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="data-frames.html#cb105-1"></a>highest &lt;-<span class="st"> </span>geo<span class="op">$</span>name[ <span class="kw">head</span>(<span class="kw">order</span>(geo<span class="op">$</span>lat, <span class="dt">decreasing=</span><span class="ot">TRUE</span>), <span class="dt">n=</span><span class="dv">10</span>) ]</span></code></pre></div>
+<p>You encounter some wild R code, and aren’t sure what it does. Based on R syntax you’ve encountered so far, what roles are the different names in this code playing?</p>
+<pre><code>highest &lt;- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]</code></pre>
 <p>Find all examples of:</p>
 <p>A. The name of a variable to store a value to.<br />
 B. The name of a variable to retrieve the value from.<br />
@@ -547,10 +547,10 @@ E. The name of an argument to a function call.<br />
 ## 4 high          58</code></pre>
 <p>When <code>plot</code> is given a factor, it shows a bar plot:</p>
 <div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="data-frames.html#cb127-1"></a><span class="kw">plot</span>(geo<span class="op">$</span>income2017)</span></code></pre></div>
-<p><img src="data_frames_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="data_frames_files/figure-html/unnamed-chunk-27-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>When given two factors, it shows a mosaic plot:</p>
 <div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="data-frames.html#cb128-1"></a><span class="kw">plot</span>(geo<span class="op">$</span>income2017, <span class="kw">factor</span>(geo<span class="op">$</span>oecd))</span></code></pre></div>
-<p><img src="data_frames_files/figure-html/unnamed-chunk-29-1.png" width="576" style="display: block; margin: auto;" /></p>
+<p><img src="data_frames_files/figure-html/unnamed-chunk-28-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Similarly we can count two categorical columns at once.</p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="data-frames.html#cb129-1"></a><span class="kw">count</span>(geo, income2017, oecd)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
