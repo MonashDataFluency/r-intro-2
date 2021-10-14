@@ -8,7 +8,7 @@ knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
 
 **Our number one recommendation is to read the book ["R for Data Science"](http://r4ds.had.co.nz/) by Garrett Grolemund and Hadley Wickham.**
 
-Also, statistical tasks such as model fitting, hypothesis testing, confidence interval calculation, and prediction are a large part of R, and one we haven't demonstrated fully today. Linear models, and the linear model formula syntax `~`, are core to much of what R has to offer statistically. Many statistical techniques take linear models as their starting point, including [limma](https://bioconductor.org/packages/release/bioc/html/limma.html) for differential gene expression, `glm` for logistic regression (etc), survival analysis with `coxph`, and mixed models to characterize variation within populations.
+Statistical tasks such as model fitting, hypothesis testing, confidence interval calculation, and prediction are a large part of R, and one we haven't demonstrated fully today. Linear models, and the linear model formula syntax `~`, are core to much of what R has to offer statistically. Many statistical techniques take linear models as their starting point, including [limma](https://bioconductor.org/packages/release/bioc/html/limma.html) for differential gene expression, `glm` for logistic regression (etc), survival analysis with `coxph`, and mixed models to characterize variation within populations.
 
 * "Statistical Models in S" by J.M. Chambers and T.J. Hastie is the primary reference for this, although there are some small differences between R and its predecessor S.
 
@@ -36,16 +36,15 @@ Join the [Data Fluency community at Monash](https://www.monash.edu/data-fluency)
 
  * Mailing list for workshop and event announcements.
  * Slack for discussion.
- * Monthly seminars on Data Science topics.
  * Drop-in sessions on Friday afternoon.
+
+[Attend further Data Fluency R workshops.](https://www.monash.edu/data-fluency/toolkit/r) The material for our workshops is also available at this link for self-study.
 
 Meetups in Melbourne:
 
 * [MelbURN](https://www.meetup.com/en-AU/MelbURN-Melbourne-Users-of-R-Network/)
 * [R-Ladies](https://www.meetup.com/en-AU/R-Ladies-Melbourne/)
 
-[The Carpentries](https://carpentries.org/) run intensive two day workshops on scientific computing and data science topics worldwide. The style of this present workshop is very much based on theirs. For bioinformatics, [COMBINE](https://combine.org.au/) is an Australian student and early career researcher organization, and runs Carpentries workshops and similar.
+[The Carpentries](https://carpentries.org/) run intensive two day workshops on scientific computing and data science topics worldwide. The style of this present workshop is very much based on theirs.
 
-
-
-
+For bioinformatics, the [Monash Bioinformatics Platform](https://www.monash.edu/researchinfrastructure/bioinformatics/training) runs bioinformatics-specific workshops. Also [COMBINE](https://combine.org.au/) is an Australian bioinformatics student and early career researcher organization, and runs Carpentries workshops and similar.

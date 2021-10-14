@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>4 Summarizing data | Introduction to R, version 2</title>
   <meta name="description" content="4 Summarizing data | Introduction to R, version 2" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="4 Summarizing data | Introduction to R, version 2" />
   <meta property="og:type" content="book" />
@@ -31,8 +31,9 @@
   
 <link rel="prev" href="plotting-with-ggplot2.html"/>
 <link rel="next" href="thinking-in-r.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,14 +49,15 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -115,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -203,27 +206,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">4</span> Summarizing data</h1>
 <p>Having loaded and thoroughly explored a data set, we are ready to distill it down to concise conclusions. At its simplest, this involves calculating summary statistics like counts, means, and standard deviations. Beyond this is the fitting of models, and hypothesis testing and confidence interval calculation. R has a huge number of packages devoted to these tasks and this is a large part of its appeal, but is beyond the scope of today.</p>
 <p>Loading the data as before, if you have not already done so:</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="summarizing-data.html#cb160-1"></a><span class="kw">library</span>(tidyverse)</span>
-<span id="cb160-2"><a href="summarizing-data.html#cb160-2"></a></span>
-<span id="cb160-3"><a href="summarizing-data.html#cb160-3"></a>geo &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;r-intro-2-files/geo.csv&quot;</span>)</span>
-<span id="cb160-4"><a href="summarizing-data.html#cb160-4"></a>gap &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;r-intro-2-files/gap-minder.csv&quot;</span>)</span>
-<span id="cb160-5"><a href="summarizing-data.html#cb160-5"></a>gap_geo &lt;-<span class="st"> </span><span class="kw">left_join</span>(gap, geo, <span class="dt">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="summarizing-data.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb162-2"><a href="summarizing-data.html#cb162-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb162-3"><a href="summarizing-data.html#cb162-3" aria-hidden="true" tabindex="-1"></a>geo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;r-intro-2-files/geo.csv&quot;</span>)</span>
+<span id="cb162-4"><a href="summarizing-data.html#cb162-4" aria-hidden="true" tabindex="-1"></a>gap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;r-intro-2-files/gap-minder.csv&quot;</span>)</span>
+<span id="cb162-5"><a href="summarizing-data.html#cb162-5" aria-hidden="true" tabindex="-1"></a>gap_geo <span class="ot">&lt;-</span> <span class="fu">left_join</span>(gap, geo, <span class="at">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
 <div id="summary-functions" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Summary functions</h2>
 <p>R has a variety of functions for summarizing a vector, including: <code>sum</code>, <code>mean</code>, <code>min</code>, <code>max</code>, <code>median</code>, <code>sd</code>.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="summarizing-data.html#cb161-1"></a><span class="kw">mean</span>( <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="summarizing-data.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>) )</span></code></pre></div>
 <pre><code>## [1] 2.5</code></pre>
 <p>We can use these on the Gapminder data.</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="summarizing-data.html#cb163-1"></a>gap2010 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)</span>
-<span id="cb163-2"><a href="summarizing-data.html#cb163-2"></a><span class="kw">sum</span>(gap2010<span class="op">$</span>population)</span></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="summarizing-data.html#cb165-1" aria-hidden="true" tabindex="-1"></a>gap2010 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, year <span class="sc">==</span> <span class="dv">2010</span>)</span>
+<span id="cb165-2"><a href="summarizing-data.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(gap2010<span class="sc">$</span>population)</span></code></pre></div>
 <pre><code>## [1] 6949495061</code></pre>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="summarizing-data.html#cb165-1"></a><span class="kw">mean</span>(gap2010<span class="op">$</span>life_exp)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="summarizing-data.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gap2010<span class="sc">$</span>life_exp)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 </div>
 <div id="missing-values" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Missing values</h2>
 <p>Why did <code>mean</code> fail? The reason is that <code>life_exp</code> contains missing values (<code>NA</code>).</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="summarizing-data.html#cb167-1"></a>gap2010<span class="op">$</span>life_exp</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="summarizing-data.html#cb169-1" aria-hidden="true" tabindex="-1"></a>gap2010<span class="sc">$</span>life_exp</span></code></pre></div>
 <pre><code>##   [1] 56.20 76.31 76.55 82.66 60.08 76.85 75.82 73.34 81.98 80.50 69.13 73.79
 ##  [13] 76.03 70.39 76.68 70.43 79.98 71.38 61.82 72.13 71.64 76.75 57.06 74.19
 ##  [25] 77.08 73.86 57.89 57.73 66.12 57.25 81.29 72.45 47.48 56.49 79.12 74.59
@@ -242,36 +245,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [181]    NA 56.81 70.41 76.51 80.34 78.74 76.36 68.77 63.02 75.41 72.27 73.07
 ## [193] 67.51 52.02 49.57 58.13</code></pre>
 <p>R will not ignore these unless we explicitly tell it to with <code>na.rm=TRUE</code>.</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="summarizing-data.html#cb169-1"></a><span class="kw">mean</span>(gap2010<span class="op">$</span>life_exp, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="summarizing-data.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(gap2010<span class="sc">$</span>life_exp, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 70.34005</code></pre>
 <p>Ideally we should also use <code>weighted.mean</code> here, to take population into account.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="summarizing-data.html#cb171-1"></a><span class="kw">weighted.mean</span>(gap2010<span class="op">$</span>life_exp, gap2010<span class="op">$</span>population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="summarizing-data.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted.mean</span>(gap2010<span class="sc">$</span>life_exp, gap2010<span class="sc">$</span>population, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 70.96192</code></pre>
 <p><code>NA</code> is a special value. If we try to calculate with <code>NA</code>, the result is <code>NA</code></p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="summarizing-data.html#cb173-1"></a><span class="ot">NA</span> <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="summarizing-data.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="cn">NA</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p><code>is.na</code> can be used to detect <code>NA</code> values, or <code>na.omit</code> can be used to directly remove rows of a data frame containing them.</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="summarizing-data.html#cb175-1"></a><span class="kw">is.na</span>( <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="ot">NA</span>,<span class="dv">3</span>) )</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="summarizing-data.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>( <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="cn">NA</span>,<span class="dv">3</span>) )</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE  TRUE FALSE</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="summarizing-data.html#cb177-1"></a>cleaned &lt;-<span class="st"> </span><span class="kw">filter</span>(gap2010, <span class="op">!</span><span class="kw">is.na</span>(life_exp))</span>
-<span id="cb177-2"><a href="summarizing-data.html#cb177-2"></a><span class="kw">weighted.mean</span>(cleaned<span class="op">$</span>life_exp, cleaned<span class="op">$</span>population)</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="summarizing-data.html#cb179-1" aria-hidden="true" tabindex="-1"></a>cleaned <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap2010, <span class="sc">!</span><span class="fu">is.na</span>(life_exp))</span>
+<span id="cb179-2"><a href="summarizing-data.html#cb179-2" aria-hidden="true" tabindex="-1"></a><span class="fu">weighted.mean</span>(cleaned<span class="sc">$</span>life_exp, cleaned<span class="sc">$</span>population)</span></code></pre></div>
 <pre><code>## [1] 70.96192</code></pre>
 </div>
 <div id="grouped-summaries" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Grouped summaries</h2>
 <p>The <code>summarize</code> function in <code>dplyr</code> allows summary functions to be applied to data frames.</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="summarizing-data.html#cb179-1"></a><span class="kw">summarize</span>(gap2010, <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="summarizing-data.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(gap2010, <span class="at">mean_life_exp=</span><span class="fu">weighted.mean</span>(life_exp, population, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
 ##   mean_life_exp
 ##           &lt;dbl&gt;
 ## 1          71.0</code></pre>
 <p>So far unremarkable, but <code>summarize</code> comes into its own when the <code>group_by</code> “adjective” is used.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="summarizing-data.html#cb181-1"></a><span class="kw">summarize</span>(</span>
-<span id="cb181-2"><a href="summarizing-data.html#cb181-2"></a>    <span class="kw">group_by</span>(gap_geo, year), </span>
-<span id="cb181-3"><a href="summarizing-data.html#cb181-3"></a>    <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 22 x 2
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="summarizing-data.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(</span>
+<span id="cb183-2"><a href="summarizing-data.html#cb183-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(gap_geo, year), </span>
+<span id="cb183-3"><a href="summarizing-data.html#cb183-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_life_exp=</span><span class="fu">weighted.mean</span>(life_exp, population, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
+<pre><code>## # A tibble: 22 × 2
 ##     year mean_life_exp
-##  * &lt;dbl&gt;         &lt;dbl&gt;
+##    &lt;dbl&gt;         &lt;dbl&gt;
 ##  1  1800          30.9
 ##  2  1810          31.1
 ##  3  1820          31.2
@@ -283,20 +286,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9  1880          32.0
 ## 10  1890          32.5
 ## # … with 12 more rows</code></pre>
-<div id="challenge-summarizing" class="section level3 unnumbered challenge" number="">
+<div id="challenge-summarizing" class="section level3 unnumbered challenge">
 <h3>Challenge: summarizing</h3>
 <p>What is the total population for each year? Plot the result.</p>
 <p>Advanced: What is the total GDP for each year? For this you will first need to calculate GDP per capita times the population of each country.</p>
 </div>
-<div id="section-2" class="section level3 unnumbered" number="">
-<h3 class="unnumbered" number=""></h3>
+<div id="section-2" class="section level3 unnumbered">
+<h3 class="unnumbered"></h3>
 <p><code>group_by</code> can be used to group by multiple columns, much like <code>count</code>. We can use this to see how the rest of the world is catching up to OECD nations in terms of life expectancy.</p>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="summarizing-data.html#cb183-1"></a>result &lt;-<span class="st"> </span><span class="kw">summarize</span>(</span>
-<span id="cb183-2"><a href="summarizing-data.html#cb183-2"></a>    <span class="kw">group_by</span>(gap_geo,year,oecd), </span>
-<span id="cb183-3"><a href="summarizing-data.html#cb183-3"></a>    <span class="dt">mean_life_exp=</span><span class="kw">weighted.mean</span>(life_exp, population, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="summarizing-data.html#cb185-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">summarize</span>(</span>
+<span id="cb185-2"><a href="summarizing-data.html#cb185-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(gap_geo,year,oecd), </span>
+<span id="cb185-3"><a href="summarizing-data.html#cb185-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_life_exp=</span><span class="fu">weighted.mean</span>(life_exp, population, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by &#39;year&#39;. You can override using the `.groups` argument.</code></pre>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="summarizing-data.html#cb185-1"></a>result</span></code></pre></div>
-<pre><code>## # A tibble: 44 x 3
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="summarizing-data.html#cb187-1" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## # A tibble: 44 × 3
 ## # Groups:   year [22]
 ##     year oecd  mean_life_exp
 ##    &lt;dbl&gt; &lt;lgl&gt;         &lt;dbl&gt;
@@ -311,7 +314,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9  1840 FALSE          30.0
 ## 10  1840 TRUE           36.2
 ## # … with 34 more rows</code></pre>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="summarizing-data.html#cb187-1"></a><span class="kw">ggplot</span>(result, <span class="kw">aes</span>(<span class="dt">x=</span>year,<span class="dt">y=</span>mean_life_exp,<span class="dt">color=</span>oecd)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="summarizing-data.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(result, <span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>mean_life_exp,<span class="at">color=</span>oecd)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="summarizing_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>A similar plot could be produced using <code>geom_smooth</code>. Differences here are that we have full control over the summarization process so we were able to use the exact summarization method we want (<code>weighted.mean</code> for each year), and we have access to the resulting numeric data as well as the plot. We have reduced a large data set down to a smaller one that distills out one of the stories present in this data. However the earlier visualization and exploration activity using <code>ggplot2</code> was essential. It gave us an idea of what sort of variability was present in the data, and any unexpected issues the data might have.</p>
 </div>
@@ -320,10 +323,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">4.4</span> t-test</h2>
 <p>We will finish this section by demonstrating a t-test. The main point of this section is to give a flavour of how statistical tests work in R, rather than the details of what a t-test does.</p>
 <p>Has life expectancy increased from 2000 to 2010?</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="summarizing-data.html#cb188-1"></a>gap2000 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2000</span>)</span>
-<span id="cb188-2"><a href="summarizing-data.html#cb188-2"></a>gap2010 &lt;-<span class="st"> </span><span class="kw">filter</span>(gap_geo, year <span class="op">==</span><span class="st"> </span><span class="dv">2010</span>)</span>
-<span id="cb188-3"><a href="summarizing-data.html#cb188-3"></a></span>
-<span id="cb188-4"><a href="summarizing-data.html#cb188-4"></a><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp)</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="summarizing-data.html#cb190-1" aria-hidden="true" tabindex="-1"></a>gap2000 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, year <span class="sc">==</span> <span class="dv">2000</span>)</span>
+<span id="cb190-2"><a href="summarizing-data.html#cb190-2" aria-hidden="true" tabindex="-1"></a>gap2010 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, year <span class="sc">==</span> <span class="dv">2010</span>)</span>
+<span id="cb190-3"><a href="summarizing-data.html#cb190-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb190-4"><a href="summarizing-data.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(gap2010<span class="sc">$</span>life_exp, gap2000<span class="sc">$</span>life_exp)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -337,9 +340,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  70.34005  67.43185</code></pre>
 <p>Statistical routines often have many ways to tweak the details of their operation. These are specified by further arguments to the function call, to override the default behaviour. By default, <code>t.test</code> performs an unpaired t-test, but these are repeated observations of the same countries. We can specify <code>paired=TRUE</code> to <code>t.test</code> to perform a paired sample t-test and gain some statistical power. Check this by looking at the help page with <code>?t.test</code>.</p>
 <p>It’s important to first check that both data frames are in the same order.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="summarizing-data.html#cb190-1"></a><span class="kw">all</span>(gap2000<span class="op">$</span>name <span class="op">==</span><span class="st"> </span>gap2010<span class="op">$</span>name)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="summarizing-data.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(gap2000<span class="sc">$</span>name <span class="sc">==</span> gap2010<span class="sc">$</span>name)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="summarizing-data.html#cb192-1"></a><span class="kw">t.test</span>(gap2010<span class="op">$</span>life_exp, gap2000<span class="op">$</span>life_exp, <span class="dt">paired=</span><span class="ot">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="summarizing-data.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(gap2010<span class="sc">$</span>life_exp, gap2000<span class="sc">$</span>life_exp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -352,8 +355,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## mean of the differences 
 ##                2.908201</code></pre>
 <p>When performing a statistical test, it’s good practice to visualize the data to make sure there is nothing funny going on.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="summarizing-data.html#cb194-1"></a><span class="kw">plot</span>(gap2000<span class="op">$</span>life_exp, gap2010<span class="op">$</span>life_exp)</span>
-<span id="cb194-2"><a href="summarizing-data.html#cb194-2"></a><span class="kw">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="summarizing-data.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gap2000<span class="sc">$</span>life_exp, gap2010<span class="sc">$</span>life_exp)</span>
+<span id="cb196-2"><a href="summarizing-data.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code></pre></div>
 <p><img src="summarizing_files/figure-html/unnamed-chunk-15-1.png" width="336" style="display: block; margin: auto;" /></p>
 <p>This is a visual confirmation of the t-test result. If there were no difference between the years then points would lie approximately evenly above and below the diagonal line, which is clearly not the case. However the outlier may warrant investigation.</p>
 </div>
@@ -368,7 +371,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -387,6 +389,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -407,6 +410,10 @@ gitbook.start({
 "text": null
 },
 "download": ["r-intro-2.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

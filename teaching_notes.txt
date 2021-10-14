@@ -1,0 +1,38 @@
+
+2021-10-12 & 14 Report on a Zoom-based workshop
+
+Since this workshop was held during the plague years, it was a Zoom-based workshop. We had discussion via a Slack channel. The general format was one instructor leading the workshop (taking turns), plus several helpers who help out during challenges in the Zoom breakout rooms. Everyone also keeps an eye on Slack.
+
+We told people to use RStudio Cloud for preference, but that they could use their own laptop if they wanted to. One person had problems installing a package on their own laptop, which seemed to be due to network problems connecting to the default CRAN mirror.
+
+
+The schedule we used was:
+
+10:00am           Log on early if you want help setting up
+10:10am           Begin
+11:20am - 11:30am Break
+12:40pm - 12:50pm Break
+14:15pm           End
+14:15pm - 14:30pm We will stay online to answer questions
+
+We finished to the end of "data frames" on the first day. On the second day we finished at 12:50 (rather than the planned 2:15), so the schedule could be made a little shorter.
+
+
+On the first day, we started with a short slideshow, and then did an icebreaker activity in breakout rooms where everyone introduced themself and said a little about the data they worked with.
+
+It's important to give breaks about hourly: biobreak, snack time, strech legs.
+
+
+For the data frames quiz portion, I used the Slack SimplePoll app:
+
+/poll "```highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]``` The name of a variable to store a value to?" "highest" "geo" "name" "head" "order" "geo" "lat" "decreasing" "n" anonymous
+
+/poll "```highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]``` The name of a variable to retrieve the value from?" "highest" "geo" "name" "head" "order" "geo" "lat" "decreasing" "n" anonymous
+
+/poll "```highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]``` The name of a column to get from a data frame?" "highest" "geo" "name" "head" "order" "geo" "lat" "decreasing" "n" anonymous
+
+/poll "```highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]``` The name of a function to call?" "highest" "geo" "name" "head" "order" "geo" "lat" "decreasing" "n" anonymous
+
+/poll "```highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]``` The name of an argument to a function call?" "highest" "geo" "name" "head" "order" "geo" "lat" "decreasing" "n" anonymous
+
+

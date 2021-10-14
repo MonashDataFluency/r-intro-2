@@ -36,7 +36,7 @@ Open RStudio, click on the "Console" pane, type `1+1` and press enter. R display
 
 Spaces can be used to make code easier to read.
 
-We can compare with `== < > <= >=`. This produces a *logical* value, `TRUE` or `FALSE`. Note the double equals, `==`, for equality comparison.
+We can compare with `== < > <= >= !=`. This produces a *logical* value, `TRUE` or `FALSE`. Note the double equals, `==`, for equality comparison.
 
 
 ```r

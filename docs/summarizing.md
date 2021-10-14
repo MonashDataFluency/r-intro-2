@@ -142,7 +142,7 @@ summarize(gap2010, mean_life_exp=weighted.mean(life_exp, population, na.rm=TRUE)
 ```
 
 ```
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##   mean_life_exp
 ##           <dbl>
 ## 1          71.0
@@ -158,9 +158,9 @@ summarize(
 ```
 
 ```
-## # A tibble: 22 x 2
+## # A tibble: 22 × 2
 ##     year mean_life_exp
-##  * <dbl>         <dbl>
+##    <dbl>         <dbl>
 ##  1  1800          30.9
 ##  2  1810          31.1
 ##  3  1820          31.2
@@ -202,7 +202,7 @@ result
 ```
 
 ```
-## # A tibble: 44 x 3
+## # A tibble: 44 × 3
 ## # Groups:   year [22]
 ##     year oecd  mean_life_exp
 ##    <dbl> <lgl>         <dbl>

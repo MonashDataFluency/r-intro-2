@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Introduction to R, version 2</title>
   <meta name="description" content="Introduction to R, version 2" />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Introduction to R, version 2" />
   <meta property="og:type" content="book" />
@@ -31,8 +31,9 @@
   
 
 <link rel="next" href="starting-out-in-r.html"/>
-<script src="libs/header-attrs-2.7/header-attrs.js"></script>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -48,14 +49,15 @@
 
 
 
-
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
@@ -115,6 +117,7 @@ code span.va { color: #19177c; } /* Variable */
 code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
+
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -202,7 +205,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Introduction to R, version 2</h1>
 </div>
-<div id="index" class="section level1 unnumbered" number="">
+<div id="index" class="section level1 unnumbered">
 <h1>Introduction</h1>
 <p><img src="figures/R.jpg" width="25%" style="display: block; margin: auto auto auto 0;" /></p>
 <p>These are course notes for the “Introduction to R” course given by the <a href="https://www.monash.edu/researchinfrastructure/bioinformatics">Monash Bioinformatics Platform</a> for the <a href="https://monashdatafluency.github.io/">Monash Data Fluency</a> initiative. Our teaching style is based on the style of <a href="https://carpentries.org/">The Carpentries</a>. This is a new version of the course focussing on the modern <a href="https://www.tidyverse.org/">Tidyverse</a> set of packages. We believe this is currently the quickest route to being productive in R.</p>
@@ -220,14 +223,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="https://www.rstudio.com/products/rstudio/download/">Download RStudio</a></li>
 </ul>
 <p>R is the language itself. RStudio provides a convenient environment in which to use R, either on your local computer or on a server.</p>
-<div id="source-code" class="section level3 unnumbered" number="">
+<div id="source-code" class="section level3 unnumbered">
 <h3>Source code</h3>
 <p>This book was created in R using the <code>rmarkdown</code> and <code>bookdown</code> packages!</p>
 <ul>
 <li><a href="https://github.com/MonashDataFluency/r-intro-2">GitHub page</a></li>
 </ul>
 </div>
-<div id="authors-and-copyright" class="section level3 unnumbered" number="">
+<div id="authors-and-copyright" class="section level3 unnumbered">
 <h3>Authors and copyright</h3>
 <p>This course is developed for the Monash Bioinformatics Platform by Paul Harrison.</p>
 <p><img src="figures/CC-BY.png" width="44" style="display: block; margin: auto;" /></p>
@@ -246,7 +249,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -265,6 +267,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
@@ -285,6 +288,10 @@ gitbook.start({
 "text": null
 },
 "download": ["r-intro-2.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 }

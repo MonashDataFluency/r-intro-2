@@ -69,17 +69,21 @@ geo <- read_csv("r-intro-2-files/geo.csv")
 ```
 
 ```
+## Rows: 196 Columns: 7
+```
+
+```
+## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (3): name, region, income2017
+## dbl (2): lat, long
+## lgl (2): oecd, g77
+```
+
+```
 ## 
-## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-## cols(
-##   name = col_character(),
-##   region = col_character(),
-##   oecd = col_logical(),
-##   g77 = col_logical(),
-##   lat = col_double(),
-##   long = col_double(),
-##   income2017 = col_character()
-## )
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 ```
 
 ```r
@@ -87,7 +91,7 @@ geo
 ```
 
 ```
-## # A tibble: 196 x 7
+## # A tibble: 196 × 7
 ##    name                region   oecd  g77     lat   long income2017
 ##    <chr>               <chr>    <lgl> <lgl> <dbl>  <dbl> <chr>     
 ##  1 Afghanistan         asia     FALSE TRUE   33    66    low       
@@ -128,7 +132,7 @@ tibble(foo=c(10,20,30), bar=c("a","b","c"))
 ```
 
 ```
-## # A tibble: 3 x 2
+## # A tibble: 3 × 2
 ##     foo bar  
 ##   <dbl> <chr>
 ## 1    10 a    
@@ -222,7 +226,7 @@ geo[4,2]
 ```
 
 ```
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##   region
 ##   <chr> 
 ## 1 europe
@@ -238,7 +242,7 @@ geo[4,"region"]
 ```
 
 ```
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##   region
 ##   <chr> 
 ## 1 europe
@@ -252,7 +256,7 @@ geo[4,]
 ```
 
 ```
-## # A tibble: 1 x 7
+## # A tibble: 1 × 7
 ##   name    region oecd  g77     lat  long income2017
 ##   <chr>   <chr>  <lgl> <lgl> <dbl> <dbl> <chr>     
 ## 1 Andorra europe FALSE FALSE  42.5  1.52 high
@@ -263,7 +267,7 @@ geo[,"region"]
 ```
 
 ```
-## # A tibble: 196 x 1
+## # A tibble: 196 × 1
 ##    region  
 ##    <chr>   
 ##  1 asia    
@@ -288,7 +292,7 @@ geo[rows_wanted,]
 ```
 
 ```
-## # A tibble: 3 x 7
+## # A tibble: 3 × 7
 ##   name        region oecd  g77     lat  long income2017
 ##   <chr>       <chr>  <lgl> <lgl> <dbl> <dbl> <chr>     
 ## 1 Afghanistan asia   FALSE TRUE   33    66   low       
@@ -304,7 +308,7 @@ geo[c(1,3,5),]
 ```
 
 ```
-## # A tibble: 3 x 7
+## # A tibble: 3 × 7
 ##   name        region oecd  g77     lat  long income2017
 ##   <chr>       <chr>  <lgl> <lgl> <dbl> <dbl> <chr>     
 ## 1 Afghanistan asia   FALSE TRUE   33    66   low       
@@ -317,7 +321,7 @@ geo[1:7,]
 ```
 
 ```
-## # A tibble: 7 x 7
+## # A tibble: 7 × 7
 ##   name                region   oecd  g77     lat   long income2017
 ##   <chr>               <chr>    <lgl> <lgl> <dbl>  <dbl> <chr>     
 ## 1 Afghanistan         asia     FALSE TRUE   33    66    low       
@@ -430,7 +434,7 @@ geo[is_southern,]
 ```
 
 ```
-## # A tibble: 40 x 7
+## # A tibble: 40 × 7
 ##    name             region   oecd  g77     lat  long income2017
 ##    <chr>            <chr>    <lgl> <lgl> <dbl> <dbl> <chr>     
 ##  1 Angola           africa   FALSE TRUE  -12.5  18.5 lower_mid 
@@ -471,7 +475,7 @@ geo[southern_oecd,]
 ```
 
 ```
-## # A tibble: 3 x 7
+## # A tibble: 3 × 7
 ##   name        region   oecd  g77     lat  long income2017
 ##   <chr>       <chr>    <lgl> <lgl> <dbl> <dbl> <chr>     
 ## 1 Australia   asia     TRUE  FALSE -25   135   high      
@@ -489,7 +493,7 @@ geo
 ```
 
 ```
-## # A tibble: 196 x 8
+## # A tibble: 196 × 8
 ##    name                region   oecd  g77     lat   long income2017 southern
 ##    <chr>               <chr>    <lgl> <lgl> <dbl>  <dbl> <chr>      <lgl>   
 ##  1 Afghanistan         asia     FALSE TRUE   33    66    low        FALSE   
@@ -526,7 +530,7 @@ filter(geo, lat < 0 & oecd)
 ```
 
 ```
-## # A tibble: 3 x 8
+## # A tibble: 3 × 8
 ##   name        region   oecd  g77     lat  long income2017 southern
 ##   <chr>       <chr>    <lgl> <lgl> <dbl> <dbl> <chr>      <lgl>   
 ## 1 Australia   asia     TRUE  FALSE -25   135   high       TRUE    
@@ -548,9 +552,9 @@ count(geo, region)
 ```
 
 ```
-## # A tibble: 4 x 2
+## # A tibble: 4 × 2
 ##   region       n
-## * <chr>    <int>
+##   <chr>    <int>
 ## 1 africa      54
 ## 2 americas    35
 ## 3 asia        59
@@ -562,9 +566,9 @@ count(geo, income2017)
 ```
 
 ```
-## # A tibble: 4 x 2
+## # A tibble: 4 × 2
 ##   income2017     n
-## * <chr>      <int>
+##   <chr>      <int>
 ## 1 high          58
 ## 2 low           31
 ## 3 lower_mid     52
@@ -600,9 +604,9 @@ count(geo, income2017)
 ```
 
 ```
-## # A tibble: 4 x 2
+## # A tibble: 4 × 2
 ##   income2017     n
-## * <fct>      <int>
+##   <fct>      <int>
 ## 1 low           31
 ## 2 lower_mid     52
 ## 3 upper_mid     55
@@ -635,7 +639,7 @@ count(geo, income2017, oecd)
 ```
 
 ```
-## # A tibble: 6 x 3
+## # A tibble: 6 × 3
 ##   income2017 oecd      n
 ##   <fct>      <lgl> <int>
 ## 1 low        FALSE    31
@@ -657,7 +661,7 @@ pivot_wider(counts, names_from=income2017, values_from=n)
 ```
 
 ```
-## # A tibble: 2 x 5
+## # A tibble: 2 × 5
 ##   oecd    low lower_mid upper_mid  high
 ##   <lgl> <int>     <int>     <int> <int>
 ## 1 FALSE    31        52        53    29
@@ -696,7 +700,7 @@ arrange(geo, lat)
 ```
 
 ```
-## # A tibble: 196 x 8
+## # A tibble: 196 × 8
 ##    name         region   oecd  g77     lat  long income2017 southern
 ##    <chr>        <chr>    <lgl> <lgl> <dbl> <dbl> <fct>      <lgl>   
 ##  1 New Zealand  asia     TRUE  FALSE -42   174   high       TRUE    
@@ -720,7 +724,7 @@ arrange(geo, desc(name))
 ```
 
 ```
-## # A tibble: 196 x 8
+## # A tibble: 196 × 8
 ##    name           region   oecd  g77     lat   long income2017 southern
 ##    <chr>          <chr>    <lgl> <lgl> <dbl>  <dbl> <fct>      <lgl>   
 ##  1 Zimbabwe       africa   FALSE TRUE  -19    29.8  low        TRUE    
@@ -748,7 +752,7 @@ gap
 ```
 
 ```
-## # A tibble: 4,312 x 5
+## # A tibble: 4,312 × 5
 ##    name                 year population gdp_percap life_exp
 ##    <chr>               <dbl>      <dbl>      <dbl>    <dbl>
 ##  1 Afghanistan          1800    3280000        603     28.2
@@ -779,7 +783,7 @@ gap_geo
 ```
 
 ```
-## # A tibble: 4,312 x 12
+## # A tibble: 4,312 × 12
 ##    name      year population gdp_percap life_exp region oecd  g77     lat   long
 ##    <chr>    <dbl>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>  <dbl>
 ##  1 Afghani…  1800    3280000        603     28.2 asia   FALSE TRUE   33    66   
@@ -798,7 +802,7 @@ gap_geo
 
 The output contains all ways of pairing up rows by `name`. In this case each row of `geo` pairs up with multiple rows of `gap`.
 
-The "left" in "left join" refers to how rows that can't be paired up are handled. `left_join` keeps all rows from the first data frame but not the second. This is a good default when the intent is to attaching some extra information to a data frame. `inner_join` discard all rows that can't be paired up. `full_join` keeps all rows from both data frames. 
+The "left" in "left join" refers to how rows that can't be paired up are handled. `left_join` keeps all rows from the first data frame but not the second. This is a good default when the intent is to attaching some extra information to a data frame. `inner_join` discards all rows that can't be paired up. `full_join` keeps all rows from both data frames. 
 
 
 ## Further reading
