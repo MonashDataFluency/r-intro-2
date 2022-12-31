@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Plotting with ggplot2 | Introduction to R, version 2</title>
   <meta name="description" content="3 Plotting with ggplot2 | Introduction to R, version 2" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Plotting with ggplot2 | Introduction to R, version 2" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="data-frames.html"/>
 <link rel="next" href="summarizing-data.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,8 +47,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -91,7 +90,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +103,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -202,17 +201,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="plotting-with-ggplot2" class="section level1" number="3">
-<h1><span class="header-section-number">3</span> Plotting with ggplot2</h1>
+<div id="plotting-with-ggplot2" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Plotting with ggplot2<a href="plotting-with-ggplot2.html#plotting-with-ggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>We already saw some of R’s built in plotting facilities with the function <code>plot</code>. A more recent and much more powerful plotting library is <code>ggplot2</code>. <code>ggplot2</code> is another mini-language within R, a language for creating plots. It implements ideas from a book called <a href="https://www.amazon.com/Grammar-Graphics-Statistics-Computing/dp/0387245448">“The Grammar of Graphics”</a>. The syntax can be a little strange, but there are plenty of examples in the <a href="http://ggplot2.tidyverse.org/reference/">online documentation</a>.</p>
 <p><code>ggplot2</code> is part of the Tidyverse, so loading the <code>tidyverse</code> package will load <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="plotting-with-ggplot2.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="plotting-with-ggplot2.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>We continue with the Gapminder dataset, which we loaded with:</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="plotting-with-ggplot2.html#cb145-1" aria-hidden="true" tabindex="-1"></a>geo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;r-intro-2-files/geo.csv&quot;</span>)</span>
-<span id="cb145-2"><a href="plotting-with-ggplot2.html#cb145-2" aria-hidden="true" tabindex="-1"></a>gap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;r-intro-2-files/gap-minder.csv&quot;</span>)</span>
-<span id="cb145-3"><a href="plotting-with-ggplot2.html#cb145-3" aria-hidden="true" tabindex="-1"></a>gap_geo <span class="ot">&lt;-</span> <span class="fu">left_join</span>(gap, geo, <span class="at">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
-<div id="elements-of-a-ggplot" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Elements of a ggplot</h2>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="plotting-with-ggplot2.html#cb143-1" aria-hidden="true" tabindex="-1"></a>geo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;r-intro-2-files/geo.csv&quot;</span>)</span>
+<span id="cb143-2"><a href="plotting-with-ggplot2.html#cb143-2" aria-hidden="true" tabindex="-1"></a>gap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;r-intro-2-files/gap-minder.csv&quot;</span>)</span>
+<span id="cb143-3"><a href="plotting-with-ggplot2.html#cb143-3" aria-hidden="true" tabindex="-1"></a>gap_geo <span class="ot">&lt;-</span> <span class="fu">left_join</span>(gap, geo, <span class="at">by=</span><span class="st">&quot;name&quot;</span>)</span></code></pre></div>
+<div id="elements-of-a-ggplot" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Elements of a ggplot<a href="plotting-with-ggplot2.html#elements-of-a-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Producing a plot with <code>ggplot2</code>, we must give three things:</p>
 <ol style="list-style-type: decimal">
 <li>A data frame containing our data.</li>
@@ -220,18 +219,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>The actual graphical elements to display (“geometric objects”).</li>
 </ol>
 <p>Let’s make our first ggplot.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="plotting-with-ggplot2.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
-<span id="cb146-2"><a href="plotting-with-ggplot2.html#cb146-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="plotting-with-ggplot2.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
+<span id="cb144-2"><a href="plotting-with-ggplot2.html#cb144-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-4-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>The call to <code>ggplot</code> and <code>aes</code> sets up the basics of how we are going to represent the various columns of the data frame. <code>aes</code> defines the “aesthetics”, which is how columns of the data frame map to graphical attributes such as x and y position, color, size, etc. <code>aes</code> is another example of magic “non-standard evaluation”, arguments to <code>aes</code> may refer to columns of the data frame directly. We then literally add layers of graphics (“geoms”) to this.</p>
 <p>Further aesthetics can be used. Any aesthetic can be either numeric or categorical, an appropriate scale will be used.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="plotting-with-ggplot2.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">color=</span>region, <span class="at">size=</span>population)) <span class="sc">+</span></span>
-<span id="cb147-2"><a href="plotting-with-ggplot2.html#cb147-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="plotting-with-ggplot2.html#cb145-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">color=</span>region, <span class="at">size=</span>population)) <span class="sc">+</span></span>
+<span id="cb145-2"><a href="plotting-with-ggplot2.html#cb145-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-5-1.png" width="576" style="display: block; margin: auto;" /></p>
-<div id="challenge-make-a-ggplot" class="section level3 challenge" number="3.1.1">
-<h3><span class="header-section-number">3.1.1</span> Challenge: make a ggplot</h3>
+<div id="challenge-make-a-ggplot" class="section level3 challenge hasAnchor" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Challenge: make a ggplot<a href="plotting-with-ggplot2.html#challenge-make-a-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>This R code will get the data from the year 2010:</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="plotting-with-ggplot2.html#cb148-1" aria-hidden="true" tabindex="-1"></a>gap2010 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, year <span class="sc">==</span> <span class="dv">2010</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="plotting-with-ggplot2.html#cb146-1" aria-hidden="true" tabindex="-1"></a>gap2010 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, year <span class="sc">==</span> <span class="dv">2010</span>)</span></code></pre></div>
 <p>Create a ggplot of this with:</p>
 <ul>
 <li><code>gdp_percap</code> as x.</li>
@@ -241,107 +240,107 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="further-geoms" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Further geoms</h2>
+<div id="further-geoms" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Further geoms<a href="plotting-with-ggplot2.html#further-geoms" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To draw lines, we need to use a “group” aesthetic.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="plotting-with-ggplot2.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">group=</span>name, <span class="at">color=</span>region)) <span class="sc">+</span></span>
-<span id="cb149-2"><a href="plotting-with-ggplot2.html#cb149-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="plotting-with-ggplot2.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">group=</span>name, <span class="at">color=</span>region)) <span class="sc">+</span></span>
+<span id="cb147-2"><a href="plotting-with-ggplot2.html#cb147-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>()</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-7-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>A wide variety of geoms are available. Here we show Tukey box-plots. Note again the use of the “group” aesthetic, without this ggplot will just show one big box-plot.</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="plotting-with-ggplot2.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">group=</span>year)) <span class="sc">+</span></span>
-<span id="cb150-2"><a href="plotting-with-ggplot2.html#cb150-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="plotting-with-ggplot2.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">group=</span>year)) <span class="sc">+</span></span>
+<span id="cb148-2"><a href="plotting-with-ggplot2.html#cb148-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-8-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p><code>geom_smooth</code> can be used to show trends.</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="plotting-with-ggplot2.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
-<span id="cb151-2"><a href="plotting-with-ggplot2.html#cb151-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb151-3"><a href="plotting-with-ggplot2.html#cb151-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>()</span></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="plotting-with-ggplot2.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
+<span id="cb149-2"><a href="plotting-with-ggplot2.html#cb149-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb149-3"><a href="plotting-with-ggplot2.html#cb149-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <p><img src="plotting_files/figure-html/unnamed-chunk-9-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Aesthetics can be specified globally in <code>ggplot</code>, or as the first argument to individual geoms. Here, the “group” is applied only to draw the lines, and “color” is used to produce multiple trend lines:</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="plotting-with-ggplot2.html#cb153-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
-<span id="cb153-2"><a href="plotting-with-ggplot2.html#cb153-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>name)) <span class="sc">+</span></span>
-<span id="cb153-3"><a href="plotting-with-ggplot2.html#cb153-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color=</span>oecd))</span></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="plotting-with-ggplot2.html#cb151-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
+<span id="cb151-2"><a href="plotting-with-ggplot2.html#cb151-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group=</span>name)) <span class="sc">+</span></span>
+<span id="cb151-3"><a href="plotting-with-ggplot2.html#cb151-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">color=</span>oecd))</span></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <p><img src="plotting_files/figure-html/unnamed-chunk-10-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
-<div id="highlighting-subsets" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Highlighting subsets</h2>
+<div id="highlighting-subsets" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Highlighting subsets<a href="plotting-with-ggplot2.html#highlighting-subsets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Geoms can be added that use a different data frame, using the <code>data=</code> argument.</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="plotting-with-ggplot2.html#cb155-1" aria-hidden="true" tabindex="-1"></a>gap_australia <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, name <span class="sc">==</span> <span class="st">&quot;Australia&quot;</span>)</span>
-<span id="cb155-2"><a href="plotting-with-ggplot2.html#cb155-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb155-3"><a href="plotting-with-ggplot2.html#cb155-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">group=</span>name)) <span class="sc">+</span></span>
-<span id="cb155-4"><a href="plotting-with-ggplot2.html#cb155-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb155-5"><a href="plotting-with-ggplot2.html#cb155-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data=</span>gap_australia, <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="plotting-with-ggplot2.html#cb153-1" aria-hidden="true" tabindex="-1"></a>gap_australia <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, name <span class="sc">==</span> <span class="st">&quot;Australia&quot;</span>)</span>
+<span id="cb153-2"><a href="plotting-with-ggplot2.html#cb153-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb153-3"><a href="plotting-with-ggplot2.html#cb153-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">group=</span>name)) <span class="sc">+</span></span>
+<span id="cb153-4"><a href="plotting-with-ggplot2.html#cb153-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb153-5"><a href="plotting-with-ggplot2.html#cb153-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data=</span>gap_australia, <span class="at">color=</span><span class="st">&quot;red&quot;</span>, <span class="at">size=</span><span class="dv">2</span>)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-11-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Notice also that the second <code>geom_line</code> has some further arguments controlling its appearance. These are <strong>not</strong> aesthetics, they are not a mapping of data to appearance, but rather a direct specification of the appearance. There isn’t an associated scale as when color was an aesthetic.</p>
 </div>
-<div id="fine-tuning-a-plot" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Fine-tuning a plot</h2>
+<div id="fine-tuning-a-plot" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Fine-tuning a plot<a href="plotting-with-ggplot2.html#fine-tuning-a-plot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Adding <code>labs</code> to a ggplot adjusts the labels given to the axes and legends. A plot title can also be specified.</p>
-<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="plotting-with-ggplot2.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
-<span id="cb156-2"><a href="plotting-with-ggplot2.html#cb156-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb156-3"><a href="plotting-with-ggplot2.html#cb156-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Year&quot;</span>, <span class="at">y=</span><span class="st">&quot;Life expectancy&quot;</span>, <span class="at">title=</span><span class="st">&quot;Gapminder&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="plotting-with-ggplot2.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
+<span id="cb154-2"><a href="plotting-with-ggplot2.html#cb154-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb154-3"><a href="plotting-with-ggplot2.html#cb154-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Year&quot;</span>, <span class="at">y=</span><span class="st">&quot;Life expectancy&quot;</span>, <span class="at">title=</span><span class="st">&quot;Gapminder&quot;</span>)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-12-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Now, the figure has proper labels and titles. However, the title is not at the center of the figure.
 We can further customize it using <code>theme()</code> function (for more detail please see the docs <code>?theme</code>).</p>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="plotting-with-ggplot2.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
-<span id="cb157-2"><a href="plotting-with-ggplot2.html#cb157-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb157-3"><a href="plotting-with-ggplot2.html#cb157-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Year&quot;</span>, <span class="at">y=</span><span class="st">&quot;Life expectancy&quot;</span>, <span class="at">title=</span><span class="st">&quot;Gapminder&quot;</span>) <span class="sc">+</span></span>
-<span id="cb157-4"><a href="plotting-with-ggplot2.html#cb157-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="plotting-with-ggplot2.html#cb155-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
+<span id="cb155-2"><a href="plotting-with-ggplot2.html#cb155-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb155-3"><a href="plotting-with-ggplot2.html#cb155-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Year&quot;</span>, <span class="at">y=</span><span class="st">&quot;Life expectancy&quot;</span>, <span class="at">title=</span><span class="st">&quot;Gapminder&quot;</span>) <span class="sc">+</span></span>
+<span id="cb155-4"><a href="plotting-with-ggplot2.html#cb155-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-13-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Now figure looks better.</p>
 <p><code>coord_cartesian</code> can be used to set the limits of the x and y axes. Suppose we want our y-axis to start at zero.</p>
-<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="plotting-with-ggplot2.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
-<span id="cb158-2"><a href="plotting-with-ggplot2.html#cb158-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb158-3"><a href="plotting-with-ggplot2.html#cb158-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="plotting-with-ggplot2.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
+<span id="cb156-2"><a href="plotting-with-ggplot2.html#cb156-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb156-3"><a href="plotting-with-ggplot2.html#cb156-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">90</span>))</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-14-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Type <code>scale_</code> and press the tab key. You will see functions giving fine-grained controls over various scales (x, y, color, etc). These allow transformations (eg log10), and manually specified breaks (labelled values). Very fine grained control is possible over the appearance of ggplots, see the ggplot2 documentation for details and further examples.</p>
-<div id="challenge-refine-your-ggplot" class="section level3 challenge" number="3.4.1">
-<h3><span class="header-section-number">3.4.1</span> Challenge: refine your ggplot</h3>
+<div id="challenge-refine-your-ggplot" class="section level3 challenge hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Challenge: refine your ggplot<a href="plotting-with-ggplot2.html#challenge-refine-your-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Continuing with your scatter-plot of the 2010 data, add axis labels to your plot.</p>
 <p>Give your x axis a log scale by adding <code>scale_x_log10()</code>.</p>
 </div>
 </div>
-<div id="faceting" class="section level2" number="3.5">
-<h2><span class="header-section-number">3.5</span> Faceting</h2>
+<div id="faceting" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Faceting<a href="plotting-with-ggplot2.html#faceting" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Faceting lets us quickly produce a collection of small plots. The plots all have the same scales and the eye can easily compare them.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="plotting-with-ggplot2.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">group=</span>name)) <span class="sc">+</span></span>
-<span id="cb159-2"><a href="plotting-with-ggplot2.html#cb159-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb159-3"><a href="plotting-with-ggplot2.html#cb159-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> region)</span></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="plotting-with-ggplot2.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">group=</span>name)) <span class="sc">+</span></span>
+<span id="cb157-2"><a href="plotting-with-ggplot2.html#cb157-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb157-3"><a href="plotting-with-ggplot2.html#cb157-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span> region)</span></code></pre></div>
 <p><img src="plotting_files/figure-html/unnamed-chunk-15-1.png" width="576" style="display: block; margin: auto;" /></p>
 <p>Note the use of <code>~</code>, which we’ve not seen before. <code>~</code> syntax is used in R to specify dependence on some set of variables, for example when specifying a linear model. Here the information in each plot is dependent on the continent.</p>
-<div id="challenge-facet-your-ggplot" class="section level3 challenge" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> Challenge: facet your ggplot</h3>
+<div id="challenge-facet-your-ggplot" class="section level3 challenge hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Challenge: facet your ggplot<a href="plotting-with-ggplot2.html#challenge-facet-your-ggplot" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s return again to your scatter-plot of the 2010 data.</p>
 <p>Adjust your plot to now show data from all years, with each year shown in a separate facet, using <code>facet_wrap(~ year)</code>.</p>
 <p>Advanced: Highlight Australia in your plot.</p>
 </div>
 </div>
-<div id="saving-ggplots" class="section level2" number="3.6">
-<h2><span class="header-section-number">3.6</span> Saving ggplots</h2>
+<div id="saving-ggplots" class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Saving ggplots<a href="plotting-with-ggplot2.html#saving-ggplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The act of plotting a ggplot is actually triggered when it is printed. In an interactive session we are automatically printing each value we calculate, but if you are using it with a programming construct such as a for loop or function you might need to explcitly <code>print( )</code> the plot.</p>
 <p>Ggplots can be saved using <code>ggsave</code>.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="plotting-with-ggplot2.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot created but not shown.</span></span>
-<span id="cb160-2"><a href="plotting-with-ggplot2.html#cb160-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb160-3"><a href="plotting-with-ggplot2.html#cb160-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-4"><a href="plotting-with-ggplot2.html#cb160-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Only when we try to look at the value p is it shown</span></span>
-<span id="cb160-5"><a href="plotting-with-ggplot2.html#cb160-5" aria-hidden="true" tabindex="-1"></a>p</span>
-<span id="cb160-6"><a href="plotting-with-ggplot2.html#cb160-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-7"><a href="plotting-with-ggplot2.html#cb160-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, we can explicitly print it</span></span>
-<span id="cb160-8"><a href="plotting-with-ggplot2.html#cb160-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span>
-<span id="cb160-9"><a href="plotting-with-ggplot2.html#cb160-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-10"><a href="plotting-with-ggplot2.html#cb160-10" aria-hidden="true" tabindex="-1"></a><span class="co"># To save to a file</span></span>
-<span id="cb160-11"><a href="plotting-with-ggplot2.html#cb160-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;test.png&quot;</span>, p)</span>
-<span id="cb160-12"><a href="plotting-with-ggplot2.html#cb160-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-13"><a href="plotting-with-ggplot2.html#cb160-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb160-14"><a href="plotting-with-ggplot2.html#cb160-14" aria-hidden="true" tabindex="-1"></a><span class="co"># This is an alternative method that works with &quot;base R&quot; plots as well:</span></span>
-<span id="cb160-15"><a href="plotting-with-ggplot2.html#cb160-15" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;test.png&quot;</span>)</span>
-<span id="cb160-16"><a href="plotting-with-ggplot2.html#cb160-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span>
-<span id="cb160-17"><a href="plotting-with-ggplot2.html#cb160-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
-<div id="tip-about-sizing" class="section level3 tip" number="3.6.1">
-<h3><span class="header-section-number">3.6.1</span> Tip about sizing</h3>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="plotting-with-ggplot2.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot created but not shown.</span></span>
+<span id="cb158-2"><a href="plotting-with-ggplot2.html#cb158-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb158-3"><a href="plotting-with-ggplot2.html#cb158-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-4"><a href="plotting-with-ggplot2.html#cb158-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Only when we try to look at the value p is it shown</span></span>
+<span id="cb158-5"><a href="plotting-with-ggplot2.html#cb158-5" aria-hidden="true" tabindex="-1"></a>p</span>
+<span id="cb158-6"><a href="plotting-with-ggplot2.html#cb158-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-7"><a href="plotting-with-ggplot2.html#cb158-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively, we can explicitly print it</span></span>
+<span id="cb158-8"><a href="plotting-with-ggplot2.html#cb158-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span>
+<span id="cb158-9"><a href="plotting-with-ggplot2.html#cb158-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-10"><a href="plotting-with-ggplot2.html#cb158-10" aria-hidden="true" tabindex="-1"></a><span class="co"># To save to a file</span></span>
+<span id="cb158-11"><a href="plotting-with-ggplot2.html#cb158-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;test.png&quot;</span>, p)</span>
+<span id="cb158-12"><a href="plotting-with-ggplot2.html#cb158-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-13"><a href="plotting-with-ggplot2.html#cb158-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb158-14"><a href="plotting-with-ggplot2.html#cb158-14" aria-hidden="true" tabindex="-1"></a><span class="co"># This is an alternative method that works with &quot;base R&quot; plots as well:</span></span>
+<span id="cb158-15"><a href="plotting-with-ggplot2.html#cb158-15" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">&quot;test.png&quot;</span>)</span>
+<span id="cb158-16"><a href="plotting-with-ggplot2.html#cb158-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(p)</span>
+<span id="cb158-17"><a href="plotting-with-ggplot2.html#cb158-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code></pre></div>
+<div id="tip-about-sizing" class="section level3 tip hasAnchor" number="3.6.1">
+<h3><span class="header-section-number">3.6.1</span> Tip about sizing<a href="plotting-with-ggplot2.html#tip-about-sizing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Figures in papers tend to be quite small. This means text must be proportionately larger than we usually show on screen. Dots should also be proportionately larger, and lines proportionately thicker. The way to achieve this using <code>ggsave</code> is to specify a small width and height, given in inches. To ensure the output also has good resolution, specify a high dots-per-inch, or use a vector-graphics format such as PDF or SVG.</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="plotting-with-ggplot2.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;test2.png&quot;</span>, p, <span class="at">width=</span><span class="dv">3</span>, <span class="at">height=</span><span class="dv">3</span>, <span class="at">dpi=</span><span class="dv">600</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="plotting-with-ggplot2.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">&quot;test2.png&quot;</span>, p, <span class="at">width=</span><span class="dv">3</span>, <span class="at">height=</span><span class="dv">3</span>, <span class="at">dpi=</span><span class="dv">600</span>)</span></code></pre></div>
 
 </div>
 </div>

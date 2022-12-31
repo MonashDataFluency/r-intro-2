@@ -342,7 +342,7 @@ counts <- count(geo, income2017, oecd)
 pivot_wider(counts, names_from=income2017, values_from=n)
 ```
 
-We could further specify `values_fill=list(n=0)` to fill in the `NA` values with 0.
+We could further specify `values_fill=list(n=0)` to fill in the `NA` values with 0. Or when using `count`, make sure all the relevant columns are factors and specify `.drop=FALSE`.
 
 ### Tip {- .tip}
 

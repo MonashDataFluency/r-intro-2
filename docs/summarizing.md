@@ -194,7 +194,8 @@ result <- summarize(
 ```
 
 ```
-## `summarise()` has grouped output by 'year'. You can override using the `.groups` argument.
+## `summarise()` has grouped output by 'year'. You can override using the `.groups`
+## argument.
 ```
 
 ```r
@@ -279,12 +280,12 @@ t.test(gap2010$life_exp, gap2000$life_exp, paired=TRUE)
 ## 
 ## data:  gap2010$life_exp and gap2000$life_exp
 ## t = 13.371, df = 188, p-value < 2.2e-16
-## alternative hypothesis: true difference in means is not equal to 0
+## alternative hypothesis: true mean difference is not equal to 0
 ## 95 percent confidence interval:
 ##  2.479153 3.337249
 ## sample estimates:
-## mean of the differences 
-##                2.908201
+## mean difference 
+##        2.908201
 ```
 
 When performing a statistical test, it's good practice to visualize the data to make sure there is nothing funny going on.

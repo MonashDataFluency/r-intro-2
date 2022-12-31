@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>5 Thinking in R | Introduction to R, version 2</title>
   <meta name="description" content="5 Thinking in R | Introduction to R, version 2" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="5 Thinking in R | Introduction to R, version 2" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="summarizing-data.html"/>
 <link rel="next" href="next-steps.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,8 +47,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -91,7 +90,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +103,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -202,51 +201,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="thinking-in-r" class="section level1" number="5">
-<h1><span class="header-section-number">5</span> Thinking in R</h1>
+<div id="thinking-in-r" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Thinking in R<a href="thinking-in-r.html#thinking-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>The result of a t-test is actually a value we can manipulate further. Two functions help us here. <code>class</code> gives the “public face” of a value, and <code>typeof</code> gives its underlying type, the way R thinks of it internally. For example numbers are “numeric” and have some representation in computer memory, either “integer” for whole numbers only, or “double” which can hold fractional numbers (stored in memory in a base-2 version of scientific notation).</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="thinking-in-r.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="thinking-in-r.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="thinking-in-r.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">42</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="thinking-in-r.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">42</span>)</span></code></pre></div>
 <pre><code>## [1] &quot;double&quot;</code></pre>
 <p>Let’s look at the result of a t-test:</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="thinking-in-r.html#cb201-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(gap2010<span class="sc">$</span>life_exp, gap2000<span class="sc">$</span>life_exp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span>
-<span id="cb201-2"><a href="thinking-in-r.html#cb201-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb201-3"><a href="thinking-in-r.html#cb201-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="thinking-in-r.html#cb199-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(gap2010<span class="sc">$</span>life_exp, gap2000<span class="sc">$</span>life_exp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span>
+<span id="cb199-2"><a href="thinking-in-r.html#cb199-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb199-3"><a href="thinking-in-r.html#cb199-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;htest&quot;</code></pre>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="thinking-in-r.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="thinking-in-r.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(result)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="thinking-in-r.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="thinking-in-r.html#cb203-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(result)</span></code></pre></div>
 <pre><code>##  [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
 ##  [6] &quot;null.value&quot;  &quot;stderr&quot;      &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;</code></pre>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="thinking-in-r.html#cb207-1" aria-hidden="true" tabindex="-1"></a>result<span class="sc">$</span>p.value</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="thinking-in-r.html#cb205-1" aria-hidden="true" tabindex="-1"></a>result<span class="sc">$</span>p.value</span></code></pre></div>
 <pre><code>## [1] 4.301261e-29</code></pre>
 <p>In R, a t-test is just another function returning just another type of data, so it can also be a building block. The value it returns is a special type of vector called a “list”, but with a public face that presents itself nicely. This is a common pattern in R. Besides printing to the console nicely, this public face may alter the behaviour of generic functions such as <code>plot</code> and <code>summary</code>.</p>
 <p>Similarly a data frame is a list of vectors that is able to present itself nicely.</p>
-<div id="lists" class="section level2" number="5.1">
-<h2><span class="header-section-number">5.1</span> Lists</h2>
+<div id="lists" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Lists<a href="thinking-in-r.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Lists are vectors that can hold anything as elements (even other lists!). It’s possible to create lists with the <code>list</code> function. This becomes especially useful once you get into the programming side of R. For example writing your own function that needs to return multiple values, it could do so in the form of a list.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="thinking-in-r.html#cb209-1" aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">hello=</span><span class="fu">c</span>(<span class="st">&quot;Hello&quot;</span>,<span class="st">&quot;world&quot;</span>), <span class="at">numbers=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
-<span id="cb209-2"><a href="thinking-in-r.html#cb209-2" aria-hidden="true" tabindex="-1"></a>mylist</span></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="thinking-in-r.html#cb207-1" aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">hello=</span><span class="fu">c</span>(<span class="st">&quot;Hello&quot;</span>,<span class="st">&quot;world&quot;</span>), <span class="at">numbers=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb207-2"><a href="thinking-in-r.html#cb207-2" aria-hidden="true" tabindex="-1"></a>mylist</span></code></pre></div>
 <pre><code>## $hello
 ## [1] &quot;Hello&quot; &quot;world&quot;
 ## 
 ## $numbers
 ## [1] 1 2 3 4</code></pre>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="thinking-in-r.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mylist)</span></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="thinking-in-r.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mylist)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="thinking-in-r.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(mylist)</span></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="thinking-in-r.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(mylist)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="thinking-in-r.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mylist)</span></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="thinking-in-r.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mylist)</span></code></pre></div>
 <pre><code>## [1] &quot;hello&quot;   &quot;numbers&quot;</code></pre>
 <p>Accessing lists can be done by name with <code>$</code> or by position with <code>[[ ]]</code>.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="thinking-in-r.html#cb217-1" aria-hidden="true" tabindex="-1"></a>mylist<span class="sc">$</span>hello</span></code></pre></div>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="thinking-in-r.html#cb215-1" aria-hidden="true" tabindex="-1"></a>mylist<span class="sc">$</span>hello</span></code></pre></div>
 <pre><code>## [1] &quot;Hello&quot; &quot;world&quot;</code></pre>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="thinking-in-r.html#cb219-1" aria-hidden="true" tabindex="-1"></a>mylist[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="thinking-in-r.html#cb217-1" aria-hidden="true" tabindex="-1"></a>mylist[[<span class="dv">2</span>]]</span></code></pre></div>
 <pre><code>## [1] 1 2 3 4</code></pre>
 </div>
-<div id="other-types-not-covered-here" class="section level2" number="5.2">
-<h2><span class="header-section-number">5.2</span> Other types not covered here</h2>
+<div id="other-types-not-covered-here" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Other types not covered here<a href="thinking-in-r.html#other-types-not-covered-here" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Matrices are another tabular data type. These come up when doing more mathematical tasks in R. They are also commonly used in bioinformatics, for example to represent RNA-Seq count data. A matrix, as compared to a data frame:</p>
 <ul>
 <li>contains only one type of data, usually numeric (rather than different types in different columns).</li>
@@ -256,8 +255,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Matrices can be created using <code>as.matrix</code> from a data frame, <code>matrix</code> from a single vector, or using <code>rbind</code> or <code>cbind</code> with several vectors.</p>
 <p>You may also encounter “S4 objects”, especially if you use <a href="http://bioconductor.org/">Bioconductor</a> packages. The syntax for using these is different again, and uses <code>@</code> to access elements.</p>
 </div>
-<div id="programming" class="section level2" number="5.3">
-<h2><span class="header-section-number">5.3</span> Programming</h2>
+<div id="programming" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Programming<a href="thinking-in-r.html#programming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once you have a useful data analysis, you may want to do it again with different data. You may have some task that needs to be done many times over. This is where programming comes in:</p>
 <ul>
 <li>Writing your own <a href="http://r4ds.had.co.nz/functions.html">functions</a>.</li>

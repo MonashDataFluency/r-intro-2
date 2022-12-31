@@ -70,17 +70,11 @@ geo <- read_csv("r-intro-2-files/geo.csv")
 
 ```
 ## Rows: 196 Columns: 7
-```
-
-```
-## ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: ","
 ## chr (3): name, region, income2017
 ## dbl (2): lat, long
 ## lgl (2): oecd, g77
-```
-
-```
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
@@ -668,7 +662,7 @@ pivot_wider(counts, names_from=income2017, values_from=n)
 ## 2 TRUE     NA        NA         2    29
 ```
 
-We could further specify `values_fill=list(n=0)` to fill in the `NA` values with 0.
+We could further specify `values_fill=list(n=0)` to fill in the `NA` values with 0. Or when using `count`, make sure all the relevant columns are factors and specify `.drop=FALSE`.
 
 ### Tip {- .tip}
 
@@ -784,20 +778,20 @@ gap_geo
 
 ```
 ## # A tibble: 4,312 × 12
-##    name      year population gdp_percap life_exp region oecd  g77     lat   long
-##    <chr>    <dbl>      <dbl>      <dbl>    <dbl> <chr>  <lgl> <lgl> <dbl>  <dbl>
-##  1 Afghani…  1800    3280000        603     28.2 asia   FALSE TRUE   33    66   
-##  2 Albania   1800     410445        667     35.4 europe FALSE FALSE  41    20   
-##  3 Algeria   1800    2503218        715     28.8 africa FALSE TRUE   28     3   
-##  4 Andorra   1800       2654       1197     NA   europe FALSE FALSE  42.5   1.52
-##  5 Angola    1800    1567028        618     27.0 africa FALSE TRUE  -12.5  18.5 
-##  6 Antigua…  1800      37000        757     33.5 ameri… FALSE TRUE   17.0 -61.8 
-##  7 Argenti…  1800     534000       1507     33.2 ameri… FALSE TRUE  -34   -64   
-##  8 Armenia   1800     413326        514     34   europe FALSE FALSE  40.2  45   
-##  9 Austral…  1800     351014        814     34.0 asia   TRUE  FALSE -25   135   
-## 10 Austria   1800    3205587       1847     34.4 europe TRUE  FALSE  47.3  13.3 
-## # … with 4,302 more rows, and 2 more variables: income2017 <fct>,
-## #   southern <lgl>
+##    name     year popul…¹ gdp_p…² life_…³ region oecd  g77     lat   long incom…⁴
+##    <chr>   <dbl>   <dbl>   <dbl>   <dbl> <chr>  <lgl> <lgl> <dbl>  <dbl> <fct>  
+##  1 Afghan…  1800 3280000     603    28.2 asia   FALSE TRUE   33    66    low    
+##  2 Albania  1800  410445     667    35.4 europe FALSE FALSE  41    20    upper_…
+##  3 Algeria  1800 2503218     715    28.8 africa FALSE TRUE   28     3    upper_…
+##  4 Andorra  1800    2654    1197    NA   europe FALSE FALSE  42.5   1.52 high   
+##  5 Angola   1800 1567028     618    27.0 africa FALSE TRUE  -12.5  18.5  lower_…
+##  6 Antigu…  1800   37000     757    33.5 ameri… FALSE TRUE   17.0 -61.8  high   
+##  7 Argent…  1800  534000    1507    33.2 ameri… FALSE TRUE  -34   -64    upper_…
+##  8 Armenia  1800  413326     514    34   europe FALSE FALSE  40.2  45    lower_…
+##  9 Austra…  1800  351014     814    34.0 asia   TRUE  FALSE -25   135    high   
+## 10 Austria  1800 3205587    1847    34.4 europe TRUE  FALSE  47.3  13.3  high   
+## # … with 4,302 more rows, 1 more variable: southern <lgl>, and abbreviated
+## #   variable names ¹​population, ²​gdp_percap, ³​life_exp, ⁴​income2017
 ```
 
 The output contains all ways of pairing up rows by `name`. In this case each row of `geo` pairs up with multiple rows of `gap`.

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1 Starting out in R | Introduction to R, version 2</title>
   <meta name="description" content="1 Starting out in R | Introduction to R, version 2" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1 Starting out in R | Introduction to R, version 2" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -31,7 +30,6 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="data-frames.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,8 +47,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -91,7 +90,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +103,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -202,8 +201,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="starting-out-in-r" class="section level1" number="1">
-<h1><span class="header-section-number">1</span> Starting out in R</h1>
+<div id="starting-out-in-r" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Starting out in R<a href="starting-out-in-r.html#starting-out-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>R is both a programming language and an interactive environment for data exploration and statistics. Today we will be concentrating on R as an <em>interactive environment</em>.</p>
 <p>Working with R is primarily text-based. The basic mode of use for R is that the user types in a command in the R language and presses enter, and then R computes and displays the result.</p>
 <p>We will be working in <a href="https://www.rstudio.com/products/rstudio/download/">RStudio</a>. The easiest way to get started is to go to <a href="https://rstudio.cloud/">RStudio Cloud</a> and create a new project. Monash staff and students can log in using their Monash Google account.</p>
@@ -227,8 +226,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="starting-out-in-r.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">4</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>There are also character strings such as <code>"string"</code>. A character string must be surrounded by either single or double quotes.</p>
-<div id="variables" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Variables</h2>
+<div id="variables" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Variables<a href="starting-out-in-r.html#variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A variable is a name for a value. We can create a new variable by assigning a value to it using <code>&lt;-</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="starting-out-in-r.html#cb5-1" aria-hidden="true" tabindex="-1"></a>width <span class="ot">&lt;-</span> <span class="dv">5</span></span></code></pre></div>
 <p>RStudio helpfully shows us the variable in the “Environment” pane. We can also print it by typing the name of the variable and hitting enter. In general, R will print to the console any object returned by a function or operation <em>unless</em> we assign it to a variable.</p>
@@ -250,16 +249,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] 25</code></pre>
 <p>Notice that the value of <code>area</code> we calculated earlier hasn’t been updated. Assigning a new value to one variable does not change the values of other variables. This is different to a spreadsheet, but usual for programming languages.</p>
 </div>
-<div id="saving-code-in-an-r-script" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Saving code in an R script</h2>
+<div id="saving-code-in-an-r-script" class="section level2 hasAnchor" number="1.2">
+<h2><span class="header-section-number">1.2</span> Saving code in an R script<a href="starting-out-in-r.html#saving-code-in-an-r-script" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once we’ve created a few variables, it becomes important to record how they were calculated so we can reproduce them later.</p>
 <p>The usual workflow is to save your code in an R script (“.R file”). Go to “File/New File/R Script” to create a new R script. Code in your R script can be sent to the console by selecting it or placing the cursor on the correct line, and then pressing <strong>Control-Enter</strong> (<strong>Command-Enter</strong> on a Mac).</p>
-<div id="tip" class="section level3 unnumbered tip">
-<h3>Tip</h3>
+<div id="tip" class="section level3 unnumbered tip hasAnchor">
+<h3>Tip<a href="starting-out-in-r.html#tip" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Add comments to code, using lines starting with the <code>#</code> character. This makes it easier for others to follow what the code is doing (and also for us the next time we come back to it).</p>
 </div>
-<div id="challenge-using-variables" class="section level3 unnumbered challenge">
-<h3>Challenge: using variables</h3>
+<div id="challenge-using-variables" class="section level3 unnumbered challenge hasAnchor">
+<h3>Challenge: using variables<a href="starting-out-in-r.html#challenge-using-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Re-write this calculation so that it <em>doesn’t</em> use variables:</li>
 </ol>
@@ -272,8 +271,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="starting-out-in-r.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span></span></code></pre></div>
 </div>
 </div>
-<div id="vectors" class="section level2" number="1.3">
-<h2><span class="header-section-number">1.3</span> Vectors</h2>
+<div id="vectors" class="section level2 hasAnchor" number="1.3">
+<h2><span class="header-section-number">1.3</span> Vectors<a href="starting-out-in-r.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A <em>vector</em> of numbers is a collection of numbers. “Vector” means different things in different fields (mathematics, geometry, biology), but in R it is a fancy name for a collection of numbers. We call the individual numbers <em>elements</em> of the vector.</p>
 <p>We can make vectors with <code>c( )</code>, for example <code>c(1,2,3)</code>. <code>c</code> means “combine”. R is obsesssed with vectors, in R even single numbers are vectors of length one. Many things that can be done with a single number can also be done with a vector. For example arithmetic can be done on vectors as it can be on single numbers.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="starting-out-in-r.html#cb17-1" aria-hidden="true" tabindex="-1"></a>myvec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</span>
@@ -291,11 +290,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>##  [1] 10 20 30 40 50 10 20 30 40 50</code></pre>
 <p>When we talk about the length of a vector, we are talking about the number of numbers in the vector.</p>
 </div>
-<div id="types-of-vector" class="section level2" number="1.4">
-<h2><span class="header-section-number">1.4</span> Types of vector</h2>
+<div id="types-of-vector" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Types of vector<a href="starting-out-in-r.html#types-of-vector" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We will also encounter vectors of character strings, for example <code>"hello"</code> or <code>c("hello","world")</code>. Also we will encounter “logical” vectors, which contain <code>TRUE</code> and <code>FALSE</code> values. R also has “factors”, which are categorical vectors, and behave much like character vectors (think the factors in an experiment).</p>
-<div id="challenge-mixing-types" class="section level3 unnumbered challenge">
-<h3>Challenge: mixing types</h3>
+<div id="challenge-mixing-types" class="section level3 unnumbered challenge hasAnchor">
+<h3>Challenge: mixing types<a href="starting-out-in-r.html#challenge-mixing-types" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Sometimes the best way to understand R is to try some examples and see what it does.</p>
 <p>What happens when you try to make a vector containing different types, using <code>c( )</code>? Make a vector with some numbers, and some words (eg. character strings like <code>"test"</code>, or <code>"hello"</code>).</p>
 <p>Why does the output show the numbers surrounded by quotes <code>" "</code> like character strings are?</p>
@@ -305,8 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Because vectors can only contain one type of thing, R chooses a lowest common denominator type of vector, a type that can contain everything we are trying to put in it. A different language might stop with an error, but R tries to soldier on as best it can. A number can be represented as a character string, but a character string can not be represented as a number, so when we try to put both in the same vector R converts everything to a character string.</p>
 </div>
 </div>
-<div id="indexing-vectors" class="section level2" number="1.5">
-<h2><span class="header-section-number">1.5</span> Indexing vectors</h2>
+<div id="indexing-vectors" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Indexing vectors<a href="starting-out-in-r.html#indexing-vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Access elements of a vector with <code>[ ]</code>, for example <code>myvec[1]</code> to get the first element. You can also assign to a specific element of a vector.</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="starting-out-in-r.html#cb29-1" aria-hidden="true" tabindex="-1"></a>myvec[<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
@@ -322,8 +321,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We could equivalently have written:</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="starting-out-in-r.html#cb37-1" aria-hidden="true" tabindex="-1"></a>myvec[<span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>)]</span></code></pre></div>
 <pre><code>## [1] 40 30  5</code></pre>
-<div id="challenge-indexing" class="section level3 unnumbered challenge">
-<h3>Challenge: indexing</h3>
+<div id="challenge-indexing" class="section level3 unnumbered challenge hasAnchor">
+<h3>Challenge: indexing<a href="starting-out-in-r.html#challenge-indexing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We can create and index character vectors as well. A cafe is using R to create their menu.</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="starting-out-in-r.html#cb39-1" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;spam&quot;</span>, <span class="st">&quot;eggs&quot;</span>, <span class="st">&quot;beans&quot;</span>, <span class="st">&quot;bacon&quot;</span>, <span class="st">&quot;sausage&quot;</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
@@ -333,8 +332,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 </div>
 </div>
-<div id="sequences" class="section level2" number="1.6">
-<h2><span class="header-section-number">1.6</span> Sequences</h2>
+<div id="sequences" class="section level2 hasAnchor" number="1.6">
+<h2><span class="header-section-number">1.6</span> Sequences<a href="starting-out-in-r.html#sequences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Another way to create a vector is with <code>:</code>:</p>
 <div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="starting-out-in-r.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code></pre></div>
 <pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
@@ -348,8 +347,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="starting-out-in-r.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, x<span class="sc">*</span>x)</span></code></pre></div>
 <p><img src="starting_files/figure-html/unnamed-chunk-19-1.png" width="576" style="display: block; margin: auto;" /></p>
 </div>
-<div id="functions" class="section level2" number="1.7">
-<h2><span class="header-section-number">1.7</span> Functions</h2>
+<div id="functions" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Functions<a href="starting-out-in-r.html#functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Functions are the things that do all the work for us in R: calculate, manipulate data, read and write to files, produce plots. R has many built in functions and we will also be loading more specialized functions from “packages”.</p>
 <p>We’ve already seen several functions: <code>c( )</code>, <code>length( )</code>, and <code>plot( )</code>. Let’s now have a look at <code>sum( )</code>.</p>
 <div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="starting-out-in-r.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(myvec)</span></code></pre></div>
@@ -375,8 +374,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="starting-out-in-r.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">each=</span><span class="dv">3</span>, <span class="at">times=</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>##  [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1
 ## [39] 1 2 2 2 3 3 3</code></pre>
-<div id="challenge-using-functions" class="section level3 unnumbered challenge">
-<h3>Challenge: using functions</h3>
+<div id="challenge-using-functions" class="section level3 unnumbered challenge hasAnchor">
+<h3>Challenge: using functions<a href="starting-out-in-r.html#challenge-using-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li><p>Use <code>sum</code> to sum from 1 to 10,000.</p></li>
 <li><p>Look at the documentation for the <code>seq</code> function. What does <code>seq</code> do? Give an example of using <code>seq</code> with either the <code>by</code> or <code>length.out</code> argument.</p></li>
