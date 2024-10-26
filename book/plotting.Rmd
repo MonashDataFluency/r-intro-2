@@ -15,8 +15,8 @@ library(tidyverse)
 We continue with the Gapminder dataset, which we loaded with:
 
 ```{r message=F, warning=F}
-geo <- read_csv("r-intro-2-files/geo.csv")
-gap <- read_csv("r-intro-2-files/gap-minder.csv")
+geo <- read_csv("r-intro/geo.csv")
+gap <- read_csv("r-intro/gap-minder.csv")
 gap_geo <- left_join(gap, geo, by="name")
 ```
 

@@ -11,8 +11,8 @@ Loading the data as before, if you have not already done so:
 ```{r message=F, warning=F}
 library(tidyverse)
 
-geo <- read_csv("r-intro-2-files/geo.csv")
-gap <- read_csv("r-intro-2-files/gap-minder.csv")
+geo <- read_csv("r-intro/geo.csv")
+gap <- read_csv("r-intro/gap-minder.csv")
 gap_geo <- left_join(gap, geo, by="name")
 ```
 

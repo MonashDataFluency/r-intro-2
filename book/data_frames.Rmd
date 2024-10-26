@@ -16,9 +16,9 @@ Our first step is to download the files we need and to install the Tidyverse. Th
 ```{r, eval=FALSE}
 # Download files for this workshop
 download.file(
-  "https://monashdatafluency.github.io/r-intro-2/r-intro-2-files.zip",
-  destfile="r-intro-2-files.zip")
-unzip("r-intro-2-files.zip")
+  "https://monashbioinformaticsplatform.github.io/r-intro-resbaz2024/r-intro.zip",
+  destfile="r-intro.zip")
+unzip("r-intro.zip")
 
 # Install Tidyverse
 install.packages("tidyverse")
@@ -63,7 +63,7 @@ Angola,africa,FALSE,TRUE,-12.5,18.5,lower_mid
 ```
 
 ```{r}
-geo <- read_csv("r-intro-2-files/geo.csv")
+geo <- read_csv("r-intro/geo.csv")
 
 geo
 ```
@@ -95,7 +95,7 @@ The argument names become column names in the data frame.
 
 ### Tip {- .tip}
 
-The *path* to the file on our server is `"r-intro-2-files/geo.csv"`. This says, starting from your working directory, look in the directory `r-intro-2-files` for the file `geo.csv`. The steps in the path are separated by `/`. Your working directory is shown at the top of the console pane. The path needed might be different on your own computer, depending where you downloaded the file.
+The *path* to the file on our server is `"r-intro/geo.csv"`. This says, starting from your working directory, look in the directory `r-intro` for the file `geo.csv`. The steps in the path are separated by `/`. Your working directory is shown at the top of the console pane. The path needed might be different on your own computer, depending where you downloaded the file.
 
 One way to work out the correct path is to find the file in the file browser pane, click on it and select "Import Dataset...".
 
@@ -206,7 +206,7 @@ C. The name of a column to get from a data frame. \
 D. The name of a function to call. \
 E. The name of an argument to a function call. \
 
-See [here](https://monashdatafluency.github.io/r-intro-2/answers-reading-r-code.html) for answers.
+See [here](https://monashbioinformaticsplatform.github.io/r-intro-resbaz2024/answers-reading-r-code.html) for answers.
 
 
 ## Logical indexing
@@ -383,7 +383,7 @@ arrange(geo, desc(name))
 Let's move on to a larger data set. This is from the [Gapminder](https://www.gapminder.org) project and contains information about countries over time.
 
 ```{r message=F}
-gap <- read_csv("r-intro-2-files/gap-minder.csv")
+gap <- read_csv("r-intro/gap-minder.csv")
 gap
 ```
 
@@ -407,7 +407,7 @@ The "left" in "left join" refers to how rows that can't be paired up are handled
 
 ## Further reading
 
-We've covered the fundamentals of dplyr and data frames, but there is much more to learn. Notably, we haven't covered the use of the pipe `%>%` to chain `dplyr` verbs together. The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. The Monash Data Fluency ["Programming and Tidy data analysis in R" course](https://monashdatafluency.github.io/r-progtidy/) also covers this. 
+We've covered the fundamentals of dplyr and data frames, but there is much more to learn. Notably, we haven't covered the use of the pipe `|>` (or `%>%`) to chain `dplyr` verbs together. The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. The Monash Data Fluency ["Programming and Tidy data analysis in R" course](https://monashdatafluency.github.io/r-progtidy/) also covers this. 
 
 
 
