@@ -1,22 +1,19 @@
 
-ANSWER_HTMLS=docs/answers-reading-r-code.html
+.PHONY : all pdf html answers ingest clean
 
-.PHONY : all pdf html ingest clean
-
-all : $(ANSWER_HTMLS) pdf html docs/r-intro-2-files.zip 
-
-pdf :
-	cd book ; Rscript -e "bookdown::render_book('introduction.Rmd', 'bookdown::pdf_book')"
+all : html pdf answers docs/r-intro.zip 
 
 html :
-	cd book ; Rscript -e "bookdown::render_book('introduction.Rmd', 'bookdown::gitbook')"
-	cp -R book/figures docs
+	cd book ; quarto render --to html
 
-docs/r-intro-2-files.zip : r-intro-2-files/*
-	zip -FSr docs/r-intro-2-files.zip r-intro-2-files
+pdf :
+	cd book ; quarto render --to pdf
 
-docs/%.html : answers/%.Rmd
-	Rscript -e "rmarkdown::render('$<', output_file='../$@')"
+answers :
+	cd answers ; quarto render
+
+docs/r-intro.zip : r-intro/*
+	zip -FSr docs/r-intro.zip r-intro
 
 ingest :
 	cd ingest ; make

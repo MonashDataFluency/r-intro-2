@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to R (ResBaz Victoria 2024)</title>
+<title>Answers to “reading R code”</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,158 +20,66 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./starting.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<script src="answers-reading-r-code_files/libs/clipboard/clipboard.min.js"></script>
+<script src="answers-reading-r-code_files/libs/quarto-html/quarto.js"></script>
+<script src="answers-reading-r-code_files/libs/quarto-html/popper.min.js"></script>
+<script src="answers-reading-r-code_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="answers-reading-r-code_files/libs/quarto-html/anchor.min.js"></script>
+<link href="answers-reading-r-code_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="answers-reading-r-code_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="answers-reading-r-code_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="answers-reading-r-code_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="answers-reading-r-code_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
-<link rel="stylesheet" href="style.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="fullcontent">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
-    <div class="sidebar-title mb-0 py-0">
-      <a href="./">Introduction to R (ResBaz Victoria 2024)</a> 
-    </div>
-      </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Introduction</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./starting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Starting out in R</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./data_frames.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data frames</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./plotting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Plotting with ggplot2</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./summarizing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summarizing data</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./thinking.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Thinking in R</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./next_steps.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Next steps</span></span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#index" id="toc-index" class="nav-link active" data-scroll-target="#index">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source code</a></li>
-  <li><a href="#authors-and-copyright" id="toc-authors-and-copyright" class="nav-link" data-scroll-target="#authors-and-copyright">Authors and copyright</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
-<!-- main -->
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to R (ResBaz Victoria 2024)</h1>
+<h1 class="title">Answers to “reading R code”</h1>
 </div>
 
 
@@ -188,59 +96,23 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="index" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<div class="cell" data-layout-align="left">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="figures/R.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:25.0%"></p>
-</figure>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>highest <span class="ot">&lt;-</span> geo<span class="sc">$</span>name[ <span class="fu">head</span>(<span class="fu">order</span>(geo<span class="sc">$</span>lat, <span class="at">decreasing=</span><span class="cn">TRUE</span>), <span class="at">n=</span><span class="dv">10</span>) ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-</div>
-<p>These are course notes for the “Introduction to R” course given by the <a href="https://www.monash.edu/researchinfrastructure/mgbp">Monash Genomics and Bioinformatics Platform</a> for the <a href="https://resbaz.github.io/resbazvic2024/">ResBaz Victoria 2024</a>. Our teaching style is based on the style of <a href="https://carpentries.org/">The Carpentries</a>.</p>
-<ul>
-<li><a href="r-intro-resbaz2024.pdf">PDF version for printing</a></li>
-<li><a href="https://monashdatafluency.github.io/r-intro-2/r-intro.zip">ZIP of data files used in this workshop</a></li>
-</ul>
-<p>During the workshop we will be using Posit Cloud to use R over the web:</p>
-<ul>
-<li><a href="https://posit.cloud/">Posit Cloud</a></li>
-</ul>
-<p>You can also install R on your own computer. There are two things to download and install:</p>
-<ul>
-<li><a href="https://cran.rstudio.com/">Download R</a></li>
-<li><a href="https://www.rstudio.com/products/rstudio/download/">Download RStudio</a></li>
-</ul>
-<p>R is the language itself. RStudio provides a convenient environment in which to use R, either on your local computer or on a server.</p>
-<section id="source-code" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="source-code">Source code</h3>
-<p>This book was created in R using the <code>rmarkdown</code> and <code>bookdown</code> packages!</p>
-<ul>
-<li><a href="https://github.com/MonashBioinformaticsPlatform/r-intro-resbazvic2024">GitHub page</a></li>
-</ul>
-</section>
-<section id="authors-and-copyright" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="authors-and-copyright">Authors and copyright</h3>
-<p>This course is developed for the Monash Genomics and Bioinformatics Platform by Paul Harrison.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/CC-BY.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="44"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY-4: Creative Commons Attribution 4.0 International License</a>. The attribution is “Monash Bioinformatics Platform” if copying or modifying these notes.</p>
-<p>Data files are derived from Gapminder, which has a CC BY-4 license. The attribution is “Free data from www.gapminder.org”. The data is given here in a form designed to teach various points about the R language. Refer to the <a href="https://www.gapminder.org">Gapminder site</a> for the original form of the data if using it for other uses.</p>
+<p>All examples of:</p>
+<p><strong>A. The name of a variable to store a value to.</strong></p>
+<p><code>highest</code>, because it is to the left of <code>&lt;-</code>.</p>
+<p><strong>B. The name of a variable to retrieve the value from.</strong></p>
+<p><code>geo</code>, in two places.</p>
+<p><strong>C. The name of a column to get from a data frame.</strong></p>
+<p><code>name</code> and <code>lat</code>, because they are to the right of <code>$</code>.</p>
+<p><strong>D. The name of a function to call.</strong></p>
+<p><code>head</code> and <code>order</code>, because they are to the left of <code>(</code>.</p>
+<p><strong>E. The name of an argument to a function call.</strong></p>
+<p><code>decreasing</code> and <code>n</code>, because they are to the left of <code>=</code> within the brackets of a function call.</p>
 
-
-</section>
-</section>
-
-</main> <!-- /main -->
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -661,15 +533,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./starting.html" class="pagination-link" aria-label="Starting out in R">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Starting out in R</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

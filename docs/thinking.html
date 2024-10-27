@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Introduction to R (ResBaz Victoria 2024)</title>
+<title>5&nbsp; Thinking in R – Introduction to R (ResBaz Victoria 2024)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./starting.html" rel="next">
+<link href="./next_steps.html" rel="next">
+<link href="./summarizing.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introduction</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./thinking.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Thinking in R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -108,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
@@ -138,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./thinking.html" class="sidebar-item-text sidebar-link">
+  <a href="./thinking.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Thinking in R</span></span></a>
   </div>
 </li>
@@ -158,11 +193,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#index" id="toc-index" class="nav-link active" data-scroll-target="#index">Introduction</a>
-  <ul class="collapse">
-  <li><a href="#source-code" id="toc-source-code" class="nav-link" data-scroll-target="#source-code">Source code</a></li>
-  <li><a href="#authors-and-copyright" id="toc-authors-and-copyright" class="nav-link" data-scroll-target="#authors-and-copyright">Authors and copyright</a></li>
-  </ul></li>
+  <li><a href="#lists" id="toc-lists" class="nav-link active" data-scroll-target="#lists"><span class="header-section-number">5.1</span> Lists</a></li>
+  <li><a href="#other-types-not-covered-here" id="toc-other-types-not-covered-here" class="nav-link" data-scroll-target="#other-types-not-covered-here"><span class="header-section-number">5.2</span> Other types not covered here</a></li>
+  <li><a href="#programming" id="toc-programming" class="nav-link" data-scroll-target="#programming"><span class="header-section-number">5.3</span> Programming</a></li>
   </ul>
 </nav>
     </div>
@@ -171,7 +204,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to R (ResBaz Victoria 2024)</h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Thinking in R</span></h1>
 </div>
 
 
@@ -188,56 +221,101 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="index" class="level1 unnumbered">
-<h1 class="unnumbered">Introduction</h1>
-<div class="cell" data-layout-align="left">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-left">
-<figure class="figure">
-<p><img src="figures/R.jpg" class="img-fluid quarto-figure quarto-figure-left figure-img" style="width:25.0%"></p>
-</figure>
+<p>The result of a t-test is actually a value we can manipulate further. Two functions help us here. <code>class</code> gives the “public face” of a value, and <code>typeof</code> gives its underlying type, the way R thinks of it internally. For example numbers are “numeric” and have some representation in computer memory, either “integer” for whole numbers only, or “double” which can hold fractional numbers (stored in memory in a base-2 version of scientific notation).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "numeric"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "double"</code></pre>
 </div>
 </div>
+<p>Let’s look at the result of a t-test:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(gap2010<span class="sc">$</span>life_exp, gap2000<span class="sc">$</span>life_exp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "htest"</code></pre>
 </div>
-<p>These are course notes for the “Introduction to R” course given by the <a href="https://www.monash.edu/researchinfrastructure/mgbp">Monash Genomics and Bioinformatics Platform</a> for the <a href="https://resbaz.github.io/resbazvic2024/">ResBaz Victoria 2024</a>. Our teaching style is based on the style of <a href="https://carpentries.org/">The Carpentries</a>.</p>
-<ul>
-<li><a href="r-intro-resbaz2024.pdf">PDF version for printing</a></li>
-<li><a href="https://monashdatafluency.github.io/r-intro-2/r-intro.zip">ZIP of data files used in this workshop</a></li>
-</ul>
-<p>During the workshop we will be using Posit Cloud to use R over the web:</p>
-<ul>
-<li><a href="https://posit.cloud/">Posit Cloud</a></li>
-</ul>
-<p>You can also install R on your own computer. There are two things to download and install:</p>
-<ul>
-<li><a href="https://cran.rstudio.com/">Download R</a></li>
-<li><a href="https://www.rstudio.com/products/rstudio/download/">Download RStudio</a></li>
-</ul>
-<p>R is the language itself. RStudio provides a convenient environment in which to use R, either on your local computer or on a server.</p>
-<section id="source-code" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="source-code">Source code</h3>
-<p>This book was created in R using the <code>rmarkdown</code> and <code>bookdown</code> packages!</p>
-<ul>
-<li><a href="https://github.com/MonashBioinformaticsPlatform/r-intro-resbazvic2024">GitHub page</a></li>
-</ul>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
+ [6] "null.value"  "stderr"      "alternative" "method"      "data.name"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>result<span class="sc">$</span>p.value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4.301261e-29</code></pre>
+</div>
+</div>
+<p>In R, a t-test is just another function returning just another type of data, so it can also be a building block. The value it returns is a special type of vector called a “list”, but with a public face that presents itself nicely. This is a common pattern in R. Besides printing to the console nicely, this public face may alter the behaviour of generic functions such as <code>plot</code> and <code>summary</code>.</p>
+<p>Similarly a data frame is a list of vectors that is able to present itself nicely.</p>
+<section id="lists" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="lists"><span class="header-section-number">5.1</span> Lists</h2>
+<p>Lists are vectors that can hold anything as elements (even other lists!). It’s possible to create lists with the <code>list</code> function. This becomes especially useful once you get into the programming side of R. For example writing your own function that needs to return multiple values, it could do so in the form of a list.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>mylist <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">hello=</span><span class="fu">c</span>(<span class="st">"Hello"</span>,<span class="st">"world"</span>), <span class="at">numbers=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>))</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>mylist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$hello
+[1] "Hello" "world"
+
+$numbers
+[1] 1 2 3 4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mylist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(mylist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mylist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello"   "numbers"</code></pre>
+</div>
+</div>
+<p>Accessing lists can be done by name with <code>$</code> or by position with <code>[[ ]]</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mylist<span class="sc">$</span>hello</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Hello" "world"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>mylist[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1 2 3 4</code></pre>
+</div>
+</div>
 </section>
-<section id="authors-and-copyright" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="authors-and-copyright">Authors and copyright</h3>
-<p>This course is developed for the Monash Genomics and Bioinformatics Platform by Paul Harrison.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="figures/CC-BY.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="44"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/">CC BY-4: Creative Commons Attribution 4.0 International License</a>. The attribution is “Monash Bioinformatics Platform” if copying or modifying these notes.</p>
-<p>Data files are derived from Gapminder, which has a CC BY-4 license. The attribution is “Free data from www.gapminder.org”. The data is given here in a form designed to teach various points about the R language. Refer to the <a href="https://www.gapminder.org">Gapminder site</a> for the original form of the data if using it for other uses.</p>
+<section id="other-types-not-covered-here" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="other-types-not-covered-here"><span class="header-section-number">5.2</span> Other types not covered here</h2>
+<p>Matrices are another tabular data type. These come up when doing more mathematical tasks in R. They are also commonly used in bioinformatics, for example to represent RNA-Seq count data. A matrix, as compared to a data frame:</p>
+<ul>
+<li>contains only one type of data, usually numeric (rather than different types in different columns).</li>
+<li>commonly has <code>rownames</code> as well as <code>colnames</code>. (Base R data frames can have <code>rownames</code> too, but it is easier to have any unique identifier as a normal column instead.)</li>
+<li>has individual cells as the unit of observation (rather than rows).</li>
+</ul>
+<p>Matrices can be created using <code>as.matrix</code> from a data frame, <code>matrix</code> from a single vector, or using <code>rbind</code> or <code>cbind</code> with several vectors.</p>
+<p>You may also encounter “S4 objects”, especially if you use <a href="http://bioconductor.org/">Bioconductor</a> packages. The syntax for using these is different again, and uses <code>@</code> to access elements.</p>
+</section>
+<section id="programming" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="programming"><span class="header-section-number">5.3</span> Programming</h2>
+<p>Once you have a useful data analysis, you may want to do it again with different data. You may have some task that needs to be done many times over. This is where programming comes in:</p>
+<ul>
+<li>Writing your own <a href="http://r4ds.had.co.nz/functions.html">functions</a>.</li>
+<li><a href="http://r4ds.had.co.nz/iteration.html">For-loops</a> to do things multiple times.</li>
+<li><a href="http://r4ds.had.co.nz/functions.html#conditional-execution">If-statements</a> to make decisions.</li>
+</ul>
+<p>The <a href="http://r4ds.had.co.nz/">“R for Data Science” book</a> is an excellent source to learn more. Monash Data Fluency <a href="https://monashdatafluency.github.io/r-progtidy/">“Programming and Tidy data analysis in R” course</a> also covers this.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -663,10 +741,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./summarizing.html" class="pagination-link" aria-label="Summarizing data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Summarizing data</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./starting.html" class="pagination-link" aria-label="Starting out in R">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Starting out in R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./next_steps.html" class="pagination-link" aria-label="Next steps">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Next steps</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
