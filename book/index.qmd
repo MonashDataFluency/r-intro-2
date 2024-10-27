@@ -5,14 +5,14 @@
 knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
 ```
 
-```{r echo=F,out.width="25%",fig.align="left"}
+```{r echo=F,out.width="33%",fig.align="center"}
 knitr::include_graphics("figures/R.jpg")
 ```
 
-These are course notes for the "Introduction to R" course given by the [Monash Genomics and Bioinformatics Platform](https://www.monash.edu/researchinfrastructure/mgbp) for the [ResBaz Victoria 2024](https://resbaz.github.io/resbazvic2024/). Our teaching style is based on the style of [The Carpentries](https://carpentries.org/).
+This is workshop material for the "Introduction to R" workshop given by the [Monash Genomics and Bioinformatics Platform](https://www.monash.edu/researchinfrastructure/mgbp) for the [ResBaz Victoria 2024](https://resbaz.github.io/resbazvic2024/). Our teaching style is based on the style of [The Carpentries](https://carpentries.org/).
 
 * [PDF version for printing](r-intro-resbaz2024.pdf)
-* [ZIP of data files used in this workshop](https://monashdatafluency.github.io/r-intro-2/r-intro.zip)
+* [ZIP of data files used in this workshop](r-intro.zip)
 
 During the workshop we will be using Posit Cloud to use R over the web:
 

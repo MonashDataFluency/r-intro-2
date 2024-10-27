@@ -16,7 +16,7 @@ Our first step is to download the files we need and to install the Tidyverse. Th
 ```{r, eval=FALSE}
 # Download files for this workshop
 download.file(
-  "https://monashbioinformaticsplatform.github.io/r-intro-resbaz2024/r-intro.zip",
+  "https://monashbioinformaticsplatform.github.io/r-intro-resbazvic2024/r-intro.zip",
   destfile="r-intro.zip")
 unzip("r-intro.zip")
 
@@ -24,9 +24,7 @@ unzip("r-intro.zip")
 install.packages("tidyverse")
 ```
 
-If using RStudio Cloud, you might need to switch to R version 3.5.3 to successfully install Tidyverse. Use the drop-down in the top right corner of the page.
-
-People also sometimes have problems installing all the packages in Tidyverse on Windows machines. If you run into problems you may have more success installing individual packages.
+If you run into problems installing all of the `tidyverse` you may have more success installing individual packages:
 
 ```{r, eval=FALSE}
 install.packages(c("dplyr","readr","tidyr","ggplot2"))
