@@ -774,6 +774,7 @@ Levels: low lower_mid upper_mid high</code></pre>
 <section id="tip" class="level3 unnumbered tip">
 <h3 class="unnumbered tip anchored" data-anchor-id="tip">Tip</h3>
 <p>Tidying is often the first step when exploring a data-set. The <a href="http://tidyr.tidyverse.org/">tidyr</a> package contains a number of useful functions that help tidy (or un-tidy!) data. We’ve just seen <code>pivot_wider</code> which spreads two columns into multiple columns. The inverse of <code>pivot_wider</code> is <code>pivot_longer</code>, which gathers multiple columns into two columns: a column of column names, and a column of values. <code>pivot_longer</code> is often the first step when tidying a dataset you have received from the wild. (This is sometimes also called a “melt” or a “gather”.)</p>
+<p><a href="https://www.garrickadenbuie.com/project/tidyexplain/#pivot-wider-and-longer">Here’s an animation illustrating these functions.</a></p>
 </section>
 <section id="challenge-counting" class="level3 unnumbered challenge">
 <h3 class="unnumbered anchored" data-anchor-id="challenge-counting">Challenge: counting</h3>
@@ -881,7 +882,20 @@ Levels: low lower_mid upper_mid high</code></pre>
 </div>
 </div>
 <p>The output contains all ways of pairing up rows by <code>name</code>. In this case each row of <code>geo</code> pairs up with multiple rows of <code>gap</code>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The “left” in “left join” refers to how rows that can’t be paired up are handled. <code>left_join</code> keeps all rows from the first data frame but not the second. This is a good default when the intent is to attaching some extra information to a data frame. <code>inner_join</code> discards all rows that can’t be paired up. <code>full_join</code> keeps all rows from both data frames.</p>
+<p><a href="https://www.garrickadenbuie.com/project/tidyexplain/#mutating-joins">Here are some animations illustrating joins.</a></p>
+</div>
+</div>
 </section>
 <section id="further-reading" class="level2" data-number="2.11">
 <h2 data-number="2.11" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">2.11</span> Further reading</h2>
