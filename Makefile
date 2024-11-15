@@ -1,13 +1,16 @@
 
-.PHONY : all pdf html answers ingest clean
+.PHONY : all html pdf slides answers ingest clean
 
-all : html pdf answers docs/r-intro.zip 
+all : html pdf slides answers docs/r-intro.zip 
 
 html :
 	cd book ; quarto render --to html
 
 pdf :
 	cd book ; quarto render --to pdf
+	
+slides :
+	cd slides ; quarto render
 
 answers :
 	cd answers ; quarto render

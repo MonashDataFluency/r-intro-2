@@ -194,24 +194,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#variables" id="toc-variables" class="nav-link active" data-scroll-target="#variables"><span class="header-section-number">1.1</span> Variables</a></li>
-  <li><a href="#saving-code-in-an-r-script" id="toc-saving-code-in-an-r-script" class="nav-link" data-scroll-target="#saving-code-in-an-r-script"><span class="header-section-number">1.2</span> Saving code in an R script</a>
-  <ul class="collapse">
-  <li><a href="#challenge-using-variables" id="toc-challenge-using-variables" class="nav-link" data-scroll-target="#challenge-using-variables">Challenge: using variables</a></li>
-  </ul></li>
+  <li><a href="#saving-code-in-an-r-script" id="toc-saving-code-in-an-r-script" class="nav-link" data-scroll-target="#saving-code-in-an-r-script"><span class="header-section-number">1.2</span> Saving code in an R script</a></li>
   <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors"><span class="header-section-number">1.3</span> Vectors</a></li>
-  <li><a href="#types-of-vector" id="toc-types-of-vector" class="nav-link" data-scroll-target="#types-of-vector"><span class="header-section-number">1.4</span> Types of vector</a>
-  <ul class="collapse">
-  <li><a href="#challenge-mixing-types" id="toc-challenge-mixing-types" class="nav-link" data-scroll-target="#challenge-mixing-types">Challenge: mixing types</a></li>
-  </ul></li>
+  <li><a href="#types-of-vector" id="toc-types-of-vector" class="nav-link" data-scroll-target="#types-of-vector"><span class="header-section-number">1.4</span> Types of vector</a></li>
   <li><a href="#indexing-vectors" id="toc-indexing-vectors" class="nav-link" data-scroll-target="#indexing-vectors"><span class="header-section-number">1.5</span> Indexing vectors</a>
   <ul class="collapse">
   <li><a href="#challenge-indexing" id="toc-challenge-indexing" class="nav-link" data-scroll-target="#challenge-indexing">Challenge: indexing</a></li>
   </ul></li>
   <li><a href="#sequences" id="toc-sequences" class="nav-link" data-scroll-target="#sequences"><span class="header-section-number">1.6</span> Sequences</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.7</span> Functions</a>
-  <ul class="collapse">
-  <li><a href="#challenge-using-functions" id="toc-challenge-using-functions" class="nav-link" data-scroll-target="#challenge-using-functions">Challenge: using functions</a></li>
-  </ul></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.7</span> Functions</a></li>
   </ul>
 </nav>
     </div>
@@ -334,51 +325,79 @@ Tip
 <p>Add comments to code, using lines starting with the <code>#</code> character. This makes it easier for others to follow what the code is doing (and also for us the next time we come back to it).</p>
 </div>
 </div>
-<section id="challenge-using-variables" class="level3 unnumbered challenge">
-<h3 class="unnumbered anchored" data-anchor-id="challenge-using-variables">Challenge: using variables</h3>
-<ol type="1">
-<li>Re-write this calculation so that it <em>doesn’t</em> use variables:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">4</span><span class="sc">*</span><span class="dv">20</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">7</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>a<span class="sc">+</span>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<ol start="2" type="1">
-<li>Re-write this calcuation over multiple lines, using a variable:</li>
-</ol>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
+<!--
+:::{.challenge}
+### Challenge: using variables {-}
+
+1. Re-write this calculation so that it *doesn't* use variables:
+
+
+
+
+
+
+::: {.cell layout-align="center"}
+
+```{.r .cell-code}
+a <- 4*20
+b <- 7
+a+b
+```
+:::
+
+
+
+
+
+
+2. Re-write this calcuation over multiple lines, using a variable:
+
+
+
+
+
+
+::: {.cell layout-align="center"}
+
+```{.r .cell-code}
+2*2+2*2+2*2
+```
+:::
+
+
+
+
+
+:::
+-->
 </section>
 <section id="vectors" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="vectors"><span class="header-section-number">1.3</span> Vectors</h2>
 <p>A <em>vector</em> of numbers is a collection of numbers. “Vector” means different things in different fields (mathematics, geometry, biology), but in R it is a fancy name for a collection of numbers. We call the individual numbers <em>elements</em> of the vector.</p>
 <p>We can make vectors with <code>c( )</code>, for example <code>c(1,2,3)</code>. <code>c</code> means “combine”. R is obsesssed with vectors, in R even single numbers are vectors of length one. Many things that can be done with a single number can also be done with a vector. For example arithmetic can be done on vectors as it can be on single numbers.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>myvec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>myvec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>myvec <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>myvec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10 20 30 40 50</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>myvec <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>myvec <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11 21 31 41 51</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>myvec <span class="sc">+</span> myvec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>myvec <span class="sc">+</span> myvec</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  20  40  60  80 100</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(myvec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(myvec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">60</span>, myvec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">60</span>, myvec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 60 10 20 30 40 50</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(myvec, myvec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(myvec, myvec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 10 20 30 40 50 10 20 30 40 50</code></pre>
 </div>
@@ -388,13 +407,24 @@ Tip
 <section id="types-of-vector" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="types-of-vector"><span class="header-section-number">1.4</span> Types of vector</h2>
 <p>We will also encounter vectors of character strings, for example <code>"hello"</code> or <code>c("hello","world")</code>. Also we will encounter “logical” vectors, which contain <code>TRUE</code> and <code>FALSE</code> values. R also has “factors”, which are categorical vectors, and behave much like character vectors (think the factors in an experiment).</p>
-<section id="challenge-mixing-types" class="level3 unnumbered challenge">
-<h3 class="unnumbered anchored" data-anchor-id="challenge-mixing-types">Challenge: mixing types</h3>
-<p>Sometimes the best way to understand R is to try some examples and see what it does.</p>
-<p>What happens when you try to make a vector containing different types, using <code>c( )</code>? Make a vector with some numbers, and some words (eg. character strings like <code>"test"</code>, or <code>"hello"</code>).</p>
-<p>Why does the output show the numbers surrounded by quotes <code>" "</code> like character strings are?</p>
-</section>
-<p>Because vectors can only contain one type of thing, R chooses a lowest common denominator type of vector, a type that can contain everything we are trying to put in it. A different language might stop with an error, but R tries to soldier on as best it can. A number can be represented as a character string, but a character string can not be represented as a number, so when we try to put both in the same vector R converts everything to a character string.</p>
+<!--
+:::{.challenge}
+### Challenge: mixing types {-}
+
+Sometimes the best way to understand R is to try some examples and see what it does.
+
+What happens when you try to make a vector containing different types, using `c( )`? Make a vector with some numbers, and some words (eg. character strings like `"test"`, or `"hello"`).
+
+Why does the output show the numbers surrounded by quotes `" "` like character strings are?
+:::
+-->
+<p>Because vectors can only contain one type of thing, when you mix different types R will choose a lowest common denominator type of vector, a type that can contain everything we are trying to put in it. A different language might stop with an error, but R tries to soldier on as best it can. A number can be represented as a character string, but a character string can not be represented as a number, so when we try to put both in the same vector R converts everything to a character string.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"hello"</span>, <span class="dv">1</span>, <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "hello" "1"     "TRUE" </code></pre>
+</div>
+</div>
 </section>
 <section id="indexing-vectors" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="indexing-vectors"><span class="header-section-number">1.5</span> Indexing vectors</h2>
@@ -433,12 +463,12 @@ Tip
 <h3 class="unnumbered anchored" data-anchor-id="challenge-indexing">Challenge: indexing</h3>
 <p>We can create and index character vectors as well. A cafe is using R to create their menu.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"spam"</span>, <span class="st">"eggs"</span>, <span class="st">"beans"</span>, <span class="st">"bacon"</span>, <span class="st">"sausage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>menu <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"spam"</span>, <span class="st">"eggs"</span>, <span class="st">"beans"</span>, <span class="st">"bacon"</span>, <span class="st">"sausage"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
-<li><p>What does <code>items[-3]</code> produce? Based on what you find, use indexing to create a version of <code>items</code> without <code>"spam"</code>.</p></li>
+<li><p>What does <code>menu[-3]</code> produce? Based on what you find, use indexing to create a version of <code>menu</code> without <code>"spam"</code>.</p></li>
 <li><p>Use indexing to create a vector containing spam, eggs, sausage, spam, and spam.</p></li>
-<li><p>Add a new item, “lobster”, to <code>items</code>.</p></li>
+<li><p>Add a new item, “lobster”, to <code>menu</code>, and store the result in a variable called <code>new_menu</code>.</p></li>
 </ol>
 </section>
 </section>
@@ -453,7 +483,7 @@ Tip
 </div>
 <p>This can be useful when combined with indexing:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>items[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>menu[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "spam"  "eggs"  "beans" "bacon"</code></pre>
 </div>
@@ -469,7 +499,7 @@ Tip
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="starting_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+<p><img src="starting_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
 </figure>
 </div>
 </div>
@@ -528,13 +558,23 @@ Tip
 [39] 1 2 2 2 3 3 3</code></pre>
 </div>
 </div>
-<section id="challenge-using-functions" class="level3 unnumbered challenge">
-<h3 class="unnumbered anchored" data-anchor-id="challenge-using-functions">Challenge: using functions</h3>
-<ol type="1">
-<li><p>Use <code>sum</code> to sum from 1 to 10,000.</p></li>
-<li><p>Look at the documentation for the <code>seq</code> function. What does <code>seq</code> do? Give an example of using <code>seq</code> with either the <code>by</code> or <code>length.out</code> argument.</p></li>
-</ol>
-</section>
+<!--
+:::{.challenge}
+### Challenge: using functions {-}
+
+1. Use `sum` to sum from 1 to 10,000.
+
+2. Look at the documentation for the `seq` function. What does `seq` do? Give an example of using `seq` with either the `by` or `length.out` argument.
+:::
+-->
+<p>Earlier we used <code>:</code> to create sequences. The <code>seq</code> function gives you extra flexibility.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  2  4  6  8 10</code></pre>
+</div>
+</div>
+<p>Check the documentation with <code>?seq</code> for further arguments.</p>
 
 
 </section>

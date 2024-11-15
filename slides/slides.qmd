@@ -1,0 +1,107 @@
+---
+title: "Introduction to R<br><br>ResBaz Victoria 2024"
+format: 
+    revealjs:
+        smaller: true
+        margin: 0.1
+        css: "slides-style.css"
+        code-line-numbers: false
+        embed-resources: true
+        title-prefix: "Slides"
+        auto-stretch: false
+---
+
+## Introducing R
+<img src="cran.png" style="display:block;position:absolute;left: 800px;top:200px;" width="700">
+<img src="dplyr.png" style="display:block;position:absolute;left: 700px;top:300px;" width="700">
+<img src="bioc2.png" style="display:block;position:absolute;left: 500px;top:400px;" width="800">
+<img src="gallery.png" style="display:block;position:absolute;left: 200px;top:500px;" width="900">
+
+
+R is an environment to
+
+* visualize, explore
+* summarize, model, test, do machine-learning
+
+Large community, many specialized packages.
+
+Analyse data by writing code.
+
+
+
+## Why code?
+
+If every step of your analysis is recorded in an R script, with no manual steps:
+
+* you have a complete record of what you have done
+* easy to run entire script with test data
+* changes easily tested, poor early decisions easily fixed
+* today’s big project becomes a function in a package, serves as tomorrow’s building block
+
+Programming is an essential part of **reproducible research**.
+
+* other researchers can precisely understand and verify your work
+
+\
+R is open-source and free, so others can use your code without any barriers.
+
+
+
+## Data analysis follows a script
+<img src="data-science.png" style="display:block;position:absolute;left: 0px;top:100px;z-index:-1" width="900">
+<img src="chatgpt-shoggoth.webp" style="display:block;position:absolute;left: 900px;top:650px;" width="400">
+
+Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
+
+
+## Data analysis follows a script
+<img src="data-science.png" style="display:block;position:absolute;left: 0px;top:100px;z-index:-1" width="900">
+<img src="chatgpt-shoggoth.webp" style="display:block;position:absolute;left: 600px;top:400px;" width="500" alt="A self-portrait by Chat GPT">
+
+Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
+
+<div style="position:absolute;top: 400px;">
+**Model** could mean:
+
+* Summarize data with counts, means, etc.
+* More generally "fit a model" to the data.
+  * Machine learning or AI based models &rarr;
+* Using the model, perform statistical tests.
+</div>
+
+
+
+## Data analysis follows a script
+<img src="data-science.png" style="display:block;position:absolute;left: 0px;top:100px;z-index:-1" width="900">
+
+Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
+
+<div style="position:absolute;top: 400px;">
+Modelling goes poorly in a vacuum!
+
+* **Visualization** is critical to identify problems or make sure you are asking the right question.
+
+* And first you need to **load** and **tidy** your data.
+
+* And finally you need to **communicate** your results!
+</div>
+
+
+##
+(Do the workshop)
+
+## Conclusion
+
+<img src="data-science.png" style="display:block;position:absolute;left: 0px;top:50px;z-index:-1" width="900">
+
+<div style="position:absolute;top: 350px;font-size:100%;">
+We've covered **loading**, touched on **tidying**, done some **visualization** and a little **modelling** (or at least summarization).
+
+You still need to learn to communicate your results, with your colleagues or the wider world!
+
+* [Quarto](https://quarto.org/)
+
+Learning programming in R will super-charge your abilities!
+
+* functions, loops, package writing, ...
+</div>

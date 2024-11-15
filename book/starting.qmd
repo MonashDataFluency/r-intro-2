@@ -96,6 +96,7 @@ The usual workflow is to save your code in an R script (".R file"). Go to "File/
 Add comments to code, using lines starting with the `#` character. This makes it easier for others to follow what the code is doing (and also for us the next time we come back to it).
 :::
 
+<!--
 :::{.challenge}
 ### Challenge: using variables {-}
 
@@ -113,6 +114,7 @@ a+b
 2*2+2*2+2*2
 ```
 :::
+-->
 
 ## Vectors
 
@@ -136,6 +138,7 @@ When we talk about the length of a vector, we are talking about the number of nu
 
 We will also encounter vectors of character strings, for example `"hello"` or `c("hello","world")`. Also we will encounter "logical" vectors, which contain `TRUE` and `FALSE` values. R also has "factors", which are categorical vectors, and behave much like character vectors (think the factors in an experiment).
 
+<!--
 :::{.challenge}
 ### Challenge: mixing types {-}
 
@@ -145,9 +148,13 @@ What happens when you try to make a vector containing different types, using `c(
 
 Why does the output show the numbers surrounded by quotes `" "` like character strings are?
 :::
+-->
 
-Because vectors can only contain one type of thing, R chooses a lowest common denominator type of vector, a type that can contain everything we are trying to put in it. A different language might stop with an error, but R tries to soldier on as best it can. A number can be represented as a character string, but a character string can not be represented as a number, so when we try to put both in the same vector R converts everything to a character string.
+Because vectors can only contain one type of thing, when you mix different types R will choose a lowest common denominator type of vector, a type that can contain everything we are trying to put in it. A different language might stop with an error, but R tries to soldier on as best it can. A number can be represented as a character string, but a character string can not be represented as a number, so when we try to put both in the same vector R converts everything to a character string.
 
+```{r}
+c("hello", 1, TRUE)
+```
 
 ## Indexing vectors
 
@@ -179,14 +186,14 @@ myvec[c(4,3,2)]
 We can create and index character vectors as well. A cafe is using R to create their menu.
 
 ```{r}
-items <- c("spam", "eggs", "beans", "bacon", "sausage")
+menu <- c("spam", "eggs", "beans", "bacon", "sausage")
 ```
 
-1. What does `items[-3]` produce? Based on what you find, use indexing to create a version of `items` without `"spam"`.
+1. What does `menu[-3]` produce? Based on what you find, use indexing to create a version of `menu` without `"spam"`.
 
 2. Use indexing to create a vector containing spam, eggs, sausage, spam, and spam.
 
-3. Add a new item, "lobster", to `items`.
+3. Add a new item, "lobster", to `menu`, and store the result in a variable called `new_menu`.
 :::
 
 ## Sequences
@@ -200,7 +207,7 @@ Another way to create a vector is with `:`:
 This can be useful when combined with indexing:
 
 ```{r}
-items[1:4]
+menu[1:4]
 ```
 
 Sequences are useful for other things, such as a starting point for calculations:
@@ -255,6 +262,7 @@ rep(c(1,2,3), each=3)
 rep(c(1,2,3), each=3, times=5)
 ```
 
+<!--
 :::{.challenge}
 ### Challenge: using functions {-}
 
@@ -262,5 +270,12 @@ rep(c(1,2,3), each=3, times=5)
 
 2. Look at the documentation for the `seq` function. What does `seq` do? Give an example of using `seq` with either the `by` or `length.out` argument.
 :::
+-->
 
+Earlier we used `:` to create sequences. The `seq` function gives you extra flexibility.
 
+```{r}
+seq(2, 10, by=2)
+```
+
+Check the documentation with `?seq` for further arguments.

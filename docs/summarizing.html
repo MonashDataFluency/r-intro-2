@@ -319,7 +319,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="4.3" class="anchored" data-anchor-id="grouped-summaries"><span class="header-section-number">4.3</span> Grouped summaries</h2>
 <p>The <code>summarize</code> function in <code>dplyr</code> allows summary functions to be applied to data frames.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(gap2010, <span class="at">mean_life_exp=</span><span class="fu">weighted.mean</span>(life_exp, population, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(gap2010, <span class="at">mean_life_exp =</span> <span class="fu">weighted.mean</span>(life_exp, population, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 1
   mean_life_exp
@@ -327,11 +327,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 1          71.0</code></pre>
 </div>
 </div>
-<p>So far unremarkable, but <code>summarize</code> comes into its own when the <code>group_by</code> “adjective” is used.</p>
+<p>So far unremarkable, but <code>summarize</code> comes into its own when the <code>.by</code> argument is used to group data. (There is also an older style of doing this using a function called <code>group_by</code>.)</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(gap_geo, year), </span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_life_exp=</span><span class="fu">weighted.mean</span>(life_exp, population, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    gap_geo, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_life_exp =</span> <span class="fu">weighted.mean</span>(life_exp, population, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 22 × 2
     year mean_life_exp
@@ -354,19 +355,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>What is the total population for each year? Plot the result.</p>
 <p>Advanced: What is the total GDP for each year? For this you will first need to calculate GDP per capita times the population of each country.</p>
 </section>
-<p><code>group_by</code> can be used to group by multiple columns, much like <code>count</code>. We can use this to see how the rest of the world is catching up to OECD nations in terms of life expectancy.</p>
+<p>The <code>.by</code> argument can be used to group by multiple columns, much like <code>count</code>. We need to use <code>c( )</code> for this, as below. We can use this to see how the rest of the world is catching up to OECD nations in terms of life expectancy.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">summarize</span>(</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(gap_geo,year,oecd), </span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_life_exp=</span><span class="fu">weighted.mean</span>(life_exp, population, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`summarise()` has grouped output by 'year'. You can override using the
-`.groups` argument.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    gap_geo,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_life_exp =</span> <span class="fu">weighted.mean</span>(life_exp, population, <span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">.by =</span> <span class="fu">c</span>(year, oecd))</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 44 × 3
-# Groups:   year [22]
     year oecd  mean_life_exp
    &lt;dbl&gt; &lt;lgl&gt;         &lt;dbl&gt;
  1  1800 FALSE          29.9
@@ -381,7 +378,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 10  1840 TRUE           36.2
 # ℹ 34 more rows</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(result, <span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>mean_life_exp,<span class="at">color=</span>oecd)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(result, <span class="fu">aes</span>(<span class="at">x=</span>year,<span class="at">y=</span>mean_life_exp,<span class="at">color=</span>oecd)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -397,10 +394,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We will finish this section by demonstrating a t-test. The main point of this section is to give a flavour of how statistical tests work in R, rather than the details of what a t-test does.</p>
 <p>Has life expectancy increased from 2000 to 2010?</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>gap2000 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, year <span class="sc">==</span> <span class="dv">2000</span>)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>gap2010 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, year <span class="sc">==</span> <span class="dv">2010</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(gap2010<span class="sc">$</span>life_exp, gap2000<span class="sc">$</span>life_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>gap2000 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, year <span class="sc">==</span> <span class="dv">2000</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>gap2010 <span class="ot">&lt;-</span> <span class="fu">filter</span>(gap_geo, year <span class="sc">==</span> <span class="dv">2010</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(gap2010<span class="sc">$</span>life_exp, gap2000<span class="sc">$</span>life_exp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Welch Two Sample t-test
@@ -418,11 +415,11 @@ mean of x mean of y
 <p>Statistical routines often have many ways to tweak the details of their operation. These are specified by further arguments to the function call, to override the default behaviour. By default, <code>t.test</code> performs an unpaired t-test, but these are repeated observations of the same countries. We can specify <code>paired=TRUE</code> to <code>t.test</code> to perform a paired sample t-test and gain some statistical power. Check this by looking at the help page with <code>?t.test</code>.</p>
 <p>It’s important to first check that both data frames are in the same order.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(gap2000<span class="sc">$</span>name <span class="sc">==</span> gap2010<span class="sc">$</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(gap2000<span class="sc">$</span>name <span class="sc">==</span> gap2010<span class="sc">$</span>name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(gap2010<span class="sc">$</span>life_exp, gap2000<span class="sc">$</span>life_exp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(gap2010<span class="sc">$</span>life_exp, gap2000<span class="sc">$</span>life_exp, <span class="at">paired=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Paired t-test
@@ -439,8 +436,8 @@ mean difference
 </div>
 <p>When performing a statistical test, it’s good practice to visualize the data to make sure there is nothing funny going on.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gap2000<span class="sc">$</span>life_exp, gap2010<span class="sc">$</span>life_exp)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(gap2000<span class="sc">$</span>life_exp, gap2010<span class="sc">$</span>life_exp)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">

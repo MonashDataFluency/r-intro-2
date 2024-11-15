@@ -74,15 +74,16 @@ weighted.mean(cleaned$life_exp, cleaned$population)
 The `summarize` function in `dplyr` allows summary functions to be applied to data frames.
 
 ```{r}
-summarize(gap2010, mean_life_exp=weighted.mean(life_exp, population, na.rm=TRUE))
+summarize(gap2010, mean_life_exp = weighted.mean(life_exp, population, na.rm=TRUE))
 ```
 
-So far unremarkable, but `summarize` comes into its own when the `group_by` "adjective" is used.
+So far unremarkable, but `summarize` comes into its own when the `.by` argument is used to group data. (There is also an older style of doing this using a function called `group_by`.)
 
 ```{r}
 summarize(
-    group_by(gap_geo, year), 
-    mean_life_exp=weighted.mean(life_exp, population, na.rm=TRUE))
+    gap_geo, 
+    mean_life_exp = weighted.mean(life_exp, population, na.rm=TRUE),
+    .by = year)
 ```
 
 :::{.challenge}
@@ -93,12 +94,13 @@ What is the total population for each year? Plot the result.
 Advanced: What is the total GDP for each year? For this you will first need to calculate GDP per capita times the population of each country.
 :::
 
-`group_by` can be used to group by multiple columns, much like `count`. We can use this to see how the rest of the world is catching up to OECD nations in terms of life expectancy.
+The `.by` argument can be used to group by multiple columns, much like `count`. We need to use `c( )` for this, as below. We can use this to see how the rest of the world is catching up to OECD nations in terms of life expectancy.
 
 ```{r}
 result <- summarize(
-    group_by(gap_geo,year,oecd), 
-    mean_life_exp=weighted.mean(life_exp, population, na.rm=TRUE))
+    gap_geo,
+    mean_life_exp = weighted.mean(life_exp, population, na.rm=TRUE),
+    .by = c(year, oecd))
 result
 ggplot(result, aes(x=year,y=mean_life_exp,color=oecd)) + geom_line()
 ```
