@@ -20,9 +20,12 @@ format:
 
 R is a language and an environment for working with data.
 
-It has a large community of users and developers, and many specialized packages.
-
+\
 We will primarily work with data by **writing R code**.
+
+\
+R has a large community of users and developers,\
+and many specialized packages.
 
 
 
@@ -45,23 +48,23 @@ R is open-source and free, so others can use your code without any barriers.
 
 ## Data analysis follows a script
 <img src="data-science.png" style="display:block;position:absolute;left: 0px;top:100px;z-index:-1" width="900">
-<img src="chatgpt-shoggoth.webp" style="display:block;position:absolute;left: 900px;top:650px;" width="400">
 
 Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
 
 
 ## Data analysis follows a script
 <img src="data-science.png" style="display:block;position:absolute;left: 0px;top:100px;z-index:-1" width="900">
-<img src="chatgpt-shoggoth.webp" style="display:block;position:absolute;left: 600px;top:450px;" width="200" alt="A self-portrait by Chat GPT">
+<img src="chatgpt-shoggoth.webp" style="display:block;position:absolute;left: 700px;top:450px;" width="300" alt="A self-portrait by Chat GPT">
 
 Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
 
 <div style="position:absolute;top: 400px;">
-**Model** could mean:
+**Model** here is intended to cover a broad range of tasks:
 
 * Summarize data with counts, means, etc.
 * More generally "fit a model" to the data.
-  * Machine learning or AI based models &rarr;
+    * Traditional statistical models.
+    * Machine learning models &rarr;
 * Using the model, perform statistical tests.
 </div>
 
@@ -69,35 +72,34 @@ Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
 
 ## Data analysis follows a script
 <img src="data-science.png" style="display:block;position:absolute;left: 0px;top:100px;z-index:-1" width="900">
+<img src="chatgpt-shoggoth.webp" style="display:block;position:absolute;left: 900px;top:650px;" width="400">
 
 Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
 
 <div style="position:absolute;top: 400px;">
-Modelling goes poorly in a vacuum!
+Modelling is enabled and informed by the other steps!
 
 * **Visualization** is critical to identify problems or make sure you are asking the right question.
 
-* And first you need to **load** and **tidy** your data.
+* You need to **load** and **tidy** and maybe **transform** your data to plot and model it.
 
-* And finally you need to **communicate** your results!
+* Finally, you should **communicate** your results.
 </div>
 
 
 ##
-(Do the workshop)
+(workshop)
 
 ## Conclusion
 
 <img src="data-science.png" style="display:block;position:absolute;left: 0px;top:50px;z-index:-1" width="900">
 
 <div style="position:absolute;top: 350px;font-size:100%;">
-We've covered **loading**, touched on **tidying**, done some **visualization** and a little **modelling** (or at least summarization).
+We've had a taste of the workflow in R. We've covered **loading**, touched on **tidying**, done some **visualization** and a little **modelling** (or at least summarization).
 
-You still need to learn to communicate your results, with your colleagues or the wider world!
+\
+You still need to communicate your results, with your colleagues or the wider world! [Quarto](https://quarto.org/) can help with this.
 
-* [Quarto](https://quarto.org/)
-
-Learning programming in R will super-charge your abilities!
-
-* functions, loops, package writing, ...
+\
+Learning programming in R will super-charge your abilities. Writing your own functions, loops, packages, ...
 </div>
