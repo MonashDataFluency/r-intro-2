@@ -18,14 +18,11 @@ format:
 <img src="gallery.png" style="display:block;position:absolute;left: 200px;top:500px;" width="900">
 
 
-R is an environment to
+R is a language and an environment for working with data.
 
-* visualize, explore
-* summarize, model, test, do machine-learning
+It has a large community of users and developers, and many specialized packages.
 
-Large community, many specialized packages.
-
-Analyse data by writing code.
+We will primarily work with data by **writing R code**.
 
 
 
@@ -34,7 +31,6 @@ Analyse data by writing code.
 If every step of your analysis is recorded in an R script, with no manual steps:
 
 * you have a complete record of what you have done
-* easy to run entire script with test data
 * changes easily tested, poor early decisions easily fixed
 * today’s big project becomes a function in a package, serves as tomorrow’s building block
 
@@ -56,7 +52,7 @@ Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
 
 ## Data analysis follows a script
 <img src="data-science.png" style="display:block;position:absolute;left: 0px;top:100px;z-index:-1" width="900">
-<img src="chatgpt-shoggoth.webp" style="display:block;position:absolute;left: 600px;top:400px;" width="500" alt="A self-portrait by Chat GPT">
+<img src="chatgpt-shoggoth.webp" style="display:block;position:absolute;left: 600px;top:450px;" width="200" alt="A self-portrait by Chat GPT">
 
 Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
 

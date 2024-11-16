@@ -160,7 +160,8 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#deepen-your-understanding" id="toc-deepen-your-understanding" class="nav-link active" data-scroll-target="#deepen-your-understanding"><span class="header-section-number">6.1</span> Deepen your understanding</a></li>
   <li><a href="#expand-your-vocabulary" id="toc-expand-your-vocabulary" class="nav-link" data-scroll-target="#expand-your-vocabulary"><span class="header-section-number">6.2</span> Expand your vocabulary</a></li>
-  <li><a href="#join-the-community" id="toc-join-the-community" class="nav-link" data-scroll-target="#join-the-community"><span class="header-section-number">6.3</span> Join the community</a></li>
+  <li><a href="#find-packages-for-specific-data-types" id="toc-find-packages-for-specific-data-types" class="nav-link" data-scroll-target="#find-packages-for-specific-data-types"><span class="header-section-number">6.3</span> Find packages for specific data types</a></li>
+  <li><a href="#some-pointers-on-models-and-statistics" id="toc-some-pointers-on-models-and-statistics" class="nav-link" data-scroll-target="#some-pointers-on-models-and-statistics"><span class="header-section-number">6.4</span> Some pointers on models and statistics</a></li>
   </ul>
 </nav>
     </div>
@@ -188,17 +189,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="deepen-your-understanding" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="deepen-your-understanding"><span class="header-section-number">6.1</span> Deepen your understanding</h2>
-<p><strong>Our number one recommendation is to read the book <a href="http://r4ds.had.co.nz/">“R for Data Science”</a> by Garrett Grolemund and Hadley Wickham.</strong></p>
-<p>Statistical tasks such as model fitting, hypothesis testing, confidence interval calculation, and prediction are a large part of R, and one we haven’t demonstrated fully today.</p>
-<p>For any standard statistical test, there will usually be an R function to perform it. Examples include <code>t.test</code> from the previous sections, and also <code>wilcox.test</code>, <code>fisher.test</code>, <code>chisq.test</code>, and <code>cor.test</code>. Before applying these functions, you may need to use the methods we’ve learned today to subset and transform your data, or perform some preliminary summarization such as averaging technical replicates. To make sure there are no problems that might invalidate the results from these tests, always visualize your data. If you are performing many tests, adjust for multiple testing with <code>p.adjust</code>.</p>
-<p>Going beyond this, linear models and the linear model formula syntax <code>~</code> are core to much of what R has to offer statistically. Many statistical techniques take linear models as their starting point, including <a href="https://bioconductor.org/packages/release/bioc/html/limma.html">limma</a> for differential gene expression, <code>glm</code> for logistic regression (etc), survival analysis with <code>coxph</code>, and mixed models to characterize variation within populations.</p>
-<ul>
-<li><p>“Statistical Models in S” by J.M. Chambers and T.J. Hastie is the primary reference for this, although there are some small differences between R and its predecessor S.</p></li>
-<li><p><a href="http://www-bcf.usc.edu/~gareth/ISL/">“An Introduction to Statistical Learning”</a> by G. James, D. Witten, T. Hastie and R. Tibshirani can be seen as further development of the ideas in “Statistical Models in S”, and is available online. It has more of a machine learning than a statistics flavour to it. (The distinction is fuzzy!)</p></li>
-<li><p>“Modern Applied Statistics with S” by W.N. Venable and B.D. Ripley is a well respected reference covering R and S.</p></li>
-<li><p>“Linear Models with R” and “Extending the Linear Model with R” by <a href="http://www.maths.bath.ac.uk/~jjf23/">J. Faraway</a> cover linear models, with many practical examples.</p></li>
-<li><p>Many further resources and tutorials exist online.</p></li>
-</ul>
+<p><strong>Our number one recommendation is to read the book <a href="https://r4ds.hadley.nz/">“R for Data Science”</a> by Garrett Grolemund and Hadley Wickham.</strong></p>
+<p><a href="https://cran.r-project.org/manuals.html">The R Manuals</a> are the place to look if you need a precise definition of how R behaves.</p>
 </section>
 <section id="expand-your-vocabulary" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="expand-your-vocabulary"><span class="header-section-number">6.2</span> Expand your vocabulary</h2>
@@ -206,26 +198,56 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><a href="https://www.rstudio.com/resources/cheatsheets/">RStudio’s collection of cheat sheets</a> cover newer packages in R.</li>
 <li><a href="https://cran.r-project.org/doc/contrib/Short-refcard.pdf">An old-school cheat sheet</a> for dinosaurs and people wishing to go deeper.</li>
-<li><a href="https://github.com/mikelove/bioc-refcard">A Bioconductor cheat sheet</a> for biological data.</li>
+<li><a href="http://mikelove.github.io/bioc-refcard/">A Bioconductor cheat sheet</a> for biological data.</li>
+<li><a href="https://r-graph-gallery.com/">The R Graph Gallery</a> for visual inspiration.</li>
 </ul>
-<p><a href="https://cran.r-project.org/manuals.html">The R Manuals</a> are the place to look if you need a precise definition of how R behaves.</p>
 </section>
-<section id="join-the-community" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="join-the-community"><span class="header-section-number">6.3</span> Join the community</h2>
-<p>Join the <a href="https://www.monash.edu/data-fluency">Data Fluency community at Monash</a>.</p>
+<section id="find-packages-for-specific-data-types" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="find-packages-for-specific-data-types"><span class="header-section-number">6.3</span> Find packages for specific data types</h2>
 <ul>
-<li>Mailing list for workshop and event announcements.</li>
-<li>Slack for discussion.</li>
-<li>Drop-in sessions on Friday afternoon.</li>
+<li><a href="https://cran.r-project.org/">CRAN</a> contains over 20,000 R packages.</li>
+<li>The <a href="https://cran.r-project.org/web/views/">CRAN task views</a> provide recommendations for specific topics.</li>
+<li><a href="https://www.bioconductor.org">Bioconductor</a> is another package repository, specfically for working with high-throughput biological data.</li>
 </ul>
-<p><a href="https://www.monash.edu/data-fluency/toolkit/r">Attend further Data Fluency R workshops.</a> The material for our workshops is also available at this link for self-study.</p>
-<p>Meetups in Melbourne:</p>
+</section>
+<section id="some-pointers-on-models-and-statistics" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="some-pointers-on-models-and-statistics"><span class="header-section-number">6.4</span> Some pointers on models and statistics</h2>
+<p>Statistical tasks such as model fitting, hypothesis testing, confidence interval calculation, and prediction are a large part of R, and one we haven’t demonstrated fully today.</p>
+<p>For any standard statistical test, there will usually be an R function to perform it. Examples include <code>t.test</code> from the previous sections, and also <code>wilcox.test</code>, <code>fisher.test</code>, <code>chisq.test</code>, and <code>cor.test</code>. Before applying these functions, you may need to use the methods we’ve learned today to subset and transform your data, or perform some preliminary summarization such as averaging technical replicates. To make sure there are no problems that might invalidate the results from these tests, always visualize your data. If you are performing many tests, adjust for multiple testing with <code>p.adjust</code>.</p>
+<p>Going beyond this, linear models and the linear model formula syntax <code>~</code> are core to much of what R has to offer statistically. Many statistical techniques take linear models as their starting point, including <a href="https://bioconductor.org/packages/release/bioc/html/limma.html">limma</a> for differential gene expression, <code>glm</code> for logistic regression and generalized linear models, survival analysis with <code>coxph</code>, and mixed models to characterize variation within populations. I have developed some workshop material on linear models, <a href="https://monashdatafluency.github.io/r-linear/">available here</a>.</p>
 <ul>
-<li><a href="https://www.meetup.com/en-AU/MelbURN-Melbourne-Users-of-R-Network/">MelbURN</a></li>
-<li><a href="https://www.meetup.com/en-AU/R-Ladies-Melbourne/">R-Ladies</a></li>
+<li><p>“Statistical Models in S” by J.M. Chambers and T.J. Hastie is the primary reference for this, although there are some small differences between R and its predecessor S.</p></li>
+<li><p><a href="http://www-bcf.usc.edu/~gareth/ISL/">“An Introduction to Statistical Learning”</a> by G. James, D. Witten, T. Hastie and R. Tibshirani can be seen as further development of the ideas in “Statistical Models in S”, and is available online. It has more of a machine learning than a statistics flavour to it. (The distinction is fuzzy!)</p></li>
+<li><p>“Modern Applied Statistics with S” by W.N. Venable and B.D. Ripley is a well respected reference covering R and S.</p></li>
+<li><p>“Linear Models with R” and “Extending the Linear Model with R” by <a href="https://julianfaraway.github.io/faraway/">J. Faraway</a> cover linear models, with many practical examples.</p></li>
 </ul>
-<p><a href="https://carpentries.org/">The Carpentries</a> run intensive two day workshops on scientific computing and data science topics worldwide. The style of this present workshop is very much based on theirs.</p>
-<p>For bioinformatics, the <a href="https://www.monash.edu/researchinfrastructure/bioinformatics/training">Monash Bioinformatics Platform</a> runs bioinformatics-specific workshops. Also <a href="https://combine.org.au/">COMBINE</a> is an Australian bioinformatics student and early career researcher organization, and runs Carpentries workshops and similar.</p>
+<p><br>
+<br>
+</p>
+<ul>
+<li><p><a href="https://carpentries.org/">The Carpentries</a> run workshops on scientific computing and data science topics worldwide. The style of this present workshop is very much based on theirs. Their material is all available on their website.</p></li>
+<li><p>Many further resources and tutorials exist online.</p></li>
+</ul>
+<!--
+## Join the community
+
+Join the [Data Fluency community at Monash](https://www.monash.edu/data-fluency).
+
+ * Mailing list for workshop and event announcements.
+ * Slack for discussion.
+ * Drop-in sessions on Friday afternoon.
+
+[Attend further Data Fluency R workshops.](https://www.monash.edu/data-fluency/toolkit/r) The material for our workshops is also available at this link for self-study.
+
+Meetups in Melbourne:
+
+* [MelbURN](https://www.meetup.com/en-AU/MelbURN-Melbourne-Users-of-R-Network/)
+* [R-Ladies](https://www.meetup.com/en-AU/R-Ladies-Melbourne/)
+
+[The Carpentries](https://carpentries.org/) run intensive two day workshops on scientific computing and data science topics worldwide. The style of this present workshop is very much based on theirs.
+
+For bioinformatics, the [Monash Bioinformatics Platform](https://www.monash.edu/researchinfrastructure/bioinformatics/training) runs bioinformatics-specific workshops. Also [COMBINE](https://combine.org.au/) is an Australian bioinformatics student and early career researcher organization, and runs Carpentries workshops and similar.
+-->
 
 
 </section>
