@@ -209,7 +209,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors"><span class="header-section-number">2.7</span> Factors</a></li>
   <li><a href="#readability-vs-tidyness" id="toc-readability-vs-tidyness" class="nav-link" data-scroll-target="#readability-vs-tidyness"><span class="header-section-number">2.8</span> Readability vs tidyness</a>
   <ul class="collapse">
-  <li><a href="#tip" id="toc-tip" class="nav-link" data-scroll-target="#tip">Tip</a></li>
   <li><a href="#challenge-counting" id="toc-challenge-counting" class="nav-link" data-scroll-target="#challenge-counting">Challenge: counting</a></li>
   </ul></li>
   <li><a href="#sorting" id="toc-sorting" class="nav-link" data-scroll-target="#sorting"><span class="header-section-number">2.9</span> Sorting</a></li>
@@ -771,11 +770,20 @@ Levels: low lower_mid upper_mid high</code></pre>
 </div>
 </div>
 <p>We could further specify <code>values_fill=list(n=0)</code> to fill in the <code>NA</code> values with 0. Or when using <code>count</code>, make sure all the relevant columns are factors and specify <code>.drop=FALSE</code>.</p>
-<section id="tip" class="level3 unnumbered tip">
-<h3 class="unnumbered tip anchored" data-anchor-id="tip">Tip</h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>Tidying is often the first step when exploring a data-set. The <a href="http://tidyr.tidyverse.org/">tidyr</a> package contains a number of useful functions that help tidy (or un-tidy!) data. We’ve just seen <code>pivot_wider</code> which spreads two columns into multiple columns. The inverse of <code>pivot_wider</code> is <code>pivot_longer</code>, which gathers multiple columns into two columns: a column of column names, and a column of values. <code>pivot_longer</code> is often the first step when tidying a dataset you have received from the wild. (This is sometimes also called a “melt” or a “gather”.)</p>
 <p><a href="https://www.garrickadenbuie.com/project/tidyexplain/#pivot-wider-and-longer">Here’s an animation illustrating these functions.</a></p>
-</section>
+</div>
+</div>
 <section id="challenge-counting" class="level3 unnumbered challenge">
 <h3 class="unnumbered anchored" data-anchor-id="challenge-counting">Challenge: counting</h3>
 <p>Investigate how many OECD and non-OECD nations come from the northern and southern hemispheres.</p>
@@ -899,7 +907,7 @@ Tip
 </section>
 <section id="further-reading" class="level2" data-number="2.11">
 <h2 data-number="2.11" class="anchored" data-anchor-id="further-reading"><span class="header-section-number">2.11</span> Further reading</h2>
-<p>We’ve covered the fundamentals of dplyr and data frames, but there is much more to learn. Notably, we haven’t covered the use of the pipe <code>|&gt;</code> to chain <code>dplyr</code> verbs together (and you may also come across an older version of the pipe symbol <code>%&gt;%</code>). The <a href="http://r4ds.had.co.nz/">“R for Data Science” book</a> is an excellent source to learn more. The Monash Data Fluency <a href="https://monashdatafluency.github.io/r-progtidy/">“Programming and Tidy data analysis in R” course</a> also covers this.</p>
+<p>We’ve covered the fundamentals of dplyr and data frames, but there is much more to learn. Notably, we haven’t covered the use of the pipe <code>|&gt;</code> to chain <code>dplyr</code> verbs together (and you may also come across an older version of the pipe symbol <code>%&gt;%</code>). The <a href="https://r4ds.hadley.nz/">“R for Data Science” book</a> is an excellent source to learn more. The Monash Data Fluency <a href="https://monashdatafluency.github.io/r-progtidy/">“Programming and Tidy data analysis in R” course</a> also covers this.</p>
 
 
 </section>
