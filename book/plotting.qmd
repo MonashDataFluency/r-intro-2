@@ -72,11 +72,11 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name, color=region)) +
     geom_line()
 ```
 
-A wide variety of geoms are available. Here we show Tukey box-plots. Note again the use of the "group" aesthetic, without this ggplot will just show one big box-plot.
+A wide variety of geoms are available. Here we show violin plots. Note again the use of the "group" aesthetic, without this ggplot will just show one big box-plot. `geom_jitter`, `geom_boxplot`, and the [ggbeeswarm](https://cran.r-project.org/web/packages/ggbeeswarm/index.html) package are some further ways to show distributions.
 
 ```{r warning=F}
 ggplot(gap_geo, aes(x=year, y=life_exp, group=year)) +
-    geom_boxplot()
+    geom_violin()
 ```
 
 `geom_smooth` can be used to show trends.
