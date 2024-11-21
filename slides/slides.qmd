@@ -37,7 +37,7 @@ If every step of your analysis is recorded in an R script, with no manual steps:
 * changes easily tested, poor early decisions easily fixed
 * today’s big project becomes a function in a package, serves as tomorrow’s building block
 
-Programming is an essential part of **reproducible research**.
+Writing code is an essential part of **reproducible research**.
 
 * other researchers can precisely understand and verify your work
 

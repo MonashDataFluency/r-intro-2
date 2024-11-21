@@ -109,7 +109,15 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name)) +
 
 Notice also that the second `geom_line` has some further arguments controlling its appearance. These are **not** aesthetics, they are not a mapping of data to appearance, but rather a direct specification of the appearance. There isn't an associated scale as when color was an aesthetic.
 
+:::{.challenge}
+### Discussion: look at the plot {-}
 
+What do you notice about the data before 1870?
+
+A plot can raise questions about how the data was gathered, and informs how you fit models and perform tests on it.
+
+Visualize, visualize, visualize!
+:::
 
 ## Fine-tuning a plot
 

@@ -29,7 +29,7 @@ Open RStudio, click on the "Console" pane, type `1+1` and press enter. R display
 1+1
 ```
 
-`+` is called an operator. R has the operators you would expect for for basic mathematics: `+` `-` `*` `/` `^`. It also has operators that do more obscure things.
+`+` is called an operator. R has the operators you would expect for mathematics: `+` `-` `*` `/` `^`. It also has further operators that do other things.
 
 `*` has higher precedence than `+`.  We can use brackets if necessary `( )`. Try `1+2*3` and `(1+2)*3`.
 

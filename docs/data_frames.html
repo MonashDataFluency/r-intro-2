@@ -207,10 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#a-dplyr-shorthand" id="toc-a-dplyr-shorthand" class="nav-link" data-scroll-target="#a-dplyr-shorthand"><span class="header-section-number">2.6.1</span> A <code>dplyr</code> shorthand</a></li>
   </ul></li>
   <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors"><span class="header-section-number">2.7</span> Factors</a></li>
-  <li><a href="#readability-vs-tidyness" id="toc-readability-vs-tidyness" class="nav-link" data-scroll-target="#readability-vs-tidyness"><span class="header-section-number">2.8</span> Readability vs tidyness</a>
-  <ul class="collapse">
-  <li><a href="#challenge-counting" id="toc-challenge-counting" class="nav-link" data-scroll-target="#challenge-counting">Challenge: counting</a></li>
-  </ul></li>
+  <li><a href="#readability-vs-tidyness" id="toc-readability-vs-tidyness" class="nav-link" data-scroll-target="#readability-vs-tidyness"><span class="header-section-number">2.8</span> Readability vs tidyness</a></li>
   <li><a href="#sorting" id="toc-sorting" class="nav-link" data-scroll-target="#sorting"><span class="header-section-number">2.9</span> Sorting</a></li>
   <li><a href="#joining-data-frames" id="toc-joining-data-frames" class="nav-link" data-scroll-target="#joining-data-frames"><span class="header-section-number">2.10</span> Joining data frames</a>
   <ul class="collapse">
@@ -784,24 +781,41 @@ Tip
 <p><a href="https://www.garrickadenbuie.com/project/tidyexplain/#pivot-wider-and-longer">Here’s an animation illustrating these functions.</a></p>
 </div>
 </div>
-<section id="challenge-counting" class="level3 unnumbered challenge">
-<h3 class="unnumbered anchored" data-anchor-id="challenge-counting">Challenge: counting</h3>
-<p>Investigate how many OECD and non-OECD nations come from the northern and southern hemispheres.</p>
-<ol type="1">
-<li>Using <code>count</code>.</li>
-<li>By making a mosaic plot.</li>
-</ol>
-<p>Remember you may need to convert columns to factors for <code>plot</code> to work, and that a <code>southern</code> column could be added to <code>geo</code> with:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>geo<span class="sc">$</span>southern <span class="ot">&lt;-</span> geo<span class="sc">$</span>lat <span class="sc">&lt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
+<!--
+:::{.challenge}
+### Challenge: counting {-}
+
+Investigate how many OECD and non-OECD nations come from the northern and southern hemispheres.
+
+1. Using `count`.
+2. By making a mosaic plot.
+
+Remember you may need to convert columns to factors for `plot` to work, and that a `southern` column could be added to `geo` with:
+
+
+
+
+
+
+::: {.cell layout-align="center"}
+
+```{.r .cell-code}
+geo$southern <- geo$lat < 0
+```
+:::
+
+
+
+
+
+:::
+-->
 </section>
 <section id="sorting" class="level2" data-number="2.9">
 <h2 data-number="2.9" class="anchored" data-anchor-id="sorting"><span class="header-section-number">2.9</span> Sorting</h2>
 <p>Data frames can be sorted using the <code>arrange</code> function in <code>dplyr</code>.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(geo, lat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(geo, lat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 196 × 8
    name         region   oecd  g77     lat  long income2017 southern
@@ -821,7 +835,7 @@ Tip
 </div>
 <p>Numeric columns are sorted in numeric order. Character columns will be sorted in alphabetical order. Factor columns are sorted in order of their levels. The <code>desc</code> helper function can be used to sort in descending order.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(geo, <span class="fu">desc</span>(name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(geo, <span class="fu">desc</span>(name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 196 × 8
    name           region   oecd  g77     lat   long income2017 southern
@@ -844,8 +858,8 @@ Tip
 <h2 data-number="2.10" class="anchored" data-anchor-id="joining-data-frames"><span class="header-section-number">2.10</span> Joining data frames</h2>
 <p>Let’s move on to a larger data set. This is from the <a href="https://www.gapminder.org">Gapminder</a> project and contains information about countries over time.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>gap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"r-intro/gap-minder.csv"</span>)</span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>gap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>gap <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"r-intro/gap-minder.csv"</span>)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>gap</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,312 × 5
    name                 year population gdp_percap life_exp
@@ -869,8 +883,8 @@ Tip
 </section>
 <p>It would be useful to have general information about countries from <code>geo</code> available as columns when we use this data frame. <code>gap</code> and <code>geo</code> share a column called <code>name</code> which can be used to match rows from one to the other.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>gap_geo <span class="ot">&lt;-</span> <span class="fu">left_join</span>(gap, geo, <span class="at">by=</span><span class="st">"name"</span>)</span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>gap_geo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>gap_geo <span class="ot">&lt;-</span> <span class="fu">left_join</span>(gap, geo, <span class="at">by=</span><span class="st">"name"</span>)</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>gap_geo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4,312 × 12
    name      year population gdp_percap life_exp region oecd  g77     lat   long

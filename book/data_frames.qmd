@@ -346,6 +346,7 @@ Tidying is often the first step when exploring a data-set. The [tidyr](http://ti
 [Here's an animation illustrating these functions.](https://www.garrickadenbuie.com/project/tidyexplain/#pivot-wider-and-longer)
 :::
 
+<!--
 :::{.challenge}
 ### Challenge: counting {-}
 
@@ -360,6 +361,7 @@ Remember you may need to convert columns to factors for `plot` to work, and that
 geo$southern <- geo$lat < 0
 ```
 :::
+-->
 
 ## Sorting
 
