@@ -29,18 +29,17 @@ and many specialized packages.
 
 
 
-## Why code?
+## Why write code?
 
-If every step of your analysis is recorded in an R script, with no manual steps:
+\
+If every step of your analysis is recorded in an R script:
 
-* you have a complete record of what you have done
-* changes easily tested, poor early decisions easily fixed
-* today’s big project becomes a function in a package, serves as tomorrow’s building block
+* You have a complete record of what you have done.
+* Early decisions easily changed, changes easily tested.
+* Today’s big project becomes tomorrow’s building block.
+* You can share your code, ensuring your results are *reproducible*.
 
-Writing code is an essential part of **reproducible research**.
-
-* other researchers can precisely understand and verify your work
-
+\
 \
 R is open-source and free, so others can use your code without any barriers.
 
@@ -79,9 +78,9 @@ Diagram from "R for Data Science" book (<https://r4ds.hadley.nz/>)
 <div style="position:absolute;top: 400px;">
 Modelling is enabled and informed by the other steps!
 
-* **Visualization** is critical to identify problems or make sure you are asking the right question.
+* **Visualization** to identify problems or make sure you are asking the right question.
 
-* You need to **load** and **tidy** and maybe **transform** your data to plot and model it.
+* **Load** and **tidy** and maybe **transform** your data to be able to plot and model it.
 
 * Finally, you should **communicate** your results.
 </div>
