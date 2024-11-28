@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>A wide variety of geoms are available. Here we show violin plots. Note again the use of the “group” aesthetic, without this ggplot will just show one big box-plot. <code>geom_jitter</code>, <code>geom_boxplot</code>, and the <a href="https://cran.r-project.org/web/packages/ggbeeswarm/index.html">ggbeeswarm</a> package are some further ways to show distributions.</p>
+<p>A wide variety of geoms are available. Here we show violin plots. Note again the use of the “group” aesthetic, without this ggplot will just show one big violin. <code>geom_jitter</code>, <code>geom_boxplot</code>, and the <a href="https://cran.r-project.org/web/packages/ggbeeswarm/index.html">ggbeeswarm</a> package are some further ways to show distributions.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp, <span class="at">group=</span>year)) <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -394,12 +394,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Now, the figure has proper labels and titles. However, the title is not at the center of the figure. We can further customize it using <code>theme()</code> function (for more detail please see the docs <code>?theme</code>).</p>
+<p>Now the figure has proper labels and titles. We would also like to change the look of it a little, so we apply an alternative theme with <code>theme_bw()</code>. There are a variety of themes available in <code>ggplot2</code>, and there are packages that define further themes. We would also like the title to be in the center, so we do a further customization with the <code>theme()</code> function (for more detail please see the docs <code>?theme</code>).</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Year"</span>, <span class="at">y=</span><span class="st">"Life expectancy"</span>, <span class="at">title=</span><span class="st">"Gapminder"</span>) <span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -408,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Now figure looks better.</p>
+<p>Now the figure looks better.</p>
 <p><code>coord_cartesian</code> can be used to set the limits of the x and y axes. Suppose we want our y-axis to start at zero.</p>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gap_geo, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y=</span>life_exp)) <span class="sc">+</span></span>

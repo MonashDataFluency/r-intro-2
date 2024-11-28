@@ -72,7 +72,7 @@ ggplot(gap_geo, aes(x=year, y=life_exp, group=name, color=region)) +
     geom_line()
 ```
 
-A wide variety of geoms are available. Here we show violin plots. Note again the use of the "group" aesthetic, without this ggplot will just show one big box-plot. `geom_jitter`, `geom_boxplot`, and the [ggbeeswarm](https://cran.r-project.org/web/packages/ggbeeswarm/index.html) package are some further ways to show distributions.
+A wide variety of geoms are available. Here we show violin plots. Note again the use of the "group" aesthetic, without this ggplot will just show one big violin. `geom_jitter`, `geom_boxplot`, and the [ggbeeswarm](https://cran.r-project.org/web/packages/ggbeeswarm/index.html) package are some further ways to show distributions.
 
 ```{r warning=F}
 ggplot(gap_geo, aes(x=year, y=life_exp, group=year)) +
@@ -130,17 +130,17 @@ ggplot(gap_geo, aes(x=year, y=life_exp)) +
 ```
 
 
-Now, the figure has proper labels and titles. However, the title is not at the center of the figure.
-We can further customize it using `theme()` function (for more detail please see the docs `?theme`).
+Now the figure has proper labels and titles. We would also like to change the look of it a little, so we apply an alternative theme with `theme_bw()`. There are a variety of themes available in `ggplot2`, and there are packages that define further themes. We would also like the title to be in the center, so we do a further customization with the `theme()` function (for more detail please see the docs `?theme`).
 
 ```{r warning=F}
 ggplot(gap_geo, aes(x=year, y=life_exp)) +
     geom_point() +
     labs(x="Year", y="Life expectancy", title="Gapminder") +
+    theme_bw() +
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
-Now figure looks better.
+Now the figure looks better.
 
 
 `coord_cartesian` can be used to set the limits of the x and y axes. Suppose we want our y-axis to start at zero.

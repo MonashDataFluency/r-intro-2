@@ -18,6 +18,7 @@ Have a look at these cheat sheets to see what is possible with R.
 * [An old-school cheat sheet](https://cran.r-project.org/doc/contrib/Short-refcard.pdf) for dinosaurs and people wishing to go deeper.
 * [A Bioconductor cheat sheet](http://mikelove.github.io/bioc-refcard/) for biological data.
 * [The R Graph Gallery](https://r-graph-gallery.com/) for visual inspiration.
+* [The R Graphics Cookbook](https://r-graphics.org/)
 
 ## Find packages for specific data types
 
