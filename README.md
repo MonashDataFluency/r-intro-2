@@ -28,9 +28,16 @@ make ingest
 5.00pm    End Workshop
 ```
 
-`opening_slides_template.pptx` can be used as a template for an opening slideshow. It's traditional to use etherpad in Carpentries-style workshops. Fill in instructor names and the location of your workshop etherpad. An alternative to etherpad that we have used in recent years is a Google Doc plus a Slack channel. The workshop etherpad or the Google Doc serves as the central jumping off point for the workshop, and should list at the top:
+`opening_slides_template.pptx` can be used as a template for an opening slideshow. It's traditional to use etherpad in Carpentries-style workshops. Fill in instructor names and the location of your workshop etherpad. An alternative to etherpad that we have used in recent years is a Google Doc plus a Slack channel. Or you can simply make the Google Doc editable by everyone. The workshop etherpad or the Google Doc serves as the central jumping off point for the workshop, and should list at the top:
 
 * schedule
 * link to this workshop material
 * link to RStudio Cloud
+
+
+## Teaching advice
+
+* The general style is to type code into an R script and then send it to the console with Ctrl/Command-Enter.
+
+* We don't copy and paste code from the notes, but many of the examples build on previous examples and you should copy and paste from code you've previously written, to save time and to emphasize what is changing.
 
