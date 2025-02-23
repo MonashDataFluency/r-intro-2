@@ -262,7 +262,7 @@ rep(c(1,2,3), each=3)
 rep(c(1,2,3), each=3, times=5)
 ```
 
-<!--
+
 :::{.challenge}
 ### Challenge: using functions {-}
 
@@ -270,8 +270,8 @@ rep(c(1,2,3), each=3, times=5)
 
 2. Look at the documentation for the `seq` function. What does `seq` do? Give an example of using `seq` with either the `by` or `length.out` argument.
 :::
--->
 
+<!--
 Earlier we used `:` to create sequences. The `seq` function gives you extra flexibility.
 
 ```{r}
@@ -279,3 +279,4 @@ seq(2, 10, by=2)
 ```
 
 Check the documentation with `?seq` for further arguments.
+-->

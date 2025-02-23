@@ -9,11 +9,11 @@ knitr::opts_chunk$set(fig.width=6, fig.height=3.5, fig.align="center")
 knitr::include_graphics("figures/R.jpg")
 ```
 
-This is workshop material for the "Introduction to R" workshop given by the [Monash Genomics and Bioinformatics Platform](https://www.monash.edu/researchinfrastructure/mgbp) for the [ResBaz Victoria 2024](https://resbaz.github.io/resbazvic2024/). Our teaching style is based on the style of [The Carpentries](https://carpentries.org/).
+This is workshop material for the "Introduction to R" workshop given by the [Monash Genomics and Bioinformatics Platform](https://www.monash.edu/researchinfrastructure/mgbp). In the past it has been presented as part of the Data Fluency program at Monash. Our teaching style is based on the style of [The Carpentries](https://carpentries.org/).
 
 * [Slideshow](slides.html)
 
-* [PDF version for printing](r-intro-resbaz2024.pdf)
+* [PDF version for printing](r-intro-2.pdf)
 * [ZIP of data files used in this workshop](r-intro.zip)
 
 During the workshop we will be using Posit Cloud to use R over the web:
@@ -32,7 +32,7 @@ R is the language itself. RStudio provides a convenient environment in which to 
 
 This book was created in R using the `rmarkdown` and `bookdown` packages!
 
-* [GitHub page](https://github.com/MonashBioinformaticsPlatform/r-intro-resbazvic2024)
+* [GitHub page](https://github.com/MonashDataFluency/r-intro-2)
 
 ### Authors and copyright {-}
 

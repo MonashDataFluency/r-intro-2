@@ -16,7 +16,7 @@ Our first step is to download the files we need and to install the Tidyverse. Th
 ```{r, eval=FALSE}
 # Download files for this workshop
 download.file(
-  "https://monashbioinformaticsplatform.github.io/r-intro-resbazvic2024/r-intro.zip",
+  "https://monashdatafluency.github.io/r-intro-2/r-intro.zip",
   destfile="r-intro.zip")
 unzip("r-intro.zip")
 

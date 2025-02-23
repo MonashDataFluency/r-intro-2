@@ -3,8 +3,8 @@ project:
     output-dir: "../docs"
 
 book:
-    title: "Introduction to R (ResBaz Victoria 2024)"
-    output-file: "r-intro-resbaz2024"
+    title: "Introduction to R"
+    output-file: "r-intro-2"
     chapters:
         - index.qmd
         - starting.qmd

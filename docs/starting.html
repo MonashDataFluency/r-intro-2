@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Starting out in R – Introduction to R (ResBaz Victoria 2024)</title>
+<title>1&nbsp; Starting out in R – Introduction to R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,10 +71,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-626149efe8f5d16e1d391ba177679bf0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -131,7 +131,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Introduction to R (ResBaz Victoria 2024)</a> 
+      <a href="./">Introduction to R</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -202,7 +202,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#challenge-indexing" id="toc-challenge-indexing" class="nav-link" data-scroll-target="#challenge-indexing">Challenge: indexing</a></li>
   </ul></li>
   <li><a href="#sequences" id="toc-sequences" class="nav-link" data-scroll-target="#sequences"><span class="header-section-number">1.6</span> Sequences</a></li>
-  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.7</span> Functions</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">1.7</span> Functions</a>
+  <ul class="collapse">
+  <li><a href="#challenge-using-functions" id="toc-challenge-using-functions" class="nav-link" data-scroll-target="#challenge-using-functions">Challenge: using functions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -558,23 +561,44 @@ Why does the output show the numbers surrounded by quotes `" "` like character s
 [39] 1 2 2 2 3 3 3</code></pre>
 </div>
 </div>
+<section id="challenge-using-functions" class="level3 unnumbered challenge">
+<h3 class="unnumbered anchored" data-anchor-id="challenge-using-functions">Challenge: using functions</h3>
+<ol type="1">
+<li><p>Use <code>sum</code> to sum from 1 to 10,000.</p></li>
+<li><p>Look at the documentation for the <code>seq</code> function. What does <code>seq</code> do? Give an example of using <code>seq</code> with either the <code>by</code> or <code>length.out</code> argument.</p></li>
+</ol>
+</section>
 <!--
-:::{.challenge}
-### Challenge: using functions {-}
+Earlier we used `:` to create sequences. The `seq` function gives you extra flexibility.
 
-1. Use `sum` to sum from 1 to 10,000.
 
-2. Look at the documentation for the `seq` function. What does `seq` do? Give an example of using `seq` with either the `by` or `length.out` argument.
+
+
+
+
+::: {.cell layout-align="center"}
+
+```{.r .cell-code}
+seq(2, 10, by=2)
+```
+
+::: {.cell-output .cell-output-stdout}
+
+```
+[1]  2  4  6  8 10
+```
+
+
 :::
+:::
+
+
+
+
+
+
+Check the documentation with `?seq` for further arguments.
 -->
-<p>Earlier we used <code>:</code> to create sequences. The <code>seq</code> function gives you extra flexibility.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">2</span>, <span class="dv">10</span>, <span class="at">by=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  2  4  6  8 10</code></pre>
-</div>
-</div>
-<p>Check the documentation with <code>?seq</code> for further arguments.</p>
 
 
 </section>
@@ -662,8 +686,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -774,7 +796,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

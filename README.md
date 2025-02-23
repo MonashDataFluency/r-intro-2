@@ -1,6 +1,6 @@
-# r-intro-resbazvic2024
+# r-intro-2
 
-Introduction to R workshop material for RezBaz Victoria 2024
+Introduction to R workshop material. This material has been taught as part of Monash's Data Fluency program.
 
 This workshop material is written in [Quarto](https://quarto.org/). You will need to install Quarto, R, and the `tidyverse` R package to build this workshop material.
 
@@ -27,6 +27,8 @@ make ingest
 3.15pm    Plotting with ggplot2, Summarizing data, Thinking in R 
 5.00pm    End Workshop
 ```
+
+Alternatively the workshop can be run over two half days. Participants may find the two-day format easier to keep up with.
 
 `opening_slides_template.pptx` can be used as a template for an opening slideshow. It's traditional to use etherpad in Carpentries-style workshops. Fill in instructor names and the location of your workshop etherpad. An alternative to etherpad that we have used in recent years is a Google Doc plus a Slack channel. Or you can simply make the Google Doc editable by everyone. The workshop etherpad or the Google Doc serves as the central jumping off point for the workshop, and should list at the top:
 
