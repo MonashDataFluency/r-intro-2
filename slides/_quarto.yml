@@ -1,0 +1,10 @@
+project:
+    title: "r-intro-resbazvic2024"
+    execute-dir: "project"
+    output-dir: "../docs"
+
+format:
+    html:
+        self-contained: true
+
+

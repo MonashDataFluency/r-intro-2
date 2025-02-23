@@ -11,24 +11,25 @@ income_remap <- c(
     "Upper middle income"="upper_mid", "High income"="high")
 
 
-geo <- read_xlsx("geography.xlsx", "List of countries") %>%
+geo <- read_xlsx("geography.xlsx", "list-of-countries-etc") %>%
     filter(name != "Holy See") %>%
     mutate(
         oecd = !is.na(members_oecd_g77) & (members_oecd_g77 == "oecd" | name == "Chile"),
         g77 = is.na(members_oecd_g77) | members_oecd_g77 == "g77"
     ) %>%
     select(name, region=four_regions, oecd, g77, lat=Latitude, long=Longitude, 
-        income2017=`World bank income group 2017`) %>%
+        income2017=`World bank, 4 income groups 2017`) %>%
     mutate(income2017 = income_remap[income2017])
 
 
-write_csv(geo, "../r-intro-2-files/geo.csv")
+write_csv(geo, "../r-intro/geo.csv")
 
 
 # Exclude countries not in geo
 # Exclude projections (data is from 2017)
-pop <- read_xlsx("population.xlsx", "Data countries etc by year") %>%
+pop <- read_xlsx("population.xlsx", "data-countries-etc-by-year") %>%
     select(-geo) %>%
+    rename(year=time) %>%
     filter(
         name %in% geo$name, 
         year <= 2017)
@@ -73,13 +74,13 @@ mutate(
     year=sprintf("%d",year),
     population=sprintf("%.1f",population),
     gdp_percap=sprintf("%.1f",gdp_percap)) %>%
-write_csv("../r-intro-2-files/gap-minder.csv")
+write_csv("../r-intro/gap-minder.csv")
 
 
 co2 <- read_xlsx("co2_percap.xlsx", "Data")
 colnames(co2) <- c("name", colnames(co2)[-1] %>% as.integer %>% as.character)
 
-write_csv(co2, "../r-intro-2-files/co2-percap.csv")
+write_csv(co2, "../r-intro/co2-percap.csv")
 
 
 

@@ -1,0 +1,17 @@
+
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 { 
+    color: #006688;
+}
+
+.reveal pre {
+    font-size: 75%;
+}
+
+.reveal p {
+    margin-top: 0.5em;
+}
+
+.comment {
+    font-size: 75%;
+    color: #000044;
+}

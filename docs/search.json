@@ -1,0 +1,372 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to R (ResBaz Victoria 2024)",
+    "section": "",
+    "text": "Introduction\n\n\n\n\n\n\n\n\n\nThis is workshop material for the “Introduction to R” workshop given by the Monash Genomics and Bioinformatics Platform for the ResBaz Victoria 2024. Our teaching style is based on the style of The Carpentries.\n\nSlideshow\nPDF version for printing\nZIP of data files used in this workshop\n\nDuring the workshop we will be using Posit Cloud to use R over the web:\n\nPosit Cloud\n\nYou can also install R on your own computer. There are two things to download and install:\n\nDownload R\nDownload RStudio\n\nR is the language itself. RStudio provides a convenient environment in which to use R, either on your local computer or on a server.\n\nSource code\nThis book was created in R using the rmarkdown and bookdown packages!\n\nGitHub page\n\n\n\nAuthors and copyright\nThis course is developed for the Monash Genomics and Bioinformatics Platform by Paul Harrison.\n\n\n\n\n\n\n\n\n\nThis work is licensed under a CC BY-4: Creative Commons Attribution 4.0 International License. The attribution is “Monash Genomics and Bioinformatics Platform” if copying or modifying these notes.\nData files are derived from Gapminder, which has a CC BY-4 license. The attribution is “Free data from www.gapminder.org”. The data is given here in a form designed to teach various points about the R language. Refer to the Gapminder site for the original form of the data if using it for other uses.",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "starting.html",
+    "href": "starting.html",
+    "title": "1  Starting out in R",
+    "section": "",
+    "text": "1.1 Variables\nA variable is a name for a value. We can create a new variable by assigning a value to it using &lt;-.\nwidth &lt;- 5\nRStudio helpfully shows us the variable in the “Environment” pane. We can also print it by typing the name of the variable and hitting enter. In general, R will print to the console any object returned by a function or operation unless we assign it to a variable.\nwidth\n\n[1] 5\nExamples of valid variables names: hello, subject_id, subject.ID, x42. Spaces aren’t ok inside variable names. Dots (.) are ok in R, unlike in many other languages. Numbers are ok, except as the first character. Punctuation is not allowed, with two exceptions: _ and ..\nWe can do arithmetic with the variable:\n# Area of a square\nwidth * width\n\n[1] 25\nand even save the result in another variable:\n# Save area in \"area\" variable\narea &lt;- width * width\nWe can also change a variable’s value by assigning it a new value:\nwidth &lt;- 10\nwidth\n\n[1] 10\n\narea\n\n[1] 25\nNotice that the value of area we calculated earlier hasn’t been updated. Assigning a new value to one variable does not change the values of other variables. This is different to a spreadsheet, but usual for programming languages.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Starting out in R</span>"
+    ]
+  },
+  {
+    "objectID": "starting.html#saving-code-in-an-r-script",
+    "href": "starting.html#saving-code-in-an-r-script",
+    "title": "1  Starting out in R",
+    "section": "1.2 Saving code in an R script",
+    "text": "1.2 Saving code in an R script\nOnce we’ve created a few variables, it becomes important to record how they were calculated so we can reproduce them later.\nThe usual workflow is to save your code in an R script (“.R file”). Go to “File/New File/R Script” to create a new R script. Code in your R script can be sent to the console by selecting it or placing the cursor on the correct line, and then pressing Control-Enter (Command-Enter on a Mac).\n\n\n\n\n\n\nTip\n\n\n\nAdd comments to code, using lines starting with the # character. This makes it easier for others to follow what the code is doing (and also for us the next time we come back to it).",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Starting out in R</span>"
+    ]
+  },
+  {
+    "objectID": "starting.html#vectors",
+    "href": "starting.html#vectors",
+    "title": "1  Starting out in R",
+    "section": "1.3 Vectors",
+    "text": "1.3 Vectors\nA vector of numbers is a collection of numbers. “Vector” means different things in different fields (mathematics, geometry, biology), but in R it is a fancy name for a collection of numbers. We call the individual numbers elements of the vector.\nWe can make vectors with c( ), for example c(1,2,3). c means “combine”. R is obsesssed with vectors, in R even single numbers are vectors of length one. Many things that can be done with a single number can also be done with a vector. For example arithmetic can be done on vectors as it can be on single numbers.\n\nmyvec &lt;- c(10,20,30,40,50)\nmyvec\n\n[1] 10 20 30 40 50\n\nmyvec + 1\n\n[1] 11 21 31 41 51\n\nmyvec + myvec\n\n[1]  20  40  60  80 100\n\nlength(myvec)\n\n[1] 5\n\nc(60, myvec)\n\n[1] 60 10 20 30 40 50\n\nc(myvec, myvec)\n\n [1] 10 20 30 40 50 10 20 30 40 50\n\n\nWhen we talk about the length of a vector, we are talking about the number of numbers in the vector.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Starting out in R</span>"
+    ]
+  },
+  {
+    "objectID": "starting.html#types-of-vector",
+    "href": "starting.html#types-of-vector",
+    "title": "1  Starting out in R",
+    "section": "1.4 Types of vector",
+    "text": "1.4 Types of vector\nWe will also encounter vectors of character strings, for example \"hello\" or c(\"hello\",\"world\"). Also we will encounter “logical” vectors, which contain TRUE and FALSE values. R also has “factors”, which are categorical vectors, and behave much like character vectors (think the factors in an experiment).\n\nBecause vectors can only contain one type of thing, when you mix different types R will choose a lowest common denominator type of vector, a type that can contain everything we are trying to put in it. A different language might stop with an error, but R tries to soldier on as best it can. A number can be represented as a character string, but a character string can not be represented as a number, so when we try to put both in the same vector R converts everything to a character string.\n\nc(\"hello\", 1, TRUE)\n\n[1] \"hello\" \"1\"     \"TRUE\"",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Starting out in R</span>"
+    ]
+  },
+  {
+    "objectID": "starting.html#indexing-vectors",
+    "href": "starting.html#indexing-vectors",
+    "title": "1  Starting out in R",
+    "section": "1.5 Indexing vectors",
+    "text": "1.5 Indexing vectors\nAccess elements of a vector with [ ], for example myvec[1] to get the first element. You can also assign to a specific element of a vector.\n\nmyvec[1]\n\n[1] 10\n\nmyvec[2]\n\n[1] 20\n\nmyvec[2] &lt;- 5\nmyvec\n\n[1] 10  5 30 40 50\n\n\nCan we use a vector to index another vector? Yes!\n\nmyind &lt;- c(4,3,2)\nmyvec[myind]\n\n[1] 40 30  5\n\n\nWe could equivalently have written:\n\nmyvec[c(4,3,2)]\n\n[1] 40 30  5\n\n\n\nChallenge: indexing\nWe can create and index character vectors as well. A cafe is using R to create their menu.\n\nmenu &lt;- c(\"spam\", \"eggs\", \"beans\", \"bacon\", \"sausage\")\n\n\nWhat does menu[-3] produce? Based on what you find, use indexing to create a version of menu without \"spam\".\nUse indexing to create a vector containing spam, eggs, sausage, spam, and spam.\nAdd a new item, “lobster”, to menu, and store the result in a variable called new_menu.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Starting out in R</span>"
+    ]
+  },
+  {
+    "objectID": "starting.html#sequences",
+    "href": "starting.html#sequences",
+    "title": "1  Starting out in R",
+    "section": "1.6 Sequences",
+    "text": "1.6 Sequences\nAnother way to create a vector is with ::\n\n1:10\n\n [1]  1  2  3  4  5  6  7  8  9 10\n\n\nThis can be useful when combined with indexing:\n\nmenu[1:4]\n\n[1] \"spam\"  \"eggs\"  \"beans\" \"bacon\"\n\n\nSequences are useful for other things, such as a starting point for calculations:\n\nx &lt;- 1:10\nx*x\n\n [1]   1   4   9  16  25  36  49  64  81 100\n\nplot(x, x*x)",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Starting out in R</span>"
+    ]
+  },
+  {
+    "objectID": "starting.html#functions",
+    "href": "starting.html#functions",
+    "title": "1  Starting out in R",
+    "section": "1.7 Functions",
+    "text": "1.7 Functions\nFunctions are the things that do all the work for us in R: calculate, manipulate data, read and write to files, produce plots. R has many built in functions and we will also be loading more specialized functions from “packages”.\nWe’ve already seen several functions: c( ), length( ), and plot( ). Let’s now have a look at sum( ).\n\nsum(myvec)\n\n[1] 135\n\n\nWe called the function sum with the argument myvec, and it returned the value 135. We can get help on how to use sum with:\n?sum\nSome functions take more than one argument. Let’s look at the function rep, which means “repeat”, and which can take a variety of different arguments. In the simplest case, it takes a value and the number of times to repeat that value.\n\nrep(42, 10)\n\n [1] 42 42 42 42 42 42 42 42 42 42\n\n\nAs with many functions in R—which is obsessed with vectors—the thing to be repeated can be a vector with multiple elements.\n\nrep(c(1,2,3), 10)\n\n [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3\n\n\nSo far we have used positional arguments, where R determines which argument is which by the order in which they are given. We can also give arguments by name. For example, the above is equivalent to\n\nrep(c(1,2,3), times=10)\n\n [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3\n\nrep(x=c(1,2,3), 10)\n\n [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3\n\nrep(times=10, x=c(1,2,3))\n\n [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3\n\n\nArguments can have default values, and a function may have many different possible arguments that make it do obscure things. For example, rep can also take an argument each=. It’s typical for a function to be invoked with some number of positional arguments, which are always given, plus some less commonly used arguments, typically given by name.\n\nrep(c(1,2,3), each=3)\n\n[1] 1 1 1 2 2 2 3 3 3\n\nrep(c(1,2,3), each=3, times=5)\n\n [1] 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3 1 1\n[39] 1 2 2 2 3 3 3\n\n\n\nEarlier we used : to create sequences. The seq function gives you extra flexibility.\n\nseq(2, 10, by=2)\n\n[1]  2  4  6  8 10\n\n\nCheck the documentation with ?seq for further arguments.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Starting out in R</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html",
+    "href": "data_frames.html",
+    "title": "2  Data frames",
+    "section": "",
+    "text": "2.1 Setting up\nOur first step is to download the files we need and to install the Tidyverse. This is the one step where we ask you to copy and paste some code:\n# Download files for this workshop\ndownload.file(\n  \"https://monashbioinformaticsplatform.github.io/r-intro-resbazvic2024/r-intro.zip\",\n  destfile=\"r-intro.zip\")\nunzip(\"r-intro.zip\")\n\n# Install Tidyverse\ninstall.packages(\"tidyverse\")\nIf you run into problems installing all of the tidyverse you may have more success installing individual packages:\ninstall.packages(c(\"dplyr\",\"readr\",\"tidyr\",\"ggplot2\"))\nWe need to load the tidyverse package in order to use it.\nlibrary(tidyverse)\n\n# OR\nlibrary(dplyr)\nlibrary(readr)\nlibrary(tidyr)\nlibrary(ggplot2)\nThe tidyverse package loads various other packages, setting up a modern R environment. In this section we will be using functions from the dplyr, readr and tidyr packages.\nR is a language with mini-languages within it that solve specific problem domains. dplyr is such a mini-language, a set of “verbs” (functions) that work well together. dplyr, with the help of tidyr for some more complex operations, provides a way to perform most manipulations on a data frame that you might need.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#loading-data",
+    "href": "data_frames.html#loading-data",
+    "title": "2  Data frames",
+    "section": "2.2 Loading data",
+    "text": "2.2 Loading data\nWe will use the read_csv function from readr to load a data set. (See also read.csv in base R.) CSV stands for Comma Separated Values, and is a text format used to store tabular data. The first few lines of the file we are loading are shown below. Conventionally the first line contains column headings.\nname,region,oecd,g77,lat,long,income2017\nAfghanistan,asia,FALSE,TRUE,33,66,low\nAlbania,europe,FALSE,FALSE,41,20,upper_mid\nAlgeria,africa,FALSE,TRUE,28,3,upper_mid\nAndorra,europe,FALSE,FALSE,42.50779,1.52109,high\nAngola,africa,FALSE,TRUE,-12.5,18.5,lower_mid\n\ngeo &lt;- read_csv(\"r-intro/geo.csv\")\n\nRows: 196 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (3): name, region, income2017\ndbl (2): lat, long\nlgl (2): oecd, g77\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\ngeo\n\n# A tibble: 196 × 7\n   name             region oecd  g77      lat  long income2017\n   &lt;chr&gt;            &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     \n 1 Australia        asia   TRUE  FALSE -25     135  high      \n 2 Brunei           asia   FALSE TRUE    4.5   115. high      \n 3 Cambodia         asia   FALSE TRUE   13     105  lower_mid \n 4 China            asia   FALSE TRUE   35     105  upper_mid \n 5 Fiji             asia   FALSE TRUE  -18     178  upper_mid \n 6 Hong Kong, China asia   FALSE FALSE  22.3   114. high      \n 7 Indonesia        asia   FALSE TRUE   -5     120  lower_mid \n 8 Japan            asia   TRUE  FALSE  35.7   140. high      \n 9 Kiribati         asia   FALSE FALSE   1.42  173. lower_mid \n10 North Korea      asia   FALSE TRUE   40     127  low       \n# ℹ 186 more rows\n\n\nread_csv has guessed the type of data each column holds:\n\n&lt;chr&gt; - character strings\n&lt;dbl&gt; - numerical values. Technically these are “doubles”, which is a way of storing numbers with 15 digits precision.\n&lt;lgl&gt; - logical values, TRUE or FALSE.\n\nWe will also encounter:\n\n&lt;int&gt; - integers, a fancy name for whole numbers.\n&lt;fct&gt; - factors, categorical data. We will get to this shortly.\n\nYou can also see this data frame referring to itself as “a tibble”. This is the Tidyverse’s improved form of data frame. Tibbles present themselves more conveniently than base R data frames. Base R data frames don’t show the type of each column, and output every row when you try to view them.\n\n\n\n\n\n\nTip\n\n\n\nA data frame can also be created from vectors, with the tibble function. (See also data.frame in base R.) For example:\n\ntibble(foo=c(10,20,30), bar=c(\"a\",\"b\",\"c\"))\n\n# A tibble: 3 × 2\n    foo bar  \n  &lt;dbl&gt; &lt;chr&gt;\n1    10 a    \n2    20 b    \n3    30 c    \n\n\nThe argument names become column names in the data frame.\n\n\n\n\n\n\n\n\nTip\n\n\n\nThe path to the file on our server is \"r-intro/geo.csv\". This says, starting from your working directory, look in the directory r-intro for the file geo.csv. The steps in the path are separated by /. Your working directory is shown at the top of the console pane. The path needed might be different on your own computer, depending where you downloaded the file.\nOne way to work out the correct path is to find the file in the file browser pane, click on it and select “Import Dataset…”.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#exploring",
+    "href": "data_frames.html#exploring",
+    "title": "2  Data frames",
+    "section": "2.3 Exploring",
+    "text": "2.3 Exploring\nThe View function gives us a spreadsheet-like view of the data frame.\nView(geo)\nprint with the n argument can be used to show more than the first 10 rows on the console.\n\nprint(geo, n=200)\n\nWe can extract details of the data frame with further functions:\n\nnrow(geo)\n\n[1] 196\n\nncol(geo)\n\n[1] 7\n\ncolnames(geo)\n\n[1] \"name\"       \"region\"     \"oecd\"       \"g77\"        \"lat\"       \n[6] \"long\"       \"income2017\"\n\nsummary(geo)\n\n     name              region             oecd            g77         \n Length:196         Length:196         Mode :logical   Mode :logical  \n Class :character   Class :character   FALSE:165       FALSE:65       \n Mode  :character   Mode  :character   TRUE :31        TRUE :131      \n                                                                      \n                                                                      \n                                                                      \n      lat              long           income2017       \n Min.   :-42.00   Min.   :-175.000   Length:196        \n 1st Qu.:  4.00   1st Qu.:  -5.625   Class :character  \n Median : 17.42   Median :  21.875   Mode  :character  \n Mean   : 19.03   Mean   :  23.004                     \n 3rd Qu.: 39.82   3rd Qu.:  51.892                     \n Max.   : 65.00   Max.   : 179.145",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#indexing-data-frames",
+    "href": "data_frames.html#indexing-data-frames",
+    "title": "2  Data frames",
+    "section": "2.4 Indexing data frames",
+    "text": "2.4 Indexing data frames\nData frames can be subset using [row,column] syntax.\n\ngeo[4,2]\n\n# A tibble: 1 × 1\n  region\n  &lt;chr&gt; \n1 asia  \n\n\nNote that while this is a single value, it is still wrapped in a data frame. (This is a behaviour specific to Tidyverse data frames.) More on this in a moment.\nColumns can be given by name.\n\ngeo[4,\"region\"]\n\n# A tibble: 1 × 1\n  region\n  &lt;chr&gt; \n1 asia  \n\n\nThe column or row may be omitted, thereby retrieving the entire row or column.\n\ngeo[4,]\n\n# A tibble: 1 × 7\n  name  region oecd  g77     lat  long income2017\n  &lt;chr&gt; &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     \n1 China asia   FALSE TRUE     35   105 upper_mid \n\ngeo[,\"region\"]\n\n# A tibble: 196 × 1\n   region\n   &lt;chr&gt; \n 1 asia  \n 2 asia  \n 3 asia  \n 4 asia  \n 5 asia  \n 6 asia  \n 7 asia  \n 8 asia  \n 9 asia  \n10 asia  \n# ℹ 186 more rows\n\n\nMultiple rows or columns may be retrieved using a vector.\n\nrows_wanted &lt;- c(1,3,5)\ngeo[rows_wanted,]\n\n# A tibble: 3 × 7\n  name      region oecd  g77     lat  long income2017\n  &lt;chr&gt;     &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     \n1 Australia asia   TRUE  FALSE   -25   135 high      \n2 Cambodia  asia   FALSE TRUE     13   105 lower_mid \n3 Fiji      asia   FALSE TRUE    -18   178 upper_mid \n\n\nVector indexing can also be written on a single line.\n\ngeo[c(1,3,5),]\n\n# A tibble: 3 × 7\n  name      region oecd  g77     lat  long income2017\n  &lt;chr&gt;     &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     \n1 Australia asia   TRUE  FALSE   -25   135 high      \n2 Cambodia  asia   FALSE TRUE     13   105 lower_mid \n3 Fiji      asia   FALSE TRUE    -18   178 upper_mid \n\ngeo[1:7,]\n\n# A tibble: 7 × 7\n  name             region oecd  g77     lat  long income2017\n  &lt;chr&gt;            &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     \n1 Australia        asia   TRUE  FALSE -25    135  high      \n2 Brunei           asia   FALSE TRUE    4.5  115. high      \n3 Cambodia         asia   FALSE TRUE   13    105  lower_mid \n4 China            asia   FALSE TRUE   35    105  upper_mid \n5 Fiji             asia   FALSE TRUE  -18    178  upper_mid \n6 Hong Kong, China asia   FALSE FALSE  22.3  114. high      \n7 Indonesia        asia   FALSE TRUE   -5    120  lower_mid",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#columns-are-vectors",
+    "href": "data_frames.html#columns-are-vectors",
+    "title": "2  Data frames",
+    "section": "2.5 Columns are vectors",
+    "text": "2.5 Columns are vectors\nOk, so how do we actually get data out of a data frame?\nUnder the hood, a data frame is a list of column vectors. We can use $ to retrieve columns. Occasionally it is also useful to use [[ ]] to retrieve columns, for example if the column name we want is stored in a variable.\n\nhead( geo$region )\n\n[1] \"asia\" \"asia\" \"asia\" \"asia\" \"asia\" \"asia\"\n\nhead( geo[[\"region\"]] )\n\n[1] \"asia\" \"asia\" \"asia\" \"asia\" \"asia\" \"asia\"\n\n\nTo get the “region” value of the 4th row as above, but unwrapped, we can use:\n\ngeo$region[4]\n\n[1] \"asia\"\n\n\nFor example, to plot the longitudes and latitudes we could use:\n\nplot(geo$long, geo$lat)\n\n\n\n\n\n\n\n\n\nQuiz: reading R code\nYou encounter some wild R code, and aren’t sure what it does. Based on R syntax you’ve encountered so far, what roles are the different names in this code playing?\nhighest &lt;- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]\nFind all examples of:\nA. The name of a variable to store a value to.\nB. The name of a variable to retrieve the value from.\nC. The name of a column to get from a data frame.\nD. The name of a function to call.\nE. The name of an argument to a function call.\n\nSee here for answers.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#logical-indexing",
+    "href": "data_frames.html#logical-indexing",
+    "title": "2  Data frames",
+    "section": "2.6 Logical indexing",
+    "text": "2.6 Logical indexing\nA method of indexing that we haven’t discussed yet is logical indexing. Instead of specifying the row number or numbers that we want, we can give a logical vector which is TRUE for the rows we want and FALSE otherwise. This can also be used with vectors.\nWe will first do this in a slightly verbose way in order to understand it, then learn a more concise way to do this using the dplyr package.\nSouthern countries have latitude less than zero.\n\nis_southern &lt;- geo$lat &lt; 0\n\nhead(is_southern)\n\n[1]  TRUE FALSE FALSE FALSE  TRUE FALSE\n\nsum(is_southern)\n\n[1] 40\n\n\nsum treats TRUE as 1 and FALSE as 0, so it tells us the number of TRUE elements in the vector.\nWe can use this logical vector to get the southern countries from geo:\n\ngeo[is_southern,]\n\n# A tibble: 40 × 7\n   name             region oecd  g77       lat  long income2017\n   &lt;chr&gt;            &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     \n 1 Australia        asia   TRUE  FALSE -25      135  high      \n 2 Fiji             asia   FALSE TRUE  -18      178  upper_mid \n 3 Indonesia        asia   FALSE TRUE   -5      120  lower_mid \n 4 Nauru            asia   FALSE FALSE  -0.517  167. upper_mid \n 5 New Zealand      asia   TRUE  FALSE -42      174  high      \n 6 Papua New Guinea asia   FALSE TRUE   -6      147  lower_mid \n 7 Samoa            asia   FALSE TRUE  -13.8   -172. upper_mid \n 8 Solomon Islands  asia   FALSE TRUE   -8      159  lower_mid \n 9 Timor-Leste      asia   FALSE TRUE   -8.83   126. lower_mid \n10 Tonga            asia   FALSE TRUE  -20     -175  upper_mid \n# ℹ 30 more rows\n\n\nComparison operators available are:\n\nx == y – “equal to”\nx != y – “not equal to”\nx &lt; y – “less than”\nx &gt; y – “greater than”\nx &lt;= y – “less than or equal to”\nx &gt;= y – “greater than or equal to”\n\nMore complicated conditions can be constructed using logical operators:\n\na & b – “and”, TRUE only if both a and b are TRUE.\na | b – “or”, TRUE if either a or b or both are TRUE.\n! a – “not” , TRUE if a is FALSE, and FALSE if a is TRUE.\n\nThe oecd column of geo tells which countries are in the Organisation for Economic Co-operation and Development, and the g77 column tells which countries are in the Group of 77 (an alliance of developing nations). We could see which OECD countries are in the southern hemisphere with:\n\nsouthern_oecd &lt;- is_southern & geo$oecd\n\ngeo[southern_oecd,]\n\n# A tibble: 3 × 7\n  name        region   oecd  g77     lat  long income2017\n  &lt;chr&gt;       &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;     \n1 Australia   asia     TRUE  FALSE -25   135   high      \n2 New Zealand asia     TRUE  FALSE -42   174   high      \n3 Chile       americas TRUE  TRUE  -33.5 -70.6 high      \n\n\nis_southern seems like it should be kept within our geo data frame for future use. We can add it as a new column of the data frame with:\n\ngeo$southern &lt;- is_southern\n\ngeo\n\n# A tibble: 196 × 8\n   name             region oecd  g77      lat  long income2017 southern\n   &lt;chr&gt;            &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;   \n 1 Australia        asia   TRUE  FALSE -25     135  high       TRUE    \n 2 Brunei           asia   FALSE TRUE    4.5   115. high       FALSE   \n 3 Cambodia         asia   FALSE TRUE   13     105  lower_mid  FALSE   \n 4 China            asia   FALSE TRUE   35     105  upper_mid  FALSE   \n 5 Fiji             asia   FALSE TRUE  -18     178  upper_mid  TRUE    \n 6 Hong Kong, China asia   FALSE FALSE  22.3   114. high       FALSE   \n 7 Indonesia        asia   FALSE TRUE   -5     120  lower_mid  TRUE    \n 8 Japan            asia   TRUE  FALSE  35.7   140. high       FALSE   \n 9 Kiribati         asia   FALSE FALSE   1.42  173. lower_mid  FALSE   \n10 North Korea      asia   FALSE TRUE   40     127  low        FALSE   \n# ℹ 186 more rows\n\n\n\nChallenge: logical indexing\n\nWhich country is in both the OECD and the G77?\nWhich countries are in neither the OECD nor the G77?\nWhich countries are in the Americas? These have longitudes between -150 and -40.\n\n\n\n2.6.1 A dplyr shorthand\nThe above method is a little laborious. We have to keep mentioning the name of the data frame, and there is a lot of punctuation to keep track of. dplyr provides a slightly magical function called filter which lets us write more concisely. For example:\n\nfilter(geo, lat &lt; 0 & oecd)\n\n# A tibble: 3 × 8\n  name        region   oecd  g77     lat  long income2017 southern\n  &lt;chr&gt;       &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;      &lt;lgl&gt;   \n1 Australia   asia     TRUE  FALSE -25   135   high       TRUE    \n2 New Zealand asia     TRUE  FALSE -42   174   high       TRUE    \n3 Chile       americas TRUE  TRUE  -33.5 -70.6 high       TRUE    \n\n\nIn the second argument, we are able to refer to columns of the data frame as though they were variables. The code is beautiful, but also opaque. It’s important to understand that under the hood we are creating and combining logical vectors.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#factors",
+    "href": "data_frames.html#factors",
+    "title": "2  Data frames",
+    "section": "2.7 Factors",
+    "text": "2.7 Factors\nThe count function from dplyr can help us understand the contents of some of the columns in geo. count is also magical, we can refer to columns of the data frame directly in the arguments to count.\n\ncount(geo, region)\n\n# A tibble: 4 × 2\n  region       n\n  &lt;chr&gt;    &lt;int&gt;\n1 africa      54\n2 americas    35\n3 asia        59\n4 europe      48\n\ncount(geo, income2017)\n\n# A tibble: 4 × 2\n  income2017     n\n  &lt;chr&gt;      &lt;int&gt;\n1 high          58\n2 low           31\n3 lower_mid     52\n4 upper_mid     55\n\n\nOne annoyance here is that the different categories in income2017 aren’t in a sensible order. This comes up quite often, for example when sorting or plotting categorical data. R’s solution is a further type of vector called a factor (think a factor of an experimental design). A factor holds categorical data, and has an associated ordered set of levels. It is otherwise quite similar to a character vector.\nAny sort of vector can be converted to a factor using the factor function. This function defaults to placing the levels in alphabetical order, but takes a levels argument that can override this.\n\nhead( factor(geo$income2017, levels=c(\"low\",\"lower_mid\",\"upper_mid\",\"high\")) )\n\n[1] high      high      lower_mid upper_mid upper_mid high     \nLevels: low lower_mid upper_mid high\n\n\nWe should modify the income2017 column of the geo table in order to use this:\n\ngeo$income2017 &lt;- factor(geo$income2017, levels=c(\"low\",\"lower_mid\",\"upper_mid\",\"high\"))\n\ncount now produces the desired order of output:\n\ncount(geo, income2017)\n\n# A tibble: 4 × 2\n  income2017     n\n  &lt;fct&gt;      &lt;int&gt;\n1 low           31\n2 lower_mid     52\n3 upper_mid     55\n4 high          58\n\n\nWhen plot is given a factor, it shows a bar plot:\n\nplot(geo$income2017)\n\n\n\n\n\n\n\n\nWhen given two factors, it shows a mosaic plot:\n\nplot(geo$income2017, factor(geo$oecd))\n\n\n\n\n\n\n\n\nSimilarly we can count two categorical columns at once.\n\ncount(geo, income2017, oecd)\n\n# A tibble: 6 × 3\n  income2017 oecd      n\n  &lt;fct&gt;      &lt;lgl&gt; &lt;int&gt;\n1 low        FALSE    31\n2 lower_mid  FALSE    52\n3 upper_mid  FALSE    53\n4 upper_mid  TRUE      2\n5 high       FALSE    29\n6 high       TRUE     29",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#readability-vs-tidyness",
+    "href": "data_frames.html#readability-vs-tidyness",
+    "title": "2  Data frames",
+    "section": "2.8 Readability vs tidyness",
+    "text": "2.8 Readability vs tidyness\nThe counts we obtained counting income2017 vs oecd were properly tidy in the sense of containing a single unit of observation per row. However to view the data, it would be more convenient to have income as columns and OECD membership as rows. We can use the pivot_wider function from tidyr to achieve this. (This is also sometimes also called a “cast” or a “spread”.)\n\ncounts &lt;- count(geo, income2017, oecd)\npivot_wider(counts, names_from=income2017, values_from=n)\n\n# A tibble: 2 × 5\n  oecd    low lower_mid upper_mid  high\n  &lt;lgl&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt; &lt;int&gt;\n1 FALSE    31        52        53    29\n2 TRUE     NA        NA         2    29\n\n\nWe could further specify values_fill=list(n=0) to fill in the NA values with 0. Or when using count, make sure all the relevant columns are factors and specify .drop=FALSE.\n\n\n\n\n\n\nTip\n\n\n\nTidying is often the first step when exploring a data-set. The tidyr package contains a number of useful functions that help tidy (or un-tidy!) data. We’ve just seen pivot_wider which spreads two columns into multiple columns. The inverse of pivot_wider is pivot_longer, which gathers multiple columns into two columns: a column of column names, and a column of values. pivot_longer is often the first step when tidying a dataset you have received from the wild. (This is sometimes also called a “melt” or a “gather”.)\nHere’s an animation illustrating these functions.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#sorting",
+    "href": "data_frames.html#sorting",
+    "title": "2  Data frames",
+    "section": "2.9 Sorting",
+    "text": "2.9 Sorting\nData frames can be sorted using the arrange function in dplyr.\n\narrange(geo, lat)\n\n# A tibble: 196 × 8\n   name         region   oecd  g77     lat  long income2017 southern\n   &lt;chr&gt;        &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;   \n 1 New Zealand  asia     TRUE  FALSE -42   174   high       TRUE    \n 2 Argentina    americas FALSE TRUE  -34   -64   upper_mid  TRUE    \n 3 Chile        americas TRUE  TRUE  -33.5 -70.6 high       TRUE    \n 4 Uruguay      americas FALSE TRUE  -33   -56   high       TRUE    \n 5 Lesotho      africa   FALSE TRUE  -29.5  28.2 lower_mid  TRUE    \n 6 South Africa africa   FALSE TRUE  -29    24   upper_mid  TRUE    \n 7 Swaziland    africa   FALSE TRUE  -26.5  31.5 lower_mid  TRUE    \n 8 Australia    asia     TRUE  FALSE -25   135   high       TRUE    \n 9 Paraguay     americas FALSE TRUE  -23.3 -58   upper_mid  TRUE    \n10 Botswana     africa   FALSE TRUE  -22    24   upper_mid  TRUE    \n# ℹ 186 more rows\n\n\nNumeric columns are sorted in numeric order. Character columns will be sorted in alphabetical order. Factor columns are sorted in order of their levels. The desc helper function can be used to sort in descending order.\n\narrange(geo, desc(name))\n\n# A tibble: 196 × 8\n   name           region   oecd  g77     lat   long income2017 southern\n   &lt;chr&gt;          &lt;chr&gt;    &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;fct&gt;      &lt;lgl&gt;   \n 1 Zimbabwe       africa   FALSE TRUE  -19    29.8  low        TRUE    \n 2 Zambia         africa   FALSE TRUE  -14.3  28.5  lower_mid  TRUE    \n 3 Yemen          asia     FALSE TRUE   15.5  47.5  lower_mid  FALSE   \n 4 Vietnam        asia     FALSE TRUE   16.2 108.   lower_mid  FALSE   \n 5 Venezuela      americas FALSE TRUE    8   -66    upper_mid  FALSE   \n 6 Vanuatu        asia     FALSE TRUE  -16   167    lower_mid  TRUE    \n 7 Uzbekistan     asia     FALSE FALSE  41.7  63.8  lower_mid  FALSE   \n 8 Uruguay        americas FALSE TRUE  -33   -56    high       TRUE    \n 9 United States  americas TRUE  FALSE  39.8 -98.5  high       FALSE   \n10 United Kingdom europe   TRUE  FALSE  54.8  -2.70 high       FALSE   \n# ℹ 186 more rows",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#joining-data-frames",
+    "href": "data_frames.html#joining-data-frames",
+    "title": "2  Data frames",
+    "section": "2.10 Joining data frames",
+    "text": "2.10 Joining data frames\nLet’s move on to a larger data set. This is from the Gapminder project and contains information about countries over time.\n\ngap &lt;- read_csv(\"r-intro/gap-minder.csv\")\ngap\n\n# A tibble: 4,312 × 5\n   name                 year population gdp_percap life_exp\n   &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;\n 1 Afghanistan          1800    3280000        603     28.2\n 2 Albania              1800     410445        667     35.4\n 3 Algeria              1800    2503218        715     28.8\n 4 Andorra              1800       2654       1197     NA  \n 5 Angola               1800    1567028        618     27.0\n 6 Antigua and Barbuda  1800      37000        757     33.5\n 7 Argentina            1800     534000       1507     33.2\n 8 Armenia              1800     413326        514     34  \n 9 Australia            1800     351014        814     34.0\n10 Austria              1800    3205587       1847     34.4\n# ℹ 4,302 more rows\n\n\n\nQuiz\nWhat does each row represent in this new data frame?\n\nIt would be useful to have general information about countries from geo available as columns when we use this data frame. gap and geo share a column called name which can be used to match rows from one to the other.\n\ngap_geo &lt;- left_join(gap, geo, by=\"name\")\ngap_geo\n\n# A tibble: 4,312 × 12\n   name      year population gdp_percap life_exp region oecd  g77     lat   long\n   &lt;chr&gt;    &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;lgl&gt; &lt;lgl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1 Afghani…  1800    3280000        603     28.2 asia   FALSE TRUE   33    66   \n 2 Albania   1800     410445        667     35.4 europe FALSE FALSE  41    20   \n 3 Algeria   1800    2503218        715     28.8 africa FALSE TRUE   28     3   \n 4 Andorra   1800       2654       1197     NA   europe FALSE FALSE  42.5   1.52\n 5 Angola    1800    1567028        618     27.0 africa FALSE TRUE  -12.5  18.5 \n 6 Antigua…  1800      37000        757     33.5 ameri… FALSE TRUE   17.0 -61.8 \n 7 Argenti…  1800     534000       1507     33.2 ameri… FALSE TRUE  -34   -64   \n 8 Armenia   1800     413326        514     34   europe FALSE FALSE  40.2  45   \n 9 Austral…  1800     351014        814     34.0 asia   TRUE  FALSE -25   135   \n10 Austria   1800    3205587       1847     34.4 europe TRUE  FALSE  47.3  13.3 \n# ℹ 4,302 more rows\n# ℹ 2 more variables: income2017 &lt;fct&gt;, southern &lt;lgl&gt;\n\n\nThe output contains all ways of pairing up rows by name. In this case each row of geo pairs up with multiple rows of gap.\n\n\n\n\n\n\nTip\n\n\n\nThe “left” in “left join” refers to how rows that can’t be paired up are handled. left_join keeps all rows from the first data frame but not the second. This is a good default when the intent is to attaching some extra information to a data frame. inner_join discards all rows that can’t be paired up. full_join keeps all rows from both data frames.\nHere are some animations illustrating joins.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "data_frames.html#further-reading",
+    "href": "data_frames.html#further-reading",
+    "title": "2  Data frames",
+    "section": "2.11 Further reading",
+    "text": "2.11 Further reading\nWe’ve covered the fundamentals of dplyr and data frames, but there is much more to learn. Notably, we haven’t covered the use of the pipe |&gt; to chain dplyr verbs together (and you may also come across an older version of the pipe symbol %&gt;%). The “R for Data Science” book is an excellent source to learn more. The Monash Data Fluency “Programming and Tidy data analysis in R” course also covers this.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Data frames</span>"
+    ]
+  },
+  {
+    "objectID": "plotting.html",
+    "href": "plotting.html",
+    "title": "3  Plotting with ggplot2",
+    "section": "",
+    "text": "3.1 Elements of a ggplot\nProducing a plot with ggplot2, we must give three things:\nLet’s make our first ggplot.\nggplot(gap_geo, aes(x=year, y=life_exp)) +\n    geom_point()\nThe call to ggplot and aes sets up the basics of how we are going to represent the various columns of the data frame. aes defines the “aesthetics”, which is how columns of the data frame map to graphical attributes such as x and y position, color, size, etc. aes is another example of magic “non-standard evaluation”, arguments to aes may refer to columns of the data frame directly. We then literally add layers of graphics (“geoms”) to this.\nFurther aesthetics can be used. Any aesthetic can be either numeric or categorical, an appropriate scale will be used.\nggplot(gap_geo, aes(x=year, y=life_exp, color=region, size=population)) +\n    geom_point()",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "plotting.html#elements-of-a-ggplot",
+    "href": "plotting.html#elements-of-a-ggplot",
+    "title": "3  Plotting with ggplot2",
+    "section": "",
+    "text": "A data frame containing our data.\nHow the columns of the data frame can be translated into positions, colors, sizes, and shapes of graphical elements (“aesthetics”).\nThe actual graphical elements to display (“geometric objects”).\n\n\n\n\n\n\n\nChallenge: make a ggplot\nThis R code will get the data from the year 2010:\n\ngap2010 &lt;- filter(gap_geo, year == 2010)\n\nCreate a ggplot of this with:\n\ngdp_percap as x.\nlife_exp as y.\npopulation as the size.\nregion as the color.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "plotting.html#further-geoms",
+    "href": "plotting.html#further-geoms",
+    "title": "3  Plotting with ggplot2",
+    "section": "3.2 Further geoms",
+    "text": "3.2 Further geoms\nTo draw lines, we need to use a “group” aesthetic.\n\nggplot(gap_geo, aes(x=year, y=life_exp, group=name, color=region)) +\n    geom_line()\n\n\n\n\n\n\n\n\nA wide variety of geoms are available. Here we show violin plots. Note again the use of the “group” aesthetic, without this ggplot will just show one big violin. geom_jitter, geom_boxplot, and the ggbeeswarm package are some further ways to show distributions.\n\nggplot(gap_geo, aes(x=year, y=life_exp, group=year)) +\n    geom_violin()\n\n\n\n\n\n\n\n\ngeom_smooth can be used to show trends.\n\nggplot(gap_geo, aes(x=year, y=life_exp)) +\n    geom_point() +\n    geom_smooth()\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'\n\n\n\n\n\n\n\n\n\nAesthetics can be specified globally in ggplot, or as the first argument to individual geoms. Here, the “group” is applied only to draw the lines, and “color” is used to produce multiple trend lines:\n\nggplot(gap_geo, aes(x=year, y=life_exp)) +\n    geom_line(aes(group=name)) +\n    geom_smooth(aes(color=oecd))\n\n`geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = \"cs\")'",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "plotting.html#highlighting-subsets",
+    "href": "plotting.html#highlighting-subsets",
+    "title": "3  Plotting with ggplot2",
+    "section": "3.3 Highlighting subsets",
+    "text": "3.3 Highlighting subsets\nGeoms can be added that use a different data frame, using the data= argument.\n\ngap_australia &lt;- filter(gap_geo, name == \"Australia\")\n\nggplot(gap_geo, aes(x=year, y=life_exp, group=name)) +\n    geom_line() +\n    geom_line(data=gap_australia, color=\"red\", size=2)\n\n\n\n\n\n\n\n\nNotice also that the second geom_line has some further arguments controlling its appearance. These are not aesthetics, they are not a mapping of data to appearance, but rather a direct specification of the appearance. There isn’t an associated scale as when color was an aesthetic.\n\nDiscussion: look at the plot\nWhat do you notice about the data before 1870?\nA plot can raise questions about how the data was gathered, and informs how you fit models and perform tests on it.\nVisualize, visualize, visualize!",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "plotting.html#fine-tuning-a-plot",
+    "href": "plotting.html#fine-tuning-a-plot",
+    "title": "3  Plotting with ggplot2",
+    "section": "3.4 Fine-tuning a plot",
+    "text": "3.4 Fine-tuning a plot\nAdding labs to a ggplot adjusts the labels given to the axes and legends. A plot title can also be specified.\n\nggplot(gap_geo, aes(x=year, y=life_exp)) +\n    geom_point() +\n    labs(x=\"Year\", y=\"Life expectancy\", title=\"Gapminder\")\n\n\n\n\n\n\n\n\nNow the figure has proper labels and titles. We would also like to change the look of it a little, so we apply an alternative theme with theme_bw(). There are a variety of themes available in ggplot2, and there are packages that define further themes. We would also like the title to be in the center, so we do a further customization with the theme() function (for more detail please see the docs ?theme).\n\nggplot(gap_geo, aes(x=year, y=life_exp)) +\n    geom_point() +\n    labs(x=\"Year\", y=\"Life expectancy\", title=\"Gapminder\") +\n    theme_bw() +\n    theme(plot.title = element_text(hjust = 0.5))\n\n\n\n\n\n\n\n\nNow the figure looks better.\ncoord_cartesian can be used to set the limits of the x and y axes. Suppose we want our y-axis to start at zero.\n\nggplot(gap_geo, aes(x=year, y=life_exp)) +\n    geom_point() +\n    coord_cartesian(ylim=c(0,90))\n\n\n\n\n\n\n\n\nType scale_ and press the tab key. You will see functions giving fine-grained controls over various scales (x, y, color, etc). These allow transformations (eg log10), and manually specified breaks (labelled values). Very fine grained control is possible over the appearance of ggplots, see the ggplot2 documentation for details and further examples.\n\nChallenge: refine your ggplot\nContinuing with your scatter-plot of the 2010 data, add axis labels to your plot.\nGive your x axis a log scale by adding scale_x_log10().",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "plotting.html#faceting",
+    "href": "plotting.html#faceting",
+    "title": "3  Plotting with ggplot2",
+    "section": "3.5 Faceting",
+    "text": "3.5 Faceting\nFaceting lets us quickly produce a collection of small plots. The plots all have the same scales and the eye can easily compare them.\n\nggplot(gap_geo, aes(x=year, y=life_exp, group=name)) +\n    geom_line() +\n    facet_wrap(~ region)\n\n\n\n\n\n\n\n\nNote the use of ~, which we’ve not seen before. ~ syntax is used in R to specify dependence on some set of variables, for example when specifying a linear model. Here the information in each plot is dependent on the continent.\n\nChallenge: facet your ggplot\nLet’s return again to your scatter-plot of the 2010 data.\nAdjust your plot to now show data from all years, with each year shown in a separate facet, using facet_wrap(~ year).\nAdvanced: Highlight Australia in your plot.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "plotting.html#saving-ggplots",
+    "href": "plotting.html#saving-ggplots",
+    "title": "3  Plotting with ggplot2",
+    "section": "3.6 Saving ggplots",
+    "text": "3.6 Saving ggplots\nThe act of plotting a ggplot is actually triggered when it is printed. In an interactive session we are automatically printing each value we calculate, but if you are using it with a programming construct such as a for loop or function you might need to explcitly print( ) the plot.\nGgplots can be saved using ggsave.\n\n# Plot created but not shown.\np &lt;- ggplot(gap_geo, aes(x=year, y=life_exp)) + geom_point()\n\n# Only when we try to look at the value p is it shown\np\n\n# Alternatively, we can explicitly print it\nprint(p)\n\n# To save to a file\nggsave(\"test.png\", p)\n\n\n# This is an alternative method that works with \"base R\" plots as well:\npng(\"test.png\")\nprint(p)\ndev.off()\n\n\n\n\n\n\n\nTip about sizing\n\n\n\nFigures in papers tend to be quite small. This means text must be proportionately larger than we usually show on screen. Dots should also be proportionately larger, and lines proportionately thicker. The way to achieve this using ggsave is to specify a small width and height, given in inches. To ensure the output also has good resolution, specify a high dots-per-inch, or use a vector-graphics format such as PDF or SVG.\n\nggsave(\"test2.png\", p, width=3, height=3, dpi=600)",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Plotting with ggplot2</span>"
+    ]
+  },
+  {
+    "objectID": "summarizing.html",
+    "href": "summarizing.html",
+    "title": "4  Summarizing data",
+    "section": "",
+    "text": "4.1 Summary functions\nR has a variety of functions for summarizing a vector, including: sum, mean, min, max, median, sd.\nmean( c(1,2,3,4) )\n\n[1] 2.5\nWe can use these on the Gapminder data.\ngap2010 &lt;- filter(gap_geo, year == 2010)\nsum(gap2010$population)\n\n[1] 6949495061\n\nmean(gap2010$life_exp)\n\n[1] NA",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summarizing data</span>"
+    ]
+  },
+  {
+    "objectID": "summarizing.html#missing-values",
+    "href": "summarizing.html#missing-values",
+    "title": "4  Summarizing data",
+    "section": "4.2 Missing values",
+    "text": "4.2 Missing values\nWhy did mean fail? The reason is that life_exp contains missing values (NA).\n\ngap2010$life_exp\n\n  [1] 56.20 76.31 76.55 82.66 60.08 76.85 75.82 73.34 81.98 80.50 69.13 73.79\n [13] 76.03 70.39 76.68 70.43 79.98 71.38 61.82 72.13 71.64 76.75 57.06 74.19\n [25] 77.08 73.86 57.89 57.73 66.12 57.25 81.29 72.45 47.48 56.49 79.12 74.59\n [37] 76.44 65.93 57.53 60.43 80.40 56.34 76.33 78.39 79.88 77.47 79.49 63.69\n [49] 73.04 74.60 76.72 70.52 74.11 60.93 61.66 76.00 61.30 65.28 80.00 81.42\n [61] 62.86 65.55 72.82 80.09 62.16 80.41 71.34 71.25 57.99 55.65 65.49 32.11\n [73] 71.58 82.61 74.52 82.03 66.20 69.90 74.45 67.24 80.38 81.42 81.69 74.66\n [85] 82.85 75.78 68.37 62.76 60.73 70.10 80.13 78.20 68.45 63.80 73.06 79.85\n [97] 46.50 60.77 76.10    NA 73.17 81.35 74.01 60.84 53.07 74.46 77.91 59.46\n[109] 80.28 63.72 68.23 73.42 75.47 65.38 69.74    NA 66.18 76.36 73.55 54.48\n[121] 66.84 58.60    NA 68.26 80.73 80.90 77.36 58.78 60.53 81.04 76.09 65.33\n[133]    NA 77.85 58.70 74.07 77.92 69.03 76.30 79.84 79.52 73.66 69.24 64.59\n[145]    NA 75.48 71.64 71.46    NA 68.91 75.13 64.01 74.65 73.38 55.05 82.69\n[157] 75.52 79.45 61.71 53.13 54.27 81.94 74.42 66.29 70.32 46.98 81.52 82.21\n[169] 76.15 79.19 69.61 59.30 76.57 71.10 58.74 69.86 72.56 76.89 78.21 67.94\n[181]    NA 56.81 70.41 76.51 80.34 78.74 76.36 68.77 63.02 75.41 72.27 73.07\n[193] 67.51 52.02 49.57 58.13\n\n\nR will not ignore these unless we explicitly tell it to with na.rm=TRUE.\n\nmean(gap2010$life_exp, na.rm=TRUE)\n\n[1] 70.34005\n\n\nIdeally we should also use weighted.mean here, to take population into account.\n\nweighted.mean(gap2010$life_exp, gap2010$population, na.rm=TRUE)\n\n[1] 70.96192\n\n\nNA is a special value. If we try to calculate with NA, the result is NA\n\nNA + 1\n\n[1] NA\n\n\nis.na can be used to detect NA values, or na.omit can be used to directly remove rows of a data frame containing them.\n\nis.na( c(1,2,NA,3) )\n\n[1] FALSE FALSE  TRUE FALSE\n\ncleaned &lt;- filter(gap2010, !is.na(life_exp))\nweighted.mean(cleaned$life_exp, cleaned$population)\n\n[1] 70.96192",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summarizing data</span>"
+    ]
+  },
+  {
+    "objectID": "summarizing.html#grouped-summaries",
+    "href": "summarizing.html#grouped-summaries",
+    "title": "4  Summarizing data",
+    "section": "4.3 Grouped summaries",
+    "text": "4.3 Grouped summaries\nThe summarize function in dplyr allows summary functions to be applied to data frames.\n\nsummarize(gap2010, mean_life_exp = weighted.mean(life_exp, population, na.rm=TRUE))\n\n# A tibble: 1 × 1\n  mean_life_exp\n          &lt;dbl&gt;\n1          71.0\n\n\nSo far unremarkable, but summarize comes into its own when the .by argument is used to group data. (There is also an older style of doing this using a function called group_by.)\n\nsummarize(\n    gap_geo, \n    mean_life_exp = weighted.mean(life_exp, population, na.rm=TRUE),\n    .by = year)\n\n# A tibble: 22 × 2\n    year mean_life_exp\n   &lt;dbl&gt;         &lt;dbl&gt;\n 1  1800          30.9\n 2  1810          31.1\n 3  1820          31.2\n 4  1830          31.4\n 5  1840          31.4\n 6  1850          31.6\n 7  1860          30.3\n 8  1870          31.5\n 9  1880          32.0\n10  1890          32.5\n# ℹ 12 more rows\n\n\n\nChallenge: summarizing\nWhat is the total population for each year? Plot the result.\nAdvanced: What is the total GDP for each year? For this you will first need to calculate GDP per capita times the population of each country.\n\nThe .by argument can be used to group by multiple columns, much like count. We need to use c( ) for this, as below. We can use this to see how the rest of the world is catching up to OECD nations in terms of life expectancy.\n\nresult &lt;- summarize(\n    gap_geo,\n    mean_life_exp = weighted.mean(life_exp, population, na.rm=TRUE),\n    .by = c(year, oecd))\nresult\n\n# A tibble: 44 × 3\n    year oecd  mean_life_exp\n   &lt;dbl&gt; &lt;lgl&gt;         &lt;dbl&gt;\n 1  1800 FALSE          29.9\n 2  1800 TRUE           34.7\n 3  1810 FALSE          29.9\n 4  1810 TRUE           35.2\n 5  1820 FALSE          30.0\n 6  1820 TRUE           35.9\n 7  1830 FALSE          30.0\n 8  1830 TRUE           36.2\n 9  1840 FALSE          30.0\n10  1840 TRUE           36.2\n# ℹ 34 more rows\n\nggplot(result, aes(x=year,y=mean_life_exp,color=oecd)) + geom_line()\n\n\n\n\n\n\n\n\nA similar plot could be produced using geom_smooth. Differences here are that we have full control over the summarization process so we were able to use the exact summarization method we want (weighted.mean for each year), and we have access to the resulting numeric data as well as the plot. We have reduced a large data set down to a smaller one that distills out one of the stories present in this data. However the earlier visualization and exploration activity using ggplot2 was essential. It gave us an idea of what sort of variability was present in the data, and any unexpected issues the data might have.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summarizing data</span>"
+    ]
+  },
+  {
+    "objectID": "summarizing.html#t-test",
+    "href": "summarizing.html#t-test",
+    "title": "4  Summarizing data",
+    "section": "4.4 t-test",
+    "text": "4.4 t-test\nWe will finish this section by demonstrating a t-test. The main point of this section is to give a flavour of how statistical tests work in R, rather than the details of what a t-test does.\nHas life expectancy increased from 2000 to 2010?\n\ngap2000 &lt;- filter(gap_geo, year == 2000)\ngap2010 &lt;- filter(gap_geo, year == 2010)\n\nt.test(gap2010$life_exp, gap2000$life_exp)\n\n\n    Welch Two Sample t-test\n\ndata:  gap2010$life_exp and gap2000$life_exp\nt = 3.0341, df = 374.98, p-value = 0.002581\nalternative hypothesis: true difference in means is not equal to 0\n95 percent confidence interval:\n 1.023455 4.792947\nsample estimates:\nmean of x mean of y \n 70.34005  67.43185 \n\n\nStatistical routines often have many ways to tweak the details of their operation. These are specified by further arguments to the function call, to override the default behaviour. By default, t.test performs an unpaired t-test, but these are repeated observations of the same countries. We can specify paired=TRUE to t.test to perform a paired sample t-test and gain some statistical power. Check this by looking at the help page with ?t.test.\nIt’s important to first check that both data frames are in the same order.\n\nall(gap2000$name == gap2010$name)\n\n[1] TRUE\n\nt.test(gap2010$life_exp, gap2000$life_exp, paired=TRUE)\n\n\n    Paired t-test\n\ndata:  gap2010$life_exp and gap2000$life_exp\nt = 13.371, df = 188, p-value &lt; 2.2e-16\nalternative hypothesis: true mean difference is not equal to 0\n95 percent confidence interval:\n 2.479153 3.337249\nsample estimates:\nmean difference \n       2.908201 \n\n\nWhen performing a statistical test, it’s good practice to visualize the data to make sure there is nothing funny going on.\n\nplot(gap2000$life_exp, gap2010$life_exp)\nabline(0,1)\n\n\n\n\n\n\n\n\nThis is a visual confirmation of the t-test result. If there were no difference between the years then points would lie approximately evenly above and below the diagonal line, which is clearly not the case. However the outlier may warrant investigation.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summarizing data</span>"
+    ]
+  },
+  {
+    "objectID": "thinking.html",
+    "href": "thinking.html",
+    "title": "5  Thinking in R",
+    "section": "",
+    "text": "5.1 Lists\nLists are vectors that can hold anything as elements (even other lists!). It’s possible to create lists with the list function. This becomes especially useful once you get into the programming side of R. For example writing your own function that needs to return multiple values, it could do so in the form of a list.\nmylist &lt;- list(hello=c(\"Hello\",\"world\"), numbers=c(1,2,3,4))\nmylist\n\n$hello\n[1] \"Hello\" \"world\"\n\n$numbers\n[1] 1 2 3 4\n\nclass(mylist)\n\n[1] \"list\"\n\ntypeof(mylist)\n\n[1] \"list\"\n\nnames(mylist)\n\n[1] \"hello\"   \"numbers\"\nAccessing lists can be done by name with $ or by position with [[ ]].\nmylist$hello\n\n[1] \"Hello\" \"world\"\n\nmylist[[2]]\n\n[1] 1 2 3 4",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Thinking in R</span>"
+    ]
+  },
+  {
+    "objectID": "thinking.html#other-types-not-covered-here",
+    "href": "thinking.html#other-types-not-covered-here",
+    "title": "5  Thinking in R",
+    "section": "5.2 Other types not covered here",
+    "text": "5.2 Other types not covered here\nMatrices are another tabular data type. These come up when doing more mathematical tasks in R. They are also commonly used in bioinformatics, for example to represent RNA-Seq count data. A matrix, as compared to a data frame:\n\ncontains only one type of data, usually numeric (rather than different types in different columns).\ncommonly has rownames as well as colnames. (Base R data frames can have rownames too, but it is easier to have any unique identifier as a normal column instead.)\nhas individual cells as the unit of observation (rather than rows).\n\nMatrices can be created using as.matrix from a data frame, matrix from a single vector, or using rbind or cbind with several vectors.\nYou may also encounter “S4 objects”, especially if you use Bioconductor packages. The syntax for using these is different again, and uses @ to access elements.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Thinking in R</span>"
+    ]
+  },
+  {
+    "objectID": "thinking.html#programming",
+    "href": "thinking.html#programming",
+    "title": "5  Thinking in R",
+    "section": "5.3 Programming",
+    "text": "5.3 Programming\nOnce you have a useful data analysis, you may want to do it again with different data. You may have some task that needs to be done many times over. This is where programming comes in:\n\nWriting your own functions.\nFor-loops to do things multiple times.\nIf-statements to make decisions.\n\nThe “R for Data Science” book is an excellent source to learn more. Monash Data Fluency “Programming and Tidy data analysis in R” course also covers this.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Thinking in R</span>"
+    ]
+  },
+  {
+    "objectID": "next_steps.html",
+    "href": "next_steps.html",
+    "title": "6  Next steps",
+    "section": "",
+    "text": "6.1 Deepen your understanding\nOur number one recommendation is to read the book “R for Data Science” by Garrett Grolemund and Hadley Wickham.\nThe R Manuals are the place to look if you need a precise definition of how R behaves.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Next steps</span>"
+    ]
+  },
+  {
+    "objectID": "next_steps.html#expand-your-vocabulary",
+    "href": "next_steps.html#expand-your-vocabulary",
+    "title": "6  Next steps",
+    "section": "6.2 Expand your vocabulary",
+    "text": "6.2 Expand your vocabulary\nHave a look at these cheat sheets to see what is possible with R.\n\nPosit’s collection of cheat sheets cover some important newer packages in R.\nAn old-school cheat sheet for dinosaurs and people wishing to go deeper.\nA Bioconductor cheat sheet for biological data.\nThe R Graph Gallery for visual inspiration.\nThe R Graphics Cookbook",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Next steps</span>"
+    ]
+  },
+  {
+    "objectID": "next_steps.html#find-packages-for-specific-data-types",
+    "href": "next_steps.html#find-packages-for-specific-data-types",
+    "title": "6  Next steps",
+    "section": "6.3 Find packages for specific data types",
+    "text": "6.3 Find packages for specific data types\n\nCRAN contains over 20,000 R packages.\nThe CRAN task views provide recommendations for specific topics.\nBioconductor is another package repository, specfically for working with high-throughput biological data.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Next steps</span>"
+    ]
+  },
+  {
+    "objectID": "next_steps.html#some-pointers-on-models-and-statistics",
+    "href": "next_steps.html#some-pointers-on-models-and-statistics",
+    "title": "6  Next steps",
+    "section": "6.4 Some pointers on models and statistics",
+    "text": "6.4 Some pointers on models and statistics\nStatistical tasks such as model fitting, hypothesis testing, confidence interval calculation, and prediction are a large part of R, and one we haven’t demonstrated fully today.\nFor any standard statistical test, there will usually be an R function to perform it. Examples include t.test from the previous sections, and also wilcox.test, fisher.test, chisq.test, and cor.test. Before applying these functions, you may need to use the methods we’ve learned today to subset and transform your data, or perform some preliminary summarization such as averaging technical replicates. To make sure there are no problems that might invalidate the results from these tests, always visualize your data. If you are performing many tests, adjust for multiple testing with p.adjust.\nGoing beyond this, linear models and the linear model formula syntax ~ are core to much of what R has to offer statistically. Many statistical techniques take linear models as their starting point, including limma for differential gene expression, glm for logistic regression and generalized linear models, survival analysis with coxph, and mixed models to characterize variation within populations. I have developed some workshop material on linear models, available here.\n\n“Statistical Models in S” by J.M. Chambers and T.J. Hastie is the primary reference for this, although there are some small differences between R and its predecessor S.\n\nThe emmeans package will allow you to sensibly interpret models you obtain. Directly interpreting coefficients in models is sometimes misleading. This package fills in the interpretation step, filling in a missing piece of the original framework.\n\n“An Introduction to Statistical Learning” by G. James, D. Witten, T. Hastie and R. Tibshirani can be seen as further development of the ideas in “Statistical Models in S”, and is available online. It has more of a machine learning than a statistics flavour to it. (The distinction is fuzzy!)\n“Modern Applied Statistics with S” by W.N. Venable and B.D. Ripley is a well respected reference covering R and S.\n“Linear Models with R” and “Extending the Linear Model with R” by J. Faraway cover linear models, with many practical examples.\nMachine learning is a whole further world of packages…\n\n\n\n\n\nThe Carpentries run workshops on scientific computing and data science topics worldwide. The style of this present workshop is very much based on theirs. Their material is all available on their website.\nMany further resources and tutorials exist online.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Next steps</span>"
+    ]
+  }
+]

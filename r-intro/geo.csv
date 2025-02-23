@@ -1,0 +1,197 @@
+name,region,oecd,g77,lat,long,income2017
+Australia,asia,TRUE,FALSE,-25,135,high
+Brunei,asia,FALSE,TRUE,4.5,114.66667,high
+Cambodia,asia,FALSE,TRUE,13,105,lower_mid
+China,asia,FALSE,TRUE,35,105,upper_mid
+Fiji,asia,FALSE,TRUE,-18,178,upper_mid
+"Hong Kong, China",asia,FALSE,FALSE,22.285520000000002,114.15769,high
+Indonesia,asia,FALSE,TRUE,-5,120,lower_mid
+Japan,asia,TRUE,FALSE,35.68536,139.75309,high
+Kiribati,asia,FALSE,FALSE,1.421,172.984,lower_mid
+North Korea,asia,FALSE,TRUE,40,127,low
+South Korea,asia,TRUE,FALSE,36.5,127.75,high
+Lao,asia,FALSE,TRUE,18,105,lower_mid
+Malaysia,asia,FALSE,TRUE,2.5,112.5,upper_mid
+Marshall Islands,asia,FALSE,TRUE,7.113,171.236,upper_mid
+"Micronesia, Fed. Sts.",asia,FALSE,TRUE,6.924,158.162,lower_mid
+Mongolia,asia,FALSE,TRUE,46,105,lower_mid
+Myanmar,asia,FALSE,TRUE,21,96,lower_mid
+Nauru,asia,FALSE,FALSE,-0.517,166.933,upper_mid
+New Zealand,asia,TRUE,FALSE,-42,174,high
+Palau,asia,FALSE,FALSE,7.503,134.621,high
+Papua New Guinea,asia,FALSE,TRUE,-6,147,lower_mid
+Philippines,asia,FALSE,TRUE,13,122,lower_mid
+Samoa,asia,FALSE,TRUE,-13.8,-172.13333,upper_mid
+Singapore,asia,FALSE,TRUE,1.28967,103.85007,high
+Solomon Islands,asia,FALSE,TRUE,-8,159,lower_mid
+Taiwan,asia,FALSE,FALSE,24,121,high
+Thailand,asia,FALSE,TRUE,15.5,101,upper_mid
+Timor-Leste,asia,FALSE,TRUE,-8.83333,125.75,lower_mid
+Tonga,asia,FALSE,TRUE,-20,-175,upper_mid
+Tuvalu,asia,FALSE,FALSE,-8.51719,179.14478,upper_mid
+Vanuatu,asia,FALSE,TRUE,-16,167,lower_mid
+Vietnam,asia,FALSE,TRUE,16.16667,107.83333,lower_mid
+Albania,europe,FALSE,FALSE,41,20,upper_mid
+Andorra,europe,FALSE,FALSE,42.50779,1.52109,high
+Armenia,europe,FALSE,FALSE,40.25,45,lower_mid
+Austria,europe,TRUE,FALSE,47.33333,13.33333,high
+Azerbaijan,europe,FALSE,FALSE,40.5,47.5,upper_mid
+Belarus,europe,FALSE,FALSE,53,28,upper_mid
+Belgium,europe,TRUE,FALSE,50.75,4.5,high
+Bosnia and Herzegovina,europe,FALSE,TRUE,44.25,17.83333,upper_mid
+Bulgaria,europe,FALSE,FALSE,42.66667,25.25,upper_mid
+Croatia,europe,FALSE,FALSE,45.16667,15.5,upper_mid
+Cyprus,europe,FALSE,FALSE,35,33,high
+Czech Republic,europe,TRUE,FALSE,49.75,15,high
+Denmark,europe,TRUE,FALSE,56,10,high
+Estonia,europe,FALSE,FALSE,59,26,high
+Finland,europe,TRUE,FALSE,64,26,high
+France,europe,TRUE,FALSE,46,2,high
+Georgia,europe,FALSE,FALSE,41.99998,43.4999,lower_mid
+Germany,europe,TRUE,FALSE,51.5,10.5,high
+Greece,europe,TRUE,FALSE,39,22,high
+Hungary,europe,TRUE,FALSE,47,20,high
+Iceland,europe,TRUE,FALSE,65,-18,high
+Ireland,europe,TRUE,FALSE,53,-8,high
+Italy,europe,TRUE,FALSE,42.83333,12.83333,high
+Kazakhstan,asia,FALSE,FALSE,48,68,upper_mid
+Kyrgyz Republic,asia,FALSE,FALSE,41.5,75,lower_mid
+Latvia,europe,FALSE,FALSE,57,25,high
+Liechtenstein,europe,FALSE,FALSE,47.16667,9.53333,high
+Lithuania,europe,FALSE,FALSE,55.41667,24,high
+Luxembourg,europe,TRUE,FALSE,49.61167,6.13,high
+"Macedonia, FYR",europe,FALSE,FALSE,41.66667,21.75,upper_mid
+Moldova,europe,FALSE,FALSE,47.25,28.58333,lower_mid
+Monaco,europe,FALSE,FALSE,43.73333,7.41667,high
+Montenegro,europe,FALSE,FALSE,42.75,19.25,upper_mid
+Netherlands,europe,TRUE,FALSE,52.25,5.75,high
+Norway,europe,TRUE,FALSE,62,10,high
+Poland,europe,TRUE,FALSE,52,20,high
+Portugal,europe,TRUE,FALSE,39.6945,-8.13057,high
+Romania,europe,FALSE,FALSE,46,25,upper_mid
+Russia,europe,FALSE,FALSE,60,100,upper_mid
+San Marino,europe,FALSE,FALSE,43.93667,12.44639,high
+Serbia,europe,FALSE,FALSE,44.81892,20.45998,upper_mid
+Slovak Republic,europe,TRUE,FALSE,48.66667,19.5,high
+Slovenia,europe,FALSE,FALSE,46.08333,15,high
+Spain,europe,TRUE,FALSE,40,-4,high
+Sweden,europe,TRUE,FALSE,62,15,high
+Switzerland,europe,TRUE,FALSE,47.00016,8.01427,high
+Tajikistan,asia,FALSE,FALSE,39,71,lower_mid
+Turkey,europe,TRUE,FALSE,39,35,upper_mid
+Turkmenistan,asia,FALSE,TRUE,39.75,59.66667,upper_mid
+Ukraine,europe,FALSE,FALSE,49,32,lower_mid
+United Kingdom,europe,TRUE,FALSE,54.75844,-2.69531,high
+Uzbekistan,asia,FALSE,FALSE,41.66667,63.83333,lower_mid
+Antigua and Barbuda,americas,FALSE,TRUE,17.05,-61.8,high
+Argentina,americas,FALSE,TRUE,-34,-64,upper_mid
+Bahamas,americas,FALSE,TRUE,25.04082,-77.37122,high
+Barbados,americas,FALSE,TRUE,13.16667,-59.53333,high
+Belize,americas,FALSE,TRUE,17.49952,-88.19756,upper_mid
+Bolivia,americas,FALSE,TRUE,-17,-65,lower_mid
+Brazil,americas,FALSE,TRUE,-10,-55,upper_mid
+Chile,americas,TRUE,TRUE,-33.45694,-70.64827,high
+Colombia,americas,FALSE,TRUE,4,-73.25,upper_mid
+Costa Rica,americas,FALSE,TRUE,10,-84,upper_mid
+Cuba,americas,FALSE,TRUE,22,-79.5,upper_mid
+Dominica,americas,FALSE,TRUE,15.5,-61.33333,upper_mid
+Dominican Republic,americas,FALSE,TRUE,19,-70.66667,upper_mid
+Ecuador,americas,FALSE,TRUE,-1.25,-78.25,upper_mid
+El Salvador,americas,FALSE,TRUE,13.83333,-88.91667,lower_mid
+Grenada,americas,FALSE,TRUE,12.11667,-61.66667,upper_mid
+Guatemala,americas,FALSE,TRUE,14.64072,-90.51327,lower_mid
+Guyana,americas,FALSE,TRUE,5,-59,upper_mid
+Haiti,americas,FALSE,TRUE,19,-72.41667,low
+Honduras,americas,FALSE,TRUE,15,-86.5,lower_mid
+Jamaica,americas,FALSE,TRUE,18.16667,-77.25,upper_mid
+Mexico,americas,TRUE,FALSE,19.42847,-99.12766,upper_mid
+Nicaragua,americas,FALSE,TRUE,13,-85,lower_mid
+Panama,americas,FALSE,TRUE,8.9936,-79.51973,upper_mid
+Paraguay,americas,FALSE,TRUE,-23.33333,-58,upper_mid
+Peru,americas,FALSE,TRUE,-10,-75.25,upper_mid
+St. Kitts and Nevis,americas,FALSE,TRUE,17.33333,-62.75,high
+St. Lucia,americas,FALSE,TRUE,13.88333,-60.96667,upper_mid
+St. Vincent and the Grenadines,americas,FALSE,TRUE,13.08333,-61.2,upper_mid
+Suriname,americas,FALSE,TRUE,4,-56,upper_mid
+Trinidad and Tobago,americas,FALSE,TRUE,11,-61,high
+Uruguay,americas,FALSE,TRUE,-33,-56,high
+Venezuela,americas,FALSE,TRUE,8,-66,upper_mid
+Algeria,africa,FALSE,TRUE,28,3,upper_mid
+Bahrain,asia,FALSE,TRUE,26.03333,50.55,high
+Djibouti,africa,FALSE,TRUE,11.58901,43.14503,lower_mid
+Egypt,africa,FALSE,TRUE,27,30,lower_mid
+Iran,asia,FALSE,TRUE,32,53,upper_mid
+Iraq,asia,FALSE,TRUE,33,44,upper_mid
+Israel,asia,FALSE,FALSE,31.5,34.75,high
+Jordan,asia,FALSE,TRUE,31,36,lower_mid
+Kuwait,asia,FALSE,TRUE,29.36972,47.97833,high
+Lebanon,asia,FALSE,TRUE,33.83333,35.83333,upper_mid
+Libya,africa,FALSE,TRUE,28,17,upper_mid
+Malta,europe,FALSE,FALSE,35.91667,14.43333,high
+Morocco,africa,FALSE,TRUE,32,-6,lower_mid
+Oman,asia,FALSE,TRUE,21,57,high
+Qatar,asia,FALSE,TRUE,25.27932,51.52245,high
+Saudi Arabia,asia,FALSE,TRUE,25,45,high
+Syria,asia,FALSE,TRUE,35,38,lower_mid
+Tunisia,africa,FALSE,TRUE,34,9,lower_mid
+United Arab Emirates,asia,FALSE,TRUE,23.75,54.5,high
+Palestine,asia,FALSE,TRUE,31.92157,35.20329,lower_mid
+Yemen,asia,FALSE,TRUE,15.5,47.5,lower_mid
+Canada,americas,TRUE,FALSE,60.10867,-113.64258,high
+United States,americas,TRUE,FALSE,39.76,-98.5,high
+Afghanistan,asia,FALSE,TRUE,33,66,low
+Bangladesh,asia,FALSE,TRUE,24,90,lower_mid
+Bhutan,asia,FALSE,TRUE,27.5,90.5,lower_mid
+India,asia,FALSE,TRUE,22,79,lower_mid
+Maldives,asia,FALSE,TRUE,3.2,73,upper_mid
+Nepal,asia,FALSE,TRUE,28,84,low
+Pakistan,asia,FALSE,TRUE,30,70,lower_mid
+Sri Lanka,asia,FALSE,TRUE,7.75,80.75,lower_mid
+Angola,africa,FALSE,TRUE,-12.5,18.5,lower_mid
+Benin,africa,FALSE,TRUE,9.5,2.25,low
+Botswana,africa,FALSE,TRUE,-22,24,upper_mid
+Burkina Faso,africa,FALSE,TRUE,12.5,-1.66667,low
+Burundi,africa,FALSE,TRUE,-3.5,30,low
+Cameroon,africa,FALSE,TRUE,6,12.5,lower_mid
+Cape Verde,africa,FALSE,TRUE,16,-24,lower_mid
+Central African Republic,africa,FALSE,TRUE,7,21,low
+Chad,africa,FALSE,TRUE,15,19,low
+Comoros,africa,FALSE,TRUE,-12.23333,44.44553,low
+"Congo, Dem. Rep.",africa,FALSE,TRUE,-2.5,23.5,low
+"Congo, Rep.",africa,FALSE,TRUE,-1,15.5,lower_mid
+Cote d'Ivoire,africa,FALSE,TRUE,8,-5.5,lower_mid
+Equatorial Guinea,africa,FALSE,TRUE,1.7,10.5,upper_mid
+Eritrea,africa,FALSE,TRUE,15,39,low
+Ethiopia,africa,FALSE,TRUE,9,39.5,low
+Gabon,africa,FALSE,TRUE,-1,11.75,upper_mid
+Gambia,africa,FALSE,TRUE,13.5,-15.5,low
+Ghana,africa,FALSE,TRUE,8.1,-1.2,lower_mid
+Guinea,africa,FALSE,TRUE,10.83333,-10.66667,low
+Guinea-Bissau,africa,FALSE,TRUE,12,-15,low
+Kenya,africa,FALSE,TRUE,1,38,lower_mid
+Lesotho,africa,FALSE,TRUE,-29.5,28.25,lower_mid
+Liberia,africa,FALSE,TRUE,6.5,-9.5,low
+Madagascar,africa,FALSE,TRUE,-20,47,low
+Malawi,africa,FALSE,TRUE,-13.5,34,low
+Mali,africa,FALSE,TRUE,18,-2,low
+Mauritania,africa,FALSE,TRUE,20.25,-10.5,lower_mid
+Mauritius,africa,FALSE,TRUE,-20.3,57.58333,upper_mid
+Mozambique,africa,FALSE,TRUE,-18.25,35,low
+Namibia,africa,FALSE,TRUE,-22,17,upper_mid
+Niger,africa,FALSE,TRUE,18,9,low
+Nigeria,africa,FALSE,TRUE,10,8,lower_mid
+Rwanda,africa,FALSE,TRUE,-2,30,low
+Sao Tome and Principe,africa,FALSE,TRUE,1,7,lower_mid
+Senegal,africa,FALSE,TRUE,14.5,-14.25,low
+Seychelles,africa,FALSE,TRUE,-4.58333,55.66667,high
+Sierra Leone,africa,FALSE,TRUE,8.5,-11.5,low
+Somalia,africa,FALSE,TRUE,6,48,low
+South Africa,africa,FALSE,TRUE,-29,24,upper_mid
+Sudan,africa,FALSE,TRUE,16,30,lower_mid
+Swaziland,africa,FALSE,TRUE,-26.5,31.5,lower_mid
+Tanzania,africa,FALSE,TRUE,-6,35,low
+Togo,africa,FALSE,TRUE,8.66667,1.08333,low
+Uganda,africa,FALSE,TRUE,1.25,32.5,low
+Zambia,africa,FALSE,TRUE,-14.33333,28.5,lower_mid
+Zimbabwe,africa,FALSE,TRUE,-19,29.75,low
+South Sudan,africa,FALSE,TRUE,7.5,30,low

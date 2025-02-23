@@ -1,0 +1,78 @@
+
+# Thinking in R
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+
+geo <- read_csv("r-intro/geo.csv")
+gap <- read_csv("r-intro/gap-minder.csv")
+gap_geo <- left_join(gap, geo, by="name")
+gap2000 <- filter(gap_geo, year == 2000)
+gap2010 <- filter(gap_geo, year == 2010)
+```
+
+The result of a t-test is actually a value we can manipulate further. Two functions help us here. `class` gives the "public face" of a value, and `typeof` gives its underlying type, the way R thinks of it internally. For example numbers are "numeric" and have some representation in computer memory, either "integer" for whole numbers only, or "double" which can hold fractional numbers (stored in memory in a base-2 version of scientific notation).
+
+```{r}
+class(42)
+typeof(42)
+```
+
+Let's look at the result of a t-test:
+
+```{r}
+result <- t.test(gap2010$life_exp, gap2000$life_exp, paired=TRUE)
+
+class(result)
+typeof(result)
+names(result)
+result$p.value
+```
+
+In R, a t-test is just another function returning just another type of data, so it can also be a building block. The value it returns is a special type of vector called a "list", but with a public face that presents itself nicely. This is a common pattern in R. Besides printing to the console nicely, this public face may alter the behaviour of generic functions such as `plot` and `summary`.
+
+Similarly a data frame is a list of vectors that is able to present itself nicely.
+
+## Lists
+
+Lists are vectors that can hold anything as elements (even other lists!). It's possible to create lists with the `list` function. This becomes especially useful once you get into the programming side of R. For example writing your own function that needs to return multiple values, it could do so in the form of a list.
+
+```{r}
+mylist <- list(hello=c("Hello","world"), numbers=c(1,2,3,4))
+mylist
+
+class(mylist)
+typeof(mylist)
+names(mylist)
+```
+
+Accessing lists can be done by name with `$` or by position with `[[ ]]`. 
+
+```{r}
+mylist$hello
+mylist[[2]]
+```
+
+
+## Other types not covered here
+
+Matrices are another tabular data type. These come up when doing more mathematical tasks in R. They are also commonly used in bioinformatics, for example to represent RNA-Seq count data. A matrix, as compared to a data frame:
+
+* contains only one type of data, usually numeric (rather than different types in different columns).
+* commonly has `rownames` as well as `colnames`. (Base R data frames can have `rownames` too, but it is easier to have any unique identifier as a normal column instead.)
+* has individual cells as the unit of observation (rather than rows).
+
+Matrices can be created using `as.matrix` from a data frame, `matrix` from a single vector, or using `rbind` or `cbind` with several vectors.
+
+You may also encounter "S4 objects", especially if you use [Bioconductor](http://bioconductor.org/) packages. The syntax for using these is different again, and uses `@` to access elements.
+
+
+## Programming
+
+Once you have a useful data analysis, you may want to do it again with different data. You may have some task that needs to be done many times over. This is where programming comes in:
+
+* Writing your own [functions](http://r4ds.had.co.nz/functions.html).
+* [For-loops](http://r4ds.had.co.nz/iteration.html) to do things multiple times.
+* [If-statements](http://r4ds.had.co.nz/functions.html#conditional-execution) to make decisions.
+
+The ["R for Data Science" book](http://r4ds.had.co.nz/) is an excellent source to learn more. Monash Data Fluency ["Programming and Tidy data analysis in R" course](https://monashdatafluency.github.io/r-progtidy/) also covers this.

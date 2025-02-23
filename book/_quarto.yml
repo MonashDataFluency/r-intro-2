@@ -1,0 +1,24 @@
+project:
+    type: book
+    output-dir: "../docs"
+
+book:
+    title: "Introduction to R (ResBaz Victoria 2024)"
+    output-file: "r-intro-resbaz2024"
+    chapters:
+        - index.qmd
+        - starting.qmd
+        - data_frames.qmd
+        - plotting.qmd
+        - summarizing.qmd
+        - thinking.qmd
+        - next_steps.qmd
+
+format:
+    html:
+        theme: cosmo
+        css: style.css
+    pdf:
+        documentclass: scrreprt
+        links-as-notes: true
+
