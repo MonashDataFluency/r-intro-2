@@ -208,7 +208,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#factors" id="toc-factors" class="nav-link" data-scroll-target="#factors"><span class="header-section-number">2.7</span> Factors</a></li>
   <li><a href="#readability-vs-tidyness" id="toc-readability-vs-tidyness" class="nav-link" data-scroll-target="#readability-vs-tidyness"><span class="header-section-number">2.8</span> Readability vs tidyness</a></li>
-  <li><a href="#sorting" id="toc-sorting" class="nav-link" data-scroll-target="#sorting"><span class="header-section-number">2.9</span> Sorting</a></li>
+  <li><a href="#sorting" id="toc-sorting" class="nav-link" data-scroll-target="#sorting"><span class="header-section-number">2.9</span> Sorting</a>
+  <ul class="collapse">
+  <li><a href="#quiz-modification-or-creation" id="toc-quiz-modification-or-creation" class="nav-link" data-scroll-target="#quiz-modification-or-creation">Quiz: modification or creation?</a></li>
+  </ul></li>
   <li><a href="#joining-data-frames" id="toc-joining-data-frames" class="nav-link" data-scroll-target="#joining-data-frames"><span class="header-section-number">2.10</span> Joining data frames</a>
   <ul class="collapse">
   <li><a href="#quiz" id="toc-quiz" class="nav-link" data-scroll-target="#quiz">Quiz</a></li>
@@ -853,6 +856,11 @@ geo$southern <- geo$lat < 0
 # ℹ 186 more rows</code></pre>
 </div>
 </div>
+<section id="quiz-modification-or-creation" class="level3 unnumbered challenge">
+<h3 class="unnumbered anchored" data-anchor-id="quiz-modification-or-creation">Quiz: modification or creation?</h3>
+<p>When we run <code>arrange(geo, lat)</code>, is <code>geo</code> modified or is a new data frame created? How would we check?</p>
+<p>What can we do to keep the sorted data frame?</p>
+</section>
 </section>
 <section id="joining-data-frames" class="level2" data-number="2.10">
 <h2 data-number="2.10" class="anchored" data-anchor-id="joining-data-frames"><span class="header-section-number">2.10</span> Joining data frames</h2>

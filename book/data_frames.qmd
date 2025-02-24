@@ -377,6 +377,13 @@ Numeric columns are sorted in numeric order. Character columns will be sorted in
 arrange(geo, desc(name))
 ```
 
+:::{.challenge}
+### Quiz: modification or creation? {-}
+
+When we run `arrange(geo, lat)`, is `geo` modified or is a new data frame created? How would we check?
+
+What can we do to keep the sorted data frame?
+:::
 
 ## Joining data frames
 
