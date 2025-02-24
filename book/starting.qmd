@@ -8,7 +8,9 @@ R is both a programming language and an interactive environment for data explora
 
 Working with R is primarily text-based. The basic mode of use for R is that the user types in a command in the R language and presses enter, and then R computes and displays the result.
 
-We will be working in [RStudio](https://www.rstudio.com/products/rstudio/download/). The easiest way to get started is to go to [Posit Cloud](https://rstudio.cloud/) and create a new project. Monash staff and students can log in using their Monash Google account. 
+We will be working in [RStudio](https://www.rstudio.com/products/rstudio/download/). The easiest way to get started is to go to [Posit Cloud](https://rstudio.cloud/) and create a new project. Monash staff and students can log in using their Monash Google account.
+
+If you are using RStudio directly on your own laptop, we also recommend creating a project for this workshop. After opening the desktop version of RStudio, go the the "File" menu and select "New Project...". This will keep any files you create in their own folder.
 
 The main way of working with R is the *console*, where you enter commands and view results. RStudio surrounds this with various conveniences. In addition to the console panel, RStudio provides panels containing:
 

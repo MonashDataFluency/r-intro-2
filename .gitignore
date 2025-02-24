@@ -5,6 +5,7 @@ notes.txt
 *.sublime-*
 _bookdown_files
 ~$*
+.DS_Store
 
 # History files
 .Rhistory
