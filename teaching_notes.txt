@@ -1,5 +1,5 @@
 
-2021-10-12 & 14 Report on a Zoom-based workshop
+# 2021-10-12 & 14 Report on a Zoom-based workshop
 
 Since this workshop was held during the plague years, it was a Zoom-based workshop. We had discussion via a Slack channel. The general format was one instructor leading the workshop (taking turns), plus several helpers who help out during challenges in the Zoom breakout rooms. Everyone also keeps an eye on Slack.
 
@@ -36,3 +36,31 @@ For the data frames quiz portion, I used the Slack SimplePoll app:
 /poll "```highest <- geo$name[ head(order(geo$lat, decreasing=TRUE), n=10) ]``` The name of an argument to a function call?" "highest" "geo" "name" "head" "order" "geo" "lat" "decreasing" "n" anonymous
 
 
+
+# 2025-03-03 & 04 Report on a two-half-day in-person workshop
+
+This was a free workshop, in person, run over two half days. We has 11 attendees from 22 registered.
+
+We had allocated 4.5 hours per day. However 4 hours per day would probably be enough (including breaks).
+
+Day 1:
+
+12:30pm begin
+- MGBP manager did introductions
+- Went around the room doing introductions for all attendees
+- Introductory slideshow
+1:00pm Begin demonstrating
+2:20pm Finished "starting in R", 20 min break
+2:40pm Start data frames.
+4:15pm We're up to factors. Feels like we've covered a lot today.
+5:00pm We finished data frames.
+
+This day felt a little long.
+
+Day 2:
+
+12:36pm Recap of data frames, especially pivoting and joins.
+1:00pm Begin ggplot2.
+2:30pm Break
+2:50pm Begin summarizing section.
+4:15pm finished rather early.

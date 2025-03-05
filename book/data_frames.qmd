@@ -104,7 +104,7 @@ knitr::include_graphics("figures/import.png")
 
 The `View` function gives us a spreadsheet-like view of the data frame.
 
-```
+```{r eval=FALSE}
 View(geo)
 ```
 
